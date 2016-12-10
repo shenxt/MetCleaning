@@ -33,7 +33,7 @@ SXTsvrNor <- function(sample = sample,
                       }
 
                       else {
-                        library(snow)
+                        # library(snow)
                         # library(wordcloud)
                         cl <- makeCluster(threads, type = "SOCK")
                         nc <- length(cl)
