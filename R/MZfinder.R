@@ -68,7 +68,7 @@ MZfinder <- function(MetFlowData = MetFlowData,
           subject1[[i]],
           qc1[[i]],
           filter.item = "zero",
-          filter.rule = "union",
+          filter.rule = "intersect",
           minifrac.variable = var.per.cutoff,
           minifrac.observation = 0
         )
