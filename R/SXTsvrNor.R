@@ -35,7 +35,7 @@ SXTsvrNor <- function(sample = sample,
                       else {
                         # library(snow)
                         # library(wordcloud)
-                        cl <- makeCluster(threads, type = "SOCK")
+                        cl <- snow::makeCluster(threads, type = "SOCK")
                         nc <- length(cl)
                         options(warn = -1)
                         ichunks <- split((1:ncol(sample)), 1:threads)
@@ -44,7 +44,7 @@ SXTsvrNor <- function(sample = sample,
                         ######PLSDCV is the double cross validation
                         # browser()
                         svr.data <-
-                          clusterApply(
+                          snow::clusterApply(
                             cl,
                             x = ichunks,
                             fun = svr.function,
@@ -54,7 +54,7 @@ SXTsvrNor <- function(sample = sample,
                             QC.order = QC.order,
                             multiple = multiple
                           )
-                        stopCluster(cl)
+                        snow::stopCluster(cl)
                         save(svr.data, file = file.path(path, "svr.data"))
 
                         sample.nor <- NULL
@@ -123,14 +123,14 @@ SXTsvrNor <- function(sample = sample,
                         path2 <- file.path(path1, "peak plot")
                         dir.create(path2)
 
-                        cl <- makeCluster(threads, type = "SOCK")
+                        cl <- snow::makeCluster(threads, type = "SOCK")
                         nc <- length(cl)
                         options(warn = -1)
                         ichunks <- split((1:ncol(sample)), 1:threads)
 
                         if (datastyle == "tof")
                         {
-                          clusterApply(
+                          snow::clusterApply(
                             cl,
                             x = ichunks,
                             fun = peakplot5,
@@ -149,7 +149,7 @@ SXTsvrNor <- function(sample = sample,
                           )
                         }
                         else {
-                          clusterApply(
+                          snow::clusterApply(
                             cl,
                             x = ichunks,
                             fun = peakplot6,
