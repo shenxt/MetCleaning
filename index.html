@@ -28,25 +28,198 @@
 <h3>
 <a id="metcleaning-provides-an-integrated-and-automatic-pipeline-for-data-cleaning-and-statistical-analysis-of-large-scale-mass-spectrometry-ms-based-metabolomic-data-it-includes-missing-value-mv-filtering-and-imputation-zero-value-filtering-data-normalization-data-integration-data-quality-assessment-univariate-statistical-analysis-multivariate-statistical-analysis-such-as-pca-and-pls-da-potential-marker-selection-and-show-this-document-describes-how-to-use-the-integrated-functions-metclean-and-metstat-in-metcleaning-utilizing-demo-data" class="anchor" href="#metcleaning-provides-an-integrated-and-automatic-pipeline-for-data-cleaning-and-statistical-analysis-of-large-scale-mass-spectrometry-ms-based-metabolomic-data-it-includes-missing-value-mv-filtering-and-imputation-zero-value-filtering-data-normalization-data-integration-data-quality-assessment-univariate-statistical-analysis-multivariate-statistical-analysis-such-as-pca-and-pls-da-potential-marker-selection-and-show-this-document-describes-how-to-use-the-integrated-functions-metclean-and-metstat-in-metcleaning-utilizing-demo-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>MetCleaning</em> provides an integrated and automatic pipeline for data cleaning and statistical analysis of large scale mass spectrometry (MS) based-metabolomic data. It includes missing value (MV) filtering and imputation, zero value filtering, data normalization, data integration, data quality assessment, univariate statistical analysis, multivariate statistical analysis such as PCA and PLS-DA, potential marker selection and show. This document describes how to use the integrated functions, <em>MetClean</em> and <em>MetStat</em> in <em>MetCleaning</em> utilizing demo data.</h3>
 
-<h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Designer Templates</h3>
+<h2>
+<a id="installation-and-help" class="anchor" href="#installation-and-help" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Installation and help</strong>
+</h2>
 
-<p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.</p>
-
-<h3>
-<a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Creating pages manually</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<hr>
 
 <h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<a id="metcleaning-is-published-in-github-link-so-you-can-install-it-via-to-github" class="anchor" href="#metcleaning-is-published-in-github-link-so-you-can-install-it-via-to-github" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>MetCleaning</em> is published in github <a href="https://github.com/jaspershen/MetCleaning">(link)</a>. So you can install it via to github.</h3>
 
-<p>You can @mention a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+<h4>
+<a id="code-1-installation-of-metcleaning" class="anchor" href="#code-1-installation-of-metcleaning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>code 1: Installation of <em>MetCleaning</em>
+</h4>
+
+<pre><code>##pcaMethods and impute should be installed form bioconductor
+##pcaMethos
+source("http://bioconductor.org/biocLite.R")
+    biocLite("pcaMethods")
+##impute
+source("http://bioconductor.org/biocLite.R")
+    biocLite("impute")
+ if(!require(devtools)) {
+  install.packages("devtools")
+ }
+ library(devtools)
+ install_github("jaspershen/MetCleaning")
+ library(MetCleaning)
+ help(package = "MetCleaning")
+</code></pre>
+
+<h2>
+<a id="data-cleaning" class="anchor" href="#data-cleaning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Data cleaning</strong>
+</h2>
+
+<hr>
 
 <h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
+<a id="data-cleaning-is-integrated-as-a-function-named-as-metclean-in-metcleaning-we-use-the-demo-data-as-the-example-copy-the-code-below-and-paste-in-you-r-console" class="anchor" href="#data-cleaning-is-integrated-as-a-function-named-as-metclean-in-metcleaning-we-use-the-demo-data-as-the-example-copy-the-code-below-and-paste-in-you-r-console" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Data cleaning is integrated as a function named as <em>MetClean</em> in <em>MetCleaning</em>. We use the demo data as the example. Copy the code below and paste in you R console.</h3>
 
-<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
+<h4>
+<a id="code-2-demo-data-of-metclean" class="anchor" href="#code-2-demo-data-of-metclean" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>code 2: Demo data of <em>MetClean</em>
+</h4>
+
+<pre><code>##demo data
+data(data, package = "MetCleaning")
+data(sample.information, package = "MetCleaning")
+##demo work directory
+dir.create("Demo for MetCleaning")
+setwd("Demo for MetCleaning")
+##write files
+write.csv(data, "data.csv", row.names = FALSE)
+write.csv(sample.information , "sample.information.csv", row.names = FALSE)
+</code></pre>
+
+<h3>
+<a id="the-demo-data-have-been-added-in-your-work-directory-and-organized-in-you-work-directory-as-figure-2-shows-it-contains-two-files-datacsv-and-sampleinformationcsv" class="anchor" href="#the-demo-data-have-been-added-in-your-work-directory-and-organized-in-you-work-directory-as-figure-2-shows-it-contains-two-files-datacsv-and-sampleinformationcsv" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The demo data have been added in your work directory and organized in you work directory as Figure 2 shows. It contains two files, "data.csv" and "sample.information.csv".</h3>
+
+<h3>
+<a id="1-datacsv-is-the-metabolomic-dataset-you-want-to-process-rows-are-features-and-columns-are-feature-abundance-of-samples-and-information-of-features-the-information-of-features-must-contain-name-feature-name-mz-mass-to-change-ratio-and-rt-retention-time-other-information-of-features-are-optional-for-example-isotopes-and-adducts-the-name-of-sample-can-contain--but-cannot-contain---and-space-and-the-start-of-sample-name-cannot-be-number-for-example-a210a-and-a210a-are-valid-and-210a-or-210-a-are-invalid" class="anchor" href="#1-datacsv-is-the-metabolomic-dataset-you-want-to-process-rows-are-features-and-columns-are-feature-abundance-of-samples-and-information-of-features-the-information-of-features-must-contain-name-feature-name-mz-mass-to-change-ratio-and-rt-retention-time-other-information-of-features-are-optional-for-example-isotopes-and-adducts-the-name-of-sample-can-contain--but-cannot-contain---and-space-and-the-start-of-sample-name-cannot-be-number-for-example-a210a-and-a210a-are-valid-and-210a-or-210-a-are-invalid" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1. "data.csv" is the metabolomic dataset you want to process. Rows are features and columns are feature abundance of samples and information of features. The information of features must contain "name" (feature name), "mz" (mass to change ratio) and "rt" (retention time). Other information of features are optional, for example "isotopes" and "adducts". The name of sample can contain ".", but cannot contain "-" and space. And the start of sample name cannot be number. <strong>For example, "A210.a" and "A210a" are valid, and "210a" or "210-a" are invalid.</strong>
+</h3>
+
+<h3>
+<a id="2-sampleinformationcsv-is-sample-information-for-metabolomic-dataset-column-1-is-samplename-which-is-the-names-of-subject-and-qc-samples-please-confirm-that-the-sample-names-in-sampleinformationcsv-and-datacsv-are-completely-same-column-2-is-injectionorder-which-is-the-injection-order-of-qc-and-subject-samples-column-3-is-class-which-is-used-to-distinguish-qc-and-subject-samples-column-4-is-batch-to-provide-acquisition-batch-information-for-samples-column-5-is-group-which-is-used-to-label-the-group-of-subject-sample-for-example-control-and-case-the-group-of-qc-samples-is-labeled-as-qc" class="anchor" href="#2-sampleinformationcsv-is-sample-information-for-metabolomic-dataset-column-1-is-samplename-which-is-the-names-of-subject-and-qc-samples-please-confirm-that-the-sample-names-in-sampleinformationcsv-and-datacsv-are-completely-same-column-2-is-injectionorder-which-is-the-injection-order-of-qc-and-subject-samples-column-3-is-class-which-is-used-to-distinguish-qc-and-subject-samples-column-4-is-batch-to-provide-acquisition-batch-information-for-samples-column-5-is-group-which-is-used-to-label-the-group-of-subject-sample-for-example-control-and-case-the-group-of-qc-samples-is-labeled-as-qc" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2. "sample.information.csv" is sample information for metabolomic dataset. Column 1 is "sample.name" which is the names of subject and QC samples. Please confirm that the sample names in "sample.information.csv" and "data.csv" are completely same. Column 2 is "injection.order" which is the injection order of QC and subject samples. Column 3 is "class", which is used to distinguish "QC" and "Subject" samples. Column 4 is "batch" to provide acquisition batch information for samples. Column 5 is "group", which is used to label the group of subject sample, for example, "control" and "case". The "group" of QC samples is labeled as "QC".</h3>
+
+<p><img src="data%20organisation.tif" alt="Figure2 Data organisation of MetCleaning"></p>
+
+<h3>
+<a id="then-you-can-run-metclean-function-to-do-data-cleaning-of-data-all-the-arguments-of-metclean-can-be-found-in-the-other-functions-in-metcleaning-you-can-use-helppackage--metcleaning-to-see-the-help-page-of-metcleaning" class="anchor" href="#then-you-can-run-metclean-function-to-do-data-cleaning-of-data-all-the-arguments-of-metclean-can-be-found-in-the-other-functions-in-metcleaning-you-can-use-helppackage--metcleaning-to-see-the-help-page-of-metcleaning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Then you can run <em>MetClean</em> function to do data cleaning of data. All the arguments of <em>MetClean</em> can be found in the other functions in <em>MetCleaning</em>. You can use <em>help(package = "MetCleaning")</em> to see the help page of <em>MetCleaning</em>.</h3>
+
+<h4>
+<a id="code-3-running-of-metclean" class="anchor" href="#code-3-running-of-metclean" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>code 3: Running of <em>MetClean</em>
+</h4>
+
+<pre><code>##demo data
+MetClean(polarity = "positive")
+</code></pre>
+
+<h3>
+<a id="running-results-of-metclean" class="anchor" href="#running-results-of-metclean" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running results of <em>MetClean</em>
+</h3>
+
+<h4>
+<a id="1missing-or-zero-values-filtering-in-the-missing-or-zero-value-filtering-step-if-there-are-samples-which-beyond-the-threshold-you-set-you-should-decide-to-filter-them-or-not-we-recommend-to-remove-all-of-them-as-figure-3-shows" class="anchor" href="#1missing-or-zero-values-filtering-in-the-missing-or-zero-value-filtering-step-if-there-are-samples-which-beyond-the-threshold-you-set-you-should-decide-to-filter-them-or-not-we-recommend-to-remove-all-of-them-as-figure-3-shows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1.Missing or zero values filtering. In the missing or zero value filtering step, if there are samples which beyond the threshold you set, you should decide to filter them or not. We recommend to remove all of them as Figure 3 shows.</h4>
+
+<p><img src="mv%20filter.png" alt="Figure3 Missing or zero value filtering"></p>
+
+<h4>
+<a id="2sample-filtering-in-the-qc-or-subject-sample-filtering-step-based-on-pca-if-there-are-samples-which-beyond-the-threshold-you-set-you-should-decide-to-filter-them-or-not-we-dont-recommend-to-remove-them-as-figure-4-shows-because-they-should-be-consired-combined-other-information" class="anchor" href="#2sample-filtering-in-the-qc-or-subject-sample-filtering-step-based-on-pca-if-there-are-samples-which-beyond-the-threshold-you-set-you-should-decide-to-filter-them-or-not-we-dont-recommend-to-remove-them-as-figure-4-shows-because-they-should-be-consired-combined-other-information" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.Sample filtering. In the QC or subject sample filtering step (based on PCA), if there are samples which beyond the threshold you set, you should decide to filter them or not. We don't recommend to remove them as Figure 4 shows, because they should be consired combined other information.</h4>
+
+<p><img src="sample%20filter.png" alt="Figure4 Sample filtering"></p>
+
+<h4>
+<a id="3output-files-output-files-of-metclean-are-listed-as-figure-5-shows" class="anchor" href="#3output-files-output-files-of-metclean-are-listed-as-figure-5-shows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.Output files. Output files of <em>MetClean</em> are listed as Figure 5 shows.</h4>
+
+<h5>
+<a id="1-1mv-overview-2mv-filter-3zero-overview-and-4zero-filter-are-missing-and-zero-values-filtering-information" class="anchor" href="#1-1mv-overview-2mv-filter-3zero-overview-and-4zero-filter-are-missing-and-zero-values-filtering-information" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(1) "1MV overview", "2MV filter", "3Zero overview" and "4Zero filter" are missing and zero values filtering information.</h5>
+
+<h5>
+<a id="2-5qc-outlier-filter-and-6subject-outlier-filter-are-sample-filtering-based-on-pca-information" class="anchor" href="#2-5qc-outlier-filter-and-6subject-outlier-filter-are-sample-filtering-based-on-pca-information" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(2) "5QC outlier filter" and "6Subject outlier filter" are sample filtering based on PCA information.</h5>
+
+<h5>
+<a id="3-7normalization-result-is-the-data-normalization-information-for-each-batch" class="anchor" href="#3-7normalization-result-is-the-data-normalization-information-for-each-batch" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(3) "7Normalization result" is the data normalization information for each batch.</h5>
+
+<h5>
+<a id="4-8batch-effect-is-the-batch-effect-both-in-before-and-after-data-cleaning" class="anchor" href="#4-8batch-effect-is-the-batch-effect-both-in-before-and-after-data-cleaning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(4) "8Batch effect" is the batch effect both in before and after data cleaning.</h5>
+
+<h5>
+<a id="5-9metabolite-plot-is-the-scatter-plot-for-each-feature" class="anchor" href="#5-9metabolite-plot-is-the-scatter-plot-for-each-feature" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(5) "9metabolite plot" is the scatter plot for each feature.</h5>
+
+<h5>
+<a id="6-10data-overview-is-the-overview-of-data" class="anchor" href="#6-10data-overview-is-the-overview-of-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(6) "10Data overview" is the overview of data.</h5>
+
+<h5>
+<a id="7-11rsd-overview-is-the-rsd-distribution-for-each-batch-both-before-and-after-data-cleaning" class="anchor" href="#7-11rsd-overview-is-the-rsd-distribution-for-each-batch-both-before-and-after-data-cleaning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(7) "11RSD overview" is the RSD distribution for each batch both before and after data cleaning.</h5>
+
+<h5>
+<a id="8-data_after_precsv-qcinfocsv-and-subjectinfo-are-the-data-and-sample-information-after-data-cleaning" class="anchor" href="#8-data_after_precsv-qcinfocsv-and-subjectinfo-are-the-data-and-sample-information-after-data-cleaning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(8) <strong>"data_after_pre.csv", "qc.info.csv" and "subject.info"</strong> are the data and sample information after data cleaning.</h5>
+
+<h5>
+<a id="9-intermediate-is-the-intermediate-data-during-processing" class="anchor" href="#9-intermediate-is-the-intermediate-data-during-processing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(9) "intermediate" is the intermediate data during processing.</h5>
+
+<p><img src="output%20files%20of%20MetClean.tif" alt="Figure5 Output files of *MetClean*"></p>
+
+<h2>
+<a id="statistical-analysis" class="anchor" href="#statistical-analysis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Statistical analysis</strong>
+</h2>
+
+<hr>
+
+<h3>
+<a id="data-statistical-analysis-is-integrated-as-a-function-named-as-metstat-in-metcleaning-we-use-the-demo-data-as-the-example-please-note-that-now-metstat-can-only-process-two-class-data-copy-the-code-below-and-paste-in-you-r-console" class="anchor" href="#data-statistical-analysis-is-integrated-as-a-function-named-as-metstat-in-metcleaning-we-use-the-demo-data-as-the-example-please-note-that-now-metstat-can-only-process-two-class-data-copy-the-code-below-and-paste-in-you-r-console" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Data statistical analysis is integrated as a function named as <em>MetStat</em> in <em>MetCleaning</em>. We use the demo data as the example. <strong>Please note that now <em>MetStat</em> can only process two class data.</strong> Copy the code below and paste in you R console.</h3>
+
+<h4>
+<a id="code-4-demo-data-of-metstat" class="anchor" href="#code-4-demo-data-of-metstat" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>code 4: Demo data of <em>MetStat</em>
+</h4>
+
+<pre><code>data("met.data.after.pre", package = "MetCleaning")
+data(new.group, package = "MetCleaning")
+##create a folder for MetStat demo
+dir.create("Demo for MetStat")
+setwd("Demo for MetStat")
+## export the demo data as csv
+write.csv(new.group, "new.group.csv", row.names = FALSE)
+</code></pre>
+
+<h3>
+<a id="the-demo-data-have-been-added-in-your-work-directory-newgroupcsv-is-a-sampleinformation-which-has-been-changed-the-group-information-you-want-to-use-for-statistical-analysis-for-the-sample-which-you-dont-want-to-use-them-for-statistical-analysis-you-can-set-they-group-information-as-na-like-figure-6-shows" class="anchor" href="#the-demo-data-have-been-added-in-your-work-directory-newgroupcsv-is-a-sampleinformation-which-has-been-changed-the-group-information-you-want-to-use-for-statistical-analysis-for-the-sample-which-you-dont-want-to-use-them-for-statistical-analysis-you-can-set-they-group-information-as-na-like-figure-6-shows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The demo data have been added in your work directory. "new.group.csv" is a sample.information which has been changed the group information you want to use for statistical analysis. For the sample which you don't want to use them for statistical analysis, you can set they group information as NA like Figure 6 shows.</h3>
+
+<p><img src="new.group.tif" alt="Figure6 new group information"></p>
+
+<h4>
+<a id="code-5-running-of-metstat" class="anchor" href="#code-5-running-of-metstat" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>code 5: Running of <em>MetStat</em>
+</h4>
+
+<pre><code>MetStat(MetFlowData = met.data.after.pre, new.group = TRUE)
+</code></pre>
+
+<h3>
+<a id="running-results-of-metstat" class="anchor" href="#running-results-of-metstat" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running results of <em>MetStat</em>
+</h3>
+
+<h4>
+<a id="1sample-removing-firstly-you-need-to-confirm-the-samples-which-you-want-to-remove-form-dataset-as-figure-7-shows" class="anchor" href="#1sample-removing-firstly-you-need-to-confirm-the-samples-which-you-want-to-remove-form-dataset-as-figure-7-shows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1.Sample removing. Firstly, you need to confirm the samples which you want to remove form dataset as Figure 7 shows.</h4>
+
+<p><img src="sample%20remove.png" alt="Figure7 sample removing confirmation"></p>
+
+<h4>
+<a id="2number-of-component-selection-in-pls-da-analysis-in-pls-da-analysis-you-should-manually-select-the-best-choice-of-the-number-of-component-when-the-console-show-how-many-comps-do-you-want-to-see-you-can-type-10-and-enter-enter-key-then-a-mse-plot-is-showing-and-the-best-number-of-component-is-the-one-has-the-smallest-cv-values-so-type-the-number-in-this-example-is-4-and-enter-enter-key" class="anchor" href="#2number-of-component-selection-in-pls-da-analysis-in-pls-da-analysis-you-should-manually-select-the-best-choice-of-the-number-of-component-when-the-console-show-how-many-comps-do-you-want-to-see-you-can-type-10-and-enter-enter-key-then-a-mse-plot-is-showing-and-the-best-number-of-component-is-the-one-has-the-smallest-cv-values-so-type-the-number-in-this-example-is-4-and-enter-enter-key" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.Number of component selection in PLS-DA analysis. In PLS-DA analysis, you should manually select the best choice of the number of component. When the Console show "How many comps do you want to see?", you can type 10 and enter "Enter" key. Then a MSE plot is showing, and the best number of component is the one has the smallest CV values. So type the number (in this example is 4) and enter "Enter" key.</h4>
+
+<p><img src="PLS%20analysis.tif" alt="Figure8 Number of component selection in PLS-DA analysis"></p>
+
+<h4>
+<a id="3output-files-output-files-of-metstat-are-listed-as-figure-9-shows" class="anchor" href="#3output-files-output-files-of-metstat-are-listed-as-figure-9-shows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.Output files. Output files of <em>MetStat</em> are listed as Figure 9 shows.</h4>
+
+<h5>
+<a id="1-12pca-analysis-is-the-pca-score-plot" class="anchor" href="#1-12pca-analysis-is-the-pca-score-plot" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(1) "12PCA analysis" is the PCA score plot.</h5>
+
+<h5>
+<a id="2-13pls-analysis-contains-the-pls-da-results" class="anchor" href="#2-13pls-analysis-contains-the-pls-da-results" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(2) "13PLS analysis" contains the PLS-DA results.</h5>
+
+<h5>
+<a id="3-14heatmap-is-the-heatmap" class="anchor" href="#3-14heatmap-is-the-heatmap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(3) "14heatmap" is the heatmap.</h5>
+
+<h5>
+<a id="4-15marker-selection-contains-the-information-of-markers-volcano-plot-and-boxplots-of-markers" class="anchor" href="#4-15marker-selection-contains-the-information-of-markers-volcano-plot-and-boxplots-of-markers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(4) "15marker selection" contains the information of markers, volcano plot and boxplots of markers.</h5>
+
+<h5>
+<a id="5-data_after_statcsv-qcinfocsv-and-subjectinfo-are-the-data-and-sample-information-after-statistical-analysis" class="anchor" href="#5-data_after_statcsv-qcinfocsv-and-subjectinfo-are-the-data-and-sample-information-after-statistical-analysis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(5) <strong>"data_after_stat.csv", "qc.info.csv" and "subject.info"</strong> are the data and sample information after statistical analysis.</h5>
+
+<h5>
+<a id="6-intermediate-is-the-intermediate-data-during-processing" class="anchor" href="#6-intermediate-is-the-intermediate-data-during-processing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(6) "intermediate" is the intermediate data during processing.</h5>
+
+<p><img src="output%20files%20of%20MetStat.tif" alt="Figure9 Output files of *MetStat*"></p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/jaspershen/MetCleaning">Metcleaning</a> is maintained by <a href="https://github.com/jaspershen">jaspershen</a>.</span>
