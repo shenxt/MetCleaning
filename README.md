@@ -24,5 +24,5 @@ source("http://bioconductor.org/biocLite.R")
 ```
 
 ## **Note of version1.0.0**
-## **Note of version1.0.1**
+## **Note of version1.1.0**
 1. Add *m2p* function which is used to transform metabolite information to pathway information.
