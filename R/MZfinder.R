@@ -59,7 +59,7 @@ MZfinder <- function(MetFlowData = MetFlowData,
           subject1[[i]],
           qc1[[i]],
           filter.item = "mv",
-          filter.rule = "union",
+          filter.rule = "intersect",
           minifrac.variable = var.per.cutoff,
           minifrac.observation = 0
         )
@@ -90,6 +90,7 @@ MZfinder <- function(MetFlowData = MetFlowData,
         SXTMinifracData <- SXTMinifrac(
           subject1[[i]],
           filter.item = "zero",
+          filter.rule = "intersect",
           minifrac.variable = var.per.cutoff,
           minifrac.observation = 0
         )
