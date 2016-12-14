@@ -1,25 +1,33 @@
-<!DOCTYPE html>
-<html lang="en-us">
+<!doctype html>
+<html>
   <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Metcleaning by jaspershen</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
   </head>
   <body>
-    <section class="page-header">
-      <h1 class="project-name">Metcleaning</h1>
-      <h2 class="project-tagline">Automatic and integrated tool for data cleaning and statistical analysis of large scale MS-based metabolomics data</h2>
-      <a href="https://github.com/jaspershen/MetCleaning" class="btn">View on GitHub</a>
-      <a href="https://github.com/jaspershen/MetCleaning/zipball/master" class="btn">Download .zip</a>
-      <a href="https://github.com/jaspershen/MetCleaning/tarball/master" class="btn">Download .tar.gz</a>
-    </section>
-
-    <section class="main-content">
-      <h2>
+    <div class="wrapper">
+      <header>
+        <h1>Metcleaning</h1>
+        <p>Automatic and integrated tool for data cleaning and statistical analysis of large scale MS-based metabolomics data</p>
+        <p class="view"><a href="https://github.com/jaspershen/MetCleaning">View the Project on GitHub <small>jaspershen/MetCleaning</small></a></p>
+        <ul>
+          <li><a href="https://github.com/jaspershen/MetCleaning/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/jaspershen/MetCleaning/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/jaspershen/MetCleaning">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>
 <a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Introduction</strong>
 </h2>
 
@@ -93,8 +101,9 @@ write.csv(sample.information , "sample.information.csv", row.names = FALSE)
 <li>"sample.information.csv" is sample information for metabolomic dataset. Column 1 is "sample.name" which is the names of subject and QC samples. Please confirm that the sample names in "sample.information.csv" and "data.csv" are completely same. Column 2 is "injection.order" which is the injection order of QC and subject samples. Column 3 is "class", which is used to distinguish "QC" and "Subject" samples. Column 4 is "batch" to provide acquisition batch information for samples. Column 5 is "group", which is used to label the group of subject sample, for example, "control" and "case". The "group" of QC samples is labeled as "QC".</li>
 </ol>
 
-<p><img src="http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/9ZYRAa8ExueUOdukXVOmFXfBg*bhk6YgrK0gb6lxgqY!/b/dNwAAAAAAAAA&amp;bo=nAKAAgAAAAADBz4!&amp;rf=viewer_4" alt="Figure2 Data organisation of MetCleaning">
-Figure2 Data organisation of MetCleaning</p>
+<p><img src="http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/9ZYRAa8ExueUOdukXVOmFXfBg*bhk6YgrK0gb6lxgqY!/b/dNwAAAAAAAAA&amp;bo=nAKAAgAAAAADBz4!&amp;rf=viewer_4" alt="Figure2 Data organisation of MetCleaning"></p>
+
+<p>Figure2 Data organisation of MetCleaning</p>
 
 <h3>
 <a id="then-you-can-run-metclean-function-to-do-data-cleaning-of-data-all-the-arguments-of-metclean-can-be-found-in-the-other-functions-in-metcleaning-you-can-use-helppackage--metcleaning-to-see-the-help-page-of-metcleaning" class="anchor" href="#then-you-can-run-metclean-function-to-do-data-cleaning-of-data-all-the-arguments-of-metclean-can-be-found-in-the-other-functions-in-metcleaning-you-can-use-helppackage--metcleaning-to-see-the-help-page-of-metcleaning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Then you can run <em>MetClean</em> function to do data cleaning of data. All the arguments of <em>MetClean</em> can be found in the other functions in <em>MetCleaning</em>. You can use <em>help(package = "MetCleaning")</em> to see the help page of <em>MetCleaning</em>.</h3>
@@ -115,15 +124,17 @@ MetClean(polarity = "positive")
 <li>Missing or zero values filtering. In the missing or zero value filtering step, if there are samples which beyond the threshold you set, you should decide to filter them or not. We recommend to remove all of them as Figure 3 shows.</li>
 </ol>
 
-<p><img src="http://a3.qpic.cn/psb?/V12nMOGs3RiKv2/lClw1oe2dY6SX4Fxd5HvZzsv8MT3FROlrvyt6tBP4HE!/b/dHkBAAAAAAAA&amp;bo=pwPDAAAAAAADB0U!&amp;rf=viewer_4" alt="Figure3 Missing or zero value filtering">
-Figure3 Missing or zero value filtering</p>
+<p><img src="http://a3.qpic.cn/psb?/V12nMOGs3RiKv2/lClw1oe2dY6SX4Fxd5HvZzsv8MT3FROlrvyt6tBP4HE!/b/dHkBAAAAAAAA&amp;bo=pwPDAAAAAAADB0U!&amp;rf=viewer_4" alt="Figure3 Missing or zero value filtering"></p>
+
+<p>Figure3 Missing or zero value filtering</p>
 
 <ol>
 <li>Sample filtering. In the QC or subject sample filtering step (based on PCA), if there are samples which beyond the threshold you set, you should decide to filter them or not. We don't recommend to remove them as Figure 4 shows, because they should be consired combined other information.</li>
 </ol>
 
-<p><img src="http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/1xq.NZ7PorsAHVPMNruGAWJw6WjSbtKnIa4gcm4cweg!/b/dAkBAAAAAAAA&amp;bo=QAPRAAAAAAADB7A!&amp;rf=viewer_4" alt="Figure4 Sample filtering">
-Figure4 Sample filtering</p>
+<p><img src="http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/1xq.NZ7PorsAHVPMNruGAWJw6WjSbtKnIa4gcm4cweg!/b/dAkBAAAAAAAA&amp;bo=QAPRAAAAAAADB7A!&amp;rf=viewer_4" alt="Figure4 Sample filtering"></p>
+
+<p>Figure4 Sample filtering</p>
 
 <h4>
 <a id="3output-files-output-files-of-metclean-are-listed-as-figure-5-shows" class="anchor" href="#3output-files-output-files-of-metclean-are-listed-as-figure-5-shows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.Output files. Output files of <em>MetClean</em> are listed as Figure 5 shows.</h4>
@@ -140,8 +151,9 @@ Figure4 Sample filtering</p>
 <li>(9) "intermediate" is the intermediate data during processing.</li>
 </ul>
 
-<p><img src="http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/DqhpGarOe2QXl6rZyq8UQJmQG5g1hlWGOtqF*C*ZWPc!/b/dHgBAAAAAAAA&amp;bo=xAOAAgAAAAADB2c!&amp;rf=viewer_4" alt="Figure5 Output files of *MetClean*">
-Figure5 Output files of <em>MetClean</em></p>
+<p><img src="http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/DqhpGarOe2QXl6rZyq8UQJmQG5g1hlWGOtqF*C*ZWPc!/b/dHgBAAAAAAAA&amp;bo=xAOAAgAAAAADB2c!&amp;rf=viewer_4" alt="Figure5 Output files of *MetClean*"></p>
+
+<p>Figure5 Output files of <em>MetClean</em></p>
 
 <h2>
 <a id="statistical-analysis" class="anchor" href="#statistical-analysis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>Statistical analysis</strong>
@@ -168,8 +180,9 @@ write.csv(new.group, "new.group.csv", row.names = FALSE)
 <h3>
 <a id="the-demo-data-have-been-added-in-your-work-directory-newgroupcsv-is-a-sampleinformation-which-has-been-changed-the-group-information-you-want-to-use-for-statistical-analysis-for-the-sample-which-you-dont-want-to-use-them-for-statistical-analysis-you-can-set-they-group-information-as-na-like-figure-6-shows" class="anchor" href="#the-demo-data-have-been-added-in-your-work-directory-newgroupcsv-is-a-sampleinformation-which-has-been-changed-the-group-information-you-want-to-use-for-statistical-analysis-for-the-sample-which-you-dont-want-to-use-them-for-statistical-analysis-you-can-set-they-group-information-as-na-like-figure-6-shows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The demo data have been added in your work directory. "new.group.csv" is a sample.information which has been changed the group information you want to use for statistical analysis. For the sample which you don't want to use them for statistical analysis, you can set they group information as NA like Figure 6 shows.</h3>
 
-<p><img src="http://a3.qpic.cn/psb?/V12nMOGs3RiKv2/SmB0Cnb3VBFxRT4YVx9Ce5ilzE*hWMbPlLtgr2NsBOU!/b/dN0AAAAAAAAA&amp;bo=QQSxAQAAAAADB9c!&amp;rf=viewer_4" alt="Figure6 new group information">
-Figure6 new group information</p>
+<p><img src="http://a3.qpic.cn/psb?/V12nMOGs3RiKv2/SmB0Cnb3VBFxRT4YVx9Ce5ilzE*hWMbPlLtgr2NsBOU!/b/dN0AAAAAAAAA&amp;bo=QQSxAQAAAAADB9c!&amp;rf=viewer_4" alt="Figure6 new group information"></p>
+
+<p>Figure6 new group information</p>
 
 <h4>
 <a id="code-5-running-of-metstat" class="anchor" href="#code-5-running-of-metstat" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>code 5: Running of <em>MetStat</em>
@@ -185,14 +198,16 @@ Figure6 new group information</p>
 <h4>
 <a id="1sample-removing-firstly-you-need-to-confirm-the-samples-which-you-want-to-remove-form-dataset-as-figure-7-shows" class="anchor" href="#1sample-removing-firstly-you-need-to-confirm-the-samples-which-you-want-to-remove-form-dataset-as-figure-7-shows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1.Sample removing. Firstly, you need to confirm the samples which you want to remove form dataset as Figure 7 shows.</h4>
 
-<p><img src="http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/mQH*23gM4ylq0.thcyNr4EqVyiZra7sBkZohrEz1spk!/b/dAkBAAAAAAAA&amp;bo=DQOAAAAAAAADB6w!&amp;rf=viewer_4" alt="Figure7 sample removing confirmation">
-Figure7 sample removing confirmation</p>
+<p><img src="http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/mQH*23gM4ylq0.thcyNr4EqVyiZra7sBkZohrEz1spk!/b/dAkBAAAAAAAA&amp;bo=DQOAAAAAAAADB6w!&amp;rf=viewer_4" alt="Figure7 sample removing confirmation"></p>
+
+<p>Figure7 sample removing confirmation</p>
 
 <h4>
 <a id="2number-of-component-selection-in-pls-da-analysis-in-pls-da-analysis-you-should-manually-select-the-best-choice-of-the-number-of-component-when-the-console-show-how-many-comps-do-you-want-to-see-you-can-type-10-and-enter-enter-key-then-a-mse-plot-is-showing-and-the-best-number-of-component-is-the-one-has-the-smallest-cv-values-so-type-the-number-in-this-example-is-4-and-enter-enter-key" class="anchor" href="#2number-of-component-selection-in-pls-da-analysis-in-pls-da-analysis-you-should-manually-select-the-best-choice-of-the-number-of-component-when-the-console-show-how-many-comps-do-you-want-to-see-you-can-type-10-and-enter-enter-key-then-a-mse-plot-is-showing-and-the-best-number-of-component-is-the-one-has-the-smallest-cv-values-so-type-the-number-in-this-example-is-4-and-enter-enter-key" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.Number of component selection in PLS-DA analysis. In PLS-DA analysis, you should manually select the best choice of the number of component. When the Console show "How many comps do you want to see?", you can type 10 and enter "Enter" key. Then a MSE plot is showing, and the best number of component is the one has the smallest CV values. So type the number (in this example is 4) and enter "Enter" key.</h4>
 
-<p><img src="http://a3.qpic.cn/psb?/V12nMOGs3RiKv2/.7pTKCwR*6k*n*vEDmva1Y4oiMuulgD34b.CCh4EIrI!/b/dN0AAAAAAAAA&amp;bo=lwKAAgAAAAADBzU!&amp;rf=viewer_4" alt="Figure8 Number of component selection in PLS-DA analysis">
-Figure8 Number of component selection in PLS-DA analysis</p>
+<p><img src="http://a3.qpic.cn/psb?/V12nMOGs3RiKv2/.7pTKCwR*6k*n*vEDmva1Y4oiMuulgD34b.CCh4EIrI!/b/dN0AAAAAAAAA&amp;bo=lwKAAgAAAAADBzU!&amp;rf=viewer_4" alt="Figure8 Number of component selection in PLS-DA analysis"></p>
+
+<p>Figure8 Number of component selection in PLS-DA analysis</p>
 
 <h4>
 <a id="3output-files-output-files-of-metstat-are-listed-as-figure-9-shows" class="anchor" href="#3output-files-output-files-of-metstat-are-listed-as-figure-9-shows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.Output files. Output files of <em>MetStat</em> are listed as Figure 9 shows.</h4>
@@ -206,17 +221,16 @@ Figure8 Number of component selection in PLS-DA analysis</p>
 <li>(6) "intermediate" is the intermediate data during processing.</li>
 </ul>
 
-<p><img src="http://a1.qpic.cn/psb?/V12nMOGs3RiKv2/x6rTunGHESfE393LkCQ*0Br.yInIa0fll*hk4gJuIM4!/b/dN4AAAAAAAAA&amp;bo=gAKRAgAAAAADBzM!&amp;rf=viewer_4" alt="Figure9 Output files of *MetStat*">
-Figure9 Output files of <em>MetStat</em></p>
+<p><img src="http://a1.qpic.cn/psb?/V12nMOGs3RiKv2/x6rTunGHESfE393LkCQ*0Br.yInIa0fll*hk4gJuIM4!/b/dN4AAAAAAAAA&amp;bo=gAKRAgAAAAADBzM!&amp;rf=viewer_4" alt="Figure9 Output files of *MetStat*"></p>
 
-      <footer class="site-footer">
-        <span class="site-footer-owner"><a href="https://github.com/jaspershen/MetCleaning">Metcleaning</a> is maintained by <a href="https://github.com/jaspershen">jaspershen</a>.</span>
-
-        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-      </footer>
-
-    </section>
-
-  
+<p>Figure9 Output files of <em>MetStat</em></p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/jaspershen">jaspershen</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
   </body>
 </html>
