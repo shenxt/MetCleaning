@@ -89,9 +89,7 @@ write.csv(sample.information , "sample.information.csv", row.names = FALSE)
 <ol>
 <li>"data.csv" is the metabolomic dataset you want to process. Rows are features and columns are feature abundance of samples and information of features. The information of features must contain "name" (feature name), "mz" (mass to change ratio) and "rt" (retention time). Other information of features are optional, for example "isotopes" and "adducts". The name of sample can contain ".", but cannot contain "-" and space. And the start of sample name cannot be number. <strong>For example, "A210.a" and "A210a" are valid, and "210a" or "210-a" are invalid.</strong>
 </li>
-<li>"sample.information.csv" is sample information for metabolomic dataset. Column 1 is "sample.name" which is the names of subject and QC samples. Please confirm that the sample names in "sample.information.csv" and "data.csv" are completely same. Column 2 is "injection.order" which is the injection order of QC and subject samples. Column 3 is "class", which is used to distinguish "QC" and "Subject" samples. Column 4 is "batch" to provide acquisition batch information for samples. Column 5 is "group", which is used to label the group of subject sample, for example, "control" and "case". The "group" of QC samples is labeled as "QC".
-### 1. "data.csv" is the metabolomic dataset you want to process. Rows are features and columns are feature abundance of samples and information of features. The information of features must contain "name" (feature name), "mz" (mass to change ratio) and "rt" (retention time). Other information of features are optional, for example "isotopes" and "adducts". The name of sample can contain ".", but cannot contain "-" and space. And the start of sample name cannot be number. <strong>For example, "A210.a" and "A210a" are valid, and "210a" or "210-a" are invalid.</strong>
-### 2. "sample.information.csv" is sample information for metabolomic dataset. Column 1 is "sample.name" which is the names of subject and QC samples. Please confirm that the sample names in "sample.information.csv" and "data.csv" are completely same. Column 2 is "injection.order" which is the injection order of QC and subject samples. Column 3 is "class", which is used to distinguish "QC" and "Subject" samples. Column 4 is "batch" to provide acquisition batch information for samples. Column 5 is "group", which is used to label the group of subject sample, for example, "control" and "case". The "group" of QC samples is labeled as "QC".</li>
+<li>"sample.information.csv" is sample information for metabolomic dataset. Column 1 is "sample.name" which is the names of subject and QC samples. Please confirm that the sample names in "sample.information.csv" and "data.csv" are completely same. Column 2 is "injection.order" which is the injection order of QC and subject samples. Column 3 is "class", which is used to distinguish "QC" and "Subject" samples. Column 4 is "batch" to provide acquisition batch information for samples. Column 5 is "group", which is used to label the group of subject sample, for example, "control" and "case". The "group" of QC samples is labeled as "QC".</li>
 </ol>
 
 <p><img src="http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/9ZYRAa8ExueUOdukXVOmFXfBg*bhk6YgrK0gb6lxgqY!/b/dNwAAAAAAAAA&amp;bo=nAKAAgAAAAADBz4!&amp;rf=viewer_4" alt="Figure2 Data organisation of MetCleaning"></p>
@@ -111,45 +109,32 @@ MetClean(polarity = "positive")
 <a id="running-results-of-metclean" class="anchor" href="#running-results-of-metclean" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Running results of <em>MetClean</em>
 </h3>
 
-<h4>
-<a id="1missing-or-zero-values-filtering-in-the-missing-or-zero-value-filtering-step-if-there-are-samples-which-beyond-the-threshold-you-set-you-should-decide-to-filter-them-or-not-we-recommend-to-remove-all-of-them-as-figure-3-shows" class="anchor" href="#1missing-or-zero-values-filtering-in-the-missing-or-zero-value-filtering-step-if-there-are-samples-which-beyond-the-threshold-you-set-you-should-decide-to-filter-them-or-not-we-recommend-to-remove-all-of-them-as-figure-3-shows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>1.Missing or zero values filtering. In the missing or zero value filtering step, if there are samples which beyond the threshold you set, you should decide to filter them or not. We recommend to remove all of them as Figure 3 shows.</h4>
+<ol>
+<li>Missing or zero values filtering. In the missing or zero value filtering step, if there are samples which beyond the threshold you set, you should decide to filter them or not. We recommend to remove all of them as Figure 3 shows.</li>
+</ol>
 
 <p><img src="http://a3.qpic.cn/psb?/V12nMOGs3RiKv2/lClw1oe2dY6SX4Fxd5HvZzsv8MT3FROlrvyt6tBP4HE!/b/dHkBAAAAAAAA&amp;bo=pwPDAAAAAAADB0U!&amp;rf=viewer_4" alt="Missing or zero value filtering"></p>
 
-<h4>
-<a id="2sample-filtering-in-the-qc-or-subject-sample-filtering-step-based-on-pca-if-there-are-samples-which-beyond-the-threshold-you-set-you-should-decide-to-filter-them-or-not-we-dont-recommend-to-remove-them-as-figure-4-shows-because-they-should-be-consired-combined-other-information" class="anchor" href="#2sample-filtering-in-the-qc-or-subject-sample-filtering-step-based-on-pca-if-there-are-samples-which-beyond-the-threshold-you-set-you-should-decide-to-filter-them-or-not-we-dont-recommend-to-remove-them-as-figure-4-shows-because-they-should-be-consired-combined-other-information" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>2.Sample filtering. In the QC or subject sample filtering step (based on PCA), if there are samples which beyond the threshold you set, you should decide to filter them or not. We don't recommend to remove them as Figure 4 shows, because they should be consired combined other information.</h4>
+<ol>
+<li>Sample filtering. In the QC or subject sample filtering step (based on PCA), if there are samples which beyond the threshold you set, you should decide to filter them or not. We don't recommend to remove them as Figure 4 shows, because they should be consired combined other information.</li>
+</ol>
 
 <p><img src="http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/1xq.NZ7PorsAHVPMNruGAWJw6WjSbtKnIa4gcm4cweg!/b/dAkBAAAAAAAA&amp;bo=QAPRAAAAAAADB7A!&amp;rf=viewer_4" alt="Figure4 Sample filtering"></p>
 
 <h4>
 <a id="3output-files-output-files-of-metclean-are-listed-as-figure-5-shows" class="anchor" href="#3output-files-output-files-of-metclean-are-listed-as-figure-5-shows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.Output files. Output files of <em>MetClean</em> are listed as Figure 5 shows.</h4>
 
-<h5>
-<a id="1-1mv-overview-2mv-filter-3zero-overview-and-4zero-filter-are-missing-and-zero-values-filtering-information" class="anchor" href="#1-1mv-overview-2mv-filter-3zero-overview-and-4zero-filter-are-missing-and-zero-values-filtering-information" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(1) "1MV overview", "2MV filter", "3Zero overview" and "4Zero filter" are missing and zero values filtering information.</h5>
-
-<h5>
-<a id="2-5qc-outlier-filter-and-6subject-outlier-filter-are-sample-filtering-based-on-pca-information" class="anchor" href="#2-5qc-outlier-filter-and-6subject-outlier-filter-are-sample-filtering-based-on-pca-information" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(2) "5QC outlier filter" and "6Subject outlier filter" are sample filtering based on PCA information.</h5>
-
-<h5>
-<a id="3-7normalization-result-is-the-data-normalization-information-for-each-batch" class="anchor" href="#3-7normalization-result-is-the-data-normalization-information-for-each-batch" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(3) "7Normalization result" is the data normalization information for each batch.</h5>
-
-<h5>
-<a id="4-8batch-effect-is-the-batch-effect-both-in-before-and-after-data-cleaning" class="anchor" href="#4-8batch-effect-is-the-batch-effect-both-in-before-and-after-data-cleaning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(4) "8Batch effect" is the batch effect both in before and after data cleaning.</h5>
-
-<h5>
-<a id="5-9metabolite-plot-is-the-scatter-plot-for-each-feature" class="anchor" href="#5-9metabolite-plot-is-the-scatter-plot-for-each-feature" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(5) "9metabolite plot" is the scatter plot for each feature.</h5>
-
-<h5>
-<a id="6-10data-overview-is-the-overview-of-data" class="anchor" href="#6-10data-overview-is-the-overview-of-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(6) "10Data overview" is the overview of data.</h5>
-
-<h5>
-<a id="7-11rsd-overview-is-the-rsd-distribution-for-each-batch-both-before-and-after-data-cleaning" class="anchor" href="#7-11rsd-overview-is-the-rsd-distribution-for-each-batch-both-before-and-after-data-cleaning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(7) "11RSD overview" is the RSD distribution for each batch both before and after data cleaning.</h5>
-
-<h5>
-<a id="8-data_after_precsv-qcinfocsv-and-subjectinfo-are-the-data-and-sample-information-after-data-cleaning" class="anchor" href="#8-data_after_precsv-qcinfocsv-and-subjectinfo-are-the-data-and-sample-information-after-data-cleaning" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(8) <strong>"data_after_pre.csv", "qc.info.csv" and "subject.info"</strong> are the data and sample information after data cleaning.</h5>
-
-<h5>
-<a id="9-intermediate-is-the-intermediate-data-during-processing" class="anchor" href="#9-intermediate-is-the-intermediate-data-during-processing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(9) "intermediate" is the intermediate data during processing.</h5>
+<ul>
+<li>(1) "1MV overview", "2MV filter", "3Zero overview" and "4Zero filter" are missing and zero values filtering information.</li>
+<li>(2) "5QC outlier filter" and "6Subject outlier filter" are sample filtering based on PCA information.</li>
+<li>(3) "7Normalization result" is the data normalization information for each batch.</li>
+<li>(4) "8Batch effect" is the batch effect both in before and after data cleaning.</li>
+<li>(5) "9metabolite plot" is the scatter plot for each feature.</li>
+<li>(6) "10Data overview" is the overview of data.</li>
+<li>(7) "11RSD overview" is the RSD distribution for each batch both before and after data cleaning.</li>
+<li>(8) <strong>"data_after_pre.csv", "qc.info.csv" and "subject.info"</strong> are the data and sample information after data cleaning.</li>
+<li>(9) "intermediate" is the intermediate data during processing.</li>
+</ul>
 
 <p><img src="http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/DqhpGarOe2QXl6rZyq8UQJmQG5g1hlWGOtqF*C*ZWPc!/b/dHgBAAAAAAAA&amp;bo=xAOAAgAAAAADB2c!&amp;rf=viewer_4" alt="Figure5 Output files of *MetClean*"></p>
 
@@ -204,23 +189,14 @@ write.csv(new.group, "new.group.csv", row.names = FALSE)
 <h4>
 <a id="3output-files-output-files-of-metstat-are-listed-as-figure-9-shows" class="anchor" href="#3output-files-output-files-of-metstat-are-listed-as-figure-9-shows" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>3.Output files. Output files of <em>MetStat</em> are listed as Figure 9 shows.</h4>
 
-<h5>
-<a id="1-12pca-analysis-is-the-pca-score-plot" class="anchor" href="#1-12pca-analysis-is-the-pca-score-plot" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(1) "12PCA analysis" is the PCA score plot.</h5>
-
-<h5>
-<a id="2-13pls-analysis-contains-the-pls-da-results" class="anchor" href="#2-13pls-analysis-contains-the-pls-da-results" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(2) "13PLS analysis" contains the PLS-DA results.</h5>
-
-<h5>
-<a id="3-14heatmap-is-the-heatmap" class="anchor" href="#3-14heatmap-is-the-heatmap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(3) "14heatmap" is the heatmap.</h5>
-
-<h5>
-<a id="4-15marker-selection-contains-the-information-of-markers-volcano-plot-and-boxplots-of-markers" class="anchor" href="#4-15marker-selection-contains-the-information-of-markers-volcano-plot-and-boxplots-of-markers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(4) "15marker selection" contains the information of markers, volcano plot and boxplots of markers.</h5>
-
-<h5>
-<a id="5-data_after_statcsv-qcinfocsv-and-subjectinfo-are-the-data-and-sample-information-after-statistical-analysis" class="anchor" href="#5-data_after_statcsv-qcinfocsv-and-subjectinfo-are-the-data-and-sample-information-after-statistical-analysis" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(5) <strong>"data_after_stat.csv", "qc.info.csv" and "subject.info"</strong> are the data and sample information after statistical analysis.</h5>
-
-<h5>
-<a id="6-intermediate-is-the-intermediate-data-during-processing" class="anchor" href="#6-intermediate-is-the-intermediate-data-during-processing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>(6) "intermediate" is the intermediate data during processing.</h5>
+<ul>
+<li>(1) "12PCA analysis" is the PCA score plot.</li>
+<li>(2) "13PLS analysis" contains the PLS-DA results.</li>
+<li>(3) "14heatmap" is the heatmap.</li>
+<li>(4) "15marker selection" contains the information of markers, volcano plot and boxplots of markers.</li>
+<li>(5) <strong>"data_after_stat.csv", "qc.info.csv" and "subject.info"</strong> are the data and sample information after statistical analysis.</li>
+<li>(6) "intermediate" is the intermediate data during processing.</li>
+</ul>
 
 <p><img src="http://a1.qpic.cn/psb?/V12nMOGs3RiKv2/x6rTunGHESfE393LkCQ*0Br.yInIa0fll*hk4gJuIM4!/b/dN4AAAAAAAAA&amp;bo=gAKRAgAAAAADBzM!&amp;rf=viewer_4" alt="Figure9 Output files of *MetStat*"></p>
 
