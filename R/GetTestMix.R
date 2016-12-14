@@ -24,9 +24,9 @@ GetTestMix <- function(data = "Test mixture.csv",
   if (is.null(path)) {path <- getwd()}
 
   ## get data information
-  data <- read.csv(data, stringsAsFactors = F)
-  is <- read.csv(test.mix.is, stringsAsFactors = F)
-  test.mix.info <- read.csv(test.mix.info, stringsAsFactors = F)
+  data <- read.csv(data, stringsAsFactors = F, check.names = FALSE)
+  is <- read.csv(test.mix.is, stringsAsFactors = F, check.names = FALSE)
+  test.mix.info <- read.csv(test.mix.info, stringsAsFactors = F, check.names = FALSE)
 
   tags <- data[,-grep("Test_mix", colnames(data))]
   sample <- data[,grep("Test_mix", colnames(data))]

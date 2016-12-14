@@ -85,7 +85,7 @@ MetNormalizer <- function(filename = "Metabolomics data",
       cat("Importing POS data...\n")
       if (substr(file.pos,nchar(file.pos) - 2,nchar(file.pos)) == "csv")
       {
-        pos.data <- read.csv(file.pos)
+        pos.data <- read.csv(file.pos, stringsAsFactors = FALSE, check.names = FALSE)
       }
       else
       {
@@ -96,7 +96,7 @@ MetNormalizer <- function(filename = "Metabolomics data",
       cat("Importing NEG data...\n")
       if (substr(file.neg,nchar(file.neg) - 2,nchar(file.neg)) == "csv")
       {
-        neg.data <- read.csv(file.neg)
+        neg.data <- read.csv(file.neg, stringsAsFactors = FALSE, check.names = FALSE)
       }
       else
       {
@@ -163,7 +163,7 @@ MetNormalizer <- function(filename = "Metabolomics data",
       }
 
       cat("Importing data...\n")
-      data <- read.csv(file.path(path,"data.csv"))
+      data <- read.csv(file.path(path,"data.csv"), stringsAsFactors = FALSE, check.names = FALSE)
       # browser()
       # data.name <- colnames(data)
       # for (i in 1:length(data.name)) {
@@ -780,7 +780,7 @@ SXTgetdata <- function(data, filename = "SXT data", polarity = "positive",
   data <- t(data)
 
   if (user == "other") {
-    worklist <- read.csv(file.path(path,"worklist.csv"),stringsAsFactors = F)
+    worklist <- read.csv(file.path(path,"worklist.csv"),stringsAsFactors = F, check.names = FALSE)
     name <- worklist[,1]
     ###judge if worklist name contains POS or NEG
     pos.have <- length(grep("POS", toupper(name)))

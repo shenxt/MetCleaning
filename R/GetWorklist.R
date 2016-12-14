@@ -54,7 +54,7 @@ GetWorklist <- function(instrument = "Agilent",
 
   if (filestyle == "csv")
   {
-    x <- read.csv(file[file == "batch design.csv"])
+    x <- read.csv(file[file == "batch design.csv"], check.names = FALSE)
   }#batch design column 1 is Sample.Name
 
   if (filestyle != "xlsx" & filestyle != "csv")

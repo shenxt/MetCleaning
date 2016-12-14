@@ -27,8 +27,8 @@ ChangeSampleName <- function(data = "data.csv",
            path = NULL) {
   # browser()
 if (is.null(path)) path <- getwd()
-  data <- read.csv(file.path(path,data), stringsAsFactors = F)
-  sample.information <- read.csv(file.path(path,sample.information), stringsAsFactors = F)
+  data <- read.csv(file.path(path,data), stringsAsFactors = F, check.names = FALSE)
+  sample.information <- read.csv(file.path(path,sample.information), stringsAsFactors = F, check.names = FALSE)
   sample.information <- sample.information[!is.na(sample.information[,1]),]
 
   ## sort sample information according to sample order

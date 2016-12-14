@@ -29,7 +29,7 @@ ImportData <- function(data = "data.csv",
                        hasQC = "yes",
                        peak.identification = "no",
                        path = NULL) {
-  # browser()
+  browser()
   if (is.null(path)) path <- getwd()
   if (worklist.from != "GetWorklist")
   {data <- ChangeSampleName(data = data,
@@ -39,10 +39,10 @@ ImportData <- function(data = "data.csv",
                             qc.has.order = qc.has.order,
                             output = FALSE,
                             path = path)
-  sample.information <- read.csv("sample.information1.csv", stringsAsFactors = F)}
+  sample.information <- read.csv("sample.information1.csv", stringsAsFactors = F, check.names = FALSE)}
 
-  else {data <- read.csv(file.path(path,data), stringsAsFactors = F)
-  sample.information <- read.csv(file.path(path,sample.information), stringsAsFactors = F)}
+  else {data <- read.csv(file.path(path,data), stringsAsFactors = F, check.names = FALSE)
+  sample.information <- read.csv(file.path(path,sample.information), stringsAsFactors = F, check.names = FALSE)}
 
   ## read sample information
   sample.information <- sample.information[!is.na(sample.information[,1]),]
