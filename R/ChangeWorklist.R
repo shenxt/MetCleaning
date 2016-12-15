@@ -32,7 +32,7 @@ ChangeWorklist <-
 
     if (filestyle == "csv")
     {
-      worklist <- read.csv(file)
+      worklist <- read.csv(file, check.names = FALSE)
     }#batch design column 1 is Sample.Name
 
     if (filestyle != "xlsx" & filestyle != "csv")
