@@ -38,8 +38,8 @@ qc1 <- data[[2]]
   ref.qc <- lapply(qc1.mean, function(x) {qc1.mean[[1]]/x})
   ref.subject <- lapply(subject1.mean, function(x) {qc1.mean[[1]]/x})
 
-  subject2 <- list()
-  qc2 <- list()
+  subject2 <- as.list(rep(NA,length(subject1)))
+  qc2 <- as.list(rep(NA,length(qc1)))
 
   if(method == "qc.mean"){
     for (i in 1:length(subject1)) {

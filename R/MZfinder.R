@@ -50,7 +50,7 @@ MZfinder <- function(MetFlowData = MetFlowData,
   subject.info1 <- data[[3]]
   qc.info1 <- data[[4]]
 
-  var.index <- list()
+  var.index <- as.list(rep(NA, length(subject1)))
   if (hasQC == "yes") {
     ##remove peak whose MV/zero ratio more than 50%
     for (i in 1:length(subject1)) {
