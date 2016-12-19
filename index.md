@@ -11,7 +11,7 @@ Figure1 Workflow of intruction
 ******************************************
 ### *MetCleaning* is published in github. So you can install it via to github.
 
-####code 1: Installation of *MetCleaning*
+#### code 1: Installation of *MetCleaning*
 ```
 ##pcaMethods and impute should be installed form bioconductor
 ##pcaMethos
@@ -33,7 +33,7 @@ source("http://bioconductor.org/biocLite.R")
 ******************************************
 ### Data cleaning is integrated as a function named as *MetClean* in *MetCleaning*. We use the demo data as the example. Copy the code below and paste in you R console.
 
-####code 2: Demo data of *MetClean*
+#### code 2: Demo data of *MetClean*
 ```
 ##demo data
 data(data, package = "MetCleaning")
@@ -56,7 +56,7 @@ Figure2 Data organisation of MetCleaning
 
 ### Then you can run *MetClean* function to do data cleaning of data. All the arguments of *MetClean* can be found in the other functions in *MetCleaning*. You can use *help(package = "MetCleaning")* to see the help page of *MetCleaning*. 
 
-####code 3: Running of *MetClean*
+#### code 3: Running of *MetClean*
 ```
 ##demo data
 MetClean(polarity = "positive")
@@ -94,7 +94,7 @@ Figure5 Output files of *MetClean*
 ******************************************
 ### Data statistical analysis is integrated as a function named as *MetStat* in *MetCleaning*. We use the demo data as the example. **Please note that now *MetStat* can only process two class data.** Copy the code below and paste in you R console.
 
-####code 4: Demo data of *MetStat*
+#### code 4: Demo data of *MetStat*
 ```
 data("met.data.after.pre", package = "MetCleaning")
 data(new.group, package = "MetCleaning")
@@ -111,7 +111,7 @@ write.csv(new.group, "new.group.csv", row.names = FALSE)
 
 Figure6 new group information
 
-####code 5: Running of *MetStat*
+#### code 5: Running of *MetStat*
 ```
 MetStat(MetFlowData = met.data.after.pre, new.group = TRUE)
 ```
