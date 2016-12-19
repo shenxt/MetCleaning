@@ -1,5 +1,6 @@
 ## **Introduction**
 ******************************************
+
 ### *MetCleaning* provides an integrated and automatic pipeline for data cleaning and statistical analysis of large scale mass spectrometry (MS) based-metabolomic data. It includes missing value (MV) filtering and imputation, zero value filtering, data normalization, data integration, data quality assessment, univariate statistical analysis, multivariate statistical analysis such as PCA and PLS-DA, potential marker selection and show. This document describes how to use the integrated functions, *MetClean* and *MetStat* in *MetCleaning* utilizing demo data.      
 **The QQ group is 182971123.**
 
@@ -9,6 +10,7 @@ Figure1 Workflow of intruction
 
 ## **Installation and help**
 ******************************************
+
 ### *MetCleaning* is published in github. So you can install it via to github.
 
 #### code 1: Installation of *MetCleaning*
@@ -31,6 +33,7 @@ source("http://bioconductor.org/biocLite.R")
 
 ## **Data cleaning**
 ******************************************
+
 ### Data cleaning is integrated as a function named as *MetClean* in *MetCleaning*. We use the demo data as the example. Copy the code below and paste in you R console.
 
 #### code 2: Demo data of *MetClean*
@@ -62,7 +65,7 @@ Figure2 Data organisation of MetCleaning
 MetClean(polarity = "positive")
 ```
 
-###Running results of *MetClean*
+### Running results of *MetClean*
 1. Missing or zero values filtering. In the missing or zero value filtering step, if there are samples which beyond the threshold you set, you should decide to filter them or not. We recommend to remove all of them as Figure 3 shows.
 
 ![Figure3 Missing or zero value filtering](http://a3.qpic.cn/psb?/V12nMOGs3RiKv2/lClw1oe2dY6SX4Fxd5HvZzsv8MT3FROlrvyt6tBP4HE!/b/dHkBAAAAAAAA&bo=pwPDAAAAAAADB0U!&rf=viewer_4)
@@ -92,6 +95,7 @@ Figure5 Output files of *MetClean*
 
 ## **Statistical analysis**
 ******************************************
+
 ### Data statistical analysis is integrated as a function named as *MetStat* in *MetCleaning*. We use the demo data as the example. **Please note that now *MetStat* can only process two class data.** Copy the code below and paste in you R console.
 
 #### code 4: Demo data of *MetStat*
