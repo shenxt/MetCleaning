@@ -29,7 +29,7 @@ ImportData <- function(data = "data.csv",
                        hasQC = "yes",
                        peak.identification = "no",
                        path = NULL) {
-  # browser()
+  browser()
   if (is.null(path)) path <- getwd()
   if (worklist.from != "GetWorklist")
   {data <- ChangeSampleName(data = data,
