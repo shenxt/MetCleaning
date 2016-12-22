@@ -1,0 +1,79 @@
+---
+title: "Usage for MetCleaning cn"
+author: "JasperShen"
+date: '`r Sys.Date()`'
+output:
+  word_document: default
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## 只做MS1和MS2匹配
+
+```{r, eval=FALSE}
+##加载包
+library(MetCleaning)
+##读取数据
+met.data <- ImportData(data = "data.csv",
+                       sample.information = "sample.information.csv",
+                       polarity = "positive", 
+                       hasQC = "yes")
+##开始ms1和ms2匹配
+PeakIdentification(MetFlowData = met.data, 
+                   mz.tolerance = 30, 
+                   rt.tolerance = 180)
+```
+
+### 参数含义
+1. data: 要处理的一级数据的名字。
+2. sample.information: 要处理的一级数据的样品信息。
+3. polarity: 数据的采集模式。"postive"或者"negative"。
+4. hasQC：数据中是否包含QC数据。
+5. MetFlowData: 要进行一级和二级匹配的数据的数据。
+6. mz.tolerance: 匹配时的mz误差范围。默认为30(±30ppm)。
+7. rt.tolerance: 匹配时的rt误差范围。默认为180(±180s)。
+
+## 做所有处理过程
+
+```{r, eval=FALSE}
+##加载包
+library(MetCleaning)
+##开始处理
+MetClean(data = "data.csv", 
+         sample.information = "sample.information.csv",
+         polarity = "positive", 
+         obs.zero.cutoff = 0.5,
+         var.zero.cutoff = 0.5,
+         method = "svr",
+         threads = 2, 
+         mz.tolerance = 30,
+         rt.tolerance = 180,
+         met.plot = TRUE)
+```
+
+### 参数含义
+1. data: 要处理的一级数据的名字。
+2. sample.information: 要处理的一级数据的样品信息。
+3. polarity: 数据的采集模式。"postive"或者"negative"。
+4. obs.zero.cutoff：样品零值筛选的阈值，当一个样品中的非零值超过这个阈值的时候，该样品应该被除去。
+5. var.zero.cutoff：变量零值筛选的阈值，当一个变量中的非零值超过这个阈值的时候，该变量应该被除去。
+6. method: normalization方法。
+7. threads: 线程个数。
+8. mz.tolerance: 匹配时的mz误差范围。默认为30(±30ppm)。
+9. mz.tolerance: 匹配时的rt误差范围。默认为180(±180s)。
+10. met.plot: 是否要把所有峰的scatter plot画出来。
+
+
+### 处理所需数据，另外，需要单独另外建立一个文件夹，命名为peak identification，里面放入二级数据，且二级数据命名中必须包含"ms2"。
+
+![Figure2 Data organisation of MetCleaning](data organisation.tif)
+
+### 对于那些可以超过零值比例的样品，可以选择是否删除掉。
+
+![Figure3 Missing or zero value filtering](mv filter.png)
+
+
