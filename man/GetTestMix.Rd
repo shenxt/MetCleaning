@@ -11,13 +11,17 @@ GetTestMix(data = "Test mixture.csv", test.mix.is = "test.mix.is.csv",
 \arguments{
 \item{data}{data name for text mixture.}
 
-\item{test.mix.is}{Internal standards information in test information.}
+\item{test.mix.info}{Internal standards information in test information.}
 
 \item{mzerror}{mz tolerance for IS.}
 
 \item{rterror}{rt tolerance for IS.}
 
-\item{test.mix.data}{Test mixture data from XCMS.}
+\item{rt.unit.is.second}{RT's unit is second or not? Default is T.}
+
+\item{plot.output}{Output plot or not? Default is TRUE.}
+
+\item{path}{Work directory.}
 }
 \description{
 Test mix information.

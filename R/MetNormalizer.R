@@ -89,7 +89,7 @@ MetNormalizer <- function(filename = "Metabolomics data",
       }
       else
       {
-        require(xlsx)
+        # require(xlsx)
         pos.data <- read.xlsx(file.pos,1)
       }
 
@@ -100,7 +100,7 @@ MetNormalizer <- function(filename = "Metabolomics data",
       }
       else
       {
-        require(xlsx)
+        # require(xlsx)
         neg.data <- read.xlsx(file.neg,1)
       }
 
@@ -109,6 +109,11 @@ MetNormalizer <- function(filename = "Metabolomics data",
         data = pos.data,filename = paste(filename,"POS"), polarity = "positive",
         path = path, user = user ,datastyle = datastyle
       )
+      qc <- NA
+      tags <- NA
+      sample <- NA
+      sampleorder <- NA
+      qcorder <- NA
       load(file.path(path,paste(filename,"POS")))
       sample.pos = sample
       qc.pos = qc
@@ -116,8 +121,13 @@ MetNormalizer <- function(filename = "Metabolomics data",
 
       cat("Filtering POS data...\n")
       SXTdatafilter(
-        sample = sample.pos, qc = qc.pos,tags = tags.pos,sampleorder = sampleorder,
-        qcorder = qcorder,filter = filter,minfrac.qc = minfrac.qc,
+        sample = sample.pos,
+        qc = qc.pos,
+        tags = tags.pos,
+        sampleorder = sampleorder,
+        qcorder = qcorder,
+        filter = filter,
+        minfrac.qc = minfrac.qc,
         minfrac.sample = minfrac.sample,
         path = path,
         filename = paste(filename,"POS","after filter")
@@ -253,11 +263,11 @@ MetNormalizer <- function(filename = "Metabolomics data",
 
 
 ####LOESS normalization function
-SXTloessNor <- function(sample = sample,
-                        QC = qc,
-                        tags = tags,
-                        sample.order = sampleorder,
-                        QC.order = qcorder,
+SXTloessNor <- function(sample,
+                        QC,
+                        tags,
+                        sample.order,
+                        QC.order,
                         #used data
                         optimization = TRUE,
                         begin = 0.5,
@@ -573,7 +583,7 @@ peakplot2 <-
       )
       if (optimization) {
         legend( "topright",c( sprintf("span: %s",best.span[i]),sprintf("degree: %s",best.degree[i])),
-                bty = "n", cex = 1.3, ppt.cex = 1.3)
+                bty = "n", cex = 1.3, pt.cex = 1.3)
       }
 
       plot(
@@ -750,6 +760,8 @@ SXTcbindposneg <- function(filename = "SXT data",path = NULL)
   # browser()
   file.pos <- file[grep("POS",file)]
   file.neg <- file[grep("NEG",file)]
+  sampleorder <- NA
+  qcorder <- NA
   pos <- load(file.path(path,file.pos))
   sample.pos <- sample
   qc.pos <- qc

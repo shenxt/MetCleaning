@@ -4,8 +4,7 @@
 \alias{RSDoverview}
 \title{RSDoverview}
 \usage{
-RSDoverview(MetFlowData.before = MetFlowData1,
-  MetFlowData.after = MetFlowData2, path = NULL)
+RSDoverview(MetFlowData.before, MetFlowData.after, path = NULL)
 }
 \arguments{
 \item{MetFlowData.before}{MetFlowData.before.}

@@ -4,8 +4,8 @@
 \alias{MZfilter}
 \title{MZfilter}
 \usage{
-MZfilter(MetFlowData = MetFlowData, obs.per.cutoff = 0.5,
-  var.per.cutoff = 0.5, what = "mv", path = NULL)
+MZfilter(MetFlowData, obs.per.cutoff = 0.5, var.per.cutoff = 0.5,
+  what = "mv", path = NULL)
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}

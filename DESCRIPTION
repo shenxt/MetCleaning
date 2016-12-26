@@ -7,7 +7,7 @@ Author: Xiaotao Shen, Zhengjiang Zhu
 Maintainer: Xiaotao Shen<shenxt@sioc.ac.cn>
 Description: Automatic and integrated tool for data cleaning and statistical analysis of large scale MS-based metabolomics data.
 LazyData: true
-Depends: R
+Depends: R (>= 2.10)
 Imports:
     ggplot2,
     pcaMethods,
@@ -23,8 +23,12 @@ Imports:
     e1071,
     snow,
     methods,
-    pathifier
-License: LGPL-2
+    pathifier,
+    xlsx,
+    graphics,
+    grDevices,
+    utils
+License: GPL-2 | file LICENSE
 URL: https://github.com/jaspershen/MetCleaning
 RoxygenNote: 5.0.1
 Suggests: knitr,

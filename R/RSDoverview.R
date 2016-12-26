@@ -7,8 +7,8 @@
 #' @param path Work directory.
 #' @return RSD comparation.
 
-RSDoverview <- function(MetFlowData.before = MetFlowData1,
-                        MetFlowData.after = MetFlowData2,
+RSDoverview <- function(MetFlowData.before,
+                        MetFlowData.after,
                         path = NULL) {
   if (is.null(path)) {
     path <- getwd()

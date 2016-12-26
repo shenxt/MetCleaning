@@ -48,7 +48,7 @@ GetWorklist <- function(instrument = "Agilent",
 
   if (filestyle == "xlsx" & any(packages == "xlsx"))
   {
-    library(xlsx)
+    # library(xlsx)
     x <- read.xlsx(file[file == "batch design.xlsx"], 1)
   }#batch design column 1 is Sample.Name
 
@@ -246,7 +246,7 @@ GetWorklist <- function(instrument = "Agilent",
       x <-
         cbind(x,
               plate,
-              vialposition,
+              vial.position,
               real.plate,
               position96,
               real.position96)
@@ -267,7 +267,7 @@ GetWorklist <- function(instrument = "Agilent",
       x <-
         cbind(x,
               plate,
-              vialposition,
+              vial.position,
               real.plate,
               position96,
               real.position96)
@@ -291,7 +291,7 @@ GetWorklist <- function(instrument = "Agilent",
       x <-
         data.frame(x,
                    plate,
-                   vialposition,
+                   vial.position,
                    real.plate,
                    position96,
                    real.position96)

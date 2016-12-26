@@ -3,7 +3,7 @@
 #' in MetFlowData.
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
-#' @param MetFlowData: MetFlowData.
+#' @param MetFlowData MetFlowData.
 #' @param path Work Directory.
 #' @param what Missing value ("mv") or zero values ("zero").
 #' @return Batch i feature MV/zero ratio.csv: Batch i feature MV/zero ratio
@@ -15,7 +15,7 @@
 #' @return Sample MV/zero distribution.csv: Sample MV/zero ratio distribution.
 #' @export
 
-MZoverview <- function(MetFlowData = MetFlowData,
+MZoverview <- function(MetFlowData,
                        path = NULL,
                        what = "mv") {
   # browser()

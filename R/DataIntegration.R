@@ -12,7 +12,7 @@
 #' method has been used in this function.
 
 ## data integration
-DataIntegration <- function(MetFlowData = MetFlowData,
+DataIntegration <- function(MetFlowData,
                             method = "qc.mean"){
 # browser()
   subject <- MetFlowData[["subject"]]

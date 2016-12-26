@@ -9,9 +9,9 @@ BatchEffectOverview(MetFlowData.before, MetFlowData.after, path = NULL)
 \arguments{
 \item{MetFlowData.before}{MetFlowData before normalization or integration.}
 
-\item{path}{work directory}
+\item{MetFlowData.after}{MetFlowData after normalization or integration.}
 
-\item{MetFlowData.before}{MetFlowData after normalization or integration.}
+\item{path}{work directory}
 }
 \value{
 Give PCA score plot for QC and subject.

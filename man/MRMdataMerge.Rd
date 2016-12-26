@@ -16,13 +16,21 @@ MRMdataMerge(..., path = NULL, merge.method = "name",
 
 \item{path}{Directory for reading data and outputing results.}
 
+\item{merge.method}{Default is "name".}
+
 \item{merge.term.index}{Use which term to merge datasets?}
 
 \item{tags.index}{Which columna are tags in your data?}
 
 \item{tags.same.in.datasets}{Which columna are same in you datasets?And those information only remain one in merging.}
 
-\item{tags.should.be.mean.in.datasets}{Which columna should be averaged in the mergin}
+\item{tags.should.be.mean.in.datasets}{Which columna should be averaged in the mergin.}
+
+\item{tags.should.be.remain.in.datasets}{Which columna should be remained in the mergin.}
+
+\item{mz.tolerance}{m/z tolerance.}
+
+\item{rt.tolerance}{RT tolerance.}
 }
 \description{
 Merge different MRM batch datasets into one dataset.

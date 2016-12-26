@@ -23,6 +23,12 @@ positive. If data is positive mode, the name of sample should be added as
 
 \item{posfix}{The posfix of the data. For example, "POS" or "NEG". Please
 see the demo data in examples.}
+
+\item{qc.has.order}{Default is FALSE.}
+
+\item{output}{Default is TRUE.}
+
+\item{path}{Work directory.}
 }
 \value{
 Return a data whose name is standard name for MetFlowData.

@@ -13,6 +13,11 @@
 #' @param polarity The polarity of data, "positive", "negative"" or "none"",
 #' default is positive.
 #' @param hasQC The data has QC samples or not? Default is "yes".
+#' @param hasIS The data has IS or not? Default is "no".
+#' @param posfix Default is NULL.
+#' @param qc.has.order Default is FALSE.
+#' @param worklist.from Default is "manual".
+#' @param path Work directory.
 #' @param peak.identification The data has identification result or not?
 #' Default is "no".
 #' @return  Return a standard MetProcesser dataset.

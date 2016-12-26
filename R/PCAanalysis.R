@@ -17,7 +17,7 @@
 #' @return PCA score plot.
 #' @export
 
-PCAanalysis <- function(MetFlowData = MetFlowData,
+PCAanalysis <- function(MetFlowData,
                         QC = FALSE,
                         log.scale = FALSE,
                         scale.method = "auto",

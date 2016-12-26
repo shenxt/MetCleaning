@@ -12,6 +12,8 @@
 m2p <- function(data = data,
                 tags = tags,
                 info = NULL) {
+  my.pathway <- NA
+  hmdb.synonym <- NA
   data(c("my.pathway", "hmdb.synonym"))
   identification <- as.character(tags[,"identification"])
   ide.idx <- which(!is.na(identification))

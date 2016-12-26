@@ -4,9 +4,9 @@
 \alias{IScorrction}
 \title{IScorrection}
 \usage{
-IScorrction(MetFlowData = MetFlowData, mzerror = 15, rterror = 30,
-  rt.unit.is.second = T, IS = "IS.csv", plot.output = TRUE, path = NULL,
-  dimension1 = TRUE)
+IScorrction(MetFlowData, mzerror = 15, rterror = 30,
+  rt.unit.is.second = TRUE, IS = "IS.csv", plot.output = TRUE,
+  path = NULL, dimension1 = TRUE)
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}
@@ -15,13 +15,15 @@ IScorrction(MetFlowData = MetFlowData, mzerror = 15, rterror = 30,
 
 \item{rterror}{rt tolerance.}
 
+\item{rt.unit.is.second}{RT's unit is second or not? Default is TRUE.}
+
 \item{IS}{IS name.}
 
-\item{plot.output}{Output plot or not?}
+\item{plot.output}{Output plot or not? Default is TRUE.}
 
 \item{path}{work directory.}
 
-\item{dimensioon1}{Keep dimension or not?}
+\item{dimension1}{Keep dimension or not?}
 }
 \value{
 Return a new MetFlowData after IS correction.

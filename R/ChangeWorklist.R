@@ -25,7 +25,7 @@ ChangeWorklist <-
 
     if (filestyle == "xlsx" & any(packages == "xlsx"))
     {
-      require(xlsx)
+      # require(xlsx)
       worklist <-
         read.xlsx(file, 1)
     }#batch design column 1 is Sample.Name

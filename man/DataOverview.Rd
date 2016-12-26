@@ -4,13 +4,14 @@
 \alias{DataOverview}
 \title{DataOverview}
 \usage{
-DataOverview(MetFlowData = MetFlowData, feature.distribution = TRUE,
-  path = NULL)
+DataOverview(MetFlowData, feature.distribution = TRUE, path = NULL)
 }
 \arguments{
 \item{MetFlowData}{MetFlowData}
 
 \item{feature.distribution}{Draw a rt vs mz vs intensity plot or not. Default is TRUE.}
+
+\item{path}{Work directory.}
 }
 \value{
 Data overview_RT vs mz vs intensity.pdf:  A RT vs mz vs intensity plot.

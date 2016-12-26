@@ -2,12 +2,14 @@
 % Please edit documentation in R/PrintMethodsForMyClass.R
 \name{print.MetFlowData}
 \alias{print.MetFlowData}
-\title{PrintMethod}
+\title{Print.MetFlowData}
 \usage{
-\method{print}{MetFlowData}(MetFlowData)
+\method{print}{MetFlowData}(x, ...)
 }
 \arguments{
-\item{myclass}{The name of class object in MetProcesser.}
+\item{x}{MetFlowData.}
+
+\item{...}{Other parameters for print.}
 }
 \value{
 Print some information of class object in your screen.

@@ -4,13 +4,12 @@
 \alias{HeatMap}
 \title{HeatMap}
 \usage{
-HeatMap(MetFlowData = MetFlowData, log.scale = FALSE,
-  color = c("palegreen", "firebrick1", "royalblue", "yellow", "black", "cyan",
-  "gray48"), variable = "all", Group = c("control", "case"),
-  scale.method = "auto", show_rownames = FALSE, show_colnames = FALSE,
-  path = NULL, width = 7, height = 7, border_color = NA,
-  fontsize_row = 10, cluster_rows = TRUE, cluster_cols = TRUE,
-  clustering_method = "ward.D", ...)
+HeatMap(MetFlowData, log.scale = FALSE, color = c("palegreen", "firebrick1",
+  "royalblue", "yellow", "black", "cyan", "gray48"), variable = "all",
+  Group = c("control", "case"), scale.method = "auto",
+  show_rownames = FALSE, show_colnames = FALSE, path = NULL, width = 7,
+  height = 7, border_color = NA, fontsize_row = 10, cluster_rows = TRUE,
+  cluster_cols = TRUE, clustering_method = "ward.D", ...)
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}
@@ -24,6 +23,26 @@ HeatMap(MetFlowData = MetFlowData, log.scale = FALSE,
 \item{Group}{group for heatmap.}
 
 \item{scale.method}{scale method.}
+
+\item{show_rownames}{Default is FALSE.}
+
+\item{show_colnames}{Default is FALSE.}
+
+\item{path}{Work directory.}
+
+\item{width}{Plot width}
+
+\item{height}{Plot height.}
+
+\item{border_color}{Default is NA.}
+
+\item{fontsize_row}{Default is 10.}
+
+\item{cluster_rows}{Default is TRUE.}
+
+\item{cluster_cols}{Default is TURE.}
+
+\item{clustering_method}{Default is"ward.D",}
 
 \item{...}{other parameters for pheatmap.}
 }

@@ -7,17 +7,18 @@
 #' @param MetFlowData MetFlowData.
 #' @param mzerror mz tolerance.
 #' @param rterror rt tolerance.
+#' @param rt.unit.is.second RT's unit is second or not? Default is TRUE.
 #' @param IS IS name.
-#' @param plot.output Output plot or not?
 #' @param path work directory.
-#' @param dimensioon1 Keep dimension or not?
+#' @param plot.output Output plot or not? Default is TRUE.
+#' @param dimension1 Keep dimension or not?
 #' @return Return a new MetFlowData after IS correction.
 #' @export
 ### IS signal correction for MetFlowData
-IScorrction <- function(MetFlowData = MetFlowData,
+IScorrction <- function(MetFlowData,
                         mzerror = 15,
                         rterror = 30,
-                        rt.unit.is.second = T,
+                        rt.unit.is.second = TRUE,
                         IS = "IS.csv",
                         plot.output = TRUE,
                         path = NULL,

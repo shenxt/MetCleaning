@@ -4,17 +4,17 @@
 \alias{MVimputation}
 \title{MVimputation}
 \usage{
-MVimputation(MetFlowData = MetFlowData, imputation.method = "knn", k = 10,
-  rowmax = 0.5, colmax = 0.8, maxp = 1500, rng.seed = 362436069,
-  maxiter = 10, ntree = 100, decreasing = FALSE, replace = TRUE,
-  classwt = NULL, cutoff = NULL, strata = NULL, sampsize = NULL,
-  nodesize = NULL, maxnodes = NULL, xtrue = NA, parallelize = "no",
-  nPcs = 2, maxSteps = 100, threshold = 1e-04)
+MVimputation(MetFlowData, imputation.method = "knn", k = 10, rowmax = 0.5,
+  colmax = 0.8, maxp = 1500, rng.seed = 362436069, maxiter = 10,
+  ntree = 100, decreasing = FALSE, replace = TRUE, classwt = NULL,
+  cutoff = NULL, strata = NULL, sampsize = NULL, nodesize = NULL,
+  maxnodes = NULL, xtrue = NA, parallelize = "no", nPcs = 2,
+  maxSteps = 100, threshold = 1e-04)
 }
 \arguments{
-\item{MetFlowData:}{MetFlowData.}
+\item{MetFlowData}{MetFlowData.}
 
-\item{imputation.method:}{Which imputation method you want to use? It
+\item{imputation.method}{Which imputation method you want to use? It
 contains "knn", "rf" (missForest), "mean", "median", "zero", "minium",
 "bpca" (BPCA), "svd" (SVD) and "ppca" (PPCA). Default is "knn". The detial of
 this method can be find in detail and reference paperes.}
@@ -43,6 +43,6 @@ The MV imputation in metabolomics data can see in
 The MV imputation methods can see in
 \code{\link[impute]{impute.knn}}, \code{\link[missForest]{missForest}},
 \code{\link[pcaMethods]{bpca}}, \code{\link[pcaMethods]{ppca}} and
-\code{\link[pcaMethods]{svd}}.
+\code{\link[pcaMethods]{svdImpute}}.
 }
 

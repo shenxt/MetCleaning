@@ -1,22 +1,24 @@
-#' @title PrintMethod
+#' @title Print.MetFlowData
+#' @method
 #' @description Print method for class in MetProcesser.
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
-#' @param myclass The name of class object in MetProcesser.
+#' @param x MetFlowData.
+#' @param ... Other parameters for print.
 #' @return Print some information of class object in your screen.
 #' @export
 #' @seealso \code{\link{print}}
 
 ## MetFlowData
-print.MetFlowData <- function(MetFlowData) {
-  hasQC <- MetFlowData[["hasQC"]]
-  subject <- MetFlowData[["subject"]]
-  qc <- MetFlowData[["qc"]]
-  tags <- MetFlowData[["tags"]]
-  subject.info <- MetFlowData[["subject.info"]]
-  qc.info <- MetFlowData[["qc.info"]]
-  subject.order <- MetFlowData[["subject.order"]]
-  qc.order <- MetFlowData[["qc.order"]]
+ print.MetFlowData <- function(x,...) {
+  hasQC <- x[["hasQC"]]
+  subject <- x[["subject"]]
+  qc <- x[["qc"]]
+  tags <- x[["tags"]]
+  subject.info <- x[["subject.info"]]
+  qc.info <- x[["qc.info"]]
+  subject.order <- x[["subject.order"]]
+  qc.order <- x[["qc.order"]]
 
   subject.batch <- as.numeric(subject.info[,4])
   subject.name <- subject.info[,1]
@@ -77,78 +79,78 @@ print.MetFlowData <- function(MetFlowData) {
   }
 
   ## other processing information
-  cat("MV imputation:",MetFlowData[["mv.imputation"]])
+  cat("MV imputation:",x[["mv.imputation"]])
   cat("\n")
-  cat("Imputation method:",MetFlowData[["imputation.method"]])
+  cat("Imputation method:",x[["imputation.method"]])
   cat("\n")
-  cat("Zero filter:",MetFlowData[["zero.filter"]])
+  cat("Zero filter:",x[["zero.filter"]])
   cat("\n")
-  cat("Zero filter criteria:",MetFlowData[["zero.filter.criteria"]])
+  cat("Zero filter criteria:",x[["zero.filter.criteria"]])
   cat("\n")
-  cat("QC outlier filter:",MetFlowData[["qc.outlier.filter"]])
+  cat("QC outlier filter:",x[["qc.outlier.filter"]])
   cat("\n")
-  cat("Normalization:",MetFlowData[["normalization"]])
+  cat("Normalization:",x[["normalization"]])
   cat("\n")
-  cat("Normalization method:",MetFlowData[["normalization.method"]])
+  cat("Normalization method:",x[["normalization.method"]])
   cat("\n")
-  cat("Data integration:",MetFlowData[["data.integration"]])
+  cat("Data integration:",x[["data.integration"]])
   cat("\n")
-  cat("Data integration method:",MetFlowData[["data.integration.method"]])
+  cat("Data integration method:",x[["data.integration.method"]])
   cat("\n")
-  cat("Has IS:",MetFlowData[["hasIS"]])
+  cat("Has IS:",x[["hasIS"]])
   cat("\n")
-  cat("Has QC:",MetFlowData[["hasQC"]])
+  cat("Has QC:",x[["hasQC"]])
   cat("\n")
-  cat("Peak identification:",MetFlowData[["peak.identification"]])
+  cat("Peak identification:",x[["peak.identification"]])
   cat("\n")
 }
 
 
 
-###print method for SXTMinfracData
-print.SXTMinifracData <- function(SXTMinifracData) {
-  data <- SXTMinifracData[["data"]]
-  var.index <- SXTMinifracData[["var.index"]]
-  obs.index <- SXTMinifracData[["obs.index"]]
-  filter.item <- SXTMinifracData[["filter.item"]]
-  filter.rule <- SXTMinifracData[["filter.rule"]]
-  minifrac.variable <- SXTMinifracData[["minifrac.variable"]]
-  minifrac.observation <- SXTMinifracData[["minifrac.observation"]]
-
-  ##filter information
-  cat("filter.item:",filter.item)
-  cat("\n")
-  cat("filter.rule:",filter.rule)
-  cat("\n")
-  cat("minifrac.variable:",minifrac.variable)
-  cat("\n")
-  cat("minifrac.observation:",minifrac.observation)
-  cat("\n")
-  cat("\n")
-
-  cat("There are",length(data), "data.\n")
-  cat("-------------------------------\n")
-
-  for (i in 1:length(data)) {
-    temp.data <- data[[i]]
-    cat("Data",i)
-    cat("\n")
-    cat(nrow(temp.data),"rows\n")
-    cat(ncol(temp.data),"columns\n")
-    cat("\n")
-    }
-
-}
-
-##print method for SXTpcaData
-print.SXTpcaData <- function(SXTpcaData) {
-info <- SXTpcaData[["info"]]
-QC <- SXTpcaData[["QC"]]
-scale.method <- SXTpcaData[["scale.method"]]
-  cat("There are",length(info), "class in this PCA analysis:\n")
-  cat(names(info))
-  cat("\n")
-  cat("---------------------------------------\n")
-  cat("QC are contained in this PCA analysis?",QC)
-}
-
+# ###print method for SXTMinfracData
+# print.SXTMinifracData <- function(SXTMinifracData, ...) {
+#   data <- SXTMinifracData[["data"]]
+#   var.index <- SXTMinifracData[["var.index"]]
+#   obs.index <- SXTMinifracData[["obs.index"]]
+#   filter.item <- SXTMinifracData[["filter.item"]]
+#   filter.rule <- SXTMinifracData[["filter.rule"]]
+#   minifrac.variable <- SXTMinifracData[["minifrac.variable"]]
+#   minifrac.observation <- SXTMinifracData[["minifrac.observation"]]
+#
+#   ##filter information
+#   cat("filter.item:",filter.item)
+#   cat("\n")
+#   cat("filter.rule:",filter.rule)
+#   cat("\n")
+#   cat("minifrac.variable:",minifrac.variable)
+#   cat("\n")
+#   cat("minifrac.observation:",minifrac.observation)
+#   cat("\n")
+#   cat("\n")
+#
+#   cat("There are",length(data), "data.\n")
+#   cat("-------------------------------\n")
+#
+#   for (i in 1:length(data)) {
+#     temp.data <- data[[i]]
+#     cat("Data",i)
+#     cat("\n")
+#     cat(nrow(temp.data),"rows\n")
+#     cat(ncol(temp.data),"columns\n")
+#     cat("\n")
+#     }
+#
+# }
+#
+# ##print method for SXTpcaData
+# print.SXTpcaData <- function(SXTpcaData, ...) {
+# info <- SXTpcaData[["info"]]
+# QC <- SXTpcaData[["QC"]]
+# scale.method <- SXTpcaData[["scale.method"]]
+#   cat("There are",length(info), "class in this PCA analysis:\n")
+#   cat(names(info))
+#   cat("\n")
+#   cat("---------------------------------------\n")
+#   cat("QC are contained in this PCA analysis?",QC)
+# }
+#

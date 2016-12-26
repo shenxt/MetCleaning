@@ -4,8 +4,8 @@
 \alias{MZfinder}
 \title{MZfinder}
 \usage{
-MZfinder(MetFlowData = MetFlowData, obs.per.cutoff = 0.5,
-  var.per.cutoff = 0.5, what = "mv", path = NULL)
+MZfinder(MetFlowData, obs.per.cutoff = 0.5, var.per.cutoff = 0.5,
+  what = "mv", path = NULL)
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}
@@ -13,6 +13,10 @@ MZfinder(MetFlowData = MetFlowData, obs.per.cutoff = 0.5,
 \item{obs.per.cutoff}{The observation MV/zero ratio cutoff.}
 
 \item{var.per.cutoff}{The variable MV/zero ratio cutoff.}
+
+\item{what}{Filter missing values ("mv") or zero values ("zero")?}
+
+\item{path}{Work directory.}
 }
 \value{
 Return a MZfinderData contains MetFlowData,feature.remove, qc.remove and subject.remove.

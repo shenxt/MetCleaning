@@ -4,7 +4,7 @@
 \alias{PCAanalysis}
 \title{PCAanalysis}
 \usage{
-PCAanalysis(MetFlowData = MetFlowData, QC = FALSE, log.scale = FALSE,
+PCAanalysis(MetFlowData, QC = FALSE, log.scale = FALSE,
   scale.method = "auto", path = NULL, color = c("palegreen", "royalblue",
   "firebrick1", "tan1", "deepskyblue", "cyan", "gray48", "chocolate4",
   "darkmagenta", "indianred1"), shape = c(17, 19, 15, 18, 2, 8, 11, 13, 12,

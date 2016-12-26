@@ -7,11 +7,13 @@
 #' @param MetFlowData MetFlowData.
 #' @param obs.per.cutoff The observation MV/zero ratio cutoff.
 #' @param var.per.cutoff The variable MV/zero ratio cutoff.
+#' @param what Filter missing values ("mv") or zero values ("zero")?
+#' @param path Work directory.
 #' @return Return a MZfinderData contains MetFlowData,feature.remove, qc.remove and subject.remove.
 #' @export
 
 ##remove peaks whose MV ratio > threshold in QC or subject.
-MZfinder <- function(MetFlowData = MetFlowData,
+MZfinder <- function(MetFlowData,
                      obs.per.cutoff = 0.5,
                      var.per.cutoff = 0.5,
                      what = "mv",

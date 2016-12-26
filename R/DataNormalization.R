@@ -4,10 +4,20 @@
 #' \email{shenxt@@sioc.ac.cn}
 #' @param MetFlowData MetFlowData.
 #' @param path Workdirectory.
-#' @param method: Normalization method, mean, median, total svr or loess,
+#' @param method Normalization method, mean, median, total svr or loess,
 #' default is svr. Please see the details.
-#' @param dimension1: Remain dimension or not. Default is TRUE.
-#' @param svrloess You can see MetNormalizer for help.
+#' @param dimension1 Remain dimension or not. Default is TRUE.
+#' @param optimization Optimize span and degree or not.
+#' @param begin Begin of span.
+#' @param end End of span.
+#' @param step Step of span.
+#' @param multipe See ?SXTsvrNor.
+#' @param threads Thread number.
+#' @param rerun.loess Rerun loess or not.
+#' @param rerun.svr Rerun SVR or not.
+#' @param peakplot Peak plot or not.
+#' @param datastyle Default is "tof".
+#' @param user Default is "other".
 #' @return The normalization results can be got from help of
 #' \code{\link{MetNormalizer}}.
 #' @seealso \code{\link{MetNormalizer}}
@@ -24,7 +34,7 @@
 
 
 ### Data normalization for MetFlowData
-DataNormalization <- function(MetFlowData = MetFlowData,
+DataNormalization <- function(MetFlowData,
                               path = NULL,
                               method = "svr",
                               dimension1 = TRUE,
@@ -167,6 +177,8 @@ DataNormalization <- function(MetFlowData = MetFlowData,
     ## replace subject and qc
     for (i in 1:length(qc1)) {
       path.for.data <- file.path(path1, paste("Batch", i, "normalization"))
+      sample.nor <- NA
+      QC.nor <- NA
       load(file.path(path.for.data, "svr normalization result/data svr nor"))
       subject1[[i]] <- t(sample.nor)
       qc1[[i]] <- t(QC.nor)
@@ -206,7 +218,7 @@ DataNormalization <- function(MetFlowData = MetFlowData,
         begin = begin,
         end = end,
         step = step,
-        rerun.loess = return.loess,
+        rerun.loess = rerun.loess,
         dimension1 = dimension1,
         datastyle = datastyle,
         user = user,

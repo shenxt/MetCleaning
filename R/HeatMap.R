@@ -8,12 +8,22 @@
 #' @param variable "all" or "marker" for heatmap.
 #' @param Group group for heatmap.
 #' @param scale.method scale method.
+#' @param show_rownames Default is FALSE.
+#' @param show_colnames Default is FALSE.
+#' @param path Work directory.
+#' @param width Plot width
+#' @param height Plot height.
+#' @param border_color Default is NA.
+#' @param fontsize_row Default is 10.
+#' @param cluster_rows Default is TRUE.
+#' @param cluster_cols Default is TURE.
+#' @param clustering_method Default is"ward.D",
 #' @param ... other parameters for pheatmap.
 #' @return A heatmap plot.
 #' @export
 #' @seealso \code{\link[pheatmap]{pheatmap}}
 
-HeatMap <- function(MetFlowData = MetFlowData,
+HeatMap <- function(MetFlowData,
                     log.scale = FALSE,
                     color = c("palegreen",
                               "firebrick1",
@@ -61,7 +71,7 @@ HeatMap <- function(MetFlowData = MetFlowData,
     }
     is.marker <- tags[, "is.marker"]
     var.index <- which(is.marker == "yes")
-    data <- t(subejct[var.index, ])
+    data <- t(subject[var.index, ])
   }
 
   ##log transformation

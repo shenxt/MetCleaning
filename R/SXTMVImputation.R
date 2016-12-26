@@ -44,9 +44,9 @@ SXTMVimputation <- function(data,
 
   ## KNN method
   if (method == "knn") {
-    library(impute)
+    # library(impute)
     if(exists(".Random.seed")) rm(.Random.seed)
-    data.knn <- impute.knn(as.matrix(data),
+    data.knn <- impute::impute.knn(as.matrix(data),
                            k = k,
                            rowmax = rowmax,
                            colmax = colmax,
@@ -58,8 +58,8 @@ SXTMVimputation <- function(data,
 
   #missForest补齐
   if (method=="rf") {
-    library(missForest)
-    data.rf <- missForest(t(data),
+    # library(missForest)
+    data.rf <- missForest::missForest(t(data),
                           maxiter = maxiter,
                           ntree = ntree,
                           decreasing = decreasing,
@@ -104,30 +104,30 @@ SXTMVimputation <- function(data,
 
   ##BPCA
   if (method == "bpca") {
-    data.bpca <- pca(t(data),
+    data.bpca <- pcaMethods::pca(t(data),
                      method="bpca",
                      nPcs = nPcs,
                      maxSteps = maxSteps,
                      threshold = threshold)
-    data.bpca <- t(completeObs(data.bpca))
+    data.bpca <- t(pcaMethods::completeObs(data.bpca))
     return(data.bpca)
   }
 
 ##SVD imputation
   if (method == "svd") {
-    data.svd <- pca(t(data),
+    data.svd <- pcaMethods::pca(t(data),
                     method="svdImpute",
                     nPcs=nPcs)
-    data.svd <- t(completeObs(data.svd))
+    data.svd <- t(pcaMethods::completeObs(data.svd))
     return(data.svd)
   }
 
   ##PPCA imputation
   if (method == "ppca") {
-    data.ppca <- pca(t(data),
+    data.ppca <- pcaMethods::pca(t(data),
                     method = "ppca",
                     nPcs = nPcs)
-    data.ppca <- t(completeObs(data.ppca))
+    data.ppca <- t(pcaMethods::completeObs(data.ppca))
     return(data.ppca)
   }
 

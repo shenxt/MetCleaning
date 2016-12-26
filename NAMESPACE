@@ -44,3 +44,16 @@ export(UnivariateTest)
 export(VolcanoPlot)
 export(m2p)
 import(pls)
+ importFrom("utils", "data", "edit", "head", "install.packages",
+             "read.csv", "write.csv")
+   importFrom("grDevices", "colorRampPalette", "dev.off", "jpeg", "pdf",
+             "tiff")
+  importFrom("graphics", "abline", "arrows", "barplot", "boxplot",
+             "hist", "layout", "legend", "lines", "par", "plot",
+             "points", "segments", "text")
+  importFrom("stats", "TukeyHSD", "aov", "cor", "lm", "loess", "median",
+             "p.adjust", "prcomp", "predict", "qchisq", "sd", "t.test",
+             "uniroot", "wilcox.test")
+  importFrom("ggplot2", "aes","labs","theme","element_text","ggtitle","theme_bw",
+             "ggsave","scale_color_gradient")
+  importFrom("xlsx", "read.xlsx","write.xlsx")

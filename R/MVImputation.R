@@ -2,8 +2,8 @@
 #' @description Impute MV in data.
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
-#' @param MetFlowData: MetFlowData.
-#' @param imputation.method: Which imputation method you want to use? It
+#' @param MetFlowData MetFlowData.
+#' @param imputation.method Which imputation method you want to use? It
 #' contains "knn", "rf" (missForest), "mean", "median", "zero", "minium",
 #' "bpca" (BPCA), "svd" (SVD) and "ppca" (PPCA). Default is "knn". The detial of
 #' this method can be find in detail and reference paperes.
@@ -15,11 +15,11 @@
 #' @seealso The MV imputation methods can see in
 #' \code{\link[impute]{impute.knn}}, \code{\link[missForest]{missForest}},
 #' \code{\link[pcaMethods]{bpca}}, \code{\link[pcaMethods]{ppca}} and
-#' \code{\link[pcaMethods]{svd}}.
+#' \code{\link[pcaMethods]{svdImpute}}.
 #' @references The MV imputation in metabolomics data can see in
 #' \href{https://www.readcube.com/library/fe13374b-5bc9-4c61-9b7f-6a354690947e:c9d05d0f-e945-43d0-bb4a-50ea0f90338e}{Guida's} paper.
 
-MVimputation <- function(MetFlowData = MetFlowData,
+MVimputation <- function(MetFlowData,
                          ##MV imputation method
                          imputation.method = "knn",
                          # knn parameters
