@@ -175,6 +175,7 @@ MetStat <- function(MetFlowData,
 
   cat("---------------------------------------------------------------------\n")
   cat("Heat map...\n")
+  browser()
   HeatMap(
     MetFlowData = met.data,
     log.scale = log.scale,

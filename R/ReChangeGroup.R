@@ -40,7 +40,8 @@ ReChangeGroup <- function(MetFlowData,
   ##remove samples from MetFlowData
   if (length(remove.name) != 0) {
     remove.idx <- match(remove.name, subject.info[,1])
-    subject <- subject[ ,-remove.idx]
+    remove.idx <- remove.idx[!is.na(remove.idx)]
+    subject <- subject[,-remove.idx]
     subject.info <- subject.info[-remove.idx,]
     subject.order <- subject.order[-remove.idx]
   }
