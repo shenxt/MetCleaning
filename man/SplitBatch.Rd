@@ -4,7 +4,7 @@
 \alias{SplitBatch}
 \title{SplitBatch}
 \usage{
-SplitBatch(MetFlowData = MetFlowData)
+SplitBatch(MetFlowData)
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}

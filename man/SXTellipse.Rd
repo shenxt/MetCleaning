@@ -8,7 +8,21 @@ SXTellipse(x, scale = c(1, 1), centre = c(0, 0), level = 0.95,
   t = sqrt(qchisq(level, 2)), which = c(1, 2), npoints = 100, ...)
 }
 \arguments{
-\item{parameters}{All the parameters can see help of ellipse.}
+\item{x}{see?ellipse.}
+
+\item{scale}{see?ellipse.}
+
+\item{centre}{see?ellipse.}
+
+\item{level}{see?ellipse.}
+
+\item{t}{see?ellipse.}
+
+\item{which}{see?ellipse.}
+
+\item{npoints}{see?ellipse.}
+
+\item{...}{see?ellipse.}
 }
 \value{
 Return a SXTellipseData

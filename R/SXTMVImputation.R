@@ -1,14 +1,30 @@
-#' Impute MV in data..
-#'
 #' @title SXTMVimputation
 #' @description Impute MV in data.
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
 #' @param data Data to be imputated, column is sample and row is feature.
-#' @param imputation.method Which imputation method you want to use?
-#' @param knn You can see them from help of impute package: impute.knn.
-#' @param missForest You can see them from help of missForest package: missForest.
-#' @param BPCA_PPCA_SVD You can see them from help of pcaMethods: bpca, ppca, svd.
+#' @param method Which imputation method you want to use?
+#' @param k See ?impute.knn
+#' @param rowmax See ?impute.knn
+#' @param colmax See ?impute.knn
+#' @param maxp See ?impute.knn
+#' @param rng.seed See ?impute.knn
+#' @param maxiter See ?missForest
+#' @param ntree See ?missForest
+#' @param decreasing See ?missForest
+#' @param mtry See ?missForest
+#' @param replace See ?missForest
+#' @param classwt See ?missForest
+#' @param cutoff See ?missForest
+#' @param strata See ?missForest
+#' @param sampsize See ?missForest
+#' @param nodesize See ?missForest
+#' @param maxnodes See ?missForest
+#' @param xtrue See ?missForest
+#' @param parallelize See ?missForest
+#' @param nPcs See ?bpca
+#' @param maxSteps See ?bpca
+#' @param threshold See ?bpca
 #' @return Return a data whose MVs have been imputated.
 #' @export
 #' @seealso  \code{\link{MVimputation}}
@@ -44,9 +60,9 @@ SXTMVimputation <- function(data,
 
   ## KNN method
   if (method == "knn") {
-    library(impute)
+    # library(impute)
     if(exists(".Random.seed")) rm(.Random.seed)
-    data.knn <- impute.knn(as.matrix(data),
+    data.knn <- impute::impute.knn(as.matrix(data),
                            k = k,
                            rowmax = rowmax,
                            colmax = colmax,
@@ -58,8 +74,8 @@ SXTMVimputation <- function(data,
 
   #missForest补齐
   if (method=="rf") {
-    library(missForest)
-    data.rf <- missForest(t(data),
+    # library(missForest)
+    data.rf <- missForest::missForest(t(data),
                           maxiter = maxiter,
                           ntree = ntree,
                           decreasing = decreasing,
@@ -104,30 +120,30 @@ SXTMVimputation <- function(data,
 
   ##BPCA
   if (method == "bpca") {
-    data.bpca <- pca(t(data),
+    data.bpca <- pcaMethods::pca(t(data),
                      method="bpca",
                      nPcs = nPcs,
                      maxSteps = maxSteps,
                      threshold = threshold)
-    data.bpca <- t(completeObs(data.bpca))
+    data.bpca <- t(pcaMethods::completeObs(data.bpca))
     return(data.bpca)
   }
 
 ##SVD imputation
   if (method == "svd") {
-    data.svd <- pca(t(data),
+    data.svd <- pcaMethods::pca(t(data),
                     method="svdImpute",
                     nPcs=nPcs)
-    data.svd <- t(completeObs(data.svd))
+    data.svd <- t(pcaMethods::completeObs(data.svd))
     return(data.svd)
   }
 
   ##PPCA imputation
   if (method == "ppca") {
-    data.ppca <- pca(t(data),
+    data.ppca <- pcaMethods::pca(t(data),
                     method = "ppca",
                     nPcs = nPcs)
-    data.ppca <- t(completeObs(data.ppca))
+    data.ppca <- t(pcaMethods::completeObs(data.ppca))
     return(data.ppca)
   }
 

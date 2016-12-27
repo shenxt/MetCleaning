@@ -10,11 +10,13 @@
 #' @param p which p value information your want to use?
 #' @param foldchange.cutoff The cutoff value of fold change.
 #' @param p.cutoff The cutoff of p value.
+#' @param vip.cutoff The cutoff of VIP value.
+#' @param vip VIP.
 #' @return MetFlowData: MetFlowData which has been added is.marker information into tags.
 #' @return maker.information.csv: The marker information.
 #' @export
 
-MarkerSelection <- function(MetFlowData = MetFlowData,
+MarkerSelection <- function(MetFlowData,
                             foldchange = "foldchange",
                             p = "p.correct",
                             vip = "vip",

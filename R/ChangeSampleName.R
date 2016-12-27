@@ -15,6 +15,9 @@
 #'  "POS" or "NEG" as posfix. Please see the demo data in example.
 #' @param posfix The posfix of the data. For example, "POS" or "NEG". Please
 #' see the demo data in examples.
+#' @param qc.has.order Default is FALSE.
+#' @param output Default is TRUE.
+#' @param path Work directory.
 #' @return Return a data whose name is standard name for MetFlowData.
 
 
@@ -25,10 +28,10 @@ ChangeSampleName <- function(data = "data.csv",
            qc.has.order = FALSE,
            output = TRUE,
            path = NULL) {
-  # browser()
+  browser()
 if (is.null(path)) path <- getwd()
-  data <- read.csv(file.path(path,data), stringsAsFactors = F)
-  sample.information <- read.csv(file.path(path,sample.information), stringsAsFactors = F)
+  data <- read.csv(file.path(path,data), stringsAsFactors = F, check.names = FALSE)
+  sample.information <- read.csv(file.path(path,sample.information), stringsAsFactors = F, check.names = FALSE)
   sample.information <- sample.information[!is.na(sample.information[,1]),]
 
   ## sort sample information according to sample order

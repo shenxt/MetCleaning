@@ -18,11 +18,14 @@ source("http://bioconductor.org/biocLite.R")
   install.packages("devtools")
  }
  library(devtools)
- install_github("jaspershen/MetCleaning")
+ install_github("jaspershen/MetCleaning"，ref = "version1.1.0")
  library(MetCleaning)
  help(package = "MetCleaning")
 ```
 
 ## **Note of version1.0.0**
-## **Note of version1.0.1**
-1. Add *m2p* function which is used to transform metabolite information to pathway information.
+## **Note of version1.1.0**
+1. Add *m2p* function which is used to transform metabolite information to pathway information. 
+2. Fix some bugs to improve speed.(20161219)
+3. Add the check.names = FALSE (argument) in all the read.csv function. (20161221)
+4. New feature for ms1 and ms2 matching only.

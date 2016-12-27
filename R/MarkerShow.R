@@ -8,7 +8,7 @@
 #' @return Box plot of markers.
 #' @export
 
-MarkerShow <- function(MetFlowData = MetFlowData,
+MarkerShow <- function(MetFlowData,
                        beeswarm = TRUE,
                        path = NULL) {
   # browser()
@@ -19,7 +19,7 @@ MarkerShow <- function(MetFlowData = MetFlowData,
     dir.create(path)
   }
 
-  library(beeswarm)
+  # library(beeswarm)
   tags <- MetFlowData[["tags"]]
   subject <- MetFlowData[["subject"]]
   subject.info <- MetFlowData[["subject.info"]]
@@ -57,7 +57,7 @@ MarkerShow <- function(MetFlowData = MetFlowData,
       cex.axis = 1.3
     )
     if (beeswarm) {
-      beeswarm(temp.data,
+      beeswarm::beeswarm(temp.data,
                pch = 19,
                add = T,
                col = "grey")

@@ -14,7 +14,7 @@
 #' @return Return a MetFlowData which has been filtered according MV/zero ratio.
 #' @export
 
-MZfilter <- function(MetFlowData = MetFlowData,
+MZfilter <- function(MetFlowData,
                      obs.per.cutoff = 0.5,
                      var.per.cutoff = 0.5,
                      what = "mv",

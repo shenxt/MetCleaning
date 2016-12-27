@@ -4,9 +4,9 @@
 \alias{MarkerSelection}
 \title{MarkerSelection}
 \usage{
-MarkerSelection(MetFlowData = MetFlowData, foldchange = "foldchange",
-  p = "p.correct", vip = "vip", foldchange.cutoff = c(4/3, 3/4),
-  p.cutoff = 0.05, vip.cutoff = 1, path = NULL)
+MarkerSelection(MetFlowData, foldchange = "foldchange", p = "p.correct",
+  vip = "vip", foldchange.cutoff = c(4/3, 3/4), p.cutoff = 0.05,
+  vip.cutoff = 1, path = NULL)
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}
@@ -15,9 +15,13 @@ MarkerSelection(MetFlowData = MetFlowData, foldchange = "foldchange",
 
 \item{p}{which p value information your want to use?}
 
+\item{vip}{VIP.}
+
 \item{foldchange.cutoff}{The cutoff value of fold change.}
 
 \item{p.cutoff}{The cutoff of p value.}
+
+\item{vip.cutoff}{The cutoff of VIP value.}
 
 \item{path}{The directory you want to write results.}
 }

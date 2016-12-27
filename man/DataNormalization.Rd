@@ -4,7 +4,7 @@
 \alias{DataNormalization}
 \title{DataNormalization}
 \usage{
-DataNormalization(MetFlowData = MetFlowData, path = NULL, method = "svr",
+DataNormalization(MetFlowData, path = NULL, method = "svr",
   dimension1 = TRUE, optimization = TRUE, begin = 0.5, end = 1,
   step = 0.2, multiple = 5, threads = 2, rerun.loess = TRUE,
   rerun.svr = TRUE, peakplot = TRUE, datastyle = "tof", user = "other")
@@ -14,12 +14,32 @@ DataNormalization(MetFlowData = MetFlowData, path = NULL, method = "svr",
 
 \item{path}{Workdirectory.}
 
-\item{method:}{Normalization method, mean, median, total svr or loess,
+\item{method}{Normalization method, mean, median, total svr or loess,
 default is svr. Please see the details.}
 
-\item{dimension1:}{Remain dimension or not. Default is TRUE.}
+\item{dimension1}{Remain dimension or not. Default is TRUE.}
 
-\item{svrloess}{You can see MetNormalizer for help.}
+\item{optimization}{Optimize span and degree or not.}
+
+\item{begin}{Begin of span.}
+
+\item{end}{End of span.}
+
+\item{step}{Step of span.}
+
+\item{multiple}{See ?SXTsvrNor.}
+
+\item{threads}{Thread number.}
+
+\item{rerun.loess}{Rerun loess or not.}
+
+\item{rerun.svr}{Rerun SVR or not.}
+
+\item{peakplot}{Peak plot or not.}
+
+\item{datastyle}{Default is "tof".}
+
+\item{user}{Default is "other".}
 }
 \value{
 The normalization results can be got from help of

@@ -1,12 +1,18 @@
-VIP <- function(MetFlowData = MetFlowData,
+VIP <- function(MetFlowData,
                    #used data
                    log.scale = 10,
                    scalemethod="auto",
-                   plsmethod = "plsreg")
+                   plsmethod = "plsreg",
+                   path = NULL)
   #parameter setting
 {
   # browser()
   options(warn = -1)
+
+  if(is.null(path)) {path <- getwd()
+  }else{
+    dir.create(path)
+  }
 
   subject <- MetFlowData[["subject"]]
   qc <- MetFlowData[["qc"]]
@@ -32,8 +38,8 @@ VIP <- function(MetFlowData = MetFlowData,
     if (!any(packages == i)) {install.packages(i)}
   }
 
-  require(plsdepot)
-  require(pls)
+  # require(plsdepot)
+  # require(pls)
 
   int <- t(subject)
   index <- NULL
@@ -111,13 +117,13 @@ VIP <- function(MetFlowData = MetFlowData,
 
   else {
     # browser()
-    require(SXTdummy)
+    # require(SXTdummy)
     dummy <- SXTdummy(Y)
     # int.dummy<-SXTscale(dummy,method=scalemethod)
     int.dummy <- dummy
     # ncompa = nrow(int.scale) - 1
     ncompa <- min(nrow(int), ncol(int))
-    pls1 <- plsreg1(int.scale,Y, comps = ncompa)
+    pls1 <- plsdepot::plsreg1(int.scale,Y, comps = ncompa)
     save(pls1,file = file.path(path, "pls1"))
     #########select the number of compents#################
     Q2cum <- pls1$Q2[,5]
@@ -142,8 +148,8 @@ VIP <- function(MetFlowData = MetFlowData,
 
     ##################construct final pls model###################
     cat(paste("Construct PLS model with all peaks using",number,"comps ...","\n"))
-    pls2 <- plsreg1(int.scale,Y,comps = number)
-    pls.temp <- plsreg2(int.scale,int.dummy, comps = number)
+    pls2 <- plsdepot::plsreg1(int.scale,Y,comps = number)
+    pls.temp <- plsdepot::plsreg2(int.scale,int.dummy, comps = number)
     vip <- pls.temp$VIP
     vip <- apply(vip, 1, mean)
   }

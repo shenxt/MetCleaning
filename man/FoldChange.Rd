@@ -4,8 +4,7 @@
 \alias{FoldChange}
 \title{FoldChange}
 \usage{
-FoldChange(MetFlowData = MetFlowData, to = c("case", "control"),
-  ratio = "median")
+FoldChange(MetFlowData, to = c("case", "control"), ratio = "median")
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}

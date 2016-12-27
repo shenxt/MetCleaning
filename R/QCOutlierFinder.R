@@ -4,12 +4,12 @@
 #' \email{shenxt@@sioc.ac.cn}
 #' @param MetFlowData MetFlowData.
 #' @param CI Confidence interva.
-#' @param Directory Work directory.
+#' @param path Work directory.
 #' @return QCOutlierFinderData contains MetFlowData and QC outlier index (obs.remove).
 #' @export
 
 #QC outlier filtering according to zero ratio and PCA
-QCOutlierFinder <- function(MetFlowData = MetFlowData,
+QCOutlierFinder <- function(MetFlowData,
                             CI = 0.95,
                             path = NULL) {
   # browser()

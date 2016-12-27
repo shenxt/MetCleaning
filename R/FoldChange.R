@@ -8,7 +8,7 @@
 #' @return MetFlowData which has been added fold change information in tags.
 #' @export
 
-FoldChange <- function(MetFlowData = MetFlowData,
+FoldChange <- function(MetFlowData,
                        to = c("case", "control"),
                        ratio = "median") {
   # browser()

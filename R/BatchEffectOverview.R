@@ -5,7 +5,7 @@
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
 #' @param MetFlowData.before MetFlowData before normalization or integration.
-#' @param MetFlowData.before MetFlowData after normalization or integration.
+#' @param MetFlowData.after MetFlowData after normalization or integration.
 #' @param path work directory
 #' @return Give PCA score plot for QC and subject.
 #' @export

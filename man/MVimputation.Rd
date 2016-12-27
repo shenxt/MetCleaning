@@ -4,26 +4,60 @@
 \alias{MVimputation}
 \title{MVimputation}
 \usage{
-MVimputation(MetFlowData = MetFlowData, imputation.method = "knn", k = 10,
-  rowmax = 0.5, colmax = 0.8, maxp = 1500, rng.seed = 362436069,
-  maxiter = 10, ntree = 100, decreasing = FALSE, replace = TRUE,
-  classwt = NULL, cutoff = NULL, strata = NULL, sampsize = NULL,
-  nodesize = NULL, maxnodes = NULL, xtrue = NA, parallelize = "no",
-  nPcs = 2, maxSteps = 100, threshold = 1e-04)
+MVimputation(MetFlowData, imputation.method = "knn", k = 10, rowmax = 0.5,
+  colmax = 0.8, maxp = 1500, rng.seed = 362436069, maxiter = 10,
+  ntree = 100, decreasing = FALSE, replace = TRUE, classwt = NULL,
+  cutoff = NULL, strata = NULL, sampsize = NULL, nodesize = NULL,
+  maxnodes = NULL, xtrue = NA, parallelize = "no", nPcs = 2,
+  maxSteps = 100, threshold = 1e-04)
 }
 \arguments{
-\item{MetFlowData:}{MetFlowData.}
+\item{MetFlowData}{MetFlowData.}
 
-\item{imputation.method:}{Which imputation method you want to use? It
+\item{imputation.method}{Which imputation method you want to use? It
 contains "knn", "rf" (missForest), "mean", "median", "zero", "minium",
 "bpca" (BPCA), "svd" (SVD) and "ppca" (PPCA). Default is "knn". The detial of
 this method can be find in detail and reference paperes.}
 
-\item{knn}{You can see them from help of impute package: impute.knn.}
+\item{k}{See ?impute.knn}
 
-\item{missForest}{You can see them from help of missForest package: missForest.}
+\item{rowmax}{See ?impute.knn}
 
-\item{BPCA_PPCA_SVD}{You can see them from help of pcaMethods: bpca, ppca, svd.}
+\item{colmax}{See ?impute.knn}
+
+\item{maxp}{See ?impute.knn}
+
+\item{rng.seed}{See ?impute.knn}
+
+\item{maxiter}{See ?missForest}
+
+\item{ntree}{See ?missForest}
+
+\item{decreasing}{See ?missForest}
+
+\item{replace}{See ?missForest}
+
+\item{classwt}{See ?missForest}
+
+\item{cutoff}{See ?missForest}
+
+\item{strata}{See ?missForest}
+
+\item{sampsize}{See ?missForest}
+
+\item{nodesize}{See ?missForest}
+
+\item{maxnodes}{See ?missForest}
+
+\item{xtrue}{See ?missForest}
+
+\item{parallelize}{See ?missForest}
+
+\item{nPcs}{See ?bpca}
+
+\item{maxSteps}{See ?bpca}
+
+\item{threshold}{See ?bpca}
 }
 \value{
 Return a MetFlowData whose MVs have been imputated.
@@ -43,6 +77,6 @@ The MV imputation in metabolomics data can see in
 The MV imputation methods can see in
 \code{\link[impute]{impute.knn}}, \code{\link[missForest]{missForest}},
 \code{\link[pcaMethods]{bpca}}, \code{\link[pcaMethods]{ppca}} and
-\code{\link[pcaMethods]{svd}}.
+\code{\link[pcaMethods]{svdImpute}}.
 }
 

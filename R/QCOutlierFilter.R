@@ -9,7 +9,7 @@
 #' @export
 #' @seealso \code{\link{SubjectOutlierFilter}}
 
-QCOutlierFilter <- function(MetFlowData = MetFlowData,
+QCOutlierFilter <- function(MetFlowData,
                             CI = 0.95,
                             path = NULL) {
   # browser()

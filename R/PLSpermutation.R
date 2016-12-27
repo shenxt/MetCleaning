@@ -5,7 +5,9 @@
 #' @param data data for PLS permutation test.
 #' @param log.scale log transformation.
 #' @param info infomation for group.
-#' @param scale.method Whihch scale methd you want to use? "auto" or "pareto", defaulit is "auto".
+#' @param repeats Repeat number.
+#' @param ncomp Princilpe component number.
+#' @param scalemethod Whihch scale methd you want to use? "auto" or "pareto", defaulit is "auto".
 #' @param path Work directory.
 #' @return permutation test plot: Permutation test plot.
 
@@ -31,11 +33,8 @@ PLSpermutation <- function(data = NULL,
     stop("info must not be NULL")
 
   int <- data
-  index <- NULL
-  for (i in 1:length(info)) {
-    index1 <- as.character(info[[i]])
-    index <- c(index, index1)
-  }
+  index <- unlist(info)
+
   if (length(which(index == "")) != 0)  {
     index <- index[-which(index == "")]
   }
@@ -49,7 +48,7 @@ PLSpermutation <- function(data = NULL,
   name <- rownames(int)
   # browser()
   Y <- NULL
-  label <- list()
+  label <- as.list(rep(NA, length(info)))
   for (i in 1:length(info)) {
     label[[i]] <- match(as.character(info[[i]]), name)
     label[[i]] <- label[[i]][!is.na(label[[i]])]
@@ -83,9 +82,9 @@ PLSpermutation <- function(data = NULL,
   save(R2, file = file.path(path, "R2"))
 
   ##begin repeat
-  q2 <- NULL
-  r2 <- NULL
-  cor <- NULL
+  q2 <- rep(NA, repeats)
+  r2 <- rep(NA, repeats)
+  cor <- rep(NA, repeats)
   cat("Permutation test...\n")
   for (i in 1:repeats) {
     temp.Y <- Y[order(sample(1:length(Y), length(Y)))]

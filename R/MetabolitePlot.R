@@ -9,8 +9,8 @@
 #' @return Return the metabolite plot before and after processing.
 #' @export
 
-MetabolitePlot <- function(MetFlowData.before = MetFlowData1,
-                           MetFlowData.after = MetFlowData2,
+MetabolitePlot <- function(MetFlowData.before,
+                           MetFlowData.after,
                            path = NULL,
                            figure = "jpeg") {
   if (is.null(path)) {

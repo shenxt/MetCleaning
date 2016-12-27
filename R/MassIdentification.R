@@ -5,6 +5,7 @@
 #' @param MetFlowData MetFlowData.
 #' @param mass.tolerance mz tolerance.
 #' @param polarity polarity
+#' @param show Default is 5.
 #' @return A MetFlowData added HMDB result in tags.
 #' @export
 #' @details \href{http://www.hmdb.ca/}{HMDB} is a metabolite database. The
@@ -12,13 +13,14 @@
 #'  +Na, +H-2H2O, +H-H2O, +K have been considered, and in negative mode, -H,
 #'  +Cl, +CH3COO, -H-H2O, +F have been considered.
 
-MassIdentification <- function(MetFlowData = MetFlowData,
+MassIdentification <- function(MetFlowData,
                                mass.tolerance = 30,
                                polarity = "positive",
                                show = 5) {
   tags <- MetFlowData[["tags"]]
   mz1 <- as.numeric(tags[, "mz"])
-  data("hmdbdatabase")
+  hmdbdatabase <- MetCleaning::hmdbdatabase
+  # data("hmdbdatabase")
   mz2 <- hmdbdatabase[, "Mass"]
   HMDB.ID <- hmdbdatabase[, 1]
   HMDB.name <- hmdbdatabase[, 2]

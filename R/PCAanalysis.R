@@ -3,21 +3,28 @@
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
 #' @param MetFlowData MetFlowData.
-#' @param color Color for different class.
-#' @param shape Shape for different class. please see the help of par(pch).
-#' @param scale.method Which scale methd you want to use? "auto" or "pareto",
-#' defaulit is "auto".
+#' @param QC Use qc data for PCA analyis or not? Default is FALSE.
 #' @param log.scale Which transformation methd you want to use? 2, 10  or "e",
 #' defaulit is FALSE mean don't transformation.
-#' @param QC Use qc data for PCA analyis or not? Default is FALSE.
+#' @param scale.method Which scale methd you want to use? "auto" or "pareto",
+#' defaulit is "auto".
 #' @param path Work Directory
+#' @param color Color for different class.
+#' @param shape Shape for different class. please see the help of par(pch).
+#' @param cex.lab cex of lab.
+#' @param cex.axis cex of axis.
+#' @param cex cex.
+#' @param cex.text cex of text.
+#' @param width width of plot.
+#' @param height height of plot.
 #' @param text Add text in PCA score plot or not? Deefault is FALSE.
 #' @param ellipse Add ellipse in PCA score plot or not? Deefault is TRUE.
-#' @param xlim1_ylim1 The x and y axis limitation. Default is NULL.
+#' @param xlim1 x axis limitation. Default is NULL.
+#' @param ylim1 y axis limitation. Default is NULL.
 #' @return PCA score plot.
 #' @export
 
-PCAanalysis <- function(MetFlowData = MetFlowData,
+PCAanalysis <- function(MetFlowData,
                         QC = FALSE,
                         log.scale = FALSE,
                         scale.method = "auto",

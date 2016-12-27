@@ -4,14 +4,14 @@
 \alias{MZoverview}
 \title{MZOverview}
 \usage{
-MZoverview(MetFlowData = MetFlowData, path = NULL, what = "mv")
+MZoverview(MetFlowData, path = NULL, what = "mv")
 }
 \arguments{
+\item{MetFlowData}{MetFlowData.}
+
 \item{path}{Work Directory.}
 
 \item{what}{Missing value ("mv") or zero values ("zero").}
-
-\item{MetFlowData:}{MetFlowData.}
 }
 \value{
 Batch i feature MV/zero ratio.csv: Batch i feature MV/zero ratio

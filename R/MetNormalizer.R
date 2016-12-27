@@ -4,12 +4,25 @@
 #' @description Normalize data using different normalization methods.
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
-#' @param normalization.method svr: SVR normalization; loess: LOESS normalization; all: SVR&LOESS.Default is svr.
+#' @param filename Default is "Metabolomics data".
 #' @param polarity The polarity of data, default is "none".
+#' @param minfrac.qc Default is 0.
+#' @param minfrac.sample Default is 0.
+#' @param filter Default is "no".
+#' @param normalization.method svr: SVR normalization; loess: LOESS normalization; all: SVR&LOESS.Default is svr.
 #' @param optimization Parameter optimization or not?.Default is TRUE.
-#' @param begin_end_step begin The begin of span to optimize. end: The end of span to optimize. step: The step for begin to end. begin should be set bigger if the QC number is small.
-#' @param multiple If multiple = 1, the svr will be built using injection order. If multiple >= 2, the svr is built using top mutiple peaks correlated peaks. For tof data, default is 5, for mrm data, default is 1.
+#' @param begin The begin of span to optimize.
+#' @param end The end of span to optimize.
+#' @param step The step for begin to end.
+#' @param multiple If multiple = 1, the svr will be built using injection order.
+#' If multiple >= 2, the svr is built using top mutiple peaks correlated peaks.
+#'  For tof data, default is 5, for mrm data, default is 1.
+#' @param threads Number of thread.
+#' @param rerun.loess Default is TRUE.
+#' @param rerun.svr Default is TRUE.
 #' @param peakplot Draw peakplot for each peak or nor? Default is TRUE.
+#' @param datastyle Default is "tof".
+#' @param user Default is "other".
 #' @param path Directory
 #' @param dimension1 The data after normalization is given dimension or not. Defaulte is TRUE.
 #' @return peakplot: A folder contains all the peaks plot before and sfter SVR normalization.
@@ -85,22 +98,22 @@ MetNormalizer <- function(filename = "Metabolomics data",
       cat("Importing POS data...\n")
       if (substr(file.pos,nchar(file.pos) - 2,nchar(file.pos)) == "csv")
       {
-        pos.data <- read.csv(file.pos)
+        pos.data <- read.csv(file.pos, stringsAsFactors = FALSE, check.names = FALSE)
       }
       else
       {
-        require(xlsx)
+        # require(xlsx)
         pos.data <- read.xlsx(file.pos,1)
       }
 
       cat("Importing NEG data...\n")
       if (substr(file.neg,nchar(file.neg) - 2,nchar(file.neg)) == "csv")
       {
-        neg.data <- read.csv(file.neg)
+        neg.data <- read.csv(file.neg, stringsAsFactors = FALSE, check.names = FALSE)
       }
       else
       {
-        require(xlsx)
+        # require(xlsx)
         neg.data <- read.xlsx(file.neg,1)
       }
 
@@ -109,6 +122,11 @@ MetNormalizer <- function(filename = "Metabolomics data",
         data = pos.data,filename = paste(filename,"POS"), polarity = "positive",
         path = path, user = user ,datastyle = datastyle
       )
+      qc <- NA
+      tags <- NA
+      sample <- NA
+      sampleorder <- NA
+      qcorder <- NA
       load(file.path(path,paste(filename,"POS")))
       sample.pos = sample
       qc.pos = qc
@@ -116,8 +134,13 @@ MetNormalizer <- function(filename = "Metabolomics data",
 
       cat("Filtering POS data...\n")
       SXTdatafilter(
-        sample = sample.pos, qc = qc.pos,tags = tags.pos,sampleorder = sampleorder,
-        qcorder = qcorder,filter = filter,minfrac.qc = minfrac.qc,
+        sample = sample.pos,
+        qc = qc.pos,
+        tags = tags.pos,
+        sampleorder = sampleorder,
+        qcorder = qcorder,
+        filter = filter,
+        minfrac.qc = minfrac.qc,
         minfrac.sample = minfrac.sample,
         path = path,
         filename = paste(filename,"POS","after filter")
@@ -163,7 +186,7 @@ MetNormalizer <- function(filename = "Metabolomics data",
       }
 
       cat("Importing data...\n")
-      data <- read.csv(file.path(path,"data.csv"))
+      data <- read.csv(file.path(path,"data.csv"), stringsAsFactors = FALSE, check.names = FALSE)
       # browser()
       # data.name <- colnames(data)
       # for (i in 1:length(data.name)) {
@@ -253,11 +276,11 @@ MetNormalizer <- function(filename = "Metabolomics data",
 
 
 ####LOESS normalization function
-SXTloessNor <- function(sample = sample,
-                        QC = qc,
-                        tags = tags,
-                        sample.order = sampleorder,
-                        QC.order = qcorder,
+SXTloessNor <- function(sample,
+                        QC,
+                        tags,
+                        sample.order,
+                        QC.order,
                         #used data
                         optimization = TRUE,
                         begin = 0.5,
@@ -573,7 +596,7 @@ peakplot2 <-
       )
       if (optimization) {
         legend( "topright",c( sprintf("span: %s",best.span[i]),sprintf("degree: %s",best.degree[i])),
-                bty = "n", cex = 1.3, ppt.cex = 1.3)
+                bty = "n", cex = 1.3, pt.cex = 1.3)
       }
 
       plot(
@@ -750,6 +773,8 @@ SXTcbindposneg <- function(filename = "SXT data",path = NULL)
   # browser()
   file.pos <- file[grep("POS",file)]
   file.neg <- file[grep("NEG",file)]
+  sampleorder <- NA
+  qcorder <- NA
   pos <- load(file.path(path,file.pos))
   sample.pos <- sample
   qc.pos <- qc
@@ -780,7 +805,7 @@ SXTgetdata <- function(data, filename = "SXT data", polarity = "positive",
   data <- t(data)
 
   if (user == "other") {
-    worklist <- read.csv(file.path(path,"worklist.csv"),stringsAsFactors = F)
+    worklist <- read.csv(file.path(path,"worklist.csv"),stringsAsFactors = F, check.names = FALSE)
     name <- worklist[,1]
     ###judge if worklist name contains POS or NEG
     pos.have <- length(grep("POS", toupper(name)))

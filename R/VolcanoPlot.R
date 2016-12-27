@@ -3,13 +3,18 @@
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
 #' @param MetFlowData MetFlowData.
-#' @param path The directory you want to write results.
-#' @param foldchange_p_foldchange.cutoff_p.cutoff See MarkerSeletion.
+#' @param x x axis factor.
+#' @param y y axis factor.
+#' @param z z axis factor.
 #' @param col Colour for markers and non-markers.
+#' @param foldchange.cutoff Fold chagne cutoff.
+#' @param p.cutoff p value cutoff.
+#' @param vip.cutoff VIP value cutoff.
+#' @param path The directory you want to write results.
 #' @return volcano plot.
 #' @export
 
-VolcanoPlot <- function(MetFlowData = MetFlowData,
+VolcanoPlot <- function(MetFlowData,
                         x = "foldchange",
                         y = "p",
                         z = "vip",
@@ -20,7 +25,7 @@ VolcanoPlot <- function(MetFlowData = MetFlowData,
                         path = NULL) {
   # browser()
   if (is.null(path)) {
-    path <- gewtd()
+    path <- getwd()
   }
   else{
     dir.create(path)

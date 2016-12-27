@@ -4,8 +4,8 @@
 \alias{MetabolitePlot}
 \title{MetabolitePlot}
 \usage{
-MetabolitePlot(MetFlowData.before = MetFlowData1,
-  MetFlowData.after = MetFlowData2, path = NULL, figure = "jpeg")
+MetabolitePlot(MetFlowData.before, MetFlowData.after, path = NULL,
+  figure = "jpeg")
 }
 \arguments{
 \item{MetFlowData.before}{MetFlowData before normalization or integration.}

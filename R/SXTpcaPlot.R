@@ -7,6 +7,12 @@
 #' @param loading.plot.name The name of loading plot.
 #' @param score.plot.name The name of score plot.
 #' @param color The colors you want to use in different classs.
+#' @param cexlab Cex of lab.
+#' @param cexaxis Cex of axis.
+#' @param cexa Cex of point.
+#' @param cextext Cex of text.
+#' @param width Width of plot.
+#' @param height height of plot.
 #' @param shape The shapes you want to use in different classes.
 #' @param text Add text or not? Default is FALSE.
 #' @param ellipse Draw ellipse or not?
@@ -15,7 +21,7 @@
 #' @export
 
 ##plot functioin for SXTpcaData
-SXTpcaPlot <- function(SXTpcaData = SXTpcaData,
+SXTpcaPlot <- function(SXTpcaData,
                        plot = "score",
                        loading.plot.name = "PCA loading",
                        score.plot.name = "PCA score",

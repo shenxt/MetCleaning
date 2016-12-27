@@ -4,8 +4,8 @@
 \alias{GetIS}
 \title{GetIS}
 \usage{
-GetIS(MetFlowData = MetFlowData, mzerror = 15, rterror = 30,
-  rt.unit.is.second = T, IS = "IS.csv", plot.output = TRUE, path = NULL)
+GetIS(MetFlowData, mzerror = 15, rterror = 30, rt.unit.is.second = T,
+  IS = "IS.csv", plot.output = TRUE, path = NULL)
 }
 \arguments{
 \item{MetFlowData}{MetFlowData for internal standatd getting.}
@@ -18,9 +18,9 @@ GetIS(MetFlowData = MetFlowData, mzerror = 15, rterror = 30,
 
 \item{IS}{IS data name for reading.}
 
-\item{path}{Directory for outputing results.}
+\item{plot.output}{Output plot or not? Default is TRUE.}
 
-\item{plot.ouput}{Output plot or not? Default is TRUE.}
+\item{path}{Directory for outputing results.}
 }
 \value{
 newIS: A new IS data for IS.

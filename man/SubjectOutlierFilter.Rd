@@ -4,10 +4,14 @@
 \alias{SubjectOutlierFilter}
 \title{SubjectOutlierFilter}
 \usage{
-SubjectOutlierFilter(MetFlowData = MetFlowData, CI = 0.95, path = NULL)
+SubjectOutlierFilter(MetFlowData, CI = 0.95, path = NULL)
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}
+
+\item{CI}{Confidence interva.}
+
+\item{path}{Work directory.}
 }
 \value{
 MetFlowData whose subject outliers have been removed.

@@ -4,18 +4,28 @@
 \alias{VolcanoPlot}
 \title{VolcanoPlot}
 \usage{
-VolcanoPlot(MetFlowData = MetFlowData, x = "foldchange", y = "p",
-  z = "vip", col = c("grey", "tomato"), foldchange.cutoff = c(4/3, 3/4),
+VolcanoPlot(MetFlowData, x = "foldchange", y = "p", z = "vip",
+  col = c("grey", "tomato"), foldchange.cutoff = c(4/3, 3/4),
   p.cutoff = 0.05, vip.cutoff = 1, path = NULL)
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}
 
+\item{x}{x axis factor.}
+
+\item{y}{y axis factor.}
+
+\item{z}{z axis factor.}
+
 \item{col}{Colour for markers and non-markers.}
 
-\item{path}{The directory you want to write results.}
+\item{foldchange.cutoff}{Fold chagne cutoff.}
 
-\item{foldchange_p_foldchange.cutoff_p.cutoff}{See MarkerSeletion.}
+\item{p.cutoff}{p value cutoff.}
+
+\item{vip.cutoff}{VIP value cutoff.}
+
+\item{path}{The directory you want to write results.}
 }
 \value{
 volcano plot.

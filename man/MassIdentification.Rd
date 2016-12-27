@@ -4,8 +4,8 @@
 \alias{MassIdentification}
 \title{MassIdentification}
 \usage{
-MassIdentification(MetFlowData = MetFlowData, mass.tolerance = 30,
-  polarity = "positive", show = 5)
+MassIdentification(MetFlowData, mass.tolerance = 30, polarity = "positive",
+  show = 5)
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}
@@ -13,6 +13,8 @@ MassIdentification(MetFlowData = MetFlowData, mass.tolerance = 30,
 \item{mass.tolerance}{mz tolerance.}
 
 \item{polarity}{polarity}
+
+\item{show}{Default is 5.}
 }
 \value{
 A MetFlowData added HMDB result in tags.

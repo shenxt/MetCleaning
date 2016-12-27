@@ -6,7 +6,7 @@
 #' @return Return a data (list), subject, qc, subject.info and qc.info.
 #' @export
 
-SplitBatch <- function(MetFlowData = MetFlowData) {
+SplitBatch <- function(MetFlowData) {
   ## split batch
   # browser()
   hasQC <- MetFlowData[["hasQC"]]

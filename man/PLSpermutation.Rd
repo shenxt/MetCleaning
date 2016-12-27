@@ -14,9 +14,13 @@ PLSpermutation(data = NULL, log.scale = FALSE, info = NULL,
 
 \item{info}{infomation for group.}
 
-\item{path}{Work directory.}
+\item{repeats}{Repeat number.}
 
-\item{scale.method}{Whihch scale methd you want to use? "auto" or "pareto", defaulit is "auto".}
+\item{ncomp}{Princilpe component number.}
+
+\item{scalemethod}{Whihch scale methd you want to use? "auto" or "pareto", defaulit is "auto".}
+
+\item{path}{Work directory.}
 }
 \value{
 permutation test plot: Permutation test plot.

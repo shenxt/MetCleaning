@@ -4,17 +4,28 @@
 \alias{PLSanalysis}
 \title{PLSanalysis}
 \usage{
-PLSanalysis(MetFlowData = MetFlowData, log.scale = 10,
-  scalemethod = "auto", plsmethod = "plsreg", path = NULL, width = 7,
-  height = 7, text = FALSE, ellipse = TRUE, color = c("palegreen",
-  "firebrick1", "royalblue", "yellow", "black", "cyan", "gray48"),
-  shape = c(17, 19, 15, 18, 2, 8, 11), cexa = 1, xlim1 = NULL,
-  ylim1 = NULL)
+PLSanalysis(MetFlowData, log.scale = 10, scalemethod = "auto",
+  plsmethod = "plsreg", path = NULL, width = 7, height = 7,
+  text = FALSE, ellipse = TRUE, color = c("palegreen", "royalblue",
+  "firebrick1", "yellow", "black", "cyan", "gray48"), shape = c(17, 19, 15,
+  18, 2, 8, 11), cexa = 1, xlim1 = NULL, ylim1 = NULL)
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}
 
+\item{log.scale}{Which transformation methd you want to use? 2, 10  or "e",
+defaulit is FALSE mean don't transformation.}
+
+\item{scalemethod}{Whihch scale methd you want to use? "auto" or "pareto",
+defaulit is "auto".}
+
+\item{plsmethod}{Default is "plsreg".}
+
 \item{path}{Work directory.}
+
+\item{width}{width of plot.}
+
+\item{height}{height of plot.}
 
 \item{text}{Add text in PCA score plot or not? Deefault is FALSE.}
 
@@ -24,10 +35,11 @@ PLSanalysis(MetFlowData = MetFlowData, log.scale = 10,
 
 \item{shape}{Shape for different class.}
 
-\item{scale.method}{Whihch scale methd you want to use? "auto" or "pareto",
-defaulit is "auto".}
+\item{cexa}{cex.}
 
-\item{xlim1_ylim1}{The x and y axis limitation. Default is NULL.}
+\item{xlim1}{x axis limitation. Default is NULL.}
+
+\item{ylim1}{y axis limitation. Default is NULL.}
 }
 \value{
 PLS score plot: PLS score plot.

@@ -4,7 +4,7 @@
 \alias{SXTpcaFindOutlier}
 \title{SXTpcaFindOutlier}
 \usage{
-SXTpcaFindOutlier(SXTpcaData = SXTpcaData, CI = 0.95, output.plot = TRUE,
+SXTpcaFindOutlier(SXTpcaData, CI = 0.95, output.plot = TRUE,
   plot.name = "PCA score plot for outliers", path = NULL)
 }
 \arguments{

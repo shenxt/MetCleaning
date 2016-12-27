@@ -10,11 +10,11 @@
 #' @param rterror rt tolerance for IS.
 #' @param rt.unit.is.second RT's unit is second or not? Default is T.
 #' @param IS IS data name for reading.
-#' @param plot.ouput Output plot or not? Default is TRUE.
+#' @param plot.output Output plot or not? Default is TRUE.
 #' @return newIS: A new IS data for IS.
 #' @export
 
-GetIS <- function(MetFlowData = MetFlowData,
+GetIS <- function(MetFlowData,
                   mzerror = 15,
                   rterror = 30,
                   rt.unit.is.second = T,

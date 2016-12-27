@@ -23,10 +23,20 @@ are information for sample. Please see demo data in example.}
 \item{polarity}{The polarity of data, "positive", "negative"" or "none"",
 default is positive.}
 
+\item{posfix}{Default is NULL.}
+
+\item{qc.has.order}{Default is FALSE.}
+
+\item{worklist.from}{Default is "manual".}
+
+\item{hasIS}{The data has IS or not? Default is "no".}
+
 \item{hasQC}{The data has QC samples or not? Default is "yes".}
 
 \item{peak.identification}{The data has identification result or not?
 Default is "no".}
+
+\item{path}{Work directory.}
 }
 \value{
 Return a standard MetProcesser dataset.

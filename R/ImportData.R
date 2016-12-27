@@ -13,6 +13,11 @@
 #' @param polarity The polarity of data, "positive", "negative"" or "none"",
 #' default is positive.
 #' @param hasQC The data has QC samples or not? Default is "yes".
+#' @param hasIS The data has IS or not? Default is "no".
+#' @param posfix Default is NULL.
+#' @param qc.has.order Default is FALSE.
+#' @param worklist.from Default is "manual".
+#' @param path Work directory.
 #' @param peak.identification The data has identification result or not?
 #' Default is "no".
 #' @return  Return a standard MetProcesser dataset.
@@ -39,10 +44,10 @@ ImportData <- function(data = "data.csv",
                             qc.has.order = qc.has.order,
                             output = FALSE,
                             path = path)
-  sample.information <- read.csv("sample.information1.csv", stringsAsFactors = F)}
+  sample.information <- read.csv("sample.information1.csv", stringsAsFactors = F, check.names = FALSE)}
 
-  else {data <- read.csv(file.path(path,data), stringsAsFactors = F)
-  sample.information <- read.csv(file.path(path,sample.information), stringsAsFactors = F)}
+  else {data <- read.csv(file.path(path,data), stringsAsFactors = F, check.names = FALSE)
+  sample.information <- read.csv(file.path(path,sample.information), stringsAsFactors = F, check.names = FALSE)}
 
   ## read sample information
   sample.information <- sample.information[!is.na(sample.information[,1]),]

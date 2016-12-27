@@ -5,10 +5,13 @@
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
 #' @param data data name for text mixture.
-#' @param test.mix.is Internal standards information in test information.
-#' @param test.mix.data Test mixture data from XCMS.
+#' @param test.mix.info Internal standards information in test information.
+#' @param test.mix.is Test mixtrue data.
 #' @param rterror rt tolerance for IS.
 #' @param mzerror mz tolerance for IS.
+#' @param rt.unit.is.second RT's unit is second or not? Default is T.
+#' @param plot.output Output plot or not? Default is TRUE.
+#' @param path Work directory.
 #' @export
 
 GetTestMix <- function(data = "Test mixture.csv",
@@ -24,9 +27,9 @@ GetTestMix <- function(data = "Test mixture.csv",
   if (is.null(path)) {path <- getwd()}
 
   ## get data information
-  data <- read.csv(data, stringsAsFactors = F)
-  is <- read.csv(test.mix.is, stringsAsFactors = F)
-  test.mix.info <- read.csv(test.mix.info, stringsAsFactors = F)
+  data <- read.csv(data, stringsAsFactors = F, check.names = FALSE)
+  is <- read.csv(test.mix.is, stringsAsFactors = F, check.names = FALSE)
+  test.mix.info <- read.csv(test.mix.info, stringsAsFactors = F, check.names = FALSE)
 
   tags <- data[,-grep("Test_mix", colnames(data))]
   sample <- data[,grep("Test_mix", colnames(data))]

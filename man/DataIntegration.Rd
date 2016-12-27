@@ -4,7 +4,7 @@
 \alias{DataIntegration}
 \title{DataIntegration}
 \usage{
-DataIntegration(MetFlowData = MetFlowData, method = "qc.mean")
+DataIntegration(MetFlowData, method = "qc.mean")
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}

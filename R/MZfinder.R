@@ -1,5 +1,4 @@
-#' Find feature and sample outliers according to MV/zero ratio.
-#'
+
 #' @title MZfinder
 #' @description Find feature and sample outliers according to MV/zero ratio.
 #' @author Xiaotao Shen
@@ -7,11 +6,13 @@
 #' @param MetFlowData MetFlowData.
 #' @param obs.per.cutoff The observation MV/zero ratio cutoff.
 #' @param var.per.cutoff The variable MV/zero ratio cutoff.
+#' @param what Filter missing values ("mv") or zero values ("zero")?
+#' @param path Work directory.
 #' @return Return a MZfinderData contains MetFlowData,feature.remove, qc.remove and subject.remove.
 #' @export
 
 ##remove peaks whose MV ratio > threshold in QC or subject.
-MZfinder <- function(MetFlowData = MetFlowData,
+MZfinder <- function(MetFlowData,
                      obs.per.cutoff = 0.5,
                      var.per.cutoff = 0.5,
                      what = "mv",
@@ -50,7 +51,7 @@ MZfinder <- function(MetFlowData = MetFlowData,
   subject.info1 <- data[[3]]
   qc.info1 <- data[[4]]
 
-  var.index <- list()
+  var.index <- as.list(rep(NA, length(subject1)))
   if (hasQC == "yes") {
     ##remove peak whose MV/zero ratio more than 50%
     for (i in 1:length(subject1)) {
@@ -59,7 +60,7 @@ MZfinder <- function(MetFlowData = MetFlowData,
           subject1[[i]],
           qc1[[i]],
           filter.item = "mv",
-          filter.rule = "union",
+          filter.rule = "intersect",
           minifrac.variable = var.per.cutoff,
           minifrac.observation = 0
         )
@@ -68,7 +69,7 @@ MZfinder <- function(MetFlowData = MetFlowData,
           subject1[[i]],
           qc1[[i]],
           filter.item = "zero",
-          filter.rule = "union",
+          filter.rule = "intersect",
           minifrac.variable = var.per.cutoff,
           minifrac.observation = 0
         )
@@ -90,6 +91,7 @@ MZfinder <- function(MetFlowData = MetFlowData,
         SXTMinifracData <- SXTMinifrac(
           subject1[[i]],
           filter.item = "zero",
+          filter.rule = "intersect",
           minifrac.variable = var.per.cutoff,
           minifrac.observation = 0
         )

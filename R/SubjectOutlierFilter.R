@@ -3,11 +3,13 @@
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
 #' @param MetFlowData MetFlowData.
+#' @param CI Confidence interva.
+#' @param path Work directory.
 #' @return MetFlowData whose subject outliers have been removed.
 #' @export
 #' @seealso \code{\link{QCOutlierFilter}}
 
-SubjectOutlierFilter <- function(MetFlowData = MetFlowData,
+SubjectOutlierFilter <- function(MetFlowData,
                                  CI = 0.95,
                                  path = NULL) {
   # browser()

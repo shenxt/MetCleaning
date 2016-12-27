@@ -4,8 +4,8 @@
 \alias{UnivariateTest}
 \title{UnivariateTest}
 \usage{
-UnivariateTest(MetFlowData = MetFlowData, test.method = "t",
-  adjust.method = "fdr", log.scale = FALSE, class = c("control", "case"))
+UnivariateTest(MetFlowData, test.method = "t", adjust.method = "fdr",
+  log.scale = FALSE, class = c("control", "case"))
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}
@@ -13,6 +13,10 @@ UnivariateTest(MetFlowData = MetFlowData, test.method = "t",
 \item{test.method}{Which test you want to use? "t" means stutent t test and "wilcox" mean wilcoxon test.}
 
 \item{adjust.method}{p value correction method. See p.adjust function.}
+
+\item{log.scale}{Data transformation method, defaulst is FALSE.}
+
+\item{class}{Class used to do test.}
 }
 \value{
 MetFlowData which has been added p and AUC information in tags.
