@@ -19,8 +19,8 @@ MassIdentification <- function(MetFlowData,
                                show = 5) {
   tags <- MetFlowData[["tags"]]
   mz1 <- as.numeric(tags[, "mz"])
-  hmdbdatabase <- NA
-  data("hmdbdatabase")
+  hmdbdatabase <- MetCleaning::hmdbdatabase
+  # data("hmdbdatabase")
   mz2 <- hmdbdatabase[, "Mass"]
   HMDB.ID <- hmdbdatabase[, 1]
   HMDB.name <- hmdbdatabase[, 2]

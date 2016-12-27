@@ -24,9 +24,6 @@ Return a MZfinderData contains MetFlowData,feature.remove, qc.remove and subject
 \description{
 Find feature and sample outliers according to MV/zero ratio.
 }
-\details{
-Find feature and sample outliers according to MV/zero ratio.
-}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

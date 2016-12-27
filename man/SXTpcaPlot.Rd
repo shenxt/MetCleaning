@@ -4,13 +4,12 @@
 \alias{SXTpcaPlot}
 \title{SXTpcaPlot}
 \usage{
-SXTpcaPlot(SXTpcaData = SXTpcaData, plot = "score",
-  loading.plot.name = "PCA loading", score.plot.name = "PCA score",
-  color = c("palegreen", "royalblue", "firebrick1", "tan1", "deepskyblue",
-  "cyan", "gray48", "chocolate4", "darkmagenta", "indianred1"), shape = c(17,
-  19, 15, 18, 2, 8, 11, 13, 12, 14), cexlab = 1.3, cexaxis = 1.3,
-  cexa = 1.3, cextext = 1, width = 7, height = 7, text = FALSE,
-  ellipse = FALSE, path = NULL)
+SXTpcaPlot(SXTpcaData, plot = "score", loading.plot.name = "PCA loading",
+  score.plot.name = "PCA score", color = c("palegreen", "royalblue",
+  "firebrick1", "tan1", "deepskyblue", "cyan", "gray48", "chocolate4",
+  "darkmagenta", "indianred1"), shape = c(17, 19, 15, 18, 2, 8, 11, 13, 12,
+  14), cexlab = 1.3, cexaxis = 1.3, cexa = 1.3, cextext = 1,
+  width = 7, height = 7, text = FALSE, ellipse = FALSE, path = NULL)
 }
 \arguments{
 \item{SXTpcaData}{SXTpcaPlot subject for drawing plots.}
@@ -24,6 +23,18 @@ SXTpcaPlot(SXTpcaData = SXTpcaData, plot = "score",
 \item{color}{The colors you want to use in different classs.}
 
 \item{shape}{The shapes you want to use in different classes.}
+
+\item{cexlab}{Cex of lab.}
+
+\item{cexaxis}{Cex of axis.}
+
+\item{cexa}{Cex of point.}
+
+\item{cextext}{Cex of text.}
+
+\item{width}{Width of plot.}
+
+\item{height}{height of plot.}
 
 \item{text}{Add text or not? Default is FALSE.}
 

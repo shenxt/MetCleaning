@@ -10,7 +10,7 @@
 #' @seealso \code{\link{SubjectOutlierFilter}}
 
 #subject outlier filtering according to zero ratio and PCA
-SubjectOutlierFinder <- function(MetFlowData = MetFlowData,
+SubjectOutlierFinder <- function(MetFlowData,
                                  CI = 0.95,
                                  path = NULL){
   options(warn = -1)

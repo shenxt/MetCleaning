@@ -5,7 +5,9 @@
 #' @param data data for PLS permutation test.
 #' @param log.scale log transformation.
 #' @param info infomation for group.
-#' @param scale.method Whihch scale methd you want to use? "auto" or "pareto", defaulit is "auto".
+#' @param repeats Repeat number.
+#' @param ncomp Princilpe component number.
+#' @param scalemethod Whihch scale methd you want to use? "auto" or "pareto", defaulit is "auto".
 #' @param path Work directory.
 #' @return permutation test plot: Permutation test plot.
 

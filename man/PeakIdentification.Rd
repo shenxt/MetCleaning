@@ -4,7 +4,7 @@
 \alias{PeakIdentification}
 \title{PeakIdentification}
 \usage{
-PeakIdentification(MetFlowData = MetFlowData, path = "peak identification",
+PeakIdentification(MetFlowData, path = "peak identification",
   identification.information.from = "XCMS", peak.number = NULL,
   mz.tolerance = 30, rt.tolerance = 180, re.match = TRUE)
 }
@@ -13,9 +13,15 @@ PeakIdentification(MetFlowData = MetFlowData, path = "peak identification",
 
 \item{path}{Work directory.}
 
-\item{mz.tolerance:}{mz tolerance for ms1 and ms2 data matching.}
+\item{identification.information.from}{Default is "XCMS".}
 
-\item{rt.tolerance:}{RT tolerance for ms1 and ms2 data matching.}
+\item{peak.number}{Peak number.}
+
+\item{mz.tolerance}{mz tolerance for ms1 and ms2 data matching.}
+
+\item{rt.tolerance}{RT tolerance for ms1 and ms2 data matching.}
+
+\item{re.match}{Default is TRUE.}
 }
 \value{
 Return a MetFlowData which has been added peak identification

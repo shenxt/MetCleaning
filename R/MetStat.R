@@ -3,7 +3,38 @@
 #' data statistical analysis.
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
-#' @param parameters All the parameters can be found in others functions.
+#' @param MetFlowData MetFlowData.
+#' @param new.group New group information or not?
+#' @param rsd.cutoff RSD cutoff.
+#' @param log.scale Data transformation method. Default is FALSE.
+#' @param QC Use qc data for PCA analyis or not? Default is FALSE.
+#' @param scale.method Which scale methd you want to use? "auto" or "pareto",
+#' defaulit is "auto".
+#' @param xlim1 x axis limitation. Default is NULL.
+#' @param ylim1 y axis limitation. Default is NULL.
+#' @param plsmethod Default is "plsreg".
+#' @param fc Default is TRUE.
+#' @param to Which the ratio you want? default is case/control.
+#' @param ratio Which ratio you want to use to calculate fold change. median ot mean.
+#' @param test.method Which test you want to use? "t" means stutent t test and "wilcox" mean wilcoxon test.
+#' @param adjust.method p value correction method. See p.adjust function.
+#' @param foldchange which foldchange information your want to use?
+#' @param p which p value information your want to use?
+#' @param foldchange.cutoff The cutoff value of fold change.
+#' @param p.cutoff The cutoff of p value.
+#' @param vip.cutoff The cutoff of VIP value.
+#' @param vip VIP.
+#' @param x x axis factor.
+#' @param y y axis factor.
+#' @param z z axis factor.
+#' @param col Colour for markers and non-markers.
+#' @param variable "all" or "marker" for heatmap.
+#' @param Group group for heatmap.
+#' @param beeswarm Do you want draw beeswarm on the boxplot? Deafult is TRUE.
+#' @param pls.analysis Do PLS or not.
+#' @param pca.analysis Do PCA or not.
+#' @param uni.test Do univariate test or not.
+#' @param path The directory you want to write results.
 #' @return All the results can be got form other functions and instruction.
 #' @export
 #' @details The manual of MetCleaning can be found in \href{https://github.com/jaspershen/MetCleaning/blob/master/vignettes/MetCleaning.pdf}{github}
@@ -28,7 +59,7 @@
 #'ylim1 = c(-40, 40))
 #' }
 
-MetStat <- function(MetFlowData = MetFlowData,
+MetStat <- function(MetFlowData,
                     new.group = TRUE,
                     rsd.cutoff = 30,
                     #transformation para

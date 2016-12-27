@@ -1,5 +1,4 @@
-#' Find feature and sample outliers according to MV/zero ratio.
-#'
+
 #' @title MZfinder
 #' @description Find feature and sample outliers according to MV/zero ratio.
 #' @author Xiaotao Shen

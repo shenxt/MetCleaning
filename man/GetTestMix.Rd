@@ -11,6 +11,8 @@ GetTestMix(data = "Test mixture.csv", test.mix.is = "test.mix.is.csv",
 \arguments{
 \item{data}{data name for text mixture.}
 
+\item{test.mix.is}{Test mixtrue data.}
+
 \item{test.mix.info}{Internal standards information in test information.}
 
 \item{mzerror}{mz tolerance for IS.}

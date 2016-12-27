@@ -4,10 +4,10 @@
 \alias{MetStat}
 \title{MetStat}
 \usage{
-MetStat(MetFlowData = MetFlowData, new.group = TRUE, rsd.cutoff = 30,
-  log.scale = FALSE, QC = TRUE, scale.method = "auto", xlim1 = NULL,
-  ylim1 = NULL, plsmethod = "plsr", fc = TRUE, to = c("case",
-  "control"), ratio = "median", test.method = "t", adjust.method = "fdr",
+MetStat(MetFlowData, new.group = TRUE, rsd.cutoff = 30, log.scale = FALSE,
+  QC = TRUE, scale.method = "auto", xlim1 = NULL, ylim1 = NULL,
+  plsmethod = "plsr", fc = TRUE, to = c("case", "control"),
+  ratio = "median", test.method = "t", adjust.method = "fdr",
   foldchange = "foldchange", p = "p", vip = "vip",
   foldchange.cutoff = c(4/3, 3/4), p.cutoff = 0.05, vip.cutoff = 0,
   x = "foldchange", y = "p", z = "vip", col = c("black", "firebrick1"),
@@ -16,7 +16,68 @@ MetStat(MetFlowData = MetFlowData, new.group = TRUE, rsd.cutoff = 30,
   path = NULL)
 }
 \arguments{
-\item{parameters}{All the parameters can be found in others functions.}
+\item{MetFlowData}{MetFlowData.}
+
+\item{new.group}{New group information or not?}
+
+\item{rsd.cutoff}{RSD cutoff.}
+
+\item{log.scale}{Data transformation method. Default is FALSE.}
+
+\item{QC}{Use qc data for PCA analyis or not? Default is FALSE.}
+
+\item{scale.method}{Which scale methd you want to use? "auto" or "pareto",
+defaulit is "auto".}
+
+\item{xlim1}{x axis limitation. Default is NULL.}
+
+\item{ylim1}{y axis limitation. Default is NULL.}
+
+\item{plsmethod}{Default is "plsreg".}
+
+\item{fc}{Default is TRUE.}
+
+\item{to}{Which the ratio you want? default is case/control.}
+
+\item{ratio}{Which ratio you want to use to calculate fold change. median ot mean.}
+
+\item{test.method}{Which test you want to use? "t" means stutent t test and "wilcox" mean wilcoxon test.}
+
+\item{adjust.method}{p value correction method. See p.adjust function.}
+
+\item{foldchange}{which foldchange information your want to use?}
+
+\item{p}{which p value information your want to use?}
+
+\item{vip}{VIP.}
+
+\item{foldchange.cutoff}{The cutoff value of fold change.}
+
+\item{p.cutoff}{The cutoff of p value.}
+
+\item{vip.cutoff}{The cutoff of VIP value.}
+
+\item{x}{x axis factor.}
+
+\item{y}{y axis factor.}
+
+\item{z}{z axis factor.}
+
+\item{col}{Colour for markers and non-markers.}
+
+\item{variable}{"all" or "marker" for heatmap.}
+
+\item{Group}{group for heatmap.}
+
+\item{beeswarm}{Do you want draw beeswarm on the boxplot? Deafult is TRUE.}
+
+\item{pls.analysis}{Do PLS or not.}
+
+\item{pca.analysis}{Do PCA or not.}
+
+\item{uni.test}{Do univariate test or not.}
+
+\item{path}{The directory you want to write results.}
 }
 \value{
 All the results can be got form other functions and instruction.

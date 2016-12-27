@@ -4,12 +4,25 @@
 #' @description Normalize data using different normalization methods.
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
-#' @param normalization.method svr: SVR normalization; loess: LOESS normalization; all: SVR&LOESS.Default is svr.
+#' @param filename Default is "Metabolomics data".
 #' @param polarity The polarity of data, default is "none".
+#' @param minfrac.qc Default is 0.
+#' @param minfrac.sample Default is 0.
+#' @param filter Default is "no".
+#' @param normalization.method svr: SVR normalization; loess: LOESS normalization; all: SVR&LOESS.Default is svr.
 #' @param optimization Parameter optimization or not?.Default is TRUE.
-#' @param begin_end_step begin The begin of span to optimize. end: The end of span to optimize. step: The step for begin to end. begin should be set bigger if the QC number is small.
-#' @param multiple If multiple = 1, the svr will be built using injection order. If multiple >= 2, the svr is built using top mutiple peaks correlated peaks. For tof data, default is 5, for mrm data, default is 1.
+#' @param begin The begin of span to optimize.
+#' @param end The end of span to optimize.
+#' @param step The step for begin to end.
+#' @param multiple If multiple = 1, the svr will be built using injection order.
+#' If multiple >= 2, the svr is built using top mutiple peaks correlated peaks.
+#'  For tof data, default is 5, for mrm data, default is 1.
+#' @param threads Number of thread.
+#' @param rerun.loess Default is TRUE.
+#' @param rerun.svr Default is TRUE.
 #' @param peakplot Draw peakplot for each peak or nor? Default is TRUE.
+#' @param datastyle Default is "tof".
+#' @param user Default is "other".
 #' @param path Directory
 #' @param dimension1 The data after normalization is given dimension or not. Defaulte is TRUE.
 #' @return peakplot: A folder contains all the peaks plot before and sfter SVR normalization.

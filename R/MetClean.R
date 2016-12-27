@@ -3,7 +3,41 @@
 #'cleaning.
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
-#' @param parameters All the parameters can be found in others functions.
+#' @param data Data name for analysis. Default is "data.csv". Data are csv
+#' format from XCMS, MZmine or other software.
+#'  Please see the demo data in example.
+#' @param sample.information Sample information name for analysis. Default is
+#' "sample.information.csv". Column 1 is sample.name, column 2 is
+#' injection.order, column 3 is class ("Subject" or "QC"), column 4 is
+#' batch information, column 5 is group ("control" or "case"), other columns
+#' are information for sample. Please see demo data in example.
+#' @param polarity The polarity of data, "positive", "negative"" or "none"",
+#' default is positive.
+#' @param hasQC The data has QC samples or not? Default is "yes".
+#' @param hasIS The data has IS or not? Default is "no".
+#' @param obs.mv.cutoff The observation MV ratio cutoff.
+#' @param var.mv.cutoff The variable MV ratio cutoff.
+#' @param obs.zero.cutoff The observation zero ratio cutoff.
+#' @param var.zero.cutoff The variable zero ratio cutoff.
+#' @param imputation.method Which imputation method you want to use? It
+#' contains "knn", "rf" (missForest), "mean", "median", "zero", "minium",
+#' "bpca" (BPCA), "svd" (SVD) and "ppca" (PPCA). Default is "knn". The detial of
+#' this method can be find in detail and reference paperes.
+#' @param k See ?impute.knn
+#' @param rowmax See ?impute.knn
+#' @param colmax See ?impute.knn
+#' @param maxp See ?impute.knn
+#' @param method Normalization method, mean, median, total svr or loess,
+#' default is svr. Please see the details.
+#' @param threads Thread number.
+#' @param hmdb.matching Default is FALSE.
+#' @param mass.tolerance mz tolerance.
+#' @param show Default is 5.
+#' @param mz.tolerance mz tolerance for ms1 and ms2 data matching.
+#' @param rt.tolerance RT tolerance for ms1 and ms2 data matching.
+#' @param met.plot Scatter of peak.
+#' @param path Work directory.
+#' @param worklist.from Default is "manual".
 #' @return  All the results can be got form other functions and instruction.
 #' @export
 #' @details The manual of MetCleaning can be found in \href{https://github.com/jaspershen/MetCleaning/blob/master/vignettes/MetCleaning.pdf}{github}
@@ -54,7 +88,7 @@ MetClean <- function(#ImportData para
                    method = "svr",
                    threads = 2,
                    #PeakIdentification
-                   hmdb.matching = TRUE,
+                   hmdb.matching = FALSE,
                    show = 5,
                    mass.tolerance = 30,
                    mz.tolerance = 30,

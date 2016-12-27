@@ -3,19 +3,26 @@
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
 #' @param MetFlowData MetFlowData.
-#' @param color Color for different class.
-#' @param shape Shape for different class.
-#' @param scale.method Whihch scale methd you want to use? "auto" or "pareto",
+#' @param log.scale Which transformation methd you want to use? 2, 10  or "e",
+#' defaulit is FALSE mean don't transformation.
+#' @param scalemethod Whihch scale methd you want to use? "auto" or "pareto",
 #' defaulit is "auto".
+#' @param plsmethod Default is "plsreg".
 #' @param path Work directory.
+#' @param width width of plot.
+#' @param height height of plot.
 #' @param text Add text in PCA score plot or not? Deefault is FALSE.
 #' @param ellipse Add ellipse in PCA score plot or not? Deefault is TRUE.
-#' @param xlim1_ylim1 The x and y axis limitation. Default is NULL.
+#' @param color Color for different class.
+#' @param shape Shape for different class.
+#' @param cexa cex.
+#' @param xlim1 x axis limitation. Default is NULL.
+#' @param ylim1 y axis limitation. Default is NULL.
 #' @return PLS score plot: PLS score plot.
 #' @return permutation test plot: Permutation test plot.
 #' @export
 
-PLSanalysis <- function(MetFlowData = MetFlowData,
+PLSanalysis <- function(MetFlowData,
                         #used data
                         log.scale = 10,
                         scalemethod = "auto",

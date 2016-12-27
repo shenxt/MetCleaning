@@ -3,14 +3,14 @@
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
 #' @param MetFlowData MetFlowData.
-#' @param path The directory you want to write results.
 #' @param x x axis factor.
 #' @param y y axis factor.
 #' @param z z axis factor.
+#' @param col Colour for markers and non-markers.
 #' @param foldchange.cutoff Fold chagne cutoff.
 #' @param p.cutoff p value cutoff.
 #' @param vip.cutoff VIP value cutoff.
-#' @param col Colour for markers and non-markers.
+#' @param path The directory you want to write results.
 #' @return volcano plot.
 #' @export
 

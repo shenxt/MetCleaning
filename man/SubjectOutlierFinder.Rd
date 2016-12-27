@@ -4,7 +4,7 @@
 \alias{SubjectOutlierFinder}
 \title{SubjectOutlierFinder}
 \usage{
-SubjectOutlierFinder(MetFlowData = MetFlowData, CI = 0.95, path = NULL)
+SubjectOutlierFinder(MetFlowData, CI = 0.95, path = NULL)
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}

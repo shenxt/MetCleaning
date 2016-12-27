@@ -14,22 +14,55 @@ SXTMVimputation(data, method = "knn", k = 10, rowmax = 0.5,
 \arguments{
 \item{data}{Data to be imputated, column is sample and row is feature.}
 
-\item{imputation.method}{Which imputation method you want to use?}
+\item{method}{Which imputation method you want to use?}
 
-\item{knn}{You can see them from help of impute package: impute.knn.}
+\item{k}{See ?impute.knn}
 
-\item{missForest}{You can see them from help of missForest package: missForest.}
+\item{rowmax}{See ?impute.knn}
 
-\item{BPCA_PPCA_SVD}{You can see them from help of pcaMethods: bpca, ppca, svd.}
+\item{colmax}{See ?impute.knn}
+
+\item{maxp}{See ?impute.knn}
+
+\item{rng.seed}{See ?impute.knn}
+
+\item{maxiter}{See ?missForest}
+
+\item{ntree}{See ?missForest}
+
+\item{decreasing}{See ?missForest}
+
+\item{mtry}{See ?missForest}
+
+\item{replace}{See ?missForest}
+
+\item{classwt}{See ?missForest}
+
+\item{cutoff}{See ?missForest}
+
+\item{strata}{See ?missForest}
+
+\item{sampsize}{See ?missForest}
+
+\item{nodesize}{See ?missForest}
+
+\item{maxnodes}{See ?missForest}
+
+\item{xtrue}{See ?missForest}
+
+\item{parallelize}{See ?missForest}
+
+\item{nPcs}{See ?bpca}
+
+\item{maxSteps}{See ?bpca}
+
+\item{threshold}{See ?bpca}
 }
 \value{
 Return a data whose MVs have been imputated.
 }
 \description{
 Impute MV in data.
-}
-\details{
-Impute MV in data..
 }
 \author{
 Xiaotao Shen

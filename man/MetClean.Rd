@@ -9,12 +9,69 @@ MetClean(data = "data.csv", sample.information = "sample.information.csv",
   obs.mv.cutoff = 0.5, var.mv.cutoff = 0.5, imputation.method = "knn",
   k = 10, rowmax = 0.5, colmax = 0.5, maxp = 1500,
   obs.zero.cutoff = 0.5, var.zero.cutoff = 0.5, method = "svr",
-  threads = 2, hmdb.matching = TRUE, show = 5, mass.tolerance = 30,
+  threads = 2, hmdb.matching = FALSE, show = 5, mass.tolerance = 30,
   mz.tolerance = 30, rt.tolerance = 180, met.plot = TRUE, path = NULL,
   worklist.from = "manual")
 }
 \arguments{
-\item{parameters}{All the parameters can be found in others functions.}
+\item{data}{Data name for analysis. Default is "data.csv". Data are csv
+format from XCMS, MZmine or other software.
+ Please see the demo data in example.}
+
+\item{sample.information}{Sample information name for analysis. Default is
+"sample.information.csv". Column 1 is sample.name, column 2 is
+injection.order, column 3 is class ("Subject" or "QC"), column 4 is
+batch information, column 5 is group ("control" or "case"), other columns
+are information for sample. Please see demo data in example.}
+
+\item{polarity}{The polarity of data, "positive", "negative"" or "none"",
+default is positive.}
+
+\item{hasIS}{The data has IS or not? Default is "no".}
+
+\item{hasQC}{The data has QC samples or not? Default is "yes".}
+
+\item{obs.mv.cutoff}{The observation MV ratio cutoff.}
+
+\item{var.mv.cutoff}{The variable MV ratio cutoff.}
+
+\item{imputation.method}{Which imputation method you want to use? It
+contains "knn", "rf" (missForest), "mean", "median", "zero", "minium",
+"bpca" (BPCA), "svd" (SVD) and "ppca" (PPCA). Default is "knn". The detial of
+this method can be find in detail and reference paperes.}
+
+\item{k}{See ?impute.knn}
+
+\item{rowmax}{See ?impute.knn}
+
+\item{colmax}{See ?impute.knn}
+
+\item{maxp}{See ?impute.knn}
+
+\item{obs.zero.cutoff}{The observation zero ratio cutoff.}
+
+\item{var.zero.cutoff}{The variable zero ratio cutoff.}
+
+\item{method}{Normalization method, mean, median, total svr or loess,
+default is svr. Please see the details.}
+
+\item{threads}{Thread number.}
+
+\item{hmdb.matching}{Default is FALSE.}
+
+\item{show}{Default is 5.}
+
+\item{mass.tolerance}{mz tolerance.}
+
+\item{mz.tolerance}{mz tolerance for ms1 and ms2 data matching.}
+
+\item{rt.tolerance}{RT tolerance for ms1 and ms2 data matching.}
+
+\item{met.plot}{Scatter of peak.}
+
+\item{path}{Work directory.}
+
+\item{worklist.from}{Default is "manual".}
 }
 \value{
 All the results can be got form other functions and instruction.

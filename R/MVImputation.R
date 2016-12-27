@@ -7,9 +7,26 @@
 #' contains "knn", "rf" (missForest), "mean", "median", "zero", "minium",
 #' "bpca" (BPCA), "svd" (SVD) and "ppca" (PPCA). Default is "knn". The detial of
 #' this method can be find in detail and reference paperes.
-#' @param knn You can see them from help of impute package: impute.knn.
-#' @param missForest You can see them from help of missForest package: missForest.
-#' @param BPCA_PPCA_SVD You can see them from help of pcaMethods: bpca, ppca, svd.
+#' @param k See ?impute.knn
+#' @param rowmax See ?impute.knn
+#' @param colmax See ?impute.knn
+#' @param maxp See ?impute.knn
+#' @param rng.seed See ?impute.knn
+#' @param maxiter See ?missForest
+#' @param ntree See ?missForest
+#' @param decreasing See ?missForest
+#' @param replace See ?missForest
+#' @param classwt See ?missForest
+#' @param cutoff See ?missForest
+#' @param strata See ?missForest
+#' @param sampsize See ?missForest
+#' @param nodesize See ?missForest
+#' @param maxnodes See ?missForest
+#' @param xtrue See ?missForest
+#' @param parallelize See ?missForest
+#' @param nPcs See ?bpca
+#' @param maxSteps See ?bpca
+#' @param threshold See ?bpca
 #' @return Return a MetFlowData whose MVs have been imputated.
 #' @export
 #' @seealso The MV imputation methods can see in

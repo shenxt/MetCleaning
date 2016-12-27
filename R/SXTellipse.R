@@ -2,7 +2,14 @@
 #' @description Give a SXTellipseData.
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
-#' @param parameters All the parameters can see help of ellipse.
+#' @param x see?ellipse.
+#' @param scale see?ellipse.
+#' @param centre see?ellipse.
+#' @param level see?ellipse.
+#' @param t see?ellipse.
+#' @param which see?ellipse.
+#' @param npoints see?ellipse.
+#' @param ... see?ellipse.
 #' @return Return a SXTellipseData
 #' @seealso \code{\link[ellipse]{ellipse}}
 

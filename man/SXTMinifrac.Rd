@@ -12,11 +12,11 @@ SXTMinifrac(..., filter.item = "mv", filter.rule = "intersect",
 
 \item{filter.item}{The item you want to filter. MV (missing values) or zero. Default is MV.}
 
+\item{filter.rule}{For feature filtering, which rule you want to use, intersect or union. Default is intersect.}
+
 \item{minifrac.variable}{The cutoff for variable. Default is 0.5.}
 
-\item{filter.rule:}{For feature filtering, which rule you want to use, intersect or union. Default is intersect.}
-
-\item{minifrac.observation:}{The cutoff for observation. Default is 0.5.}
+\item{minifrac.observation}{The cutoff for observation. Default is 0.5.}
 }
 \value{
 Return a SXTMinifracData.

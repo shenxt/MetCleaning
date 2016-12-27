@@ -27,6 +27,8 @@ default is svr. Please see the details.}
 
 \item{step}{Step of span.}
 
+\item{multiple}{See ?SXTsvrNor.}
+
 \item{threads}{Thread number.}
 
 \item{rerun.loess}{Rerun loess or not.}
@@ -38,8 +40,6 @@ default is svr. Please see the details.}
 \item{datastyle}{Default is "tof".}
 
 \item{user}{Default is "other".}
-
-\item{multipe}{See ?SXTsvrNor.}
 }
 \value{
 The normalization results can be got from help of

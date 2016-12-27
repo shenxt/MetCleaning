@@ -11,7 +11,7 @@
 #' @param begin Begin of span.
 #' @param end End of span.
 #' @param step Step of span.
-#' @param multipe See ?SXTsvrNor.
+#' @param multiple See ?SXTsvrNor.
 #' @param threads Thread number.
 #' @param rerun.loess Rerun loess or not.
 #' @param rerun.svr Rerun SVR or not.

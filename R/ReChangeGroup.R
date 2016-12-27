@@ -4,13 +4,13 @@
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
 #' @param MetFlowData MetFlowData.
-#' @param new.groupNew Group information name. Default is new.group.csv. It can
+#' @param new.group New Group information name. Default is new.group.csv. It can
 #'  be use the sample.information which is only changed the group column.
 #' @return Return a standard MetProcesser data which is changed the
 #' group informatio.
 #' @export
 
-ReChangeGroup <- function(MetFlowData = MetFlowData,
+ReChangeGroup <- function(MetFlowData,
                           new.group = "new.group.csv") {
   # browser()
   new.group <- read.csv(new.group, stringsAsFactors = F, check.names = FALSE)

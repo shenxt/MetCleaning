@@ -11,7 +11,7 @@
 #' @export
 
 ##find outlier functions using SXTpcaData
-SXTpcaFindOutlier <- function(SXTpcaData = SXTpcaData,
+SXTpcaFindOutlier <- function(SXTpcaData,
                               CI = 0.95,
                               output.plot = TRUE,
                               plot.name = "PCA score plot for outliers",

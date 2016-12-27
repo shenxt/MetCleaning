@@ -6,6 +6,7 @@
 #' \email{shenxt@@sioc.ac.cn}
 #' @param data data name for text mixture.
 #' @param test.mix.info Internal standards information in test information.
+#' @param test.mix.is Test mixtrue data.
 #' @param rterror rt tolerance for IS.
 #' @param mzerror mz tolerance for IS.
 #' @param rt.unit.is.second RT's unit is second or not? Default is T.

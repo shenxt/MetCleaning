@@ -5,14 +5,17 @@
 #' \email{shenxt@@sioc.ac.cn}
 #' @param MetFlowData MetFlowData.
 #' @param path Work directory.
-#' @param mz.tolerance: mz tolerance for ms1 and ms2 data matching.
-#' @param rt.tolerance: RT tolerance for ms1 and ms2 data matching.
+#' @param identification.information.from Default is "XCMS".
+#' @param peak.number Peak number.
+#' @param mz.tolerance mz tolerance for ms1 and ms2 data matching.
+#' @param rt.tolerance RT tolerance for ms1 and ms2 data matching.
+#' @param re.match Default is TRUE.
 #' @return Return a MetFlowData which has been added peak identification
 #' information into tags.
 #' @export
 
 ### PeakIdentification
-PeakIdentification <- function(MetFlowData = MetFlowData,
+PeakIdentification <- function(MetFlowData,
                                path = "peak identification",
                                identification.information.from = "XCMS",
                                ##parameters for matching

@@ -12,21 +12,45 @@ MetNormalizer(filename = "Metabolomics data", polarity = "none",
   dimension1 = TRUE, user = "other", path = NULL)
 }
 \arguments{
+\item{filename}{Default is "Metabolomics data".}
+
 \item{polarity}{The polarity of data, default is "none".}
+
+\item{minfrac.qc}{Default is 0.}
+
+\item{minfrac.sample}{Default is 0.}
+
+\item{filter}{Default is "no".}
 
 \item{normalization.method}{svr: SVR normalization; loess: LOESS normalization; all: SVR&LOESS.Default is svr.}
 
 \item{optimization}{Parameter optimization or not?.Default is TRUE.}
 
-\item{multiple}{If multiple = 1, the svr will be built using injection order. If multiple >= 2, the svr is built using top mutiple peaks correlated peaks. For tof data, default is 5, for mrm data, default is 1.}
+\item{begin}{The begin of span to optimize.}
+
+\item{end}{The end of span to optimize.}
+
+\item{step}{The step for begin to end.}
+
+\item{multiple}{If multiple = 1, the svr will be built using injection order.
+If multiple >= 2, the svr is built using top mutiple peaks correlated peaks.
+ For tof data, default is 5, for mrm data, default is 1.}
+
+\item{threads}{Number of thread.}
+
+\item{rerun.loess}{Default is TRUE.}
+
+\item{rerun.svr}{Default is TRUE.}
 
 \item{peakplot}{Draw peakplot for each peak or nor? Default is TRUE.}
 
+\item{datastyle}{Default is "tof".}
+
 \item{dimension1}{The data after normalization is given dimension or not. Defaulte is TRUE.}
 
-\item{path}{Directory}
+\item{user}{Default is "other".}
 
-\item{begin_end_step}{begin The begin of span to optimize. end: The end of span to optimize. step: The step for begin to end. begin should be set bigger if the QC number is small.}
+\item{path}{Directory}
 }
 \value{
 peakplot: A folder contains all the peaks plot before and sfter SVR normalization.

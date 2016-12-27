@@ -4,9 +4,9 @@
 #' \email{shenxt@@sioc.ac.cn}
 #' @param ... Datases you want to remove features and samples.
 #' @param filter.item The item you want to filter. MV (missing values) or zero. Default is MV.
-#' @param filter.rule: For feature filtering, which rule you want to use, intersect or union. Default is intersect.
+#' @param filter.rule For feature filtering, which rule you want to use, intersect or union. Default is intersect.
 #' @param minifrac.variable The cutoff for variable. Default is 0.5.
-#' @param minifrac.observation: The cutoff for observation. Default is 0.5.
+#' @param minifrac.observation The cutoff for observation. Default is 0.5.
 #' @return Return a SXTMinifracData.
 #' @examples
 #' \dontrun{

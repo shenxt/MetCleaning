@@ -4,14 +4,14 @@
 \alias{QCOutlierFinder}
 \title{QCOutlierFinder}
 \usage{
-QCOutlierFinder(MetFlowData = MetFlowData, CI = 0.95, path = NULL)
+QCOutlierFinder(MetFlowData, CI = 0.95, path = NULL)
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}
 
 \item{CI}{Confidence interva.}
 
-\item{Directory}{Work directory.}
+\item{path}{Work directory.}
 }
 \value{
 QCOutlierFinderData contains MetFlowData and QC outlier index (obs.remove).
