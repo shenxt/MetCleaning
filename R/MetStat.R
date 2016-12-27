@@ -102,9 +102,9 @@ MetStat <- function(MetFlowData,
   options(warn = -1)
   # browser()
   if (is.null(path)) {
-    path = getwd()
+    path <- getwd()
   } else{
-    path <- dir.create(path)
+    dir.create(path)
   }
 
   path.inter <- file.path(path, "intermediate")
