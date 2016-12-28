@@ -311,11 +311,13 @@ MetClean <- function(#ImportData para
   }
   }
 
+  if(zero.filter) {
   if (length(batch) > 1) {
     #batch effect
     BatchEffectOverview(MetFlowData.before = met.data.zero.filter,
                         MetFlowData.after = met.data,
                         path = file.path(path, "8Batch effect"))
+  }
 
     if(met.plot) {
       cat("---------------------------------------------------------------------\n")
@@ -327,12 +329,14 @@ MetClean <- function(#ImportData para
     }
   }
 
+  if(zero.filter) {
   cat("---------------------------------------------------------------------\n")
   cat("RSD overview...\n")
   #RSD分布
   RSDoverview(MetFlowData.before = met.data.zero.filter,
               MetFlowData.after = met.data,
               path = file.path(path,"10RSD overview"))
+  }
 
   #data overview
   DataOverview(MetFlowData = met.data,
