@@ -32,6 +32,7 @@ License: GPL-2 | file LICENSE
 URL: https://github.com/jaspershen/MetCleaning
 RoxygenNote: 5.0.1
 Suggests: knitr,
-    rmarkdown
+    rmarkdown,
+    BiocStyle
 VignetteBuilder: knitr
 Note:

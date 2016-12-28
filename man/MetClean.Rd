@@ -5,13 +5,15 @@
 \title{MetClean}
 \usage{
 MetClean(data = "data.csv", sample.information = "sample.information.csv",
-  polarity = "positive", hasIS = "no", hasQC = "yes",
+  polarity = "positive", hasIS = "no", hasQC = "yes", mv.filter = TRUE,
   obs.mv.cutoff = 0.5, var.mv.cutoff = 0.5, imputation.method = "knn",
-  k = 10, rowmax = 0.5, colmax = 0.5, maxp = 1500,
-  obs.zero.cutoff = 0.5, var.zero.cutoff = 0.5, method = "svr",
-  threads = 2, hmdb.matching = FALSE, show = 5, mass.tolerance = 30,
-  mz.tolerance = 30, rt.tolerance = 180, met.plot = TRUE, path = NULL,
-  worklist.from = "manual")
+  k = 10, rowmax = 0.5, colmax = 0.5, maxp = 1500, zero.filter = TRUE,
+  obs.zero.cutoff = 0.5, var.zero.cutoff = 0.5, normalization = TRUE,
+  method = "svr", threads = 2, hmdb.matching = FALSE, show = 5,
+  mass.tolerance = 30, mz.tolerance = 30, rt.tolerance = 180,
+  met.plot = TRUE, path = NULL, worklist.from = "manual",
+  qc.outlier.filter = TRUE, subject.outlier.filter = TRUE,
+  integration = TRUE)
 }
 \arguments{
 \item{data}{Data name for analysis. Default is "data.csv". Data are csv
@@ -31,6 +33,8 @@ default is positive.}
 
 \item{hasQC}{The data has QC samples or not? Default is "yes".}
 
+\item{mv.filter}{Filter missing values or not? Default is TRUE.}
+
 \item{obs.mv.cutoff}{The observation MV ratio cutoff.}
 
 \item{var.mv.cutoff}{The variable MV ratio cutoff.}
@@ -48,9 +52,13 @@ this method can be find in detail and reference paperes.}
 
 \item{maxp}{See ?impute.knn}
 
+\item{zero.filter}{Filter zero values or not? Default is TRUE.}
+
 \item{obs.zero.cutoff}{The observation zero ratio cutoff.}
 
 \item{var.zero.cutoff}{The variable zero ratio cutoff.}
+
+\item{normalization}{Data normalization or not? Default is TRUE.}
 
 \item{method}{Normalization method, mean, median, total svr or loess,
 default is svr. Please see the details.}
@@ -72,6 +80,12 @@ default is svr. Please see the details.}
 \item{path}{Work directory.}
 
 \item{worklist.from}{Default is "manual".}
+
+\item{qc.outlier.filter}{Filter QC outliers or not? Default is TRUE.}
+
+\item{subject.outlier.filter}{Filter subject outliers or not? Default is TRUE.}
+
+\item{integration}{Data integration or not? Default is TRUE.}
 }
 \value{
 All the results can be got form other functions and instruction.

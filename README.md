@@ -4,7 +4,7 @@
 
 ## **Installation and help**
 ******************************************
-### *MetCleaning* is published in github [(link)](https://github.com/jaspershen/MetCleaning). So you can install it via to github.
+### *MetCleaning* is published in github [(link)](https://github.com/jaspershen/MetCleaning). So you can install it via to github. 
 
 ```
 ##pcaMethods and impute should be installed form bioconductor
@@ -29,3 +29,4 @@ source("http://bioconductor.org/biocLite.R")
 2. Fix some bugs to improve speed.(20161219)
 3. Add the check.names = FALSE (argument) in all the read.csv function. (20161221)
 4. New feature for ms1 and ms2 matching only.
+5. Add the step selection function n **MetClean**.
