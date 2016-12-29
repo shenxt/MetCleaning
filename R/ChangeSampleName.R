@@ -28,7 +28,7 @@ ChangeSampleName <- function(data = "data.csv",
            qc.has.order = FALSE,
            output = TRUE,
            path = NULL) {
-  browser()
+  # browser()
 if (is.null(path)) path <- getwd()
   data <- read.csv(file.path(path,data), stringsAsFactors = F, check.names = FALSE)
   sample.information <- read.csv(file.path(path,sample.information), stringsAsFactors = F, check.names = FALSE)

@@ -15,6 +15,12 @@
 #' default is positive.
 #' @param hasQC The data has QC samples or not? Default is "yes".
 #' @param hasIS The data has IS or not? Default is "no".
+#' @param mv.filter Filter missing values or not? Default is TRUE.
+#' @param zero.filter Filter zero values or not? Default is TRUE.
+#' @param normalization Data normalization or not? Default is TRUE.
+#' @param integration Data integration or not? Default is TRUE.
+#' @param qc.outlier.filter Filter QC outliers or not? Default is TRUE.
+#' @param subject.outlier.filter Filter subject outliers or not? Default is TRUE.
 #' @param obs.mv.cutoff The observation MV ratio cutoff.
 #' @param var.mv.cutoff The variable MV ratio cutoff.
 #' @param obs.zero.cutoff The observation zero ratio cutoff.
@@ -73,6 +79,7 @@ MetClean <- function(#ImportData para
                    hasIS = "no",
                    hasQC = "yes",
                    #MVFilter para
+                   mv.filter = TRUE,
                    obs.mv.cutoff = 0.5,
                    var.mv.cutoff = 0.5,
                    #MVimputation
@@ -82,9 +89,11 @@ MetClean <- function(#ImportData para
                    colmax = 0.5,
                    maxp = 1500,
                    #ZeroFilter para
+                   zero.filter = TRUE,
                    obs.zero.cutoff = 0.5,
                    var.zero.cutoff = 0.5,
                    #DataNormalization
+                   normalization = TRUE,
                    method = "svr",
                    threads = 2,
                    #PeakIdentification
@@ -96,7 +105,12 @@ MetClean <- function(#ImportData para
                    #DataOverview para
                    met.plot = TRUE,
                    path = NULL,
-                   worklist.from = "manual"){
+                   worklist.from = "manual",
+                   #other slection
+                   qc.outlier.filter = TRUE,
+                   subject.outlier.filter = TRUE,
+                   integration = TRUE
+                   ){
 
   # browser()
   if (is.null(path)) {
@@ -139,6 +153,7 @@ MetClean <- function(#ImportData para
              path = file.path(path,"1MV overview"),
              what = "mv")
 
+  if(mv.filter) {
   cat("---------------------------------------------------------------------\n")
   cat("Missing values filter...\n")
   #对缺失值进行筛选
@@ -150,6 +165,7 @@ MetClean <- function(#ImportData para
   #save data
   met.data.mv.filter <- met.data
   save(met.data.mv.filter, file = file.path(path.inter, "met.data.mv.filter"))
+  }
 
   cat("---------------------------------------------------------------------\n")
   cat("Missing values imputation...\n")
@@ -174,6 +190,7 @@ MetClean <- function(#ImportData para
              what = "zero",
              path = file.path(path,"3Zero overview"))
 
+  if(zero.filter){
   cat("---------------------------------------------------------------------\n")
   cat("Zero filter...\n")
   #对零进行筛选
@@ -185,6 +202,7 @@ MetClean <- function(#ImportData para
   #save data
   met.data.zero.filter <- met.data
   save(met.data.zero.filter, file = file.path(path.inter, "met.data.zero.filter"))
+  }
 
   cat("---------------------------------------------------------------------\n")
   cat("Peak identification...\n")
@@ -221,9 +239,10 @@ MetClean <- function(#ImportData para
     }
   }
 
+
+  if (qc.outlier.filter) {
   cat("---------------------------------------------------------------------\n")
   cat("QC outlier filtering...\n")
-
    #标出QC的outlier
   if (all(dir("intermediate") != "met.data.qc.outlier.filter")) {
   met.data <- QCOutlierFilter(MetFlowData = met.data,
@@ -236,7 +255,9 @@ MetClean <- function(#ImportData para
     load(file.path(path.inter, "met.data.qc.outlier.filter"))
     met.data <- met.data.qc.outlier.filter
   }
+  }
 
+  if (normalization){
   cat("---------------------------------------------------------------------\n")
   cat("Data normalization...\n")
   ##Data Normalization
@@ -258,7 +279,9 @@ MetClean <- function(#ImportData para
     load(file.path(path.inter, "met.data.nor"))
     met.data <- met.data.nor
   }
+  }
 
+  if(subject.outlier.filter){
   cat("---------------------------------------------------------------------\n")
   cat("Subject outlier filtering...\n")
   #标出subject的outlier
@@ -273,8 +296,9 @@ MetClean <- function(#ImportData para
     load(file.path(path.inter, "met.data.subject.outlier.filter"))
     met.data <- met.data.subject.outlier.filter
   }
+  }
 
-
+  if(integration){
   cat("---------------------------------------------------------------------\n")
   cat("Data integration...\n")
 
@@ -285,12 +309,15 @@ MetClean <- function(#ImportData para
   met.data.integration <- met.data
   save(met.data.integration, file = file.path(path.inter, "met.data.integration"))
   }
+  }
 
+  if(zero.filter) {
   if (length(batch) > 1) {
     #batch effect
     BatchEffectOverview(MetFlowData.before = met.data.zero.filter,
                         MetFlowData.after = met.data,
                         path = file.path(path, "8Batch effect"))
+  }
 
     if(met.plot) {
       cat("---------------------------------------------------------------------\n")
@@ -302,12 +329,14 @@ MetClean <- function(#ImportData para
     }
   }
 
+  if(zero.filter) {
   cat("---------------------------------------------------------------------\n")
   cat("RSD overview...\n")
   #RSD分布
   RSDoverview(MetFlowData.before = met.data.zero.filter,
               MetFlowData.after = met.data,
               path = file.path(path,"10RSD overview"))
+  }
 
   #data overview
   DataOverview(MetFlowData = met.data,
