@@ -23,4 +23,4 @@ vignettes/*.html
 *.utf8.md
 *.knit.md
 .Rproj.user
-inst/doc
+
