@@ -11,6 +11,18 @@
 #' @export
 #' @seealso The details of univariate test can be found in \code{\link[stats]{t.test}},
 #' \code{\link[stats]{p.adjust}} and \code{\link[stats]{wilcox.test}}.
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'
+#'##create a folder for demo
+#'dir.create("Demo")
+#'setwd("Demo")
+#'
+#'## run
+#'new.met.data <- UnivariateTest(met.data.after.pre)
+#' }
 
 UnivariateTest <- function(MetFlowData,
                            test.method = "t",

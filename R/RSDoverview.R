@@ -6,6 +6,18 @@
 #' @param MetFlowData.after MetFlowData.after.
 #' @param path Work directory.
 #' @return RSD comparation.
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'
+#'##create a folder for demo
+#'dir.create("Demo")
+#'setwd("Demo")
+#'
+#'## run
+#'RSDoverview(met.data.after.pre, met.data.after.pre)
+#' }
 
 RSDoverview <- function(MetFlowData.before,
                         MetFlowData.after,

@@ -31,6 +31,18 @@
 #' and \href{https://www.readcube.com/library/fe13374b-5bc9-4c61-9b7f-6a354690947e:2303e537-2864-4df5-91f0-c3ae731711af}{SVR}
 #' normalization are two most used normalization
 #' methods.
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'
+#'##create a folder for demo
+#'dir.create("Demo")
+#'setwd("Demo")
+#'
+#'## run
+#'DataNormalization(MetFlowData = met.data.after.pre)
+#' }
 
 
 ### Data normalization for MetFlowData

@@ -1,5 +1,4 @@
 #' @title Print.MetFlowData
-#' @method
 #' @description Print method for class in MetProcesser.
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}

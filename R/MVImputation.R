@@ -35,6 +35,13 @@
 #' \code{\link[pcaMethods]{svdImpute}}.
 #' @references The MV imputation in metabolomics data can see in
 #' \href{https://www.readcube.com/library/fe13374b-5bc9-4c61-9b7f-6a354690947e:c9d05d0f-e945-43d0-bb4a-50ea0f90338e}{Guida's} paper.
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'## run
+#'new.met.data <- MVimputation(met.data.after.pre)
+#' }
 
 MVimputation <- function(MetFlowData,
                          ##MV imputation method

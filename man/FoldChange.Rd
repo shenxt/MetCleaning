@@ -19,6 +19,19 @@ MetFlowData which has been added fold change information in tags.
 \description{
 Calculate fold change for MetFlowData.
 }
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+
+##create a folder for demo
+dir.create("Demo")
+setwd("Demo")
+
+## run
+new.met.data <- FoldChange(MetFlowData = met.data.after.pre)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

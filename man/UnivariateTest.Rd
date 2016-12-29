@@ -24,6 +24,19 @@ MetFlowData which has been added p and AUC information in tags.
 \description{
 Calculate p value and AUC for each feature.
 }
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+
+##create a folder for demo
+dir.create("Demo")
+setwd("Demo")
+
+## run
+new.met.data <- UnivariateTest(met.data.after.pre)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

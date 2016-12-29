@@ -23,6 +23,18 @@
 #' @param ylim1 y axis limitation. Default is NULL.
 #' @return PCA score plot.
 #' @export
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'
+#'##create a folder for demo
+#'dir.create("Demo")
+#'setwd("Demo")
+#'
+#'## run
+#'PCAanalysis(met.data.after.pre, QC = TRUE)
+#' }
 
 PCAanalysis <- function(MetFlowData,
                         QC = FALSE,

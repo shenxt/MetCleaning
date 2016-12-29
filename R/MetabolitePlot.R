@@ -8,6 +8,18 @@
 #' @param figure Figure type you want to draw. jpeg ot pdf, default is jpeg.
 #' @return Return the metabolite plot before and after processing.
 #' @export
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'
+#'##create a folder for demo
+#'dir.create("Demo")
+#'setwd("Demo")
+#'
+#'## run
+#'MetabolitePlot(met.data.after.pre, met.data.after.pre)
+#' }
 
 MetabolitePlot <- function(MetFlowData.before,
                            MetFlowData.after,

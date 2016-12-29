@@ -7,6 +7,18 @@
 #' @param beeswarm Do you want draw beeswarm on the boxplot? Deafult is TRUE.
 #' @return Box plot of markers.
 #' @export
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'
+#'##create a folder for demo
+#'dir.create("Demo")
+#'setwd("Demo")
+#'
+#'## run
+#'MarkerShow(met.data.after.pre)
+#' }
 
 MarkerShow <- function(MetFlowData,
                        beeswarm = TRUE,

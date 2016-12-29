@@ -13,6 +13,13 @@
 #' @param path Work directory.
 #' @return Return a MetFlowData which has been filtered according MV/zero ratio.
 #' @export
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'## run
+#'new.met.data <- MZfilter(met.data.after.pre)
+#' }
 
 MZfilter <- function(MetFlowData,
                      obs.per.cutoff = 0.5,

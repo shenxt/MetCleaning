@@ -8,6 +8,14 @@
 #' @return SubjectOutlierFinderData contains MetFlowData and subject outlier index (obs.remove).
 #' @export
 #' @seealso \code{\link{SubjectOutlierFilter}}
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'
+#'## run
+#'new.met.data <- SubjectOutlierFinder(met.data.after.pre)
+#' }
 
 #subject outlier filtering according to zero ratio and PCA
 SubjectOutlierFinder <- function(MetFlowData,

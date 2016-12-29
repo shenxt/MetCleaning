@@ -21,6 +21,18 @@
 #' @return PLS score plot: PLS score plot.
 #' @return permutation test plot: Permutation test plot.
 #' @export
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'
+#'##create a folder for demo
+#'dir.create("Demo")
+#'setwd("Demo")
+#'
+#'## run
+#'PLSanalysis(met.data.after.pre)
+#' }
 
 PLSanalysis <- function(MetFlowData,
                         #used data

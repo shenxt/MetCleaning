@@ -13,8 +13,20 @@
 #' @return Write csv data.
 #' @seealso \code{\link{ImportData}}
 #' @export
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'
+#'##create a folder for demo
+#'dir.create("Demo")
+#'setwd("Demo")
+#'
+#'## run
+#'ExportData(MetFlowData = met.data.after.pre)
+#' }
 
-ExportData <- function(MetFlowData = MetFlowData,
+ExportData <- function(MetFlowData,
                        data.name = "data_new",
                        subject.info.name = "subject.info",
                        qc.info.name = "qc.info",

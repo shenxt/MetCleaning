@@ -28,6 +28,14 @@ database data can be loaded. In positive mode, adductions of +H, +NH4,
  +Na, +H-2H2O, +H-H2O, +K have been considered, and in negative mode, -H,
  +Cl, +CH3COO, -H-H2O, +F have been considered.
 }
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+## run
+new.met.data <- MassIdentification(met.data.after.pre)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

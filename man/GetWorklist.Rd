@@ -41,6 +41,19 @@ Generate Worklist for data acquisition.
 \details{
 Generate Worklist for data acquisition.
 }
+\examples{
+\dontrun{
+#demo data
+batch.design <- paste("A",c(1:100), sep = "")
+##create a folder for demo
+dir.create("Demo")
+setwd("Demo")
+write.csv(batch.design, "batch.design.csv", row.names = FALSE)
+
+#run ChangeWorklist
+GetWorklist()
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

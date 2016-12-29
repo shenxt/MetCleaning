@@ -19,6 +19,15 @@ SubjectOutlierFinderData contains MetFlowData and subject outlier index (obs.rem
 \description{
 Using PCA to find subject outliers.
 }
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+
+## run
+new.met.data <- SubjectOutlierFinder(met.data.after.pre)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

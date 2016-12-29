@@ -7,6 +7,18 @@
 #' @param path Work directory.
 #' @return QCOutlierFinderData contains MetFlowData and QC outlier index (obs.remove).
 #' @export
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'
+#'##create a folder for demo
+#'dir.create("Demo")
+#'setwd("Demo")
+#'
+#'## run
+#'new.met.data <- QCOutlierFinder(met.data.after.pre)
+#' }
 
 #QC outlier filtering according to zero ratio and PCA
 QCOutlierFinder <- function(MetFlowData,

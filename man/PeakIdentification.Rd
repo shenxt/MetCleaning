@@ -31,6 +31,19 @@ information into tags.
 Identify the features using other identification information
  data.
 }
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+
+##create a folder for demo
+dir.create("Demo")
+setwd("Demo")
+
+## run
+PeakIdentification(met.data.after.pre, QC = TRUE)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

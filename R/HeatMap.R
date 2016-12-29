@@ -22,6 +22,18 @@
 #' @return A heatmap plot.
 #' @export
 #' @seealso \code{\link[pheatmap]{pheatmap}}
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'
+#'##create a folder for demo
+#'dir.create("Demo")
+#'setwd("Demo")
+#'
+#'## run
+#'HeatMap(MetFlowData = met.data.after.pre)
+#' }
 
 HeatMap <- function(MetFlowData,
                     log.scale = FALSE,

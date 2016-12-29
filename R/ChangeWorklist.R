@@ -4,6 +4,18 @@
 #' \email{shenxt@@sioc.ac.cn}
 #' @param date Date you want to change in you worklist. Default is today.
 #' @return Return a new worklist.
+#' @examples
+#' \dontrun{
+#' #demo data
+#' batch.design <- paste("A",c(1:100), sep = "")
+#' ##create a folder for demo
+#' dir.create("Demo")
+#' setwd("Demo")
+#' write.csv(batch.design, "batch.design.csv", row.names = FALSE)
+#'
+#' #run ChangeWorklist
+#' ChangeWorklist()
+#' }
 #' @export
 
 
@@ -15,30 +27,8 @@ ChangeWorklist <-
     file <- dir()
     file <- file[!file.info(file)$isdir]
 
-    packages <- library()[[2]][, 1]
-    filestyle <- substr(file, regexpr("\\.", file)[[1]] + 1, nchar(file))
+      worklist <- read.csv(file, check.names = FALSE, stringsAsFactors = FALSE)
 
-    if (filestyle == "xlsx" & all(packages != "xlsx"))
-    {
-      stop("You R has no xlsx packages, you must install xlsx or translate your file to csv")
-    }
-
-    if (filestyle == "xlsx" & any(packages == "xlsx"))
-    {
-      # require(xlsx)
-      worklist <-
-        read.xlsx(file, 1)
-    }#batch design column 1 is Sample.Name
-
-    if (filestyle == "csv")
-    {
-      worklist <- read.csv(file, check.names = FALSE)
-    }#batch design column 1 is Sample.Name
-
-    if (filestyle != "xlsx" & filestyle != "csv")
-    {
-      stop("The format of file is wrong, it must be xlsx or csv")
-    }
 
 
     Data.File <- worklist[, grep("Data.File", colnames(worklist))]

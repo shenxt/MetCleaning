@@ -24,6 +24,14 @@ Return a MZfinderData contains MetFlowData,feature.remove, qc.remove and subject
 \description{
 Find feature and sample outliers according to MV/zero ratio.
 }
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+## run
+new.data <- MZfinder(met.data.after.pre)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

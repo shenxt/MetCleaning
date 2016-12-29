@@ -36,6 +36,14 @@ Select markers using fold change and p values.
 \details{
 Select markers using fold change and p values.
 }
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+## run
+new.met.data <- MarkerSelection(met.data.after.pre)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

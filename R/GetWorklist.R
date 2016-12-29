@@ -17,6 +17,18 @@
 #' @param dir Directory.
 #' @return New worklist.
 #' @export
+#' @examples
+#' \dontrun{
+#' #demo data
+#' batch.design <- paste("A",c(1:100), sep = "")
+#' ##create a folder for demo
+#' dir.create("Demo")
+#' setwd("Demo")
+#' write.csv(batch.design, "batch.design.csv", row.names = FALSE)
+#'
+#' #run ChangeWorklist
+#' GetWorklist()
+#' }
 
 GetWorklist <- function(x = NULL,
                         instrument = "Agilent",

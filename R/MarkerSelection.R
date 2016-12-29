@@ -15,6 +15,13 @@
 #' @return MetFlowData: MetFlowData which has been added is.marker information into tags.
 #' @return maker.information.csv: The marker information.
 #' @export
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'## run
+#'new.met.data <- MarkerSelection(met.data.after.pre)
+#' }
 
 MarkerSelection <- function(MetFlowData,
                             foldchange = "foldchange",

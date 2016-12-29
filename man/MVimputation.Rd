@@ -65,6 +65,14 @@ Return a MetFlowData whose MVs have been imputated.
 \description{
 Impute MV in data.
 }
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+## run
+new.met.data <- MVimputation(met.data.after.pre)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

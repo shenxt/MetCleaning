@@ -23,6 +23,15 @@ Filter features according to RSD in QC samples.
 recommen the cutoff value of RSD should be set as 20\% in LC-MS
 data and 30\% in GC-MS data.
 }
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+
+## run
+new.met.data <- RSDfilter(met.data.after.pre)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

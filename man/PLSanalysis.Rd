@@ -49,6 +49,19 @@ permutation test plot: Permutation test plot.
 \description{
 PLS analysis for MetFlowData.
 }
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+
+##create a folder for demo
+dir.create("Demo")
+setwd("Demo")
+
+## run
+PLSanalysis(met.data.after.pre)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

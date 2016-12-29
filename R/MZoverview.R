@@ -14,6 +14,18 @@
 #'  MV/zero ratio distribution.
 #' @return Sample MV/zero distribution.csv: Sample MV/zero ratio distribution.
 #' @export
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'
+#'##create a folder for demo
+#'dir.create("Demo")
+#'setwd("Demo")
+#'
+#'## run
+#'MZoverview(met.data.after.pre, what = "zero")
+#' }
 
 MZoverview <- function(MetFlowData,
                        path = NULL,

@@ -55,6 +55,19 @@ PCA score plot.
 \description{
 PCA analysis for MetFlowData.
 }
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+
+##create a folder for demo
+dir.create("Demo")
+setwd("Demo")
+
+## run
+PCAanalysis(met.data.after.pre, QC = TRUE)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

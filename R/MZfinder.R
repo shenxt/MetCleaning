@@ -10,6 +10,13 @@
 #' @param path Work directory.
 #' @return Return a MZfinderData contains MetFlowData,feature.remove, qc.remove and subject.remove.
 #' @export
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'## run
+#'new.data <- MZfinder(met.data.after.pre)
+#' }
 
 ##remove peaks whose MV ratio > threshold in QC or subject.
 MZfinder <- function(MetFlowData,

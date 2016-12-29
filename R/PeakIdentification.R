@@ -13,6 +13,18 @@
 #' @return Return a MetFlowData which has been added peak identification
 #' information into tags.
 #' @export
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'
+#'##create a folder for demo
+#'dir.create("Demo")
+#'setwd("Demo")
+#'
+#'## run
+#'PeakIdentification(met.data.after.pre, QC = TRUE)
+#' }
 
 ### PeakIdentification
 PeakIdentification <- function(MetFlowData,

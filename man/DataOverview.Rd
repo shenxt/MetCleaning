@@ -21,6 +21,19 @@ Data overview.txt: A overview information for MetFlowData.
 \description{
 Give a overview of MetFlowData.
 }
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+
+##create a folder for demo
+dir.create("Demo")
+setwd("Demo")
+
+## run
+DataOverview(MetFlowData = met.data.after.pre)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

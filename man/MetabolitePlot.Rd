@@ -22,6 +22,19 @@ Return the metabolite plot before and after processing.
 \description{
 Give scatter plot for each feature.
 }
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+
+##create a folder for demo
+dir.create("Demo")
+setwd("Demo")
+
+## run
+MetabolitePlot(met.data.after.pre, met.data.after.pre)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

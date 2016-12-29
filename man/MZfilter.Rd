@@ -28,6 +28,14 @@ Return a MetFlowData which has been filtered according MV/zero ratio.
 \description{
 Filter feature and samples according to MV/zero ratio.
 }
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+## run
+new.met.data <- MZfilter(met.data.after.pre)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

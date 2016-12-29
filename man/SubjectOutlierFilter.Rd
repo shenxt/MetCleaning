@@ -19,6 +19,19 @@ MetFlowData whose subject outliers have been removed.
 \description{
 Using PCA to filter subject outliers.
 }
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+
+##create a folder for demo
+dir.create("Demo")
+setwd("Demo")
+
+## run
+new.met.data <- SubjectOutlierFilter(met.data.after.pre)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

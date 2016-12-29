@@ -5,6 +5,13 @@
 #' @param MetFlowData MetFlowData.
 #' @return Return a data (list), subject, qc, subject.info and qc.info.
 #' @export
+#' @examples
+#' \dontrun{
+#'## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'## run
+#'new.data <- SplitBatch(met.data.after.pre)
+#' }
 
 SplitBatch <- function(MetFlowData) {
   ## split batch

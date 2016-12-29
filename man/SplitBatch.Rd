@@ -15,6 +15,14 @@ Return a data (list), subject, qc, subject.info and qc.info.
 \description{
 Split MetFlowData accoding to different batch.
 }
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+## run
+new.data <- SplitBatch(met.data.after.pre)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

@@ -4,7 +4,7 @@
 \alias{ExportData}
 \title{ExportData}
 \usage{
-ExportData(MetFlowData = MetFlowData, data.name = "data_new",
+ExportData(MetFlowData, data.name = "data_new",
   subject.info.name = "subject.info", qc.info.name = "qc.info",
   path = NULL)
 }
@@ -27,6 +27,19 @@ Write csv data.
 }
 \description{
 Export MetFlowData as csv.
+}
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+
+##create a folder for demo
+dir.create("Demo")
+setwd("Demo")
+
+## run
+ExportData(MetFlowData = met.data.after.pre)
+}
 }
 \author{
 Xiaotao Shen

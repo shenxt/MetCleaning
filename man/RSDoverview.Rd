@@ -19,6 +19,19 @@ RSD comparation.
 \description{
 Evaluate the RSD information before and after processing.
 }
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+
+##create a folder for demo
+dir.create("Demo")
+setwd("Demo")
+
+## run
+RSDoverview(met.data.after.pre, met.data.after.pre)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

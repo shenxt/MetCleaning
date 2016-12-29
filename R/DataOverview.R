@@ -8,6 +8,18 @@
 #' @return Data overview_RT vs mz vs intensity.pdf:  A RT vs mz vs intensity plot.
 #' @return Data overview.txt: A overview information for MetFlowData.
 #' @export
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'
+#'##create a folder for demo
+#'dir.create("Demo")
+#'setwd("Demo")
+#'
+#'## run
+#'DataOverview(MetFlowData = met.data.after.pre)
+#' }
 
 ### DataOverview for MeeFlowData
 DataOverview <- function(MetFlowData,

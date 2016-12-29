@@ -8,6 +8,18 @@
 #' @return MetFlowData whose qc outliers have been removed.
 #' @export
 #' @seealso \code{\link{SubjectOutlierFilter}}
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#'data(met.data.after.pre, package = "MetCleaning")
+#'
+#'##create a folder for demo
+#'dir.create("Demo")
+#'setwd("Demo")
+#'
+#'## run
+#'new.met.data <- QCOutlierFilter(met.data.after.pre)
+#' }
 
 QCOutlierFilter <- function(MetFlowData,
                             CI = 0.95,
