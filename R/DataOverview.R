@@ -126,9 +126,9 @@ DataOverview <- function(MetFlowData,
   cat("The tags information contains:\n",
       file = file.name.for.txt,
       append = TRUE)
-  cat(colnames(tags), file = file.name.for.txt, append = T)
-  cat('\n', file = file.name.for.txt, append = T)
-  cat('\n', file = file.name.for.txt, append = T)
+  cat(colnames(tags), file = file.name.for.txt, append = TRUE)
+  cat('\n', file = file.name.for.txt, append = TRUE)
+  cat('\n', file = file.name.for.txt, append = TRUE)
 
   ## subject sample information
   cat("---------------\n", file = file.name.for.txt, append = TRUE)

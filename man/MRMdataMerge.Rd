@@ -32,6 +32,9 @@ MRMdataMerge(..., path = NULL, merge.method = "name",
 
 \item{rt.tolerance}{RT tolerance.}
 }
+\value{
+Merge MRM data.
+}
 \description{
 Merge different MRM batch datasets into one dataset.
 }

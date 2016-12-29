@@ -4,12 +4,14 @@
 \alias{GetWorklist}
 \title{GetWorklist}
 \usage{
-GetWorklist(instrument = "Agilent", name = "worklist",
+GetWorklist(x = NULL, instrument = "Agilent", name = "worklist",
   randommethod = "no", samplenumber = NULL, replication = 1, QCstep = 8,
   conditionQCnumber = 10, testmixstep = 32, injectionfrom = 1,
   dir = "D:\\\\MassHunter\\\\Data\\\\SXT\\\\")
 }
 \arguments{
+\item{x}{batch.design file.}
+
 \item{instrument}{Which instrument you use? "Agilent" or "AB", default is "Agilent".}
 
 \item{name}{The name of worklist.}

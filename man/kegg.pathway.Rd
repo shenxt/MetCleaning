@@ -15,6 +15,10 @@ KEGG pathway.
   }
 }
 
+\value{
+KEGG pathway.
+}
+
 \examples{
 data(kegg.pathway)
 }

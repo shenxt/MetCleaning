@@ -9,6 +9,9 @@ MetFlowData after MetClean processing.
 }
 \usage{data("met.data.after.pre")}
 
+\value{
+MetFlowData data.
+}
 
 \examples{
 data(met.data.after.pre)

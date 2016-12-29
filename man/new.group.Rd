@@ -18,6 +18,11 @@ New group information.
     \item{\code{group}}{New group information}
   }
 }
+
+\value{
+New group inforamtion.
+}
+
 \examples{
 data(new.group)
 }

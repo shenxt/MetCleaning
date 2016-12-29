@@ -17,6 +17,10 @@ HMDB database.
   }
 }
 
+\value{
+HMDB database.
+}
+
 \examples{
 data(hmdbdatabase)
 }

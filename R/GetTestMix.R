@@ -1,19 +1,3 @@
-#' Get internal standatds from data.
-#'
-#' @title GetTestMix
-#' @description Test mix information.
-#' @author Xiaotao Shen
-#' \email{shenxt@@sioc.ac.cn}
-#' @param data data name for text mixture.
-#' @param test.mix.info Internal standards information in test information.
-#' @param test.mix.is Test mixtrue data.
-#' @param rterror rt tolerance for IS.
-#' @param mzerror mz tolerance for IS.
-#' @param rt.unit.is.second RT's unit is second or not? Default is T.
-#' @param plot.output Output plot or not? Default is TRUE.
-#' @param path Work directory.
-#' @export
-
 GetTestMix <- function(data = "Test mixture.csv",
                        test.mix.is = "test.mix.is.csv",
                        test.mix.info = "test.mix.info.csv",

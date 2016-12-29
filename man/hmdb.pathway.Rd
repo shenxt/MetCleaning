@@ -15,6 +15,10 @@ HMDB pathway.
   }
 }
 
+\value{
+HMDB pathway.
+}
+
 \examples{
 data(hmdb.pathway)
 }

@@ -7,6 +7,11 @@ Sample information
 \description{
 Sample information
 }
+
+\value{
+Sample information.
+}
+
 \usage{data("sample.information")}
 \format{
   A data frame with 606 observations on the following 5 variables.

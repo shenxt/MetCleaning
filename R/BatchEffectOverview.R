@@ -68,7 +68,7 @@ BatchEffectOverview <- function(MetFlowData.before,
 
   SXTpcaPlot(SXTpcaData = qc.SXTpcaData,
              score.plot.name = "Before Batch effect in QC PCA",
-             ellipse = T,
+             ellipse = TRUE,
              path = path)
   ##after
   qc.SXTpcaData <- SXTpca(subject = qc.aft,
@@ -78,7 +78,7 @@ BatchEffectOverview <- function(MetFlowData.before,
 
   SXTpcaPlot(SXTpcaData = qc.SXTpcaData,
              score.plot.name = "After Batch effect in QC PCA",
-             ellipse = T,
+             ellipse = TRUE,
              path = path)
 }
   ##PCA analysis for subject samples
@@ -96,7 +96,7 @@ BatchEffectOverview <- function(MetFlowData.before,
 
   SXTpcaPlot(SXTpcaData = subject.SXTpcaData,
              score.plot.name = "Before Batch effect in Subject PCA",
-             ellipse = T,
+             ellipse = TRUE,
              path = path)
 
   ##after

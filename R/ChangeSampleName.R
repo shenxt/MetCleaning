@@ -1,26 +1,3 @@
-#' Change sample name to standard name from GetWorklist.
-#'
-#' @title ChangeSampleName
-#' @description Change sample name to standard name from GetWorklist.
-#' @author Xiaotao Shen
-#' \email{shenxt@@sioc.ac.cn}
-#' @param data data for analysis. Default is "data.csv"
-#' @param sample.information sample information name for analysis. First column
-#' is sample.name, second column is injection.order, third column is
-#' class (Subject or QC), fouth column is batch information,
-#' fifth column is group (control or case), latter columns are other
-#' information for sample. Please see demo data in example.
-#' @param polarity The polarity of data. positive, negative or none, default is
-#' positive. If data is positive mode, the name of sample should be added as
-#'  "POS" or "NEG" as posfix. Please see the demo data in example.
-#' @param posfix The posfix of the data. For example, "POS" or "NEG". Please
-#' see the demo data in examples.
-#' @param qc.has.order Default is FALSE.
-#' @param output Default is TRUE.
-#' @param path Work directory.
-#' @return Return a data whose name is standard name for MetFlowData.
-
-
 ChangeSampleName <- function(data = "data.csv",
            sample.information = "sample.information.csv",
            polarity = "positive",
@@ -30,13 +7,13 @@ ChangeSampleName <- function(data = "data.csv",
            path = NULL) {
   # browser()
 if (is.null(path)) path <- getwd()
-  data <- read.csv(file.path(path,data), stringsAsFactors = F, check.names = FALSE)
-  sample.information <- read.csv(file.path(path,sample.information), stringsAsFactors = F, check.names = FALSE)
+  data <- read.csv(file.path(path,data), stringsAsFactors = FALSE, check.names = FALSE)
+  sample.information <- read.csv(file.path(path,sample.information), stringsAsFactors = FALSE, check.names = FALSE)
   sample.information <- sample.information[!is.na(sample.information[,1]),]
 
   ## sort sample information according to sample order
   sample.information <- sample.information[order(as.numeric(sample.information[,2])),]
-  write.csv(sample.information, file.path(path,"sample.information.csv"), row.names = F)
+  write.csv(sample.information, file.path(path,"sample.information.csv"), row.names = FALSE)
 
   sample.name <- as.character(sample.information[,1])
   injection.order <- as.numeric(sample.information[,2])
@@ -87,7 +64,7 @@ if (is.null(path)) path <- getwd()
 
   colnames(data)[index] <- sample.name
   sample.information[,1] <- sample.name
-  write.csv(sample.information, file.path(path, "sample.information1.csv"), row.names = F)
-  if (output) {write.csv(data, file.path(path,"data1.csv"),row.names = F)}
+  write.csv(sample.information, file.path(path, "sample.information1.csv"), row.names = FALSE)
+  if (output) {write.csv(data, file.path(path,"data1.csv"),row.names = FALSE)}
   return(data)
   }

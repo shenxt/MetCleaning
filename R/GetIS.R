@@ -1,19 +1,3 @@
-#' Get internal standatds from data.
-#'
-#' @title GetIS
-#' @description Get internal standatds from data.
-#' @author Xiaotao Shen
-#' \email{shenxt@@sioc.ac.cn}
-#' @param MetFlowData MetFlowData for internal standatd getting.
-#' @param path Directory for outputing results.
-#' @param mzerror mz tolerance for IS.
-#' @param rterror rt tolerance for IS.
-#' @param rt.unit.is.second RT's unit is second or not? Default is T.
-#' @param IS IS data name for reading.
-#' @param plot.output Output plot or not? Default is TRUE.
-#' @return newIS: A new IS data for IS.
-#' @export
-
 GetIS <- function(MetFlowData,
                   mzerror = 15,
                   rterror = 30,
@@ -102,7 +86,7 @@ GetIS <- function(MetFlowData,
   {return(NA)} else {x <- as.numeric(x); x[is.na(x)] <- 0; return((sd(x))*100/mean(x))}}),2)
 
   subject.rsd1 <- round(apply(newIS.subject, 1, function(x) {if (all(is.na(as.numeric(x))))
-  {return(NA)} else {sd(as.numeric(x), na.rm = T)*100/mean(as.numeric(x), na.rm = TRUE)}}),2)
+  {return(NA)} else {sd(as.numeric(x), na.rm = TRUE)*100/mean(as.numeric(x), na.rm = TRUE)}}),2)
 
   subject.rsd2 <- round(apply(newIS.subject, 1, function(x) {if (all(is.na(as.numeric(x))))
   {return(NA)} else {x <- as.numeric(x); x[is.na(x)] <- 0; return((sd(x))*100/mean(x))}}),2)
@@ -128,7 +112,7 @@ GetIS <- function(MetFlowData,
     ## change MV to zero
     intensity.in.qc[mv.in.qc.index] <- 0
     intensity.in.subject[mv.in.subject.index] <- 0
-browser()
+# browser()
     # IS in QC samples
     pdf(file.path(path, paste("IS ",i," in QC sample.pdf",sep = "")), height = 6,width = 8)
     colour.qc <- rep(NA, length(qc.order))

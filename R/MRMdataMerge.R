@@ -12,6 +12,7 @@
 #' @param tags.should.be.remain.in.datasets Which columna should be remained in the mergin.
 #' @param mz.tolerance m/z tolerance.
 #' @param rt.tolerance RT tolerance.
+#' @return Merge MRM data.
 #' @export
 
 MRMdataMerge <- function(...,

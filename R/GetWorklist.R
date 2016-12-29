@@ -4,6 +4,7 @@
 #' @description Generate Worklist for data acquisition.
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
+#' @param x batch.design file.
 #' @param instrument Which instrument you use? "Agilent" or "AB", default is "Agilent".
 #' @param name The name of worklist.
 #' @param randommethod Which random method you want to use? "no", "position" or "injection". Default is "no".
@@ -17,7 +18,8 @@
 #' @return New worklist.
 #' @export
 
-GetWorklist <- function(instrument = "Agilent",
+GetWorklist <- function(x = NULL,
+                        instrument = "Agilent",
                         name = "worklist",
                         randommethod = "no",
                         samplenumber = NULL,
@@ -32,35 +34,13 @@ GetWorklist <- function(instrument = "Agilent",
   # browser()
   options(warn = -1)
   file <- dir()
-  packages <- library()[[2]][, 1]
+
   if (instrument == "AB") {
     dir = ""
   }
-
-  filestyle <-
-    substr(file, regexpr("\\.", file)[[1]] + 1, nchar(file))
-
-  if (filestyle == "xlsx" &
-      all(packages != "xlsx"))
-  {
-    stop("Please install R package: xlsx or translate your file to csv!!!\n")
-  }
-
-  if (filestyle == "xlsx" & any(packages == "xlsx"))
-  {
-    # library(xlsx)
-    x <- read.xlsx(file[file == "batch design.xlsx"], 1)
-  }#batch design column 1 is Sample.Name
-
-  if (filestyle == "csv")
-  {
-    x <- read.csv(file[file == "batch design.csv"], check.names = FALSE)
-  }#batch design column 1 is Sample.Name
-
-  if (filestyle != "xlsx" & filestyle != "csv")
-  {
-    stop("The format of file is wrong, it must be xlsx or csv!!!")
-  }
+if(is.null(x)) {
+  x <- read.csv(file[file == "batch.design.csv"], check.names = FALSE, stringsAsFactors = FALSE)
+}
   # --------------------------------------------------------------------------------
   options(warn = 0)
   x <- as.character(x[, 1])
@@ -491,4 +471,5 @@ GetWorklist <- function(instrument = "Agilent",
   write.csv(x.NEG, sprintf("%s NEG.csv", name), row.names = FALSE)
 
   cat("Worklist is generated.\n")
+  return(TRUE)
 }

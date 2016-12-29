@@ -17,6 +17,10 @@ Metabolomics dataset has two batches. 1401 features and 610 samples.
   }
 }
 
+\value{
+Metabolomics data.
+}
+
 \examples{
 data(data)
 }

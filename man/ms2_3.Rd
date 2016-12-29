@@ -9,6 +9,10 @@ MS2 identification information.
 }
 \usage{data("ms2_3")}
 
+\value{
+MS2 data.
+}
+
 \examples{
 data(ms2_3)
 }

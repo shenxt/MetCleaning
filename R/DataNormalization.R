@@ -158,7 +158,7 @@ DataNormalization <- function(MetFlowData,
 
       path2 <- file.path(path1, paste("Batch", i, "normalization"))
       dir.create(path2)
-      write.csv(data, file.path(path2, "data.csv"), row.names = F)
+      write.csv(data, file.path(path2, "data.csv"), row.names = FALSE)
       write.csv(sample.info,
                 file.path(path2, "worklist.csv"),
                 row.names = FALSE)
@@ -208,7 +208,7 @@ DataNormalization <- function(MetFlowData,
       sample.info <- rbind(subject.info1[[i]], qc.info1[[i]])
       path2 <- file.path(path1, paste("Batch", i, "normalization"))
       dir.create(path2)
-      write.csv(data, file.path(path2, "data.csv"), row.names = F)
+      write.csv(data, file.path(path2, "data.csv"), row.names = FALSE)
       write.csv(sample.info,
                 file.path(path2, "worklist.csv"),
                 row.names = FALSE)

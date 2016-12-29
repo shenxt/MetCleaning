@@ -15,6 +15,10 @@ HMDB synonym.
   }
 }
 
+\value{
+HMDB synonym.
+}
+
 \examples{
 data(hmdb.synonym)
 }

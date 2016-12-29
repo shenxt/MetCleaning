@@ -15,6 +15,10 @@ KEGG and HMDB pathway.
   }
 }
 
+\value{
+KEGG and HMDB pathway.
+}
+
 \examples{
 data(my.pathway)
 }
