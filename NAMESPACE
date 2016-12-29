@@ -34,7 +34,6 @@ export(UnivariateTest)
 export(VolcanoPlot)
 export(m2p)
 
-
 import(pls)
 import(impute)
 import(missForest)
@@ -61,3 +60,4 @@ import(pathifier)
   importFrom("ggplot2", "aes","labs","theme","element_text","ggtitle","theme_bw",
              "ggsave","scale_color_gradient", "geom_point")
   importFrom("xlsx", "read.xlsx","write.xlsx")
+
