@@ -14,13 +14,11 @@
 #' \dontrun{
 #' ## load the demo data
 #'data(met.data.after.pre, package = "MetCleaning")
-#'
 #'##create a folder for demo
 #'dir.create("Demo")
 #'setwd("Demo")
-#'
 #'## run
-#'DataIntegration(MetFlowData = met.data.after.pre)
+#'new.met.data <- DataIntegration(MetFlowData = met.data.after.pre)
 #' }
 
 ## data integration

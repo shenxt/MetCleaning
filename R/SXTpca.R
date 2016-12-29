@@ -1,15 +1,3 @@
-#' @title SXTpca
-#' @description PCA analysis.
-#' @author Xiaotao Shen
-#' \email{shenxt@@sioc.ac.cn}
-#' @param subject Subject data for PCA analysis.
-#' @param qc QC data for PCA analysis.
-#' @param info Group information for subject data.
-#' @param scale.method Whihch scale methd you want to use? "auto" or "pareto", defaulit is "auto".
-#' @param QC Use qc data for PCA analyis or not? Default is FALSE.
-#' @param path Work directory.
-#' @return Return a SXTpcaData.
-#' @export
 
 SXTpca <- function(subject = NULL,
                    qc = NULL,

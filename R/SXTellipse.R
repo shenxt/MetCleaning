@@ -1,17 +1,3 @@
-#' @title SXTellipse
-#' @description Give a SXTellipseData.
-#' @author Xiaotao Shen
-#' \email{shenxt@@sioc.ac.cn}
-#' @param x see?ellipse.
-#' @param scale see?ellipse.
-#' @param centre see?ellipse.
-#' @param level see?ellipse.
-#' @param t see?ellipse.
-#' @param which see?ellipse.
-#' @param npoints see?ellipse.
-#' @param ... see?ellipse.
-#' @return Return a SXTellipseData
-#' @seealso \code{\link[ellipse]{ellipse}}
 
 SXTellipse <- function (x,
                         scale = c(1, 1),

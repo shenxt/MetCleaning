@@ -1,33 +1,3 @@
-#' @title SXTMVimputation
-#' @description Impute MV in data.
-#' @author Xiaotao Shen
-#' \email{shenxt@@sioc.ac.cn}
-#' @param data Data to be imputated, column is sample and row is feature.
-#' @param method Which imputation method you want to use?
-#' @param k See ?impute.knn
-#' @param rowmax See ?impute.knn
-#' @param colmax See ?impute.knn
-#' @param maxp See ?impute.knn
-#' @param rng.seed See ?impute.knn
-#' @param maxiter See ?missForest
-#' @param ntree See ?missForest
-#' @param decreasing See ?missForest
-#' @param mtry See ?missForest
-#' @param replace See ?missForest
-#' @param classwt See ?missForest
-#' @param cutoff See ?missForest
-#' @param strata See ?missForest
-#' @param sampsize See ?missForest
-#' @param nodesize See ?missForest
-#' @param maxnodes See ?missForest
-#' @param xtrue See ?missForest
-#' @param parallelize See ?missForest
-#' @param nPcs See ?bpca
-#' @param maxSteps See ?bpca
-#' @param threshold See ?bpca
-#' @return Return a data whose MVs have been imputated.
-#' @export
-#' @seealso  \code{\link{MVimputation}}
 
 SXTMVimputation <- function(data,
                    method = "knn",

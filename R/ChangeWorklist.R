@@ -12,7 +12,10 @@
 #' dir.create("Demo")
 #' setwd("Demo")
 #' write.csv(batch.design, "batch.design.csv", row.names = FALSE)
-#'
+#' #get worklist
+#' GetWorklist()
+#' ##remove other information
+#' file.remove(dir()[dir()!="worklist POS.csv"])
 #' #run ChangeWorklist
 #' ChangeWorklist()
 #' }

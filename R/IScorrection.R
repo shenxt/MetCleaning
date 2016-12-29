@@ -1,19 +1,4 @@
-#' Use internal standards to correct data.
-#'
-#' @title IScorrection
-#' @description Use internal standards to correct data.
-#' @author Xiaotao Shen
-#' \email{shenxt@@sioc.ac.cn}
-#' @param MetFlowData MetFlowData.
-#' @param mzerror mz tolerance.
-#' @param rterror rt tolerance.
-#' @param rt.unit.is.second RT's unit is second or not? Default is TRUE.
-#' @param IS IS name.
-#' @param path work directory.
-#' @param plot.output Output plot or not? Default is TRUE.
-#' @param dimension1 Keep dimension or not?
-#' @return Return a new MetFlowData after IS correction.
-#' @export
+
 ### IS signal correction for MetFlowData
 IScorrction <- function(MetFlowData,
                         mzerror = 15,

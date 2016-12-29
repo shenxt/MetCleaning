@@ -7,6 +7,13 @@
 #' @return Print some information of class object in your screen.
 #' @export
 #' @seealso \code{\link{print}}
+#' @examples
+#' \dontrun{
+#' ## load the demo data
+#' data(met.data.after.pre, package = "MetCleaning")
+#' met.data.after.pre
+#' print(met.data.after.pre)
+#' }
 
 ## MetFlowData
  print.MetFlowData <- function(x,...) {

@@ -35,13 +35,14 @@ Identify the features using other identification information
 \dontrun{
 ## load the demo data
 data(met.data.after.pre, package = "MetCleaning")
-
+data(ms2_1, package = "MetCleaning")
 ##create a folder for demo
 dir.create("Demo")
 setwd("Demo")
-
+dir.create("peak identification")
+write.csv(ms2_1, "peak identification/ms2_1.csv", row.names = FALSE)
 ## run
-PeakIdentification(met.data.after.pre, QC = TRUE)
+new.met.data <- PeakIdentification(met.data.after.pre)
 }
 }
 \author{

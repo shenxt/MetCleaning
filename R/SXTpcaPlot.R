@@ -1,24 +1,3 @@
-#' @title SXTpcaPlot
-#' @description Draw PCA score or loading plot for SXTpcaData.
-#' @author Xiaotao Shen
-#' \email{shenxt@@sioc.ac.cn}
-#' @param SXTpcaData SXTpcaPlot subject for drawing plots.
-#' @param plot Which class of plot you want to draw, "score" or "loading", default is "score".
-#' @param loading.plot.name The name of loading plot.
-#' @param score.plot.name The name of score plot.
-#' @param color The colors you want to use in different classs.
-#' @param cexlab Cex of lab.
-#' @param cexaxis Cex of axis.
-#' @param cexa Cex of point.
-#' @param cextext Cex of text.
-#' @param width Width of plot.
-#' @param height height of plot.
-#' @param shape The shapes you want to use in different classes.
-#' @param text Add text or not? Default is FALSE.
-#' @param ellipse Draw ellipse or not?
-#' @param path Directory you want to output results.
-#' @return PCA score and loading plot.
-#' @export
 
 ##plot functioin for SXTpcaData
 SXTpcaPlot <- function(SXTpcaData,

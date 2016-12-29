@@ -19,8 +19,17 @@ Give PCA score plot for QC and subject.
 \description{
 Using PCA score plot to view the batch effect.
 }
-\details{
-Using PCA score plot to view the batch effect.
+\examples{
+\dontrun{
+#demo data
+data(met.data.after.pre, package = "MetCleaning")
+##create a folder for demo
+dir.create("Demo")
+setwd("Demo")
+
+#run ChangeWorklist
+BatchEffectOverview(met.data.after.pre , met.data.after.pre)
+}
 }
 \author{
 Xiaotao Shen

@@ -1,5 +1,3 @@
-#' Using PCA score plot to view the batch effect.
-#'
 #' @title BatchEffectOverview
 #' @description Using PCA score plot to view the batch effect.
 #' @author Xiaotao Shen
@@ -9,6 +7,17 @@
 #' @param path work directory
 #' @return Give PCA score plot for QC and subject.
 #' @export
+#' @examples
+#' \dontrun{
+#' #demo data
+#' data(met.data.after.pre, package = "MetCleaning")
+#' ##create a folder for demo
+#' dir.create("Demo")
+#' setwd("Demo")
+#'
+#' #run ChangeWorklist
+#' BatchEffectOverview(met.data.after.pre , met.data.after.pre)
+#' }
 
 ### Batch effect for multiple batch datasets
 BatchEffectOverview <- function(MetFlowData.before,

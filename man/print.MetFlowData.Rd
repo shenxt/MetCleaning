@@ -17,6 +17,14 @@ Print some information of class object in your screen.
 \description{
 Print method for class in MetProcesser.
 }
+\examples{
+\dontrun{
+## load the demo data
+data(met.data.after.pre, package = "MetCleaning")
+met.data.after.pre
+print(met.data.after.pre)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

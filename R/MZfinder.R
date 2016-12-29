@@ -1,23 +1,4 @@
 
-#' @title MZfinder
-#' @description Find feature and sample outliers according to MV/zero ratio.
-#' @author Xiaotao Shen
-#' \email{shenxt@@sioc.ac.cn}
-#' @param MetFlowData MetFlowData.
-#' @param obs.per.cutoff The observation MV/zero ratio cutoff.
-#' @param var.per.cutoff The variable MV/zero ratio cutoff.
-#' @param what Filter missing values ("mv") or zero values ("zero")?
-#' @param path Work directory.
-#' @return Return a MZfinderData contains MetFlowData,feature.remove, qc.remove and subject.remove.
-#' @export
-#' @examples
-#' \dontrun{
-#' ## load the demo data
-#'data(met.data.after.pre, package = "MetCleaning")
-#'## run
-#'new.data <- MZfinder(met.data.after.pre)
-#' }
-
 ##remove peaks whose MV ratio > threshold in QC or subject.
 MZfinder <- function(MetFlowData,
                      obs.per.cutoff = 0.5,

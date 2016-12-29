@@ -1,15 +1,4 @@
-#' @title PLSpermutation
-#' @description Permutation test for PLS analysis.
-#' @author Xiaotao Shen
-#' \email{shenxt@@sioc.ac.cn}
-#' @param data data for PLS permutation test.
-#' @param log.scale log transformation.
-#' @param info infomation for group.
-#' @param repeats Repeat number.
-#' @param ncomp Princilpe component number.
-#' @param scalemethod Whihch scale methd you want to use? "auto" or "pareto", defaulit is "auto".
-#' @param path Work directory.
-#' @return permutation test plot: Permutation test plot.
+
 
 PLSpermutation <- function(data = NULL,
                            log.scale = FALSE,

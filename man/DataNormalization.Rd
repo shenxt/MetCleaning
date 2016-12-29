@@ -63,13 +63,11 @@ methods.
 \dontrun{
 ## load the demo data
 data(met.data.after.pre, package = "MetCleaning")
-
 ##create a folder for demo
 dir.create("Demo")
 setwd("Demo")
-
 ## run
-DataNormalization(MetFlowData = met.data.after.pre)
+new.met.data <- DataNormalization(MetFlowData = met.data.after.pre)
 }
 }
 \author{

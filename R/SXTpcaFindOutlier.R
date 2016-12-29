@@ -1,14 +1,3 @@
-#' @title SXTpcaFindOutlier
-#' @description Find which samples are in outside of 95\% confidence interval in PCA score plot.
-#' @author Xiaotao Shen
-#' \email{shenxt@@sioc.ac.cn}
-#' @param SXTpcaData SXTpcaData subject for outliers finding.
-#' @param CI Confidence interval.
-#' @param output.plot Output PCA score plot or not.Default is TRUE.
-#' @param plot.name The name of score plot.
-#' @param path Directory you want to output results.
-#' @return It return a outlier index.
-#' @export
 
 ##find outlier functions using SXTpcaData
 SXTpcaFindOutlier <- function(SXTpcaData,
