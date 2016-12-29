@@ -30,6 +30,3 @@ source("http://bioconductor.org/biocLite.R")
 2. Fix some bugs to improve speed.(20161219)
 3. Add the check.names = FALSE (argument) in all the read.csv function. (20161221)
 4. New feature for ms1 and ms2 matching only.
-
-## **Note of version0.99.0**
-1. Version for bioconductor submission.
