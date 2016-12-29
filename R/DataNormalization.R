@@ -161,7 +161,7 @@ DataNormalization <- function(MetFlowData,
       write.csv(data, file.path(path2, "data.csv"), row.names = F)
       write.csv(sample.info,
                 file.path(path2, "worklist.csv"),
-                row.names = F)
+                row.names = FALSE)
       MetNormalizer(
         normalization.method = "svr",
         peakplot = peakplot,
@@ -211,7 +211,7 @@ DataNormalization <- function(MetFlowData,
       write.csv(data, file.path(path2, "data.csv"), row.names = F)
       write.csv(sample.info,
                 file.path(path2, "worklist.csv"),
-                row.names = F)
+                row.names = FALSE)
       MetNormalizer(
         normalization.method = "loess",
         peakplot = peakplot,

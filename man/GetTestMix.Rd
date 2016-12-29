@@ -6,7 +6,7 @@
 \usage{
 GetTestMix(data = "Test mixture.csv", test.mix.is = "test.mix.is.csv",
   test.mix.info = "test.mix.info.csv", mzerror = 15, rterror = 30,
-  rt.unit.is.second = T, plot.output = TRUE, path = NULL)
+  rt.unit.is.second = TRUE, plot.output = TRUE, path = NULL)
 }
 \arguments{
 \item{data}{data name for text mixture.}

@@ -42,7 +42,7 @@ DataOverview <- function(MetFlowData,
 
     int.log <-
       log(apply(sample, 1, function(x) {
-        mean(x, na.rm = T)
+        mean(x, na.rm = TRUE)
       }) + 10, 10)
 
 
@@ -82,18 +82,18 @@ DataOverview <- function(MetFlowData,
   file.name.for.txt <- file.path(path, "Data overview.txt")
 
   ## begin output data overview
-  cat("The overview of data\n", file = file.name.for.txt, append = F)
-  cat("---------------\n", file = file.name.for.txt, append = T)
-  cat('\n', file = file.name.for.txt, append = T)
-  cat('\n', file = file.name.for.txt, append = T)
+  cat("The overview of data\n", file = file.name.for.txt, append = FALSE)
+  cat("---------------\n", file = file.name.for.txt, append = TRUE)
+  cat('\n', file = file.name.for.txt, append = TRUE)
+  cat('\n', file = file.name.for.txt, append = TRUE)
 
   ## batch information
   cat("There are",
       length(subject1),
       "batches",
       file = file.name.for.txt,
-      append = T)
-  cat("\n", file = file.name.for.txt, append = T)
+      append = TRUE)
+  cat("\n", file = file.name.for.txt, append = TRUE)
   ##
   subject.number <- unlist(lapply(subject1, length))
   names(subject.number) <- paste("Batch", 1:length(subject1))
@@ -107,110 +107,110 @@ DataOverview <- function(MetFlowData,
 
   cat("Subject number in each Batch:\n",
       file = file.name.for.txt,
-      append = T)
+      append = TRUE)
   options(warn = -1)
-  cat("\n", file = file.name.for.txt, append = T)
-  cat(subject.number, file = file.name.for.txt, append = T)
-  cat("\n", file = file.name.for.txt, append = T)
-  cat(qc.number, file = file.name.for.txt, append = T)
-  cat("\n", file = file.name.for.txt, append = T)
+  cat("\n", file = file.name.for.txt, append = TRUE)
+  cat(subject.number, file = file.name.for.txt, append = TRUE)
+  cat("\n", file = file.name.for.txt, append = TRUE)
+  cat(qc.number, file = file.name.for.txt, append = TRUE)
+  cat("\n", file = file.name.for.txt, append = TRUE)
   options(warn = 0)
 
   ## peak information
-  cat("---------------\n", file = file.name.for.txt, append = T)
+  cat("---------------\n", file = file.name.for.txt, append = TRUE)
   cat(paste("Peak number:", nrow(subject)),
       file = file.name.for.txt,
-      append = T)
-  cat("\n", file = file.name.for.txt, append = T)
+      append = TRUE)
+  cat("\n", file = file.name.for.txt, append = TRUE)
 
   cat("The tags information contains:\n",
       file = file.name.for.txt,
-      append = T)
+      append = TRUE)
   cat(colnames(tags), file = file.name.for.txt, append = T)
   cat('\n', file = file.name.for.txt, append = T)
   cat('\n', file = file.name.for.txt, append = T)
 
   ## subject sample information
-  cat("---------------\n", file = file.name.for.txt, append = T)
-  cat("Subject sample info:\n", file = file.name.for.txt, append = T)
+  cat("---------------\n", file = file.name.for.txt, append = TRUE)
+  cat("Subject sample info:\n", file = file.name.for.txt, append = TRUE)
   cat(paste("Subject sample number:", ncol(subject)),
       file = file.name.for.txt,
-      append = T)
-  cat("\n", file = file.name.for.txt, append = T)
+      append = TRUE)
+  cat("\n", file = file.name.for.txt, append = TRUE)
 
-  cat("Subject sample name:\n", file = file.name.for.txt, append = T)
-  cat(colnames(subject), file = file.name.for.txt, append = T)
-  cat("\n", file = file.name.for.txt, append = T)
+  cat("Subject sample name:\n", file = file.name.for.txt, append = TRUE)
+  cat(colnames(subject), file = file.name.for.txt, append = TRUE)
+  cat("\n", file = file.name.for.txt, append = TRUE)
 
   if (hasQC != "no") {
     ## QC sample information
-    cat("\n", file = file.name.for.txt, append = T)
-    cat("---------------\n", file = file.name.for.txt, append = T)
-    cat("QC sample info:\n", file = file.name.for.txt, append = T)
+    cat("\n", file = file.name.for.txt, append = TRUE)
+    cat("---------------\n", file = file.name.for.txt, append = TRUE)
+    cat("QC sample info:\n", file = file.name.for.txt, append = TRUE)
     cat(paste("QC sample number:", ncol(qc)),
         file = file.name.for.txt,
-        append = T)
-    cat("\n", file = file.name.for.txt, append = T)
+        append = TRUE)
+    cat("\n", file = file.name.for.txt, append = TRUE)
 
-    cat("QC sample name:\n", file = file.name.for.txt, append = T)
-    cat(colnames(qc), file = file.name.for.txt, append = T)
-    cat("\n", file = file.name.for.txt, append = T)
+    cat("QC sample name:\n", file = file.name.for.txt, append = TRUE)
+    cat(colnames(qc), file = file.name.for.txt, append = TRUE)
+    cat("\n", file = file.name.for.txt, append = TRUE)
   }
   else {
-    cat("QC sample info:\n", file = file.name.for.txt, append = T)
-    cat("No QC in data", file = file.name.for.txt, append = T)
-    cat("\n", file = file.name.for.txt, append = T)
+    cat("QC sample info:\n", file = file.name.for.txt, append = TRUE)
+    cat("No QC in data", file = file.name.for.txt, append = TRUE)
+    cat("\n", file = file.name.for.txt, append = TRUE)
   }
 
   ## other processing information
-  cat("\n", file = file.name.for.txt, append = T)
-  cat("---------------\n", file = file.name.for.txt, append = T)
+  cat("\n", file = file.name.for.txt, append = TRUE)
+  cat("---------------\n", file = file.name.for.txt, append = TRUE)
   cat("Some processing information\n",
       file = file.name.for.txt,
-      append = T)
+      append = TRUE)
   cat("MV imputation:",
       MetFlowData[["mv.imputation"]],
       file = file.name.for.txt,
-      append = T)
-  cat("\n", file = file.name.for.txt, append = T)
+      append = TRUE)
+  cat("\n", file = file.name.for.txt, append = TRUE)
   cat("Imputation method:",
       MetFlowData[["imputation.method"]],
       file = file.name.for.txt,
-      append = T)
-  cat("\n", file = file.name.for.txt, append = T)
+      append = TRUE)
+  cat("\n", file = file.name.for.txt, append = TRUE)
   cat("Zero filter:",
       MetFlowData[["zero.filter"]],
       file = file.name.for.txt,
-      append = T)
-  cat("\n", file = file.name.for.txt, append = T)
+      append = TRUE)
+  cat("\n", file = file.name.for.txt, append = TRUE)
   cat("Zero filter criteria:",
       MetFlowData[["zero.filter.criteria"]],
       file = file.name.for.txt,
-      append = T)
-  cat("\n", file = file.name.for.txt, append = T)
+      append = TRUE)
+  cat("\n", file = file.name.for.txt, append = TRUE)
   cat("QC outlier filter:",
       MetFlowData[["qc.outlier.filter"]],
       file = file.name.for.txt,
-      append = T)
-  cat("\n", file = file.name.for.txt, append = T)
+      append = TRUE)
+  cat("\n", file = file.name.for.txt, append = TRUE)
   cat("Normalization:",
       MetFlowData[["normalization"]],
       file = file.name.for.txt,
-      append = T)
-  cat("\n", file = file.name.for.txt, append = T)
+      append = TRUE)
+  cat("\n", file = file.name.for.txt, append = TRUE)
   cat("Normalization method:",
       MetFlowData[["normalization.method"]],
       file = file.name.for.txt,
-      append = T)
-  cat("\n", file = file.name.for.txt, append = T)
+      append = TRUE)
+  cat("\n", file = file.name.for.txt, append = TRUE)
   cat("Data integration:",
       MetFlowData[["data.integration"]],
       file = file.name.for.txt,
-      append = T)
-  cat("\n", file = file.name.for.txt, append = T)
+      append = TRUE)
+  cat("\n", file = file.name.for.txt, append = TRUE)
   cat("Data integration method:",
       MetFlowData[["data.integration.method"]],
       file = file.name.for.txt,
-      append = T)
-  cat("\n", file = file.name.for.txt, append = T)
+      append = TRUE)
+  cat("\n", file = file.name.for.txt, append = TRUE)
 }

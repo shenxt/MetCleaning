@@ -646,15 +646,15 @@ compare.rsd <-
     colour2[(QC.nor.rsd / QC.rsd) == 1] <- "royalblue"
     colour2[(QC.nor.rsd / QC.rsd) < 1] <- "palegreen"
 
-    s.rsd.up <- sum(colour1 == "firebrick1",na.rm = T) * 100 / length(colour1)
-    s.rsd.no <- sum(colour1 == "royalblue",na.rm = T) * 100 / length(colour1)
+    s.rsd.up <- sum(colour1 == "firebrick1",na.rm = TRUE) * 100 / length(colour1)
+    s.rsd.no <- sum(colour1 == "royalblue",na.rm = TRUE) * 100 / length(colour1)
     s.rsd.down <-
-      sum(colour1 == "palegreen",na.rm = T) * 100 / length(colour1)
+      sum(colour1 == "palegreen",na.rm = TRUE) * 100 / length(colour1)
 
-    q.rsd.up <- sum(colour2 == "firebrick1",na.rm = T) * 100 / length(colour2)
-    q.rsd.no <- sum(colour2 == "royalblue",na.rm = T) * 100 / length(colour2)
+    q.rsd.up <- sum(colour2 == "firebrick1",na.rm = TRUE) * 100 / length(colour2)
+    q.rsd.no <- sum(colour2 == "royalblue",na.rm = TRUE) * 100 / length(colour2)
     q.rsd.down <-
-      sum(colour2 == "palegreen",na.rm = T) * 100 / length(colour2)
+      sum(colour2 == "palegreen",na.rm = TRUE) * 100 / length(colour2)
 
     par(mar = c(5,5,4,2))
     pdf(file.path(path,"RSD compare plot.pdf"),width = 14)
@@ -705,21 +705,21 @@ compare.rsd <-
     s.rsd.dis <-
       sapply(seq(0,190,10),function (x) {
         sum(sample.rsd > x &
-              sample.rsd <= x + 10,na.rm = T)
+              sample.rsd <= x + 10,na.rm = TRUE)
       }) * 100 / length(sample.rsd)
     s.nor.rsd.dis <-
       sapply(seq(0,190,10),function (x) {
         sum(sample.nor.rsd > x &
-              sample.nor.rsd <= x + 10,na.rm = T)
+              sample.nor.rsd <= x + 10,na.rm = TRUE)
       }) * 100 / length(sample.nor.rsd)
     q.rsd.dis <-
       sapply(seq(0,190,10),function (x) {
-        sum(QC.rsd > x & QC.rsd <= x + 10,na.rm = T)
+        sum(QC.rsd > x & QC.rsd <= x + 10,na.rm = TRUE)
       }) * 100 / length(QC.rsd)
     q.nor.rsd.dis <-
       sapply(seq(0,190,10),function (x) {
         sum(QC.nor.rsd > x &
-              QC.nor.rsd <= x + 10,na.rm = T)
+              QC.nor.rsd <= x + 10,na.rm = TRUE)
       }) * 100 / length(QC.nor.rsd)
 
     rsd.dis <- rbind(s.rsd.dis,s.nor.rsd.dis,q.rsd.dis,q.nor.rsd.dis)
@@ -733,7 +733,7 @@ compare.rsd <-
     par(mar = c(8,8,4,2))
     par(mgp = c(5,1,0))
     barplot(
-      rsd.dis[1:2,],horiz = T,beside = T,col = c("firebrick1", "palegreen"),
+      rsd.dis[1:2,],horiz = TRUE,beside = TRUE,col = c("firebrick1", "palegreen"),
       names.arg = paste(seq(0,190,10),seq(10,200,10),sep = "-"),
       xlab = "Feature Percentage (%)",
       ylab = "RSD range (%)",
@@ -747,7 +747,7 @@ compare.rsd <-
     par(mar = c(8,8,4,2))
     par(mgp = c(5,1,0))
     barplot(
-      rsd.dis[3:4,],horiz = T,beside = T,col = c("firebrick1", "palegreen"),
+      rsd.dis[3:4,],horiz = TRUE,beside = TRUE,col = c("firebrick1", "palegreen"),
       names.arg = paste(seq(0,190,10),seq(10,200,10),sep = "-"),
       xlab = "Feature Percentage (%)",
       ylab = "RSD range (%)",
@@ -805,7 +805,7 @@ SXTgetdata <- function(data, filename = "SXT data", polarity = "positive",
   data <- t(data)
 
   if (user == "other") {
-    worklist <- read.csv(file.path(path,"worklist.csv"),stringsAsFactors = F, check.names = FALSE)
+    worklist <- read.csv(file.path(path,"worklist.csv"),stringsAsFactors = FALSE, check.names = FALSE)
     name <- worklist[,1]
     ###judge if worklist name contains POS or NEG
     pos.have <- length(grep("POS", toupper(name)))
@@ -981,7 +981,7 @@ SXTdatafilter <- function(sample, qc, tags, sampleorder, qcorder,
 
   #minfrac.filter is a function to filter the peak which > minfrac
   minfrac.filter <- function(x, minfrac = 0.8) {
-    ifelse(sum(x != 0,na.rm = T) / length(x) >= minfrac,!0,!1)
+    ifelse(sum(x != 0,na.rm = TRUE) / length(x) >= minfrac,!0,!1)
   }
   # browser()
   #use qc to filter sample, tags and qc

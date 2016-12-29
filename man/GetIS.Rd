@@ -4,7 +4,7 @@
 \alias{GetIS}
 \title{GetIS}
 \usage{
-GetIS(MetFlowData, mzerror = 15, rterror = 30, rt.unit.is.second = T,
+GetIS(MetFlowData, mzerror = 15, rterror = 30, rt.unit.is.second = TRUE,
   IS = "IS.csv", plot.output = TRUE, path = NULL)
 }
 \arguments{

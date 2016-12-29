@@ -28,7 +28,7 @@ ExportData <- function(MetFlowData = MetFlowData,
   subject.info <- MetFlowData[["subject.info"]]
   qc.info <- MetFlowData[["qc.info"]]
 
-  write.csv(cbind(tags, subject, qc), file.path(path,paste(data.name,".csv", sep = "")), row.names = F)
-  write.csv(subject.info, file.path(path,paste(subject.info.name,".csv", sep = "")), row.names = F)
-  write.csv(qc.info, file.path(path,paste(qc.info.name,".csv", sep = "")), row.names = F)
+  write.csv(cbind(tags, subject, qc), file.path(path,paste(data.name,".csv", sep = "")), row.names = FALSE)
+  write.csv(subject.info, file.path(path,paste(subject.info.name,".csv", sep = "")), row.names = FALSE)
+  write.csv(qc.info, file.path(path,paste(qc.info.name,".csv", sep = "")), row.names = FALSE)
 }

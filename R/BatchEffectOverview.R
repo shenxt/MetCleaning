@@ -63,7 +63,7 @@ BatchEffectOverview <- function(MetFlowData.before,
   ##before
   qc.SXTpcaData <- SXTpca(subject = qc.bef,
                           info = qc.info,
-                          QC = F,
+                          QC = FALSE,
                           scale.method = "auto")
 
   SXTpcaPlot(SXTpcaData = qc.SXTpcaData,
@@ -73,7 +73,7 @@ BatchEffectOverview <- function(MetFlowData.before,
   ##after
   qc.SXTpcaData <- SXTpca(subject = qc.aft,
                           info = qc.info,
-                          QC = F,
+                          QC = FALSE,
                           scale.method = "auto")
 
   SXTpcaPlot(SXTpcaData = qc.SXTpcaData,
@@ -91,7 +91,7 @@ BatchEffectOverview <- function(MetFlowData.before,
   ##before
   subject.SXTpcaData <- SXTpca(subject = subject.bef,
                                info = subject.info,
-                               QC = F,
+                               QC = FALSE,
                                scale.method = "auto")
 
   SXTpcaPlot(SXTpcaData = subject.SXTpcaData,
@@ -102,12 +102,12 @@ BatchEffectOverview <- function(MetFlowData.before,
   ##after
   subject.SXTpcaData <- SXTpca(subject = subject.aft,
                                info = subject.info,
-                               QC = F,
+                               QC = FALSE,
                                scale.method = "auto")
 
   SXTpcaPlot(SXTpcaData = subject.SXTpcaData,
              score.plot.name = "After Batch effect in Subject PCA",
-             ellipse = T,
+             ellipse = TRUE,
              path = path)
 
   if (hasQC != "no"){
@@ -130,7 +130,7 @@ BatchEffectOverview <- function(MetFlowData.before,
 
   qc.scale <- t(apply(qc.bef, 1, function(x) {(x-mean(x))/sd(x)}))
   boxplot(qc.scale, col = colours, xlab = "QC index", ylab = "Intensity (auto scaled)",
-          cex.lab = 1.3, cex.axis = 1.3, notch = F, outline = F, main = "Before")
+          cex.lab = 1.3, cex.axis = 1.3, notch = FALSE, outline = FALSE, main = "Before")
 
   ##after
   plot(colSums(qc.aft), col = colours, pch = 19, xlab = "QC injection order", ylab = "Total intensity",
@@ -140,7 +140,7 @@ BatchEffectOverview <- function(MetFlowData.before,
 
   qc.scale <- t(apply(qc.aft, 1, function(x) {(x-mean(x))/sd(x)}))
   boxplot(qc.scale, col = colours, xlab = "QC index", ylab = "Intensity (auto scaled)",
-          cex.lab = 1.3, cex.axis = 1.3, notch = F, outline = F, main = "After")
+          cex.lab = 1.3, cex.axis = 1.3, notch = FALSE, outline = FALSE, main = "After")
 
   dev.off()
   }

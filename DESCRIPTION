@@ -27,7 +27,8 @@ Imports:
     xlsx,
     graphics,
     grDevices,
-    utils
+    utils,
+    stats
 License: GPL-2 | file LICENSE
 URL: https://github.com/jaspershen/MetCleaning
 RoxygenNote: 5.0.1

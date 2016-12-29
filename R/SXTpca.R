@@ -81,7 +81,7 @@ SXTpca <- function(subject = NULL,
   }
   if (scale.method == "pareto") {
     int <- apply(int, 1, function(x) {
-      (x - mean(x, na.rm = T)) / sqrt(sd(x, na.rm = T))
+      (x - mean(x, na.rm = TRUE)) / sqrt(sd(x, na.rm = TRUE))
     })
     int <- t(int)
   }
@@ -91,7 +91,7 @@ SXTpca <- function(subject = NULL,
   }
   if (scale.method == "center") {
     int <- apply(int, 1, function(x) {
-      (x - mean(x, na.rm = T))
+      (x - mean(x, na.rm = TRUE))
       int <- t(int)
     })
   }

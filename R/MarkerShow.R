@@ -59,7 +59,7 @@ MarkerShow <- function(MetFlowData,
     if (beeswarm) {
       beeswarm::beeswarm(temp.data,
                pch = 19,
-               add = T,
+               add = TRUE,
                col = "grey")
     }
     dev.off()

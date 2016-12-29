@@ -17,12 +17,12 @@
 GetIS <- function(MetFlowData,
                   mzerror = 15,
                   rterror = 30,
-                  rt.unit.is.second = T,
+                  rt.unit.is.second = TRUE,
                   IS = "IS.csv",
                   plot.output = TRUE,
                   path = NULL
                   ) {
-   browser()
+   # browser()
   if (is.null(path)) {path <- getwd()}
   ## get data information
   tags <- MetFlowData[["tags"]]
@@ -35,7 +35,7 @@ GetIS <- function(MetFlowData,
   rt <- as.numeric(tags[, "rtmed"])
 
   ## get IS information
-  is <- read.csv(IS, stringsAsFactors = F)
+  is <- read.csv(IS, stringsAsFactors = FALSE)
   is.name <- is[, 1]
   is.mz <- as.numeric(is[, 2])
   is.rt <- as.numeric(is[, 3])
@@ -96,13 +96,13 @@ GetIS <- function(MetFlowData,
   newIS.subject <- newIS[,-c(1:(3 + ncol(qc)))]
 
   qc.rsd1 <- round(apply(newIS.qc, 1, function(x) {if (all(is.na(as.numeric(x))))
-    {return(NA)} else {sd(as.numeric(x), na.rm = T)*100/mean(as.numeric(x), na.rm = T)}}),2)
+    {return(NA)} else {sd(as.numeric(x), na.rm = TRUE)*100/mean(as.numeric(x), na.rm = TRUE)}}),2)
 
   qc.rsd2 <- round(apply(newIS.qc, 1, function(x) {if (all(is.na(as.numeric(x))))
   {return(NA)} else {x <- as.numeric(x); x[is.na(x)] <- 0; return((sd(x))*100/mean(x))}}),2)
 
   subject.rsd1 <- round(apply(newIS.subject, 1, function(x) {if (all(is.na(as.numeric(x))))
-  {return(NA)} else {sd(as.numeric(x), na.rm = T)*100/mean(as.numeric(x), na.rm = T)}}),2)
+  {return(NA)} else {sd(as.numeric(x), na.rm = T)*100/mean(as.numeric(x), na.rm = TRUE)}}),2)
 
   subject.rsd2 <- round(apply(newIS.subject, 1, function(x) {if (all(is.na(as.numeric(x))))
   {return(NA)} else {x <- as.numeric(x); x[is.na(x)] <- 0; return((sd(x))*100/mean(x))}}),2)
@@ -113,7 +113,7 @@ GetIS <- function(MetFlowData,
 
   add.info <- cbind(rsd.info, find.or.not)
   newIS <- cbind(newIS.tags, add.info, newIS.qc, newIS.subject)
-  write.csv(newIS, file.path(path,"newIS.csv"), row.names = F)
+  write.csv(newIS, file.path(path,"newIS.csv"), row.names = FALSE)
   save(newIS, file = file.path(path,"newIS"))
   ##output some result
   if (plot.output) {

@@ -40,7 +40,7 @@ IScorrction <- function(MetFlowData,
   newIS <- newIS
 
   if (all(newIS[,"find.or.not"] == "No")) stop("Don't find IS in your data!!!")
-  IS.area <- newIS[,-c(1:8),drop = F]
+  IS.area <- newIS[,-c(1:8),drop = FALSE]
   IS.area.name <- colnames(IS.area)
   if (nrow(IS.area) > 1) IS.area <- as.numeric(apply(IS.area, 2, function(x) {mean(x)}))
   IS.area <- as.numeric(IS.area)

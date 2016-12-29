@@ -72,7 +72,7 @@ PeakIdentification <- function(MetFlowData,
   which.file[[peak.number + 1]] <- NA
 
   text.name <- file.path(path, "Identification.information.txt")
-  cat("Identification", file = text.name, append = F)
+  cat("Identification", file = text.name, append = FALSE)
   # browser()
   ##开始读取二级数据的信息，文件夹中要放入ms2数据，有几个放几个，
   ##命名要写50-300ms2.csv的形式
@@ -106,7 +106,7 @@ PeakIdentification <- function(MetFlowData,
       #将没有鉴定出来的peak去除
       msms <- msms[forward != '' | reverse != '',]
       cat("\n")
-      cat("\n", file = text.name, append = T)
+      cat("\n", file = text.name, append = TRUE)
       cat(paste(
         "There are",
         nrow(msms),
@@ -121,13 +121,13 @@ PeakIdentification <- function(MetFlowData,
           ms2.name[i]
         ),
         file = text.name,
-        append = T
+        append = TRUE
       )
-      cat("\n", file = text.name, append = T)
+      cat("\n", file = text.name, append = TRUE)
 
       # browser()
       save(msms, file = file.path(path1, ms2.name[i]))
-      write.csv(msms, file.path(path1, paste("marker", ms2.name[i], "csv", sep = ".")), row.names = F)
+      write.csv(msms, file.path(path1, paste("marker", ms2.name[i], "csv", sep = ".")), row.names = FALSE)
       msmsinfo <- msms[, c("mzmed", "rtmed")]
       #把鉴定出来的peak的信息提取出来
       forward <- as.character(msms[, "hits..forward."])
@@ -145,7 +145,7 @@ PeakIdentification <- function(MetFlowData,
       cat("\n")
       cat(paste("Begin", ms2.name[i], "matching..."))
       cat("\n")
-      cat("\n", file = text.name, append = T)
+      cat("\n", file = text.name, append = TRUE)
 
       result <-
         SXTMTmatch(peak,
@@ -552,7 +552,7 @@ PeakIdentification <- function(MetFlowData,
   write.csv(
     peak.identification,
     file.path(path1, "peak.identification.without.many.to.one.csv"),
-    row.names = F
+    row.names = FALSE
   )
 
   num <- sum(!is.na(peak.identification[,"identification"]))
@@ -563,9 +563,9 @@ PeakIdentification <- function(MetFlowData,
       "features are matched"
     ),
     file = text.name,
-    append = T
+    append = TRUE
   )
-  cat("\n", file = text.name, append = T)
+  cat("\n", file = text.name, append = TRUE)
 
   # browser()
   if ("ms2mz" %in% colnames(tags) & "ms2rt" %in% colnames(tags)) {

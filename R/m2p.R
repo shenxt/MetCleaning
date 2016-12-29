@@ -90,7 +90,7 @@ m2p <- function(data = data,
     which.is.right <- as.numeric(output.new1[,4])
     matched.idx <- which(!is.na(which.is.right))
 
-    temp <- output.new1[matched.idx,,drop = F]
+    temp <- output.new1[matched.idx,,drop = FALSE]
     ncol1 <- ncol(temp)
     ncol2 <- ncol(output.old)
     if (ncol1 == ncol2) {output.old <- rbind(output.old, temp)}
@@ -191,5 +191,5 @@ score <- PDS$scores
 score <- matrix(unlist(score), ncol = length(score[[1]]), byrow = TRUE)
 colnames(score) <- colnames(new.data)
 row.names(score) <- names(PDS$genesinpathway)
-write.csv(score, "score.csv", row.names = F)
+write.csv(score, "score.csv", row.names = FALSE)
 }

@@ -34,7 +34,7 @@ QCOutlierFinder <- function(MetFlowData,
       SXTpca(
         subject = qc1[[i]],
         info = info,
-        QC = F,
+        QC = FALSE,
         scale.method = "auto"
       )
     index2 <- SXTpcaFindOutlier(

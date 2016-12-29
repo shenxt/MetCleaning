@@ -97,7 +97,7 @@ for (i in 2:length(new.tags)) {
   ##combine tags2
   for (k in 1:ncol(tags2)) {
     temp <- cbind(as.numeric(tags2[,k]), as.numeric(new.tags2[,k]))
-    temp <- apply(temp, 1, function(x) {mean(x,na.rm = T)})
+    temp <- apply(temp, 1, function(x) {mean(x,na.rm = TRUE)})
     temp[is.nan(temp)] <- NA
     tags2[,k] <- temp
   }
@@ -108,6 +108,6 @@ for (i in 2:length(new.tags)) {
 
 tags <- cbind(tags1, tags2, tags3)
 data <- cbind(tags, sample)
-write.csv(data,"new.data.csv",row.names = F)
+write.csv(data,"new.data.csv",row.names = FALSE)
 return(data)
 }

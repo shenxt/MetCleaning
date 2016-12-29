@@ -19,7 +19,7 @@ GetTestMix <- function(data = "Test mixture.csv",
                        test.mix.info = "test.mix.info.csv",
                        mzerror = 15,
                        rterror = 30,
-                       rt.unit.is.second = T,
+                       rt.unit.is.second = TRUE,
                        plot.output = TRUE,
                        path = NULL) {
 
@@ -27,9 +27,9 @@ GetTestMix <- function(data = "Test mixture.csv",
   if (is.null(path)) {path <- getwd()}
 
   ## get data information
-  data <- read.csv(data, stringsAsFactors = F, check.names = FALSE)
-  is <- read.csv(test.mix.is, stringsAsFactors = F, check.names = FALSE)
-  test.mix.info <- read.csv(test.mix.info, stringsAsFactors = F, check.names = FALSE)
+  data <- read.csv(data, stringsAsFactors = FALSE, check.names = FALSE)
+  is <- read.csv(test.mix.is, stringsAsFactors = FALSE, check.names = FALSE)
+  test.mix.info <- read.csv(test.mix.info, stringsAsFactors = FALSE, check.names = FALSE)
 
   tags <- data[,-grep("Test_mix", colnames(data))]
   sample <- data[,grep("Test_mix", colnames(data))]
@@ -119,7 +119,7 @@ GetTestMix <- function(data = "Test mixture.csv",
   newIS.sample <- newIS[,-c(1:3)]
 
   sample.rsd <- round(apply(newIS.sample, 1, function(x) {if (all(is.na(as.numeric(x))))
-  {return(NA)} else {sd(as.numeric(x), na.rm = T)*100/mean(as.numeric(x), na.rm = T)}}),2)
+  {return(NA)} else {sd(as.numeric(x), na.rm = TRUE)*100/mean(as.numeric(x), na.rm = TRUE)}}),2)
 
 
   rsd.info <- cbind(sample.rsd)
@@ -128,7 +128,7 @@ GetTestMix <- function(data = "Test mixture.csv",
 
   add.info <- cbind(rsd.info, find.or.not)
   newtest.mix <- cbind(newIS.tags, add.info, newIS.sample)
-  write.csv(newtest.mix, file.path(path,"newtest.mix.csv"), row.names = F)
+  write.csv(newtest.mix, file.path(path,"newtest.mix.csv"), row.names = FALSE)
   save(newtest.mix, file = file.path(path,"newtest.mix"))
 
    ##output some result

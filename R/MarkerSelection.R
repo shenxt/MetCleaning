@@ -76,7 +76,7 @@ MarkerSelection <- function(MetFlowData,
   if (length(marker.index) == 0) {stop("No marker are selected, please change canditios and try again!!!")}
   cat(paste("There are",length(marker.index), "variables are selected as marker.\n"))
   marker.info <- tags[marker.index,]
-  write.csv(marker.info, file.path(path,"marker.info.csv"), row.names = F)
+  write.csv(marker.info, file.path(path,"marker.info.csv"), row.names = FALSE)
   is.marker <- rep(NA, nrow(tags))
   is.marker[marker.index] <- "yes"
   is.marker[is.na(is.marker)] <- "no"

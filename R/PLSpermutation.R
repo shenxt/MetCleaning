@@ -102,7 +102,7 @@ PLSpermutation <- function(data = NULL,
 
   ##draw perumtation test
   pdf(file.path(path, "Permutation test.pdf"))
-  par(xpd = F)
+  par(xpd = FALSE)
   par(mar = c(5, 5, 4, 2))
   plot(
     x = 0,
@@ -170,7 +170,7 @@ PLSpermutation <- function(data = NULL,
     cex = 1.5,
     bty = "n"
   )
-  par(xpd = T)
+  par(xpd = TRUE)
   dev.off()
   options(warn = 1)
 }

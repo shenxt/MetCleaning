@@ -13,7 +13,7 @@
 ReChangeGroup <- function(MetFlowData,
                           new.group = "new.group.csv") {
   # browser()
-  new.group <- read.csv(new.group, stringsAsFactors = F, check.names = FALSE)
+  new.group <- read.csv(new.group, stringsAsFactors = FALSE, check.names = FALSE)
 
   subject.info <- MetFlowData[['subject.info']]
   subject <- MetFlowData[['subject']]

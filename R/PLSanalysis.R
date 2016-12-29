@@ -337,7 +337,7 @@ PLSanalysis <- function(MetFlowData,
 
     write.csv(cbind(R2cum, Q2cum),
               file.path(path, "R2Q2.csv"),
-              row.names = F)
+              row.names = FALSE)
 
     ##draw barplot of Q2cum, R2Xcum and R2Ycum
     Q2R2 <- cbind(R2cum, Q2cum)
@@ -348,7 +348,7 @@ PLSanalysis <- function(MetFlowData,
     par(mar = c(5,5,4,2))
     barplot(
       t(Q2R2),
-      beside = T,
+      beside = TRUE,
       col = c("royalblue", "tomato"),
       cex.lab = 1.5,
       cex.axis = 1.3,

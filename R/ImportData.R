@@ -44,17 +44,17 @@ ImportData <- function(data = "data.csv",
                             qc.has.order = qc.has.order,
                             output = FALSE,
                             path = path)
-  sample.information <- read.csv("sample.information1.csv", stringsAsFactors = F, check.names = FALSE)}
+  sample.information <- read.csv("sample.information1.csv", stringsAsFactors = FALSE, check.names = FALSE)}
 
-  else {data <- read.csv(file.path(path,data), stringsAsFactors = F, check.names = FALSE)
-  sample.information <- read.csv(file.path(path,sample.information), stringsAsFactors = F, check.names = FALSE)}
+  else {data <- read.csv(file.path(path,data), stringsAsFactors = FALSE, check.names = FALSE)
+  sample.information <- read.csv(file.path(path,sample.information), stringsAsFactors = FALSE, check.names = FALSE)}
 
   ## read sample information
   sample.information <- sample.information[!is.na(sample.information[,1]),]
 
   ## sort sample information according to sample order
   sample.information <- sample.information[order(as.numeric(sample.information[,2])),]
-  write.csv(sample.information,file.path(path, "sample.information1.csv"), row.names = F)
+  write.csv(sample.information,file.path(path, "sample.information1.csv"), row.names = FALSE)
 
   ## sort sample in data according to sample order
   sample.index <- grep("Sample", colnames(data))
