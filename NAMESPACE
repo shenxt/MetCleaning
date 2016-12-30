@@ -60,4 +60,4 @@ import(pathifier)
              "uniroot", "wilcox.test")
   importFrom("ggplot2", "aes","labs","theme","element_text","ggtitle","theme_bw",
              "ggsave","scale_color_gradient", "geom_point")
-  importFrom("xlsx", "read.xlsx","write.xlsx")
+

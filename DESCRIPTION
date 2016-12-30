@@ -24,7 +24,6 @@ Imports:
     snow,
     methods,
     pathifier,
-    xlsx,
     graphics,
     grDevices,
     utils,
