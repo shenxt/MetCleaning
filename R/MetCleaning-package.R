@@ -12,6 +12,7 @@
 #' @author Xiaotao Shen
 #' @author Maintainer: Xiaotao Shen shenxt@sioc.ac.cn
 #' @return A description of MetCleaning
+#' @export
 MetCleaning <- function(){
   message(date(),
           "\nData cleaning and statistical analysis of large scale MS-based data.")

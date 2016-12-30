@@ -19,6 +19,7 @@ export(MarkerSelection)
 export(MarkerShow)
 export(MassIdentification)
 export(MetClean)
+export(MetCleaning)
 export(MetStat)
 export(MetabolitePlot)
 export(PCAanalysis)
@@ -60,4 +61,3 @@ import(pathifier)
   importFrom("ggplot2", "aes","labs","theme","element_text","ggtitle","theme_bw",
              "ggsave","scale_color_gradient", "geom_point")
   importFrom("xlsx", "read.xlsx","write.xlsx")
-
