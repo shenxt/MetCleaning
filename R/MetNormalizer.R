@@ -103,7 +103,7 @@ MetNormalizer <- function(filename = "Metabolomics data",
       else
       {
         # require(xlsx)
-        pos.data <- read.xlsx(file.pos,1)
+        # pos.data <- read.xlsx(file.pos,1)
       }
 
       cat("Importing NEG data...\n")
@@ -114,7 +114,7 @@ MetNormalizer <- function(filename = "Metabolomics data",
       else
       {
         # require(xlsx)
-        neg.data <- read.xlsx(file.neg,1)
+        # neg.data <- read.xlsx(file.neg,1)
       }
 
       cat("Getting POS data...\n")
