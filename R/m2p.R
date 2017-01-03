@@ -12,6 +12,7 @@
 m2p <- function(data = data,
                 tags = tags,
                 info = NULL) {
+  browser()
   my.pathway <- MetCleaning::my.pathway
   hmdb.synonym <- MetCleaning::hmdb.synonym
   # data(c("my.pathway", "hmdb.synonym"))

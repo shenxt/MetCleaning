@@ -1,4 +1,4 @@
-#' @title MetClean
+#' @title MetCleaning
 #' @description A whole work flow for high throughput MS based metabolomics data
 #'cleaning.
 #' @author Xiaotao Shen
@@ -54,16 +54,16 @@
 #' data(data, package = "MetCleaning")
 #' data(sample.information, package = "MetCleaning")
 #'
-#' ##create a folder for MetClean demo
-#' dir.create("Demo for MetClean")
-#' setwd("Demo for MetClean")
+#' ##create a folder for MetCleaning demo
+#' dir.create("Demo for MetCleaning")
+#' setwd("Demo for MetCleaning")
 #'
 #' # export the demo data as csv
 #' write.csv(data, "data.csv", row.names = FALSE)
 #' write.csv(sample.information, "sample.information.csv", row.names = FALSE)
 #'
-#' #run MetClean
-#' MetClean(#ImportData para
+#' #run MetCleaning
+#' MetCleaning(#ImportData para
 #' data = "data.csv",
 #' sample.information = "sample.information.csv",
 #' polarity = "positive",
@@ -72,7 +72,7 @@
 #' threads = 2)
 #' }
 
-MetClean <- function(#ImportData para
+MetCleaning <- function(#ImportData para
                    data = "data.csv",
                    sample.information = "sample.information.csv",
                    polarity = "positive",
@@ -353,7 +353,7 @@ MetClean <- function(#ImportData para
   met.data.after.pre <- met.data
   save(met.data.after.pre, file = file.path(path, "met.data.after.pre"))
   cat("---------------------------------------------------------------------\n")
-  cat("MetClean is done!!!\n")
+  cat("MetCleaning is done!!!\n")
   options(warn = 0)
 }
 
