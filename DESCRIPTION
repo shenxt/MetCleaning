@@ -7,7 +7,7 @@ Author: Xiaotao Shen, Zhengjiang Zhu
 Maintainer: Xiaotao Shen<shenxt@sioc.ac.cn>
 Description: Automatic and integrated tool for data cleaning and statistical analysis of large scale MS-based metabolomics data.
 LazyData: true
-Depends: R (>= 3.3)
+Depends: R (>= 3.0)
 Imports:
     ggplot2,
     pcaMethods,
