@@ -1,6 +1,6 @@
 # MetCleaning
 ******************************************
-### *MetCleaning* provides an integrated and automatic pipeline for data cleaning and statistical analysis of large scale mass spectrometry (MS) based-metabolomic data. It includes missing value (MV) filtering and imputation, zero value filtering, data normalization, data integration, data quality assessment, univariate statistical analysis, multivariate statistical analysis such as PCA and PLS-DA, potential marker selection and show. This document describes how to use the integrated functions, *MetClean* and *MetStat* in *MetCleaning* utilizing demo data.
+### *MetCleaning* provides an integrated and automatic pipeline for data cleaning and statistical analysis of large scale mass spectrometry (MS) based-metabolomic data. It includes missing value (MV) filtering and imputation, zero value filtering, data normalization, data integration, data quality assessment, univariate statistical analysis, multivariate statistical analysis such as PCA and PLS-DA, potential marker selection and show. This document describes how to use the integrated functions, *MetCleaning* and *MetStat* in *MetCleaning* utilizing demo data.
 
 ## **Installation and help**
 ******************************************
@@ -30,4 +30,4 @@ source("http://bioconductor.org/biocLite.R")
 2. Fix some bugs to improve speed.(20161219)
 3. Add the check.names = FALSE (argument) in all the read.csv function. (20161221)
 4. New feature for ms1 and ms2 matching only.
-5. Add the step selection function n **MetClean**.
+5. Add the step selection function n **MetCleaning**.
