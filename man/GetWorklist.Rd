@@ -6,8 +6,8 @@
 \usage{
 GetWorklist(x = NULL, instrument = "Agilent", name = "worklist",
   randommethod = "no", samplenumber = NULL, replication = 1, QCstep = 8,
-  conditionQCnumber = 10, testmixstep = 32, injectionfrom = 1,
-  dir = "D:\\\\MassHunter\\\\Data\\\\SXT\\\\")
+  conditionQCnumber = 10, testmixstep = 0, injectionfrom = 1,
+  user = "other", dir = "D:\\\\MassHunter\\\\Data\\\\SXT\\\\")
 }
 \arguments{
 \item{x}{batch.design file.}
@@ -29,6 +29,8 @@ GetWorklist(x = NULL, instrument = "Agilent", name = "worklist",
 \item{testmixstep}{Test mixture step.}
 
 \item{injectionfrom}{Injection order from which? Default is 1.}
+
+\item{user}{Default is "other".}
 
 \item{dir}{Directory.}
 }

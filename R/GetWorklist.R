@@ -14,6 +14,7 @@
 #' @param conditionQCnumber Condition QC number.
 #' @param testmixstep Test mixture step.
 #' @param injectionfrom Injection order from which? Default is 1.
+#' @param user Default is "other".
 #' @param dir Directory.
 #' @return New worklist.
 #' @export
@@ -38,8 +39,9 @@ GetWorklist <- function(x = NULL,
                         replication = 1,
                         QCstep = 8,
                         conditionQCnumber = 10,
-                        testmixstep = 32,
+                        testmixstep = 0,
                         injectionfrom = 1,
+                        user = "other",
                         dir = "D:\\MassHunter\\Data\\SXT\\") {
   #names is the name of the folder,plates is the used plates,
   #if AB,dir is ""
@@ -442,7 +444,12 @@ if(is.null(x)) {
 
   Data.File2 <-
     paste("Sample", c(injectionfrom:(nrow(Sample.QC) + injectionfrom - 1)), sep = "")
+
   Data.File2 <- paste(Data.File2, Sample.QC[, 1], sep = "_")
+
+  if (user == "other") {
+    Data.File2 <- Sample.QC[,1]
+  }
 
   if (instrument == "Agilent") {
     Data.File2 <- cbind(Data.File2, Sample.QC[, 3])
@@ -477,8 +484,10 @@ if(is.null(x)) {
     Data.File.NEG <- paste(Data.File.NEG, "d", sep = ".")
   }
 
+
   x.POS <- cbind(x, Data.File.POS)
   x.NEG <- cbind(x, Data.File.NEG)
+
   write.csv(x.POS, sprintf("%s POS.csv", name), row.names = FALSE)
   write.csv(x.NEG, sprintf("%s NEG.csv", name), row.names = FALSE)
 
