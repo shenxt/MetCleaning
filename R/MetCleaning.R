@@ -328,8 +328,9 @@ MetCleaning <- function(#ImportData para
                    path = file.path(path, "9metabolite plot"))
     }
   }
-
+  cat("\n")
   if(zero.filter) {
+
   cat("---------------------------------------------------------------------\n")
   cat("RSD overview...\n")
   #RSD分布
