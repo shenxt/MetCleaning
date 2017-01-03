@@ -18,7 +18,6 @@ export(MZoverview)
 export(MarkerSelection)
 export(MarkerShow)
 export(MassIdentification)
-export(MetClean)
 export(MetCleaning)
 export(MetStat)
 export(MetabolitePlot)
@@ -60,4 +59,3 @@ import(pathifier)
              "uniroot", "wilcox.test")
   importFrom("ggplot2", "aes","labs","theme","element_text","ggtitle","theme_bw",
              "ggsave","scale_color_gradient", "geom_point")
-
