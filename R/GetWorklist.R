@@ -330,9 +330,14 @@ if(is.null(x)) {
         x[y:nrow(x), ]
       })
 
+
   colnames(Blank.QC) <- colnames(x[[1]])
   x <- lapply(x, function(y)
     rbind(Blank.QC, y))
+browser()
+  ###
+
+
 
   x2 <- NULL
   for (i in 1:length(x)) {
@@ -340,7 +345,10 @@ if(is.null(x)) {
     x2 <- rbind(x2, x1)
   }
   x <- x2
+  x <- x[-1,]
+
   x <- rbind(x, Blank.QC)
+  x <- x[-(nrow(x)-1),]
   #insert Test.mix
   if (testmixstep == 0) {
     x = x
@@ -447,6 +455,7 @@ if(is.null(x)) {
 
   Data.File2 <- paste(Data.File2, Sample.QC[, 1], sep = "_")
 
+  # browser()
   if (user == "other") {
     Data.File2 <- Sample.QC[,1]
   }
