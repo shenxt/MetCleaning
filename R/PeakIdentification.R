@@ -63,10 +63,10 @@ PeakIdentification <- function(MetFlowData,
 
   # browser()
   peak.number <- as.numeric(peak.number)
-  peak.isotopes <- list()
-  peak.isotopes[[peak.number + 1]] <- NA
-  peak.adduct <- list()
-  peak.adduct[[peak.number + 1]] <- NA
+  # peak.isotopes <- list()
+  # peak.isotopes[[peak.number + 1]] <- NA
+  # peak.adduct <- list()
+  # peak.adduct[[peak.number + 1]] <- NA
   peak.mz <- list()
   peak.mz[[peak.number + 1]] <- NA
   peak.rt <- list()
@@ -150,8 +150,8 @@ PeakIdentification <- function(MetFlowData,
       name <- as.character(msms[, "name"])
       mz <- as.numeric(msms[, "mzmed"])
       rt <- as.numeric(msms[, "rtmed"])
-      adduct <- as.character(msms[, "adduct"])
-      isotopes <- as.character(msms[, "isotopes"])
+      # adduct <- as.character(msms[, "adduct"])
+      # isotopes <- as.character(msms[, "isotopes"])
       file <- rep(ms2.name[i], length(forward))
 
       #开始ms1和ms2数据的匹配
@@ -194,10 +194,10 @@ PeakIdentification <- function(MetFlowData,
             c(peak.mzerror[[index1[i]]], mzerror[i])
           peak.rterror[[index1[i]]] <-
             c(peak.rterror[[index1[i]]], rterror[i])
-          peak.isotopes[[index1[i]]] <-
-            c(peak.isotopes[[index1[i]]], isotopes[index2[i]])
-          peak.adduct[[index1[i]]] <-
-            c(peak.adduct[[index1[i]]], adduct[index2[i]])
+          # peak.isotopes[[index1[i]]] <-
+          #   c(peak.isotopes[[index1[i]]], isotopes[index2[i]])
+          # peak.adduct[[index1[i]]] <-
+          #   c(peak.adduct[[index1[i]]], adduct[index2[i]])
           which.file[[index1[i]]] <-
             c(which.file[[index1[i]]], file[index2[i]])
         }
@@ -213,8 +213,8 @@ PeakIdentification <- function(MetFlowData,
       peak.rt,
       peak.mzerror,
       peak.rterror,
-      peak.adduct,
-      peak.isotopes,
+      # peak.adduct,
+      # peak.isotopes,
       which.file,
       file = file.path(path1, "msms matching data")
     )
@@ -302,8 +302,8 @@ PeakIdentification <- function(MetFlowData,
       peak.rt[[i]] <- peak.rt[[i]][index]
       peak.mzerror[[i]] <- peak.mzerror[[i]][index]
       peak.rterror[[i]] <- peak.rterror[[i]][index]
-      peak.adduct[[i]] <- peak.adduct[[i]][index]
-      peak.isotopes[[i]] <- peak.isotopes[[i]][index]
+      # peak.adduct[[i]] <- peak.adduct[[i]][index]
+      # peak.isotopes[[i]] <- peak.isotopes[[i]][index]
       which.file[[i]] <- which.file[[i]][index]
 
     }
@@ -319,8 +319,8 @@ PeakIdentification <- function(MetFlowData,
     rt,
     peak.mzerror,
     peak.rterror,
-    peak.adduct,
-    peak.isotopes,
+    # peak.adduct,
+    # peak.isotopes,
     which.file,
     file = file.path(path1, "msms matching data without one to many")
   )
@@ -343,8 +343,8 @@ PeakIdentification <- function(MetFlowData,
   ms2name <- rep(NA, peak.number)
   ms2mz <- rep(NA, peak.number)
   ms2rt <- rep(NA, peak.number)
-  ms2isotopes <- rep(NA, peak.number)
-  ms2adduct <- rep(NA, peak.number)
+  # ms2isotopes <- rep(NA, peak.number)
+  # ms2adduct <- rep(NA, peak.number)
   mzerror <- rep(NA, peak.number)
   rterror <- rep(NA, peak.number)
   from.file <- rep(NA, peak.number)
@@ -366,8 +366,8 @@ PeakIdentification <- function(MetFlowData,
 
     ms2name[i] <- SXTpaste(peak.name[[i]], sep = "|")
     ms2mz[i] <- SXTpaste(peak.mz[[i]], sep = "|")
-    ms2isotopes[i] <- SXTpaste(peak.isotopes[[i]], sep = "|")
-    ms2adduct[i] <- SXTpaste(peak.adduct[[i]], sep = "|")
+    # ms2isotopes[i] <- SXTpaste(peak.isotopes[[i]], sep = "|")
+    # ms2adduct[i] <- SXTpaste(peak.adduct[[i]], sep = "|")
     ms2rt[i] <- SXTpaste(peak.rt[[i]], sep = "|")
     mzerror[i] <- SXTpaste(peak.mzerror[[i]], sep = "|")
     rterror[i] <- SXTpaste(peak.rterror[[i]], sep = "|")
@@ -392,24 +392,24 @@ PeakIdentification <- function(MetFlowData,
         ifelse(x == "", NA, x)
       }
     })
-  ms2isotopes <-
-    sapply(ms2isotopes, function(x) {
-      if (is.na(x)) {
-        x
-      } else {
-        ifelse(x == "", NA, x)
-      }
-    })
-  ms2adduct <-
-    sapply(ms2adduct, function(x) {
-      if (is.na(x)) {
-        x
-      } else {
-        ifelse(x == "", NA, x)
-      }
-    })
+  # ms2isotopes <-
+  #   sapply(ms2isotopes, function(x) {
+  #     if (is.na(x)) {
+  #       x
+  #     } else {
+  #       ifelse(x == "", NA, x)
+  #     }
+  #   })
+  # ms2adduct <-
+  #   sapply(ms2adduct, function(x) {
+  #     if (is.na(x)) {
+  #       x
+  #     } else {
+  #       ifelse(x == "", NA, x)
+  #     }
+  #   })
   names(forward) <-
-    names(reverse) <- names(ms2isotopes) <- names(ms2adduct) <- NULL
+    names(reverse) <- NULL
   # browser()
   lib <- rep(NA, peak.number)
   identification <- rep(NA, peak.number)
@@ -463,8 +463,8 @@ PeakIdentification <- function(MetFlowData,
       ms2rt,
       mzerror,
       rterror,
-      ms2isotopes,
-      ms2adduct,
+      # ms2isotopes,
+      # ms2adduct,
       forward,
       reverse,
       identification,
