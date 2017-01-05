@@ -112,8 +112,8 @@ PeakIdentification <- function(MetFlowData,
 
     for (i in 1:length(ms2)) {
       msms <- ms2[[i]]
-      forward <- as.character(msms[, "hits..forward."])
-      reverse <- as.character(msms[, "hits..reverse."])
+      forward <- as.character(msms[, "hits.forward"])
+      reverse <- as.character(msms[, "hits.reverse"])
       forward[is.na(forward)] <- ""
       reverse[is.na(reverse)] <- ""
       #将没有鉴定出来的peak去除
@@ -143,8 +143,8 @@ PeakIdentification <- function(MetFlowData,
       write.csv(msms, file.path(path1, paste("marker", ms2.name[i], "csv", sep = ".")), row.names = FALSE)
       msmsinfo <- msms[, c("mzmed", "rtmed")]
       #把鉴定出来的peak的信息提取出来
-      forward <- as.character(msms[, "hits..forward."])
-      reverse <- as.character(msms[, "hits..reverse."])
+      forward <- as.character(msms[, "hits.forward"])
+      reverse <- as.character(msms[, "hits.reverse"])
       forward[is.na(forward)] <- ""
       reverse[is.na(reverse)] <- ""
       name <- as.character(msms[, "name"])
@@ -428,7 +428,7 @@ PeakIdentification <- function(MetFlowData,
           substr(compound, 1, regexpr("Score", compound)[[1]] - 2)
       }
       else {
-        lib[i] <- "LipDDA"
+        lib[i] <- "zhulab"
         identification[i] <-
           substr(compound,
                  gregexpr("\\{", compound)[[1]][3] + 1,

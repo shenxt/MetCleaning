@@ -5,5 +5,6 @@ o Add examples for each function. (201612291838)
 o Remove xlsx package. (201612301652)
 o MetClean function is renamed as MetCleaning. (201701031346)
 o GetWorklist is added a new argument, user to control which style worklist is generated. (201701031600)
+o In peak identification, forward and reverse column name is changed. (201701051044)
 
 
