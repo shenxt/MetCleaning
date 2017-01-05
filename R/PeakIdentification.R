@@ -37,7 +37,6 @@ PeakIdentification <- function(MetFlowData,
                                rt.tolerance = 180,
                                re.match = TRUE) {
   options(warn = -1)
-  # browser()
   if (is.null(path)) {
     path <- getwd()
   } else{
@@ -61,7 +60,6 @@ PeakIdentification <- function(MetFlowData,
     peak.number <- nrow(tags)
   }
 
-  # browser()
   peak.number <- as.numeric(peak.number)
   # peak.isotopes <- list()
   # peak.isotopes[[peak.number + 1]] <- NA
@@ -86,7 +84,6 @@ PeakIdentification <- function(MetFlowData,
 
   text.name <- file.path(path, "Identification.information.txt")
   cat("Identification", file = text.name, append = FALSE)
-  # browser()
   ##开始读取二级数据的信息，文件夹中要放入ms2数据，有几个放几个，
   ##命名要写50-300ms2.csv的形式
   data <- dir(path)
@@ -138,7 +135,6 @@ PeakIdentification <- function(MetFlowData,
       )
       cat("\n", file = text.name, append = TRUE)
 
-      # browser()
       save(msms, file = file.path(path1, ms2.name[i]))
       write.csv(msms, file.path(path1, paste("marker", ms2.name[i], "csv", sep = ".")), row.names = FALSE)
       msmsinfo <- msms[, c("mzmed", "rtmed")]
@@ -178,7 +174,6 @@ PeakIdentification <- function(MetFlowData,
         index1 <- result[, "Index1"]
         index2 <- result[, "Index2"]
         #开始把匹配到的数据信息写入到结果中
-        # browser()
         for (i in 1:length(index1)) {
           peak.forward[[index1[i]]] <-
             c(peak.forward[[index1[i]]], forward[index2[i]])
@@ -204,7 +199,6 @@ PeakIdentification <- function(MetFlowData,
       }
     }
 
-
     save(
       peak.forward,
       peak.reverse,
@@ -223,8 +217,7 @@ PeakIdentification <- function(MetFlowData,
   else {
     load(file.path(path1, "msms matching data"))
   }
-  # browser()
-  # browser()
+
   ##这是把所有的MetDDA和LipDDA都弄完之后再开始综
   #下面要对数据进行一个筛选，对于那些一个ms peak对应好几个ms2 peak的情况，根据rterror和mzerror进行判断
   #，只有mzerror的误差在5 ppm之内，才会保留下来，然后在这些peak中选择rterror最小的那个
@@ -410,7 +403,6 @@ PeakIdentification <- function(MetFlowData,
   #   })
   names(forward) <-
     names(reverse) <- NULL
-  # browser()
   lib <- rep(NA, peak.number)
   identification <- rep(NA, peak.number)
   for (i in 1:length(forward)) {
@@ -438,7 +430,6 @@ PeakIdentification <- function(MetFlowData,
     else
       (next)
   }
-  # browser()
   ###给identification中的重复的内容加上序号
   ide.idx <- which(!is.na(identification))
   ide <- identification[ide.idx]
@@ -453,7 +444,6 @@ PeakIdentification <- function(MetFlowData,
 
     identification[ide.idx] <- ide
   }
-  # browser()
   peak.identification <-
     cbind(
       ms1name,
@@ -542,14 +532,14 @@ PeakIdentification <- function(MetFlowData,
 
 
   ###将那些并不是真正比对上的peak去掉，也就是二级的各个信息改为NA
-  # browser()
+
   remain <- new.marker[, "remain"]
   for (i in 1:length(remain)) {
     if (remain[i]) {
       next
     }
     else {
-      new.marker[i, c(5:16)] <- rep(NA, 12)
+      new.marker[i, c(5:15)] <- rep(NA, 12)
     }
   }
 
@@ -559,8 +549,9 @@ PeakIdentification <- function(MetFlowData,
   peak.name <- as.character(peak.identification[, "ms1name"])
   marker.name <- as.character(new.marker[, "ms1name"])
 
-  peak.identification[match(marker.name, peak.name), 1:16] <-
-    new.marker[, 1:16]
+
+  peak.identification[match(marker.name, peak.name), 1:14] <-
+    new.marker[, 1:14]
   save(peak.identification, file = file.path(path1, "peak.identification"))
   write.csv(
     peak.identification,
@@ -580,7 +571,6 @@ PeakIdentification <- function(MetFlowData,
   )
   cat("\n", file = text.name, append = TRUE)
 
-  # browser()
   if ("ms2mz" %in% colnames(tags) & "ms2rt" %in% colnames(tags)) {
     tags.old <- tags
     tags <- tags[, -c(16:31)]
