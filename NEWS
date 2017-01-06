@@ -7,5 +7,6 @@ o MetClean function is renamed as MetCleaning. (201701031346)
 o GetWorklist is added a new argument, user to control which style worklist is generated. (201701031600)
 o In peak identification, forward and reverse column name is changed. (201701051044)
 o In peak identification, adduct and isotopes in MS2 are removed. (201701051426)
+o In peak identification, fix bugs in data who has no QC. (201701061633)
 
 

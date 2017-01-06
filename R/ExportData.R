@@ -40,7 +40,14 @@ ExportData <- function(MetFlowData,
   subject.info <- MetFlowData[["subject.info"]]
   qc.info <- MetFlowData[["qc.info"]]
 
+  has.qc <- MetFlowData[["hasQC"]]
+
+  if(has.qc == "yes"){
   write.csv(cbind(tags, subject, qc), file.path(path,paste(data.name,".csv", sep = "")), row.names = FALSE)
   write.csv(subject.info, file.path(path,paste(subject.info.name,".csv", sep = "")), row.names = FALSE)
   write.csv(qc.info, file.path(path,paste(qc.info.name,".csv", sep = "")), row.names = FALSE)
+  }else{
+    write.csv(cbind(tags, subject), file.path(path,paste(data.name,".csv", sep = "")), row.names = FALSE)
+    write.csv(subject.info, file.path(path,paste(subject.info.name,".csv", sep = "")), row.names = FALSE)
+  }
 }
