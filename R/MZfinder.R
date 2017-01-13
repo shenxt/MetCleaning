@@ -5,7 +5,7 @@ MZfinder <- function(MetFlowData,
                      var.per.cutoff = 0.5,
                      what = "mv",
                      path = NULL) {
-  # browser()
+
   options(warn = -1)
   if (is.null(path))
     path <- getwd()
@@ -171,7 +171,7 @@ MZfinder <- function(MetFlowData,
       cat(colnames(qc2)[qc.remove], "sholud be removed!!!\n")
     }
   }
-  # browser()
+
   if (length(subject.remove) == 0) {
     cat("No subject should be removed.\n")
   }

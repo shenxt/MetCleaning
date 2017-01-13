@@ -47,6 +47,7 @@ ImportData <- function(data = "data.csv",
   sample.information <- read.csv("sample.information1.csv", stringsAsFactors = FALSE, check.names = FALSE)}
 
   else {data <- read.csv(file.path(path,data), stringsAsFactors = FALSE, check.names = FALSE)
+  if(sum(duplicated(colnames(data))) > 0) {stop("There are duplicated samples (names) in you data!")}
   sample.information <- read.csv(file.path(path,sample.information), stringsAsFactors = FALSE, check.names = FALSE)}
 
   ## read sample information

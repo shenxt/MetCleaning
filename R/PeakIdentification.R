@@ -84,11 +84,8 @@ PeakIdentification <- function(MetFlowData,
 
   text.name <- file.path(path, "Identification.information.txt")
   cat("Identification", file = text.name, append = FALSE)
-  ##开始读取二级数据的信息，文件夹中要放入ms2数据，有几个放几个，
-  ##命名要写50-300ms2.csv的形式
   data <- dir(path)
 
-  #ms1是一级数据，ms2是二级数据
   ms1 <- tags
   peak <- ms1[, c("mz", "rt", "name")]
   ms2 <- data[grep("ms2", data)]
@@ -99,7 +96,7 @@ PeakIdentification <- function(MetFlowData,
   path1 <- file.path(path, "matching result")
   dir.create(path1)
 
-  ##下面开始匹配信息
+  ##begin match
   if (re.match) {
     cat("Reading ms2 data...")
     ms2 <-
@@ -113,7 +110,7 @@ PeakIdentification <- function(MetFlowData,
       reverse <- as.character(msms[, "hits.reverse"])
       forward[is.na(forward)] <- ""
       reverse[is.na(reverse)] <- ""
-      #将没有鉴定出来的peak去除
+      #remove the unidentified feature
       msms <- msms[forward != '' | reverse != '',]
       cat("\n")
       cat("\n", file = text.name, append = TRUE)
@@ -138,7 +135,7 @@ PeakIdentification <- function(MetFlowData,
       save(msms, file = file.path(path1, ms2.name[i]))
       write.csv(msms, file.path(path1, paste("marker", ms2.name[i], "csv", sep = ".")), row.names = FALSE)
       msmsinfo <- msms[, c("mzmed", "rtmed")]
-      #把鉴定出来的peak的信息提取出来
+      #get the information of metabolite
       forward <- as.character(msms[, "hits.forward"])
       reverse <- as.character(msms[, "hits.reverse"])
       forward[is.na(forward)] <- ""
@@ -150,7 +147,7 @@ PeakIdentification <- function(MetFlowData,
       # isotopes <- as.character(msms[, "isotopes"])
       file <- rep(ms2.name[i], length(forward))
 
-      #开始ms1和ms2数据的匹配
+      #begin ms1 and ms2 matching
       cat("\n")
       cat(paste("Begin", ms2.name[i], "matching..."))
       cat("\n")
@@ -166,14 +163,13 @@ PeakIdentification <- function(MetFlowData,
         next
       }
       else {
-        #mz和rt error信息
+        #mz and rt information
         mzerror <- result[, "mz error"]
         rterror <- result[, "rt error"]
 
-        #index1是匹配上的ms1的索引，index2是匹配上的ms2的索???
         index1 <- result[, "Index1"]
         index2 <- result[, "Index2"]
-        #开始把匹配到的数据信息写入到结果中
+
         for (i in 1:length(index1)) {
           peak.forward[[index1[i]]] <-
             c(peak.forward[[index1[i]]], forward[index2[i]])
@@ -217,13 +213,6 @@ PeakIdentification <- function(MetFlowData,
   else {
     load(file.path(path1, "msms matching data"))
   }
-
-  ##这是把所有的MetDDA和LipDDA都弄完之后再开始综
-  #下面要对数据进行一个筛选，对于那些一个ms peak对应好几个ms2 peak的情况，根据rterror和mzerror进行判断
-  #，只有mzerror的误差在5 ppm之内，才会保留下来，然后在这些peak中选择rterror最小的那个
-  #作为该ms1peak应该对应的ms2peak???
-  #同时，identification result给每个判断的第一个，也就???
-  #打分最高的那个
 
   path <- getwd()
   path2 <- file.path(path1, "how select one to many")
@@ -430,7 +419,7 @@ PeakIdentification <- function(MetFlowData,
     else
       (next)
   }
-  ###给identification中的重复的内容加上序号
+
   ide.idx <- which(!is.na(identification))
   ide <- identification[ide.idx]
   dup.ide <- unique(ide[duplicated(ide)])
@@ -468,7 +457,7 @@ PeakIdentification <- function(MetFlowData,
 
 
 
-  #下面对于那些多对一的情况进行一下筛选
+
   marker <-
     peak.identification[!is.na(peak.identification[, "ms2name"]),]
   marker.ms2name <- as.character(marker[, "ms2name"])
@@ -531,7 +520,6 @@ PeakIdentification <- function(MetFlowData,
             file.path(path1, "marker.with.many.to.one.csv"))
 
 
-  ###将那些并不是真正比对上的peak去掉，也就是二级的各个信息改为NA
 
   remain <- new.marker[, "remain"]
   for (i in 1:length(remain)) {
@@ -545,7 +533,7 @@ PeakIdentification <- function(MetFlowData,
 
   write.csv(new.marker,
             file.path(path1, "marker.without.many.to.one.csv"))
-  #将鉴定出来的marker信息写入到peak.identification中
+
   peak.name <- as.character(peak.identification[, "ms1name"])
   marker.name <- as.character(new.marker[, "ms1name"])
 

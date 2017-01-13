@@ -149,20 +149,21 @@ MetCleaning <- function(#ImportData para
 
   #----------------------------------------------------------------------------
   if (sum(is.na(subject)) != 0){
-  #观察缺失值分布
+
   MZoverview(MetFlowData = met.data,
-             path = file.path(path,"1MV overview"),
+             path = file.path(path,"1 MV overview"),
              what = "mv")
 
+    # browser()
   if(mv.filter) {
   cat("---------------------------------------------------------------------\n")
   cat("Missing values filter...\n")
-  #对缺失值进行筛选
+  #filter mv
   met.data <- MZfilter(MetFlowData = met.data,
                        obs.per.cutoff = obs.mv.cutoff,
                        var.per.cutoff = var.mv.cutoff,
                        what = "mv",
-                       path = file.path(path,"2MV filter"))
+                       path = file.path(path,"2 MV filter"))
   #save data
   met.data.mv.filter <- met.data
   save(met.data.mv.filter, file = file.path(path.inter, "met.data.mv.filter"))
@@ -170,7 +171,7 @@ MetCleaning <- function(#ImportData para
 
   cat("---------------------------------------------------------------------\n")
   cat("Missing values imputation...\n")
-  #对缺失值进行补齐
+  #mv imputation
   met.data <- MVimputation(MetFlowData = met.data,
                            ##MV imputation method
                            imputation.method = imputation.method,
@@ -186,20 +187,20 @@ MetCleaning <- function(#ImportData para
 
   subject <- met.data[["subject"]]
 
-  #观察零值分布
+  #zero distribution
   MZoverview(MetFlowData = met.data,
              what = "zero",
-             path = file.path(path,"3Zero overview"))
+             path = file.path(path,"3 Zero overview"))
 
   if(zero.filter){
   cat("---------------------------------------------------------------------\n")
   cat("Zero filter...\n")
-  #对零进行筛选
+  #filter zero
   met.data <- MZfilter(MetFlowData = met.data,
                        obs.per.cutoff = obs.zero.cutoff,
                        var.per.cutoff = var.zero.cutoff,
                        what = "zero",
-                       path = file.path(path,"4Zero filter"))
+                       path = file.path(path,"4 Zero filter"))
   #save data
   met.data.zero.filter <- met.data
   save(met.data.zero.filter, file = file.path(path.inter, "met.data.zero.filter"))
@@ -207,7 +208,7 @@ MetCleaning <- function(#ImportData para
 
   cat("---------------------------------------------------------------------\n")
   cat("Peak identification...\n")
-  #物质鉴定 peak identification
+  #peak identification
   if (any(dir() == "peak identification")) {
     if (all(dir("intermediate") != "met.data.peak.iden")) {
       met.data <- PeakIdentification(MetFlowData = met.data,
@@ -224,7 +225,7 @@ MetCleaning <- function(#ImportData para
   }
 
   if (hmdb.matching) {
-    #物质鉴定 mass identification
+    #mass identification
 
     if (all(dir("intermediate") != "met.data.mass.iden")) {
       met.data <- MassIdentification(MetFlowData = met.data,
@@ -244,11 +245,11 @@ MetCleaning <- function(#ImportData para
   if (qc.outlier.filter) {
   cat("---------------------------------------------------------------------\n")
   cat("QC outlier filtering...\n")
-   #标出QC的outlier
+   #QC outlier
   if (all(dir("intermediate") != "met.data.qc.outlier.filter")) {
   met.data <- QCOutlierFilter(MetFlowData = met.data,
                               CI = 0.95,
-                              path = "5QC outlier filter")
+                              path = "5 QC outlier filter")
   met.data.qc.outlier.filter <- met.data
   save(met.data.qc.outlier.filter,
        file = file.path(path.inter,"met.data.qc.outlier.filter"))
@@ -285,11 +286,11 @@ MetCleaning <- function(#ImportData para
   if(subject.outlier.filter){
   cat("---------------------------------------------------------------------\n")
   cat("Subject outlier filtering...\n")
-  #标出subject的outlier
+  #subject outlier
   if (all(dir("intermediate") != "met.data.subject.outlier.filter")) {
   met.data <- SubjectOutlierFilter(MetFlowData = met.data,
                                    CI = 0.95,
-                                   path = file.path("6Subject outlier finder"))
+                                   path = file.path("6 Subject outlier finder"))
   met.data.subject.outlier.filter <- met.data
   save(met.data.subject.outlier.filter,
        file = file.path(path.inter, "met.data.subject.outlier.filter"))
@@ -317,7 +318,7 @@ MetCleaning <- function(#ImportData para
     #batch effect
     BatchEffectOverview(MetFlowData.before = met.data.zero.filter,
                         MetFlowData.after = met.data,
-                        path = file.path(path, "8Batch effect"))
+                        path = file.path(path, "8 Batch effect"))
   }
 
     if(met.plot) {
@@ -326,7 +327,7 @@ MetCleaning <- function(#ImportData para
     #metabolite plot
     MetabolitePlot(MetFlowData.before = met.data.zero.filter,
                    MetFlowData.after = met.data,
-                   path = file.path(path, "9metabolite plot"))
+                   path = file.path(path, "9 metabolite plot"))
     }
   }
   cat("\n")
@@ -334,16 +335,16 @@ MetCleaning <- function(#ImportData para
 
   cat("---------------------------------------------------------------------\n")
   cat("RSD overview...\n")
-  #RSD分布
+  #RSD distribution
   RSDoverview(MetFlowData.before = met.data.zero.filter,
               MetFlowData.after = met.data,
-              path = file.path(path,"10RSD overview"))
+              path = file.path(path,"10 RSD overview"))
   }
 
   #data overview
   DataOverview(MetFlowData = met.data,
                feature.distribution = TRUE,
-               path = file.path("11Data overview"))
+               path = file.path("11 Data overview"))
 
   #ouput data
   ExportData(MetFlowData = met.data,

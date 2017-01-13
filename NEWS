@@ -8,5 +8,6 @@ o GetWorklist is added a new argument, user to control which style worklist is g
 o In peak identification, forward and reverse column name is changed. (201701051044)
 o In peak identification, adduct and isotopes in MS2 are removed. (201701051426)
 o In peak identification, fix bugs in data who has no QC. (201701061633)
+o Check duplicated names in data. (201701131406)
 
 

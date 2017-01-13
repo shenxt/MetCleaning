@@ -8,6 +8,9 @@ ChangeSampleName <- function(data = "data.csv",
   # browser()
 if (is.null(path)) path <- getwd()
   data <- read.csv(file.path(path,data), stringsAsFactors = FALSE, check.names = FALSE)
+
+  if(sum(duplicated(colnames(data))) > 0) {stop("There are duplicated samples (names) in you data!")}
+
   sample.information <- read.csv(file.path(path,sample.information), stringsAsFactors = FALSE, check.names = FALSE)
   sample.information <- sample.information[!is.na(sample.information[,1]),]
 

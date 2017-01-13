@@ -24,7 +24,7 @@
 ## data integration
 DataIntegration <- function(MetFlowData,
                             method = "qc.mean"){
-# browser()
+
   subject <- MetFlowData[["subject"]]
   qc <- MetFlowData[["qc"]]
   subject.info <- MetFlowData[["subject.info"]]
@@ -72,8 +72,6 @@ qc1 <- data[[2]]
     qc3 <- cbind(qc3, qc2[[i]])
     subject3 <- cbind(subject3, subject2[[i]])
   }
-
-  # browser()
 
   subject3[is.na(subject3)] <- 0
   qc3[is.na(qc3)] <- 0

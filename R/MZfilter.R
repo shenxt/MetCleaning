@@ -33,7 +33,7 @@ MZfilter <- function(MetFlowData,
     dir.create(path)
   }
   options(warn = -1)
-  # browser()
+
   MZfinderData <- MZfinder(
     MetFlowData = MetFlowData,
     obs.per.cutoff = obs.per.cutoff,
@@ -61,7 +61,7 @@ MZfilter <- function(MetFlowData,
     subject <- subject[-feature.remove, ]
     tags <- tags[-feature.remove, ]
   }
-# browser()
+
   if (!is.null(qc.remove) & length(qc.remove) != 0) {
     cat("QC shoulde be removed are: \n")
     cat(qc.remove)
@@ -73,7 +73,7 @@ MZfilter <- function(MetFlowData,
          and separate them using comma,
          if you don't want to remove any QC, please type n):"
       )
-    # browser()
+
     if (qc.remove == "n") {
       qc <- qc
     } else {
@@ -115,7 +115,7 @@ MZfilter <- function(MetFlowData,
   else {
     qc.name <- NULL
   }
-# browser()
+
   subject.index <-
     which(is.na(match(subject.info[, 1], subject.name)))
   if (length(subject.index) != 0) {
