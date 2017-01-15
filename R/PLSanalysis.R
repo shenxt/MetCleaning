@@ -467,38 +467,38 @@ PLSanalysis <- function(MetFlowData,
   dev.off()
 
   #PLS 3D
-  if (number > 2) {
-    pdf(file.path(path, "pls score plot 3d.pdf"),
-        width = width,
-        height = height)
-    scatterplot3d::scatterplot3d(
-      x,
-      y,
-      z,
-      color = colour,
-      xlab = "t[1]",
-      ylab = "t[2]",
-      zlab = "t[3]",
-      angle = 50,
-      pch = pcha,
-      box = FALSE,
-      cex.symbol = cexa,
-      cex.lab = 1.5,
-      cex.axis = 1.3,
-      xlim = xlim,
-      ylim = ylim,
-      zlim = c(zmin, zmax)
-    )
-    legend(
-      "topleft",
-      names(info),
-      pch = pchalist[1:length(info)],
-      col = colourlist[1:length(info)],
-      bty = "n",
-      cex = 1.5
-    )
-    dev.off()
-  }
+  # if (number > 2) {
+  #   pdf(file.path(path, "pls score plot 3d.pdf"),
+  #       width = width,
+  #       height = height)
+  #   scatterplot3d::scatterplot3d(
+  #     x,
+  #     y,
+  #     z,
+  #     color = colour,
+  #     xlab = "t[1]",
+  #     ylab = "t[2]",
+  #     zlab = "t[3]",
+  #     angle = 50,
+  #     pch = pcha,
+  #     box = FALSE,
+  #     cex.symbol = cexa,
+  #     cex.lab = 1.5,
+  #     cex.axis = 1.3,
+  #     xlim = xlim,
+  #     ylim = ylim,
+  #     zlim = c(zmin, zmax)
+  #   )
+  #   legend(
+  #     "topleft",
+  #     names(info),
+  #     pch = pchalist[1:length(info)],
+  #     col = colourlist[1:length(info)],
+  #     bty = "n",
+  #     cex = 1.5
+  #   )
+  #   dev.off()
+  # }
   # browser()
   PLSpermutation(
     data = t(subject),
