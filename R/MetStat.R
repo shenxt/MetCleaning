@@ -111,10 +111,10 @@ MetStat <- function(MetFlowData,
   dir.create(path.inter)
 
   ##RSD filtering
-  MetFlowData <-
+  met.data <-
     RSDfilter(MetFlowData = MetFlowData, rsd.cutoff = rsd.cutoff)
   #save data
-  met.data.rsd.filter <- MetFlowData
+  met.data.rsd.filter <- met.data
   save(met.data.rsd.filter,
        file = file.path(path.inter, "met.data.rsd.filter"))
 
