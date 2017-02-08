@@ -112,7 +112,6 @@ MetCleaning <- function(#ImportData para
                    integration = TRUE
                    ){
 
-  # browser()
   if (is.null(path)) {
     path <- getwd()
   } else{
@@ -127,7 +126,7 @@ MetCleaning <- function(#ImportData para
   #----------------------------------------------------------------------------
   #read data
   cat("Importing data...\n")
-  # browser()
+
   if (all(dir("intermediate") != "met.data.raw")) {
     met.data <- ImportData(data = data,
                            sample.information = sample.information,
@@ -143,7 +142,6 @@ MetCleaning <- function(#ImportData para
     met.data <- met.data.raw
     }
 
-  # browser()
   batch <- unique(met.data[["subject.info"]][,4])
   subject <- met.data[["subject"]]
 
@@ -154,7 +152,6 @@ MetCleaning <- function(#ImportData para
              path = file.path(path,"1 MV overview"),
              what = "mv")
 
-    # browser()
   if(mv.filter) {
   cat("---------------------------------------------------------------------\n")
   cat("Missing values filter...\n")
