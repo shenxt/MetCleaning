@@ -5,7 +5,7 @@ Version: 0.99.0
 Date: 2016-01-03
 Author: Xiaotao Shen, Zhengjiang Zhu
 Maintainer: Xiaotao Shen<shenxt@sioc.ac.cn>
-Description: Automatic and integrated tool for data cleaning and statistical analysis of large scale MS-based metabolomics data.
+Description: A data cleaning (preparation) and statistical analysis pipeline for large-scale mass spectrometry-based untargeted metabolomics.
 LazyData: true
 Depends: R (>= 3.0)
 Imports:

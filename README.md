@@ -1,16 +1,19 @@
 # MetCleaning
 ******************************************
-### *MetCleaning* provides an integrated and automatic pipeline for data cleaning and statistical analysis of large scale mass spectrometry (MS) based-metabolomic data. It includes missing value (MV) filtering and imputation, zero value filtering, data normalization, data integration, data quality assessment, univariate statistical analysis, multivariate statistical analysis such as PCA and PLS-DA, potential marker selection and show. This document describes how to use the integrated functions, *MetCleaning* and *MetStat* in *MetCleaning* utilizing demo data.
+### *MetCleaning* provides a comprehensive pipeline for data cleaning and statistical analysis of large-scale mass spectrometry (MS) based-metabolomics data. It includes missing value (MV) filtering and imputation, zero value filtering, detection of sample outliers, data normalization, data integration, data quality assessment, and common statistical analysis such as univariate and multivariate statistical analysis. This document describes the step-by-step processing metabolomics data using *MetCleaning*.
 
 ## **Installation and help**
 ******************************************
 ### *MetCleaning* is published in github [(link)](https://github.com/jaspershen/MetCleaning). So you can install it via to github. 
 
 ```
-##pcaMethods and impute should be installed form bioconductor
+##pcaMethods, pathifier and impute should be installed form bioconductor
 ##pcaMethos
 source("http://bioconductor.org/biocLite.R")
     biocLite("pcaMethods")
+##pathifier
+source("http://bioconductor.org/biocLite.R")
+    biocLite("pathifier")
 ##impute
 source("http://bioconductor.org/biocLite.R")
     biocLite("impute")
@@ -23,9 +26,7 @@ source("http://bioconductor.org/biocLite.R")
  help(package = "MetCleaning")
 ```
 
-## **Note of version1.0.0**
-
-## **Note of version1.1.0**
+## **Note of version0.99.0**
 1. Add *m2p* function which is used to transform metabolite information to pathway information. 
 2. Fix some bugs to improve speed.(20161219)
 3. Add the check.names = FALSE (argument) in all the read.csv function. (20161221)

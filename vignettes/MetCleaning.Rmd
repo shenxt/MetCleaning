@@ -3,9 +3,9 @@ title: "MetCleaning v0.99.0"
 author: "Xiaotao Shen(shenxt@sioc.ac.cn) and Zhengjiang Zhu"
 date: '`r Sys.Date()`'
 output:
-  word_document: default
-  pdf_document: default
   html_document: default
+  pdf_document: default
+  word_document: default
 vignette: |
   %\VignetteIndexEntry{Vignette Title} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
 ---
