@@ -1,6 +1,6 @@
 title: Metcleaning
-description: Automatic and integrated tool for data cleaning and statistical analysis of large scale MS-based metabolomics data
-google_analytics: 
+description: A data cleaning pipeline for large-scale mass spectrometry-based untargeted metabolomics
+google_analytics:
 show_downloads: false
 theme: jekyll-theme-cayman
 
