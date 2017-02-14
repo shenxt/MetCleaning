@@ -4,8 +4,7 @@
 ### *MetCleaning* provides a comprehensive pipeline for data cleaning and statistical analysis of large-scale mass spectrometry (MS) based-metabolomics data. It includes missing value (MV) filtering and imputation, zero value filtering, detection of sample outliers, data normalization, data integration, data quality assessment, and common statistical analysis such as univariate and multivariate statistical analysis. This document describes the step-by-step processing metabolomics data using *MetCleaning*.      
 **The QQ group is 182971123.**
 
-![Figure1 Workflow of intruction]
-(http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/XZ..rAPvOgs5iSx4VBNs3ncotMg17XgZRTiYO1KWJCM!/b/dH4BAAAAAAAA&bo=nwKAAgAAAAADBz0!&rf=viewer_4)
+![Figure1 Workflow of instruction](http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/XZ..rAPvOgs5iSx4VBNs3ncotMg17XgZRTiYO1KWJCM!/b/dH4BAAAAAAAA&bo=nwKAAgAAAAADBz0!&rf=viewer_4)
 
 **Figure1.** The detailed data cleaning pipeline for large-scale mass spectrometry-based untargeted metabolomics using the R package MetCleaning.
 
@@ -37,12 +36,12 @@ source("http://bioconductor.org/biocLite.R")
 
 ## **Demo data**
 ******************************************
-### Demo data in *MetCleaning* is from a study to discover metabolite biomarkers for screening of esophagus cancer (EC). The participants were screened using endoscope and iodine staining for EC (golden standard for diagnosis of EC). The participants were divided into two classes according to their reaction to iodine staining: screening positive and screening negative. 
-### In *MetCleaning* package, we selected a two-batch dataset as an example. The dataset contains 1401 metabolic peaks and 606 samples (536 subject samples and 70 QC samples). See the detailed information in Table 1. In *MetCleaning*, metabolomics data is named as "data.csv" and sample information is named as "sample.information.csv". 
+### Demo data in *MetCleaning* is from a study to discover metabolite biomarkers for screening of esophagus cancer (EC). The participants were screened using endoscope and iodine staining for EC (golden standard for diagnosis of EC). The participants were divided into two classes according to their reaction to iodine staining: screening positive and screening negative.
+### In *MetCleaning* package, we selected a two-batch dataset as an example. The dataset contains 1401 metabolic peaks and 606 samples (536 subject samples and 70 QC samples). See the detailed information in Table 1. In *MetCleaning*, metabolomics data is named as "data.csv" and sample information is named as "sample.information.csv".
 
 **Table1.** The basic information of demo data in MetCleaning.
 
-Vari able    | Screen negative | Screen positive | QC number | Total
+Variable    | Screen negative | Screen positive | QC number | Total
 -------------|-----------------|-----------------|-----------|------
 Sample number|       297       |        239      |     70    |  606
 Batch 1      |       141       |        116      |     34    |  291  
@@ -69,8 +68,7 @@ write.csv(sample.information , "sample.information.csv", row.names = FALSE)
 1. "data.csv" is the raw metabolomics dataset. Rows are metabolic peaks, and columns are metabolic peak abundance of samples and information of metabolic peaks. The information of metabolic peaks must contain "name" (peak name), "mz" (mass to change ratio) and "rt" (retention time). Other information of metabolic peaks is optional, for example "isotopes" and "adducts". The name of sample can contain ".", but cannot contain "-" and space. And the start of sample name cannot be number. For example, "A210.a" and "A210a" are valid, but "210a" or "210-a" are invalid.
 2. "sample.information.csv" is sample information for metabolomics dataset. Column 1 is "sample.name" which is the name of subject and QC samples. Please confirm that the sample names in "sample.information.csv" and "data.csv" are completely same. Column 2 is "injection.order" which is the injection order of QC and subject samples. Column 3 is "class", which is used to distinguish "QC" and "Subject" samples. Column 4 is "batch" to provide acquisition batch information for samples. Column 5 is "group", which is used to label the group of subject sample, for example, "control" and "case". The "group" of QC samples is labeled as "QC".
 
-![Figure2 Data organisation of MetCleaning]
-(http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/j9pWGMMZRtAPlxlq1XcIT4xFGN2O6FYpOmmLmsKF64o!/b/dN8AAAAAAAAA&bo=dgImAQAAAAADB3E!&rf=viewer_4)
+![Figure2 Data organization of MetCleaning](http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/j9pWGMMZRtAPlxlq1XcIT4xFGN2O6FYpOmmLmsKF64o!/b/dN8AAAAAAAAA&bo=dgImAQAAAAADB3E!&rf=viewer_4)
 
 **Figure2.** Data organization and data format of MetCleaning.
 
