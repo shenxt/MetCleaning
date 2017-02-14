@@ -70,7 +70,7 @@ write.csv(sample.information , "sample.information.csv", row.names = FALSE)
 2. "sample.information.csv" is sample information for metabolomics dataset. Column 1 is "sample.name" which is the name of subject and QC samples. Please confirm that the sample names in "sample.information.csv" and "data.csv" are completely same. Column 2 is "injection.order" which is the injection order of QC and subject samples. Column 3 is "class", which is used to distinguish "QC" and "Subject" samples. Column 4 is "batch" to provide acquisition batch information for samples. Column 5 is "group", which is used to label the group of subject sample, for example, "control" and "case". The "group" of QC samples is labeled as "QC".
 
 ![Figure2 Data organisation of MetCleaning]
-(http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/QeNkJiVYCtzEiGfG9Qd8HwVacmsLHzMXlwAXZL2wInM!/b/dCUAAAAAAAAA&bo=2APMAQAAAAADBzQ!&rf=viewer_4)
+(http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/j9pWGMMZRtAPlxlq1XcIT4xFGN2O6FYpOmmLmsKF64o!/b/dN8AAAAAAAAA&bo=dgImAQAAAAADB3E!&rf=viewer_4)
 
 **Figure2.** Data organization and data format of MetCleaning.
 
