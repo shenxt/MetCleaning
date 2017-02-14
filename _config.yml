@@ -2,7 +2,7 @@ title: MetCleaning
 description: A data cleaning pipeline for large-scale mass spectrometry-based untargeted metabolomics
 google_analytics:
 show_downloads: false
-theme: jekyll-theme-cayman
+theme: jekyll-theme-midnight
 
 gems:
   - jekyll-mentions
