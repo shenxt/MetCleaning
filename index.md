@@ -38,6 +38,7 @@ source("http://bioconductor.org/biocLite.R")
 ******************************************
 
 ### Demo data in *MetCleaning* is from a study to discover metabolite biomarkers for screening of esophagus cancer (EC). The participants were screened using endoscope and iodine staining for EC (golden standard for diagnosis of EC). The participants were divided into two classes according to their reaction to iodine staining: screening positive and screening negative.
+
 ### In *MetCleaning* package, we selected a two-batch dataset as an example. The dataset contains 1401 metabolic peaks and 606 samples (536 subject samples and 70 QC samples). See the detailed information in Table 1. In *MetCleaning*, metabolomics data is named as "data.csv" and sample information is named as "sample.information.csv".
 
 **Table1.** The basic information of demo data in MetCleaning.
@@ -137,6 +138,7 @@ write.csv(new.group, "new.group.csv", row.names = FALSE)
 MetStat(MetFlowData = met.data.after.pre, new.group = TRUE)
 ```
 ### Running results of *MetStat*
+
 #### 1.Sample removing. Firstly, you need to confirm the samples which you want to remove form dataset as Figure 7 shows.
 
 ![Figure7 sample removing confirmation](http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/mQH*23gM4ylq0.thcyNr4EqVyiZra7sBkZohrEz1spk!/b/dAkBAAAAAAAA&bo=DQOAAAAAAAADB6w!&rf=viewer_4)
