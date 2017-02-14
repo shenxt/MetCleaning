@@ -36,6 +36,7 @@ source("http://bioconductor.org/biocLite.R")
 
 ## **Demo data**
 ******************************************
+
 ### Demo data in *MetCleaning* is from a study to discover metabolite biomarkers for screening of esophagus cancer (EC). The participants were screened using endoscope and iodine staining for EC (golden standard for diagnosis of EC). The participants were divided into two classes according to their reaction to iodine staining: screening positive and screening negative.
 ### In *MetCleaning* package, we selected a two-batch dataset as an example. The dataset contains 1401 metabolic peaks and 606 samples (536 subject samples and 70 QC samples). See the detailed information in Table 1. In *MetCleaning*, metabolomics data is named as "data.csv" and sample information is named as "sample.information.csv".
 
@@ -49,6 +50,7 @@ Batch 2      |       156       |        123      |     36    |  315
 
 ## **Data cleaning**
 ******************************************
+
 ### Data cleaning is integrated as a function named as *MetCleaning*. We use the demo data as the example. Copy the code below and paste in you R console.
 
 #### code 2: Demo data of *MetCleaning*
