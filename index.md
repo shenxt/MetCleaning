@@ -137,6 +137,7 @@ write.csv(new.group, "new.group.csv", row.names = FALSE)
 ```
 MetStat(MetFlowData = met.data.after.pre, new.group = TRUE)
 ```
+
 ### Running results of *MetStat*
 
 #### 1.Sample removing. Firstly, you need to confirm the samples which you want to remove form dataset as Figure 7 shows.
