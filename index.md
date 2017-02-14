@@ -52,7 +52,7 @@ Batch 2      |       156       |        123      |     36    |  315
 ******************************************
 ### Data cleaning is integrated as a function named as *MetCleaning*. We use the demo data as the example. Copy the code below and paste in you R console.
 
-#### code 2: Demo data of *MetClean*
+#### code 2: Demo data of *MetCleaning*
 ```
 ##demo data
 data(data, package = "MetCleaning")
@@ -82,7 +82,7 @@ write.csv(sample.information , "sample.information.csv", row.names = FALSE)
 MetClean(polarity = "positive")
 ```
 
-### Running results of *MetClean*
+### Running results of *MetCleaning*
 1. Missing or zero values filtering. In the missing or zero value filtering step, if there are samples which beyond the threshold you set, you should decide to remove them or not. We recommend removing all of them as Figure 3 shows.
 
 ![Figure3 Missing or zero value filtering](http://a3.qpic.cn/psb?/V12nMOGs3RiKv2/lClw1oe2dY6SX4Fxd5HvZzsv8MT3FROlrvyt6tBP4HE!/b/dHkBAAAAAAAA&bo=pwPDAAAAAAADB0U!&rf=viewer_4)
@@ -136,8 +136,7 @@ write.csv(new.group, "new.group.csv", row.names = FALSE)
 ```
 MetStat(MetFlowData = met.data.after.pre, new.group = TRUE)
 ```
-
-###Running results of *MetStat*
+### Running results of *MetStat*
 #### 1.Sample removing. Firstly, you need to confirm the samples which you want to remove form dataset as Figure 7 shows.
 
 ![Figure7 sample removing confirmation](http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/mQH*23gM4ylq0.thcyNr4EqVyiZra7sBkZohrEz1spk!/b/dAkBAAAAAAAA&bo=DQOAAAAAAAADB6w!&rf=viewer_4)
