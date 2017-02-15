@@ -8,7 +8,7 @@ PLSanalysis(MetFlowData, log.scale = 10, scalemethod = "auto",
   plsmethod = "plsreg", path = NULL, width = 7, height = 7,
   text = FALSE, ellipse = TRUE, color = c("palegreen", "royalblue",
   "firebrick1", "yellow", "black", "cyan", "gray48"), shape = c(17, 19, 15,
-  18, 2, 8, 11), cexa = 1, xlim1 = NULL, ylim1 = NULL)
+  18, 2, 8, 11), cexa = 1, cex.text = 1, xlim1 = NULL, ylim1 = NULL)
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}
@@ -27,7 +27,7 @@ defaulit is "auto".}
 
 \item{height}{height of plot.}
 
-\item{text}{Add text in PCA score plot or not? Deefault is FALSE.}
+\item{text}{Add text in PLS score plot or not? Deefault is FALSE.}
 
 \item{ellipse}{Add ellipse in PCA score plot or not? Deefault is TRUE.}
 
@@ -40,6 +40,8 @@ defaulit is "auto".}
 \item{xlim1}{x axis limitation. Default is NULL.}
 
 \item{ylim1}{y axis limitation. Default is NULL.}
+
+\item{cex}{for text.}
 }
 \value{
 PLS score plot: PLS score plot.
@@ -66,4 +68,3 @@ PLSanalysis(met.data.after.pre)
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}
 }
-

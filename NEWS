@@ -10,4 +10,6 @@ o In peak identification, adduct and isotopes in MS2 are removed. (201701051426)
 o In peak identification, fix bugs in data who has no QC. (201701061633)
 o Check duplicated names in data. (201701131406)
 
-
+Version 0.99.20
+--------------
+o Add the text function in PCA and PLS analysis.

@@ -11,11 +11,12 @@
 #' @param path Work directory.
 #' @param width width of plot.
 #' @param height height of plot.
-#' @param text Add text in PCA score plot or not? Deefault is FALSE.
+#' @param text Add text in PLS score plot or not? Deefault is FALSE.
 #' @param ellipse Add ellipse in PCA score plot or not? Deefault is TRUE.
 #' @param color Color for different class.
 #' @param shape Shape for different class.
 #' @param cexa cex.
+#' @param cex for text.
 #' @param xlim1 x axis limitation. Default is NULL.
 #' @param ylim1 y axis limitation. Default is NULL.
 #' @return PLS score plot: PLS score plot.
@@ -53,6 +54,7 @@ PLSanalysis <- function(MetFlowData,
                                   "gray48"),
                         shape = c(17, 19, 15, 18, 2, 8, 11),
                         cexa = 1,
+                        cex.text = 1,
                         xlim1 = NULL,
                         ylim1 = NULL)
 #parameter setting
@@ -446,7 +448,7 @@ PLSanalysis <- function(MetFlowData,
   abline(v = 0, lty = 2)
   abline(h = 0, lty = 2)
   if (text) {
-    text(x, y, rownames(int), pos = 4)
+    text(x, y, rownames(int), pos = 4, cex = cex.text)
   }
   if (ellipse) {
     lines(ellipse::ellipse(

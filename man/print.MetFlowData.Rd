@@ -25,11 +25,10 @@ met.data.after.pre
 print(met.data.after.pre)
 }
 }
+\seealso{
+\code{\link{print}}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}
 }
-\seealso{
-\code{\link{print}}
-}
-

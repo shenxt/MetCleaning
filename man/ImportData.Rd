@@ -44,11 +44,10 @@ Return a standard MetProcesser dataset.
 \description{
 Import data and retrun a standard MetProcessor data.
 }
+\seealso{
+\code{\link{ExportData}}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}
 }
-\seealso{
-\code{\link{ExportData}}
-}
-

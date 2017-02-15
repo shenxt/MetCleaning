@@ -10,6 +10,7 @@
 #' @param QC Use qc data for PCA analyis or not? Default is FALSE.
 #' @param scale.method Which scale methd you want to use? "auto" or "pareto",
 #' defaulit is "auto".
+#' @param text Add the labels in PCA or PLS score plot.
 #' @param xlim1 x axis limitation. Default is NULL.
 #' @param ylim1 y axis limitation. Default is NULL.
 #' @param plsmethod Default is "plsreg".
@@ -67,6 +68,7 @@ MetStat <- function(MetFlowData,
                     #PCA analysis para
                     QC = TRUE,
                     scale.method = "auto",
+                    text = FALSE,
                     xlim1 = NULL,
                     ylim1 = NULL,
                     #PLS analysis para
@@ -142,7 +144,9 @@ MetStat <- function(MetFlowData,
       scale.method = scale.method,
       path = file.path(path, "12PCA analysis"),
       xlim1 = xlim1,
-      ylim1 = ylim1
+      ylim1 = ylim1,
+      text = text,
+      cex.text = 0.3
     )
   }
 
@@ -157,7 +161,9 @@ MetStat <- function(MetFlowData,
       path = file.path(path, "13PLS analysis"),
       plsmethod = plsmethod,
       xlim1 = xlim1,
-      ylim1 = ylim1
+      ylim1 = ylim1,
+      text = text,
+      cex.text = 0.3
     )
 
     load(file.path(path, "13PLS analysis", "vip"))

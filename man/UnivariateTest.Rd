@@ -37,12 +37,11 @@ setwd("Demo")
 new.met.data <- UnivariateTest(met.data.after.pre)
 }
 }
-\author{
-Xiaotao Shen
-\email{shenxt@sioc.ac.cn}
-}
 \seealso{
 The details of univariate test can be found in \code{\link[stats]{t.test}},
 \code{\link[stats]{p.adjust}} and \code{\link[stats]{wilcox.test}}.
 }
-
+\author{
+Xiaotao Shen
+\email{shenxt@sioc.ac.cn}
+}

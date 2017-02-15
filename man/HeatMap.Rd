@@ -65,11 +65,10 @@ setwd("Demo")
 HeatMap(MetFlowData = met.data.after.pre)
 }
 }
+\seealso{
+\code{\link[pheatmap]{pheatmap}}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}
 }
-\seealso{
-\code{\link[pheatmap]{pheatmap}}
-}
-

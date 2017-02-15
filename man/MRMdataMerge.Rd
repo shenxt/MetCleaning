@@ -42,4 +42,3 @@ Merge different MRM batch datasets into one dataset.
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}
 }
-

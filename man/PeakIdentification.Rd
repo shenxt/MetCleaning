@@ -49,4 +49,3 @@ new.met.data <- PeakIdentification(met.data.after.pre)
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}
 }
-

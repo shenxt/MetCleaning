@@ -1,8 +1,8 @@
 Package: MetCleaning
 Type: Package
 Title: MetCleaning
-Version: 0.99.1
-Date: 2016-02-13
+Version: 0.99.20
+Date: 2016-02-15
 Author: Xiaotao Shen, Zhengjiang Zhu
 Maintainer: Xiaotao Shen<shenxt@sioc.ac.cn>
 Description: A data cleaning (preparation) and statistical analysis pipeline for large-scale mass spectrometry-based untargeted metabolomics.
@@ -30,7 +30,7 @@ Imports:
     stats
 License: GPL-2 | file LICENSE
 URL: https://github.com/jaspershen/MetCleaning
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Suggests: knitr,
     rmarkdown,
     BiocStyle,

@@ -5,9 +5,9 @@
 \title{MetStat}
 \usage{
 MetStat(MetFlowData, new.group = TRUE, rsd.cutoff = 30, log.scale = FALSE,
-  QC = TRUE, scale.method = "auto", xlim1 = NULL, ylim1 = NULL,
-  plsmethod = "plsr", fc = TRUE, to = c("case", "control"),
-  ratio = "median", test.method = "t", adjust.method = "fdr",
+  QC = TRUE, scale.method = "auto", text = FALSE, xlim1 = NULL,
+  ylim1 = NULL, plsmethod = "plsr", fc = TRUE, to = c("case",
+  "control"), ratio = "median", test.method = "t", adjust.method = "fdr",
   foldchange = "foldchange", p = "p", vip = "vip",
   foldchange.cutoff = c(4/3, 3/4), p.cutoff = 0.05, vip.cutoff = 0,
   x = "foldchange", y = "p", z = "vip", col = c("black", "firebrick1"),
@@ -28,6 +28,8 @@ MetStat(MetFlowData, new.group = TRUE, rsd.cutoff = 30, log.scale = FALSE,
 
 \item{scale.method}{Which scale methd you want to use? "auto" or "pareto",
 defaulit is "auto".}
+
+\item{text}{Add the labels in PCA or PLS score plot.}
 
 \item{xlim1}{x axis limitation. Default is NULL.}
 
@@ -114,4 +116,3 @@ ylim1 = c(-40, 40))
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}
 }
-
