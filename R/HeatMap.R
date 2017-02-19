@@ -58,7 +58,7 @@ HeatMap <- function(MetFlowData,
                     cluster_cols = TRUE,
                     clustering_method = "ward.D",
                     ...) {
-  # browser()
+
   if (is.null(path)) {
     path <- getwd()
   } else {
@@ -129,7 +129,7 @@ HeatMap <- function(MetFlowData,
       width = width,
       height = height)
   par(mar = c(5,5,4,2))
-  pheatmap::pheatmap(
+  temp <- pheatmap::pheatmap(
     t(data1),
     color = colorRampPalette(c("green", "black", "red"))(1000),
     scale = "none",
@@ -145,4 +145,8 @@ HeatMap <- function(MetFlowData,
     ...
   )
   dev.off()
+  rownames <- temp[[1]][["labels"]]
+  colnames <- temp[[2]][["labels"]]
+  write.csv(rownames, file.path(path,"rownames.csv"))
+  write.csv(colnames, file.path(path,"colnames.csv"))
 }

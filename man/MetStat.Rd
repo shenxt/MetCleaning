@@ -7,7 +7,8 @@
 MetStat(MetFlowData, new.group = TRUE, rsd.cutoff = 30, log.scale = FALSE,
   QC = TRUE, scale.method = "auto", text = FALSE, xlim1 = NULL,
   ylim1 = NULL, plsmethod = "plsr", fc = TRUE, to = c("case",
-  "control"), ratio = "median", test.method = "t", adjust.method = "fdr",
+  "control"), ratio = "median", test.method = "t",
+  alternative = "two.sided", paired = FALSE, adjust.method = "fdr",
   foldchange = "foldchange", p = "p", vip = "vip",
   foldchange.cutoff = c(4/3, 3/4), p.cutoff = 0.05, vip.cutoff = 0,
   x = "foldchange", y = "p", z = "vip", col = c("black", "firebrick1"),
@@ -44,6 +45,13 @@ defaulit is "auto".}
 \item{ratio}{Which ratio you want to use to calculate fold change. median ot mean.}
 
 \item{test.method}{Which test you want to use? "t" means stutent t test and "wilcox" mean wilcoxon test.}
+
+\item{alternative}{a character string specifying the alternative hypothesis,
+must be one of "two.sided" (default), "greater" or "less".
+You can specify just the initial letter. See ?t.test and ?wilcox.test.}
+
+\item{paired}{a logical indicating whether you want a paired test.
+See ?t.test and ?wilcox.test.}
 
 \item{adjust.method}{p value correction method. See p.adjust function.}
 

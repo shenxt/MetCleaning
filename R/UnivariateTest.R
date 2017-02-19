@@ -4,6 +4,11 @@
 #' \email{shenxt@@sioc.ac.cn}
 #' @param MetFlowData MetFlowData.
 #' @param test.method Which test you want to use? "t" means stutent t test and "wilcox" mean wilcoxon test.
+#' @param alternative a character string specifying the alternative hypothesis,
+#' must be one of "two.sided" (default), "greater" or "less".
+#' You can specify just the initial letter. See ?t.test and ?wilcox.test.
+#' @param paired a logical indicating whether you want a paired test.
+#' See ?t.test and ?wilcox.test.
 #' @param adjust.method p value correction method. See p.adjust function.
 #' @param log.scale Data transformation method, defaulst is FALSE.
 #' @param class Class used to do test.
@@ -26,6 +31,8 @@
 
 UnivariateTest <- function(MetFlowData,
                            test.method = "t",
+                           alternative = "two.sided",
+                           paired = FALSE,
                            adjust.method = "fdr",
                            log.scale = FALSE,
                            class = c("control", "case")) {
@@ -69,13 +76,15 @@ UnivariateTest <- function(MetFlowData,
     if (test.method == "t") {
       subject.test <-
         apply(subject, 1, function(x) {
-          t.test(x[group1.index], x[group2.index])
+          t.test(x[group1.index], x[group2.index],
+                 alternative = alternative, paired = paired)
         })
     }
     if (test.method == "wilcox") {
       subject.test <-
         apply(subject, 1, function(x) {
-          wilcox.test(x[group1.index], x[group2.index])
+          wilcox.test(x[group1.index], x[group2.index],
+                      alternative = alternative, paired = paired)
         })
     }
 

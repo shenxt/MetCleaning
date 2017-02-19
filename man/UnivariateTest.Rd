@@ -4,13 +4,21 @@
 \alias{UnivariateTest}
 \title{UnivariateTest}
 \usage{
-UnivariateTest(MetFlowData, test.method = "t", adjust.method = "fdr",
-  log.scale = FALSE, class = c("control", "case"))
+UnivariateTest(MetFlowData, test.method = "t", alternative = "two.sided",
+  paired = FALSE, adjust.method = "fdr", log.scale = FALSE,
+  class = c("control", "case"))
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}
 
 \item{test.method}{Which test you want to use? "t" means stutent t test and "wilcox" mean wilcoxon test.}
+
+\item{alternative}{a character string specifying the alternative hypothesis,
+must be one of "two.sided" (default), "greater" or "less".
+You can specify just the initial letter. See ?t.test and ?wilcox.test.}
+
+\item{paired}{a logical indicating whether you want a paired test.
+See ?t.test and ?wilcox.test.}
 
 \item{adjust.method}{p value correction method. See p.adjust function.}
 

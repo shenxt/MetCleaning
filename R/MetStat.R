@@ -18,6 +18,11 @@
 #' @param to Which the ratio you want? default is case/control.
 #' @param ratio Which ratio you want to use to calculate fold change. median ot mean.
 #' @param test.method Which test you want to use? "t" means stutent t test and "wilcox" mean wilcoxon test.
+#' @param alternative a character string specifying the alternative hypothesis,
+#' must be one of "two.sided" (default), "greater" or "less".
+#' You can specify just the initial letter. See ?t.test and ?wilcox.test.
+#' @param paired a logical indicating whether you want a paired test.
+#' See ?t.test and ?wilcox.test.
 #' @param adjust.method p value correction method. See p.adjust function.
 #' @param foldchange which foldchange information your want to use?
 #' @param p which p value information your want to use?
@@ -79,6 +84,8 @@ MetStat <- function(MetFlowData,
                     ratio = "median",
                     #UnivariateTest para
                     test.method = "t",
+                    alternative = "two.sided",
+                    paired = FALSE,
                     adjust.method = "fdr",
                     #MarkerSelection para
                     foldchange = "foldchange",
@@ -209,6 +216,8 @@ MetStat <- function(MetFlowData,
     met.data <- UnivariateTest(
       MetFlowData = met.data,
       test.method = test.method,
+      alternative = alternative,
+      paired = paired,
       adjust.method = adjust.method,
       log.scale = log.scale
     )
@@ -257,7 +266,7 @@ MetStat <- function(MetFlowData,
     x = x,
     y = y,
     z = z,
-    col = c("black", "firebrick1"),
+    col = c("grey", "tomato"),
     foldchange.cutoff = foldchange.cutoff,
     p.cutoff = p.cutoff,
     vip.cutoff = vip.cutoff,

@@ -13,3 +13,4 @@ o Check duplicated names in data. (201701131406)
 Version 0.99.20
 --------------
 o Add the text function in PCA and PLS analysis.
+o Add the function of combination of POS and NEG in MetStat.

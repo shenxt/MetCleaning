@@ -16,7 +16,7 @@
 #' @param color Color for different class.
 #' @param shape Shape for different class.
 #' @param cexa cex.
-#' @param cex for text.
+#' @param cex.text for text.
 #' @param xlim1 x axis limitation. Default is NULL.
 #' @param ylim1 y axis limitation. Default is NULL.
 #' @return PLS score plot: PLS score plot.

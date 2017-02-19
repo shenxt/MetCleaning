@@ -37,11 +37,11 @@ defaulit is "auto".}
 
 \item{cexa}{cex.}
 
+\item{cex.text}{for text.}
+
 \item{xlim1}{x axis limitation. Default is NULL.}
 
 \item{ylim1}{y axis limitation. Default is NULL.}
-
-\item{cex}{for text.}
 }
 \value{
 PLS score plot: PLS score plot.

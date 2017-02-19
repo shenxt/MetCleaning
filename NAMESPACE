@@ -32,6 +32,7 @@ export(SplitBatch)
 export(SubjectOutlierFilter)
 export(UnivariateTest)
 export(VolcanoPlot)
+export(combinedata)
 export(m2p)
 
 import(pls)
@@ -59,3 +60,5 @@ import(pathifier)
              "uniroot", "wilcox.test")
   importFrom("ggplot2", "aes","labs","theme","element_text","ggtitle","theme_bw",
              "ggsave","scale_color_gradient", "geom_point")
+
+
