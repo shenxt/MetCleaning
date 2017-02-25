@@ -2,7 +2,7 @@ Package: MetCleaning
 Type: Package
 Title: MetCleaning
 Version: 0.99.1
-Date: 2016-02-13
+Date: 2016-02-25
 Author: Xiaotao Shen, Zhengjiang Zhu
 Maintainer: Xiaotao Shen<shenxt@sioc.ac.cn>
 Description: A data cleaning (preparation) and statistical analysis pipeline for large-scale mass spectrometry-based untargeted metabolomics.
