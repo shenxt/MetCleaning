@@ -12,6 +12,6 @@ o Check duplicated names in data. (201701131406)
 
 Version 0.99.2
 --------------
-o Fix error when data has more than 60,000 peak.
+o Fix error when data has more than 60,000 peak(201703110949).
 
 
