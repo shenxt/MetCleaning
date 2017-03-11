@@ -15,7 +15,6 @@ SXTsvrNor <- function(sample,
                       #parameters setting
                       ) {
                       options(warn = -1)
-                      # browser()
                       ######is there the e1071?
                       if (is.null(path)) {
                         path <- getwd()
@@ -42,7 +41,6 @@ SXTsvrNor <- function(sample,
                         options(warn = 0)
                         # clusterExport (cl, "imputefunction")
                         ######PLSDCV is the double cross validation
-                        # browser()
                         svr.data <-
                           snow::clusterApply(
                             cl,
@@ -75,7 +73,6 @@ SXTsvrNor <- function(sample,
                           QC.nor <- t(t(QC.nor) * QC.median)
                           sample.nor <- t(t(sample.nor) * QC.median)
                         }
-                        # browser()
 
                         if (datastyle == "tof") {
                           colnames(QC.nor) <- colnames(sample.nor) <- tags["name", ]
@@ -84,7 +81,6 @@ SXTsvrNor <- function(sample,
                           colnames(QC.nor) <- colnames(sample.nor) <- tags["name", ]
                         }
 
-                        # browser()
                         save(QC.nor, sample.nor, file = file.path(path1, "normalization file"))
                       }
 
@@ -191,18 +187,19 @@ svr.function <-
            sample.order,
            QC.order,
            multiple) {
-    # browser()
     # library(e1071)
     cat("SVR normalization is finished: %\n")
     QC.nor <- NULL
     sample.nor <- NULL
-    data <- rbind(sample, QC)
+    # data <- rbind(sample, QC)
+    data <- apply(rbind(sample, QC), 2, function(x) list(x))
     data.order <- c(sample.order, QC.order)
-    QC.cor <-
-      cor(data, method = "spearman")#not normal distribution, so use spearman correction
+    # QC.cor <- cor(data, method = "spearman")#not normal distribution, so use spearman correction
     for (i in index) {
-      cor.peak <-
-        as.numeric(which(QC.cor[, i] %in% rev(sort(QC.cor[-i, i]))[1:as.numeric(multiple)]))
+      # cor.peak <- as.numeric(which(QC.cor[, i] %in% rev(sort(QC.cor[-i, i]))[1:as.numeric(multiple)]))
+
+      all.cor <- unlist(lapply(data, function(x) {cor(data[[1]][[1]], x[[1]])}))
+      cor.peak <- match(sort(all.cor, decreasing = TRUE)[2:(as.numeric(multiple)+1)], all.cor)
 
       if (multiple != 1) {
         svr.reg <- e1071::svm(QC[, cor.peak], QC[, i])
@@ -236,7 +233,6 @@ svr.function <-
 
       QC.nor <- cbind(QC.nor, QC.nor1)
       sample.nor <- cbind(sample.nor, sample.nor1)
-      # browser()
       count <- floor(ncol(sample[, index]) * c(seq(0, 1, 0.01)))
       if (any(match(i, index) == count)) {
         cat(ceiling(match(i, index) * 100 / ncol(sample[, index])))
@@ -244,7 +240,6 @@ svr.function <-
       }
 
     }
-    # browser()
     svr.data <-
       list(sample.nor = sample.nor,
            QC.nor = QC.nor,
@@ -270,7 +265,6 @@ peakplot5 <-
            QC.rsd = QC.rsd,
            sample.nor.rsd = sample.nor.rsd,
            QC.nor.rsd = QC.nor.rsd) {
-    # browser()
     cat("Drawing the peak plots: %\n")
     if (is.null(path)) {
       path = getwd()
@@ -378,7 +372,6 @@ peakplot6 <-
       path = getwd()
     }
     # Sys.sleep(1)
-    # browser()
     par(mar = c(5, 5, 4, 2))
     for (i in 1:ncol(sample)) {
       tiff(file.path(path, sprintf('Peak %s plot.tiff', tags["name", i])),

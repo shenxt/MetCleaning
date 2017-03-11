@@ -65,7 +65,6 @@ DataNormalization <- function(MetFlowData,
   if (is.null(path)) {
     path <- getwd()
   }
-  # browser()
   path1 <- file.path(path, "7 Normalization result")
   dir.create(path1)
 
@@ -145,9 +144,7 @@ DataNormalization <- function(MetFlowData,
       MetFlowData[["subject"]] <- subject1
     }
   }
-  # browser()
   ## split batch
-
   data <- SplitBatch(MetFlowData = MetFlowData)
 
   subject1 <- data[[1]]
@@ -180,10 +177,10 @@ DataNormalization <- function(MetFlowData,
         datastyle = datastyle,
         dimension1 = dimension1,
         user = user,
-        path = path2
+        path = path2,
+        threads = threads
       )
     }
-    # browser()
     ## replace subject and qc
     for (i in 1:length(qc1)) {
       path.for.data <- file.path(path1, paste("Batch", i, "normalization"))
