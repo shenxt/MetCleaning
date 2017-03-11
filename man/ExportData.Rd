@@ -41,11 +41,10 @@ setwd("Demo")
 ExportData(MetFlowData = met.data.after.pre)
 }
 }
+\seealso{
+\code{\link{ImportData}}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}
 }
-\seealso{
-\code{\link{ImportData}}
-}
-

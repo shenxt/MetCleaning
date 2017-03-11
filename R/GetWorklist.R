@@ -45,7 +45,7 @@ GetWorklist <- function(x = NULL,
                         dir = "D:\\MassHunter\\Data\\SXT\\") {
   #names is the name of the folder,plates is the used plates,
   #if AB,dir is ""
-  # browser()
+
   options(warn = -1)
   file <- dir()
 
@@ -190,7 +190,6 @@ if(is.null(x)) {
       write.csv(x, sprintf("%s sample info.csv", name))
       x <- x[, -c(3, 4, 5)]
     }
-    # browser()
     if (randommethod == "injection") {
       if (length(x) > 108)
       {
@@ -319,7 +318,6 @@ if(is.null(x)) {
 
   }
 
-  # browser()
   #insert Blank and QC
   x <-
     lapply(seq(1, nrow(x), by = QCstep), function(y)
@@ -334,11 +332,7 @@ if(is.null(x)) {
   colnames(Blank.QC) <- colnames(x[[1]])
   x <- lapply(x, function(y)
     rbind(Blank.QC, y))
-browser()
   ###
-
-
-
   x2 <- NULL
   for (i in 1:length(x)) {
     x1 <- x[[i]]
@@ -361,7 +355,7 @@ browser()
         } else {
           x[y:nrow(x), ]
         })
-    # browser()
+
     colnames(Test.mix) <- colnames(x[[1]])
     x <- lapply(x, function(y)
       rbind(Test.mix, y))
@@ -386,7 +380,7 @@ browser()
     x[,2] <- as.character(x[,2])
     x[,3] <- as.character(x[,3])
   }
-  # browser()
+
   if (instrument == "Agilent")
   {
     temp1 <- matrix(rep(Blank, 3), ncol = 2, byrow = TRUE)
@@ -422,7 +416,7 @@ browser()
   x[, 1][grep("Test_mix", x[, 1])] <-
     paste("Test_mix", c(1:Test.mix.number), sep = "")
 
-  # browser()
+
   QC.number <- length(grep("QC", x[, 1]))
   x[, 1][grep("QC", x[, 1])][1:conditionQCnumber] <-
     paste("Condition_QC", c(1:conditionQCnumber), sep = "")
@@ -455,7 +449,7 @@ browser()
 
   Data.File2 <- paste(Data.File2, Sample.QC[, 1], sep = "_")
 
-  # browser()
+
   if (user == "other") {
     Data.File2 <- Sample.QC[,1]
   }
@@ -471,7 +465,7 @@ browser()
     Data.File4 <- middle.testmix[, c(1, 4)]
   }
 
-  # browser()
+
   colnames(Data.File4) <- colnames(Data.File3) <-
     colnames(Data.File2) <- paste("test", c(1:ncol(Data.File2)))
   Data.File2 <- rbind(Data.File2, Data.File3, Data.File4)

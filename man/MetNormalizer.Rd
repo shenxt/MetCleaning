@@ -77,4 +77,3 @@ Normalize data using different normalization methods.
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}
 }
-

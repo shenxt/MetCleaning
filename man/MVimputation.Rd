@@ -73,10 +73,6 @@ data(met.data.after.pre, package = "MetCleaning")
 new.met.data <- MVimputation(met.data.after.pre)
 }
 }
-\author{
-Xiaotao Shen
-\email{shenxt@sioc.ac.cn}
-}
 \references{
 The MV imputation in metabolomics data can see in
 \href{https://www.readcube.com/library/fe13374b-5bc9-4c61-9b7f-6a354690947e:c9d05d0f-e945-43d0-bb4a-50ea0f90338e}{Guida's} paper.
@@ -87,4 +83,7 @@ The MV imputation methods can see in
 \code{\link[pcaMethods]{bpca}}, \code{\link[pcaMethods]{ppca}} and
 \code{\link[pcaMethods]{svdImpute}}.
 }
-
+\author{
+Xiaotao Shen
+\email{shenxt@sioc.ac.cn}
+}

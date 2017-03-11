@@ -7,7 +7,6 @@
 #' @param mz.tolerance mz tolerance for ms1 and ms2 data matching.
 #' @param rt.tolerance RT tolerance for ms1 and ms2 data matching.
 #' @return Return a result which give the matching result of data1 and database.
-#' @export
 
 SXTMTmatch <- function(data1,
                        data2,

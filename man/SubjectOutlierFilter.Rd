@@ -32,11 +32,10 @@ setwd("Demo")
 new.met.data <- SubjectOutlierFilter(met.data.after.pre)
 }
 }
+\seealso{
+\code{\link{QCOutlierFilter}}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}
 }
-\seealso{
-\code{\link{QCOutlierFilter}}
-}
-

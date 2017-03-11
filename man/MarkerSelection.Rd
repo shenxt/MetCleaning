@@ -48,4 +48,3 @@ new.met.data <- MarkerSelection(met.data.after.pre)
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}
 }
-

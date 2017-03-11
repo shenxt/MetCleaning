@@ -70,11 +70,10 @@ setwd("Demo")
 new.met.data <- DataNormalization(MetFlowData = met.data.after.pre)
 }
 }
+\seealso{
+\code{\link{MetNormalizer}}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}
 }
-\seealso{
-\code{\link{MetNormalizer}}
-}
-

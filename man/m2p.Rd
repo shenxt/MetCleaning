@@ -19,11 +19,10 @@ All the results can be got form other functions and instruction.
 \description{
 Transform metabolite infromation to pathway information using pathifier.
 }
+\seealso{
+\code{\link[pathifier]{pathifier}}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}
 }
-\seealso{
-\code{\link[pathifier]{pathifier}}
-}
-

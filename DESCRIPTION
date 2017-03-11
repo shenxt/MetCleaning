@@ -7,7 +7,7 @@ Author: Xiaotao Shen, Zhengjiang Zhu
 Maintainer: Xiaotao Shen<shenxt@sioc.ac.cn>
 Description: A data cleaning (preparation) and statistical analysis pipeline for large-scale mass spectrometry-based untargeted metabolomics.
 LazyData: true
-Depends: R (>= 3.0)
+Depends: R (>= 3.2)
 Imports:
     ggplot2,
     pcaMethods,
@@ -30,7 +30,7 @@ Imports:
     stats
 License: GPL-2 | file LICENSE
 URL: https://github.com/jaspershen/MetCleaning
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1
 Suggests: knitr,
     rmarkdown,
     BiocStyle,

@@ -6,13 +6,11 @@
 #' @param tags Information (matrix) for metabolite. It must contains "Identification" which is the names of metabolites.
 #' @param info Information (list) for samples. It must contains "normal" which are the control sample names.
 #' @return All the results can be got form other functions and instruction.
-#' @export
 #' @seealso \code{\link[pathifier]{pathifier}}
 
 m2p <- function(data = data,
                 tags = tags,
                 info = NULL) {
-  browser()
   my.pathway <- MetCleaning::my.pathway
   hmdb.synonym <- MetCleaning::hmdb.synonym
   # data(c("my.pathway", "hmdb.synonym"))
