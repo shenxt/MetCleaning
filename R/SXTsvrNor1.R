@@ -76,9 +76,9 @@ SXTsvrNor1 <- function(sample = sample,
       QC.nor <- cbind(QC.nor,QC.nor1)
       sample.nor <- cbind(sample.nor,sample.nor1)
 
-      count <- floor(ncol(sample) * c(seq(0,1,0.01)))
+      count <- floor(ncol(sample) * c(seq(0,1,0.001)))
       if (any(i == count)) {
-        cat(ceiling(i * 100 / ncol(sample)))
+        cat(ceiling(i * 1000 / ncol(sample)))
         cat(" ")
       }
 

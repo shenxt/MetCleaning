@@ -226,12 +226,19 @@ MetNormalizer <- function(filename = "Metabolomics data",
 
   if (normalization.method == "svr") {
     cat("SVR normalization...\n")
-    # Sys.sleep(time = 1)
+    if(multiple != 1){
     SXTsvrNor(
       sample = sample,QC = qc,tags = tags, sample.order = sampleorder,
       QC.order = qcorder, multiple = multiple, path = path,
       rerun = TRUE, peakplot = peakplot, datastyle = datastyle,
       dimension1 = dimension1, threads = threads)
+    }else{
+      SXTsvrNor1(
+        sample = sample,QC = qc,tags = tags, sample.order = sampleorder,
+        QC.order = qcorder, multiple = multiple, path = path,
+        rerun = TRUE, peakplot = peakplot, datastyle = datastyle,
+        dimension1 = dimension1, threads = threads)
+    }
   }
 
 
