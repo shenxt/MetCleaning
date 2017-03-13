@@ -35,7 +35,7 @@
 #' @param maxp See ?impute.knn
 #' @param method Normalization method, mean, median, total svr or loess,
 #' default is svr. Please see the details.
-#' @param multipe See ?SXTsvrNor.
+#' @param multiple See ?SXTsvrNor.
 #' @param threads Thread number.
 #' @param hmdb.matching Default is FALSE.
 #' @param mass.tolerance mz tolerance.
@@ -96,7 +96,7 @@ MetCleaning <- function(#ImportData para
                    #DataNormalization
                    normalization = TRUE,
                    method = "svr",
-                   multipe = 1,
+                   multiple = 1,
                    threads = 2,
                    #PeakIdentification
                    hmdb.matching = FALSE,
@@ -270,7 +270,7 @@ MetCleaning <- function(#ImportData para
   if (all(dir("intermediate") != "met.data.nor")) {
   met.data <- DataNormalization(MetFlowData = met.data,
                                 method = method,
-                                multipe = multiple,
+                                multiple = multiple,
                                 threads = threads,
                                 path = path,
                                 peakplot = peak.plot)
