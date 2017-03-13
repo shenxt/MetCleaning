@@ -10,10 +10,11 @@ MetCleaning(data = "data.csv",
   var.mv.cutoff = 0.5, imputation.method = "knn", k = 10, rowmax = 0.5,
   colmax = 0.5, maxp = 1500, zero.filter = TRUE, obs.zero.cutoff = 0.5,
   var.zero.cutoff = 0.5, normalization = TRUE, method = "svr",
-  threads = 2, hmdb.matching = FALSE, show = 5, mass.tolerance = 30,
-  mz.tolerance = 30, rt.tolerance = 180, met.plot = TRUE, path = NULL,
-  worklist.from = "manual", qc.outlier.filter = TRUE,
-  subject.outlier.filter = TRUE, integration = TRUE)
+  multiple = 5, threads = 2, hmdb.matching = FALSE, show = 5,
+  mass.tolerance = 30, mz.tolerance = 30, rt.tolerance = 180,
+  met.plot = TRUE, path = NULL, worklist.from = "manual",
+  qc.outlier.filter = TRUE, subject.outlier.filter = TRUE,
+  integration = TRUE)
 }
 \arguments{
 \item{data}{Data name for analysis. Default is "data.csv". Data are csv
@@ -62,6 +63,8 @@ this method can be find in detail and reference paperes.}
 
 \item{method}{Normalization method, mean, median, total svr or loess,
 default is svr. Please see the details.}
+
+\item{multiple}{see ?SXTsvrNor.}
 
 \item{threads}{Thread number.}
 
