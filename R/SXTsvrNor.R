@@ -191,17 +191,17 @@ svr.function <-
     cat("SVR normalization is finished: %\n")
     QC.nor <- NULL
     sample.nor <- NULL
-    # data <- rbind(sample, QC)
-    data <- apply(rbind(sample, QC), 2, function(x) list(x))
+
     data.order <- c(sample.order, QC.order)
-    # QC.cor <- cor(data, method = "spearman")#not normal distribution, so use spearman correction
+
+    if(multiple != 1){
+    data <- rbind(sample, QC)
+    QC.cor <- cor(data, method = "spearman")#not normal distribution, so use spearman correction
+    }
+
     for (i in index) {
-      # cor.peak <- as.numeric(which(QC.cor[, i] %in% rev(sort(QC.cor[-i, i]))[1:as.numeric(multiple)]))
-
-      all.cor <- unlist(lapply(data, function(x) {cor(data[[1]][[1]], x[[1]])}))
-      cor.peak <- match(sort(all.cor, decreasing = TRUE)[2:(as.numeric(multiple)+1)], all.cor)
-
       if (multiple != 1) {
+        cor.peak <- as.numeric(which(QC.cor[, i] %in% rev(sort(QC.cor[-i, i]))[1:as.numeric(multiple)]))
         svr.reg <- e1071::svm(QC[, cor.peak], QC[, i])
       } else{
         svr.reg <- e1071::svm(unlist(QC[, i]) ~ QC.order)
