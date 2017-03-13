@@ -54,7 +54,7 @@ DataNormalization <- function(MetFlowData,
                               end = 1,
                               step = 0.2,
                               ##svr parameters
-                              multiple = 5,
+                              multiple = 1,
                               threads = 2,
                               rerun.loess = TRUE,
                               rerun.svr = TRUE,
