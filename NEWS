@@ -15,3 +15,7 @@ Version 0.99.20
 o Add the text function in PCA and PLS analysis.
 o Add the function of combination of POS and NEG in MetStat.
 o This is development version (201703130948).
+
+Version 0.99.30
+--------------
+o Fix bugs when peak number is more than 70,000.
