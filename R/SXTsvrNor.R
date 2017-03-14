@@ -167,15 +167,11 @@ SXTsvrNor <- function(sample,
 
 
                       ##generate some statistics information
-
-                      compare.rsd(
-                        sample.rsd = sample.rsd,
-                        sample.nor.rsd = sample.nor.rsd,
-                        QC.rsd = QC.rsd,
-                        QC.nor.rsd =
-                          QC.nor.rsd,
-                        path = path1
-                      )
+                      compare.rsd(sample.rsd = sample.rsd,
+                                  sample.nor.rsd = sample.nor.rsd,
+                                  QC.rsd = QC.rsd,
+                                  QC.nor.rsd = QC.nor.rsd,
+                                  path = path1)
                       options(warn = 0)
                       cat("SVR normalization is done\n")
                       }

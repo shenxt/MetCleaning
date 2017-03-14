@@ -14,7 +14,7 @@ SXTsvrNor1 <- function(sample = sample,
                        threads = 1
                        #parameters setting
                        ){
-
+# browser()
   if (is.null(path)) {
     path <- getwd()
   }
@@ -81,7 +81,7 @@ SXTsvrNor1 <- function(sample = sample,
         cat(ceiling(i * 1000 / ncol(sample)))
         cat(" ")
       }
-
+      cat(i); cat(" ")
     }
     cat("\n")
     cat("Normalization sample and QC are got\n")
@@ -104,11 +104,9 @@ SXTsvrNor1 <- function(sample = sample,
 
   save(QC.nor,sample.nor,file = file.path(path1,"normalization file"))
 
-
   rsd <- function(x) {
     x <- sd(x) * 100 / mean(x)
   }
-
 
   #following objects are the rsd of sample and QC before and after normalization
   sample.rsd <- apply(sample,2,rsd)
@@ -116,48 +114,16 @@ SXTsvrNor1 <- function(sample = sample,
   QC.rsd <- apply(QC,2,rsd)
   QC.nor.rsd <- apply(QC.nor,2,rsd)
 
-
   #sample.no.nor is the no normalization data added rsd information
   #sample.svr is the normalization data added rsd information
 
-
   sample.no.nor <- rbind(tags,sample.rsd,QC.rsd,sample,QC)
-  sample.svr <-
-    rbind(tags,sample.nor.rsd,QC.nor.rsd,sample.nor,QC.nor)
+  sample.svr <- rbind(tags,sample.nor.rsd,QC.nor.rsd,sample.nor,QC.nor)
 
   #   save(sample.nor,QC.nor,tags,sample.order,QC.order,file=file.path(path1,"data svr nor"))
   #   save(sample,QC,tags,sample.order,QC.order,file=file.path(path1,"data no nor"))
   # write.csv(t(sample.no.nor),file.path(path1,"data no nor.csv"))
   write.csv(t(sample.svr),file.path(path1,"data svr nor.csv"))
-
-  #generate all peaks plot
-
-  if (peakplot) {
-    path2 <- file.path(path1,"peak plot")
-    dir.create(path2)
-    if (datastyle == "tof")
-    {
-      peakplot5(
-        sample = sample,sample.nor = sample.nor,QC = QC,QC.nor = QC.nor,sample.order =
-          sample.order,
-        QC.order = QC.order,tags = tags,path = path2,
-        sample.rsd = sample.rsd,QC.rsd = QC.rsd,sample.nor.rsd =
-          sample.nor.rsd,
-        QC.nor.rsd = QC.nor.rsd
-      )
-    }
-    else {
-      peakplot6(
-        sample = sample,sample.nor = sample.nor,QC = QC,QC.nor = QC.nor,sample.order =
-          sample.order,
-        QC.order = QC.order,tags = tags,path = path2,
-        sample.rsd = sample.rsd,QC.rsd = QC.rsd,sample.nor.rsd =
-          sample.nor.rsd,
-        QC.nor.rsd = QC.nor.rsd
-      )
-    }
-  }
-
 
   ##generate some statistics information
 
@@ -165,7 +131,5 @@ SXTsvrNor1 <- function(sample = sample,
     sample.rsd = sample.rsd,sample.nor.rsd = sample.nor.rsd,QC.rsd = QC.rsd,QC.nor.rsd =
       QC.nor.rsd,path = path1
   )
-
   cat("SVR normalization is done\n")
-
 }

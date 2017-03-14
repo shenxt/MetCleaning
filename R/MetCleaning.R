@@ -267,6 +267,7 @@ MetCleaning <- function(#ImportData para
   }else{
       peak.plot = TRUE
   }
+  # browser()
   if (all(dir("intermediate") != "met.data.nor")) {
   met.data <- DataNormalization(MetFlowData = met.data,
                                 method = method,

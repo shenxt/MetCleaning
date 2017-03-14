@@ -152,6 +152,7 @@ DataNormalization <- function(MetFlowData,
   subject.info1 <- data[[3]]
   qc.info1 <- data[[4]]
 
+  # browser()
   ##SVR normalization
   if (method == "svr") {
     for (i in 1:length(qc1)) {
