@@ -1,7 +1,7 @@
 Package: MetCleaning
 Type: Package
 Title: MetCleaning
-Version: 0.99.2
+Version: 0.99.3
 Date: 2016-03-1
 Author: Xiaotao Shen, Zhengjiang Zhu
 Maintainer: Xiaotao Shen<shenxt@sioc.ac.cn>
@@ -23,7 +23,6 @@ Imports:
     e1071,
     snow,
     methods,
-    pathifier,
     graphics,
     grDevices,
     utils,

@@ -2,7 +2,6 @@
 
 S3method(print,MetFlowData)
 export(BatchEffectOverview)
-export(ChangeWorklist)
 export(DataIntegration)
 export(DataNormalization)
 export(DataOverview)
@@ -16,7 +15,6 @@ export(MZfilter)
 export(MZoverview)
 export(MarkerSelection)
 export(MarkerShow)
-export(MassIdentification)
 export(MetCleaning)
 export(MetStat)
 export(MetabolitePlot)
@@ -31,6 +29,7 @@ export(SubjectOutlierFilter)
 export(UnivariateTest)
 export(VolcanoPlot)
 
+
 import(pls)
 import(impute)
 import(missForest)
@@ -43,7 +42,6 @@ import(pROC)
 import(e1071)
 import(snow)
 import(methods)
-import(pathifier)
  importFrom("utils", "data", "edit", "head", "install.packages",
              "read.csv", "write.csv")
    importFrom("grDevices", "colorRampPalette", "dev.off", "jpeg", "pdf",

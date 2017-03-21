@@ -7,18 +7,11 @@
 #' @param polarity polarity
 #' @param show Default is 5.
 #' @return A MetFlowData added HMDB result in tags.
-#' @export
 #' @details \href{http://www.hmdb.ca/}{HMDB} is a metabolite database. The
 #' database data can be loaded. In positive mode, adductions of +H, +NH4,
 #'  +Na, +H-2H2O, +H-H2O, +K have been considered, and in negative mode, -H,
 #'  +Cl, +CH3COO, -H-H2O, +F have been considered.
-#' @examples
-#' \dontrun{
-#' ## load the demo data
-#'data(met.data.after.pre, package = "MetCleaning")
-#'## run
-#'new.met.data <- MassIdentification(met.data.after.pre)
-#' }
+
 
 MassIdentification <- function(MetFlowData,
                                mass.tolerance = 30,

@@ -14,4 +14,9 @@ Version 0.99.2
 --------------
 o Fix error when data has more than 60,000 peak(201703110949).
 
+Version 0.99.3
+--------------
+o Remove m2p function and it's demo data.
+o Demo data is make more small (only one batch) because the package is very large.
+
 

@@ -21,15 +21,46 @@ Draw boxplot for markers.
 }
 \examples{
 \dontrun{
-## load the demo data
-data(met.data.after.pre, package = "MetCleaning")
+#load the demo data
+data(data, package = "MetCleaning")
+data(sample.information, package = "MetCleaning")
 
 ##create a folder for demo
-dir.create("Demo")
-setwd("Demo")
+dir.create("demo")
+setwd("demo")
 
+# export the demo data as csv
+write.csv(data, "data.csv", row.names = FALSE)
+write.csv(sample.information, "sample.information.csv", row.names = FALSE)
+
+# MetCleaning process
+MetCleaning(#ImportData para
+data = "data.csv",
+sample.information = "sample.information.csv",
+polarity = "positive",
+#DataNormalization
+method = "svr",
+threads = 2)
+# FoldChange
+met.data <- FoldChange(MetFlowData = met.data.after.pre,
+                      to = c("1", "0"))
+##PLSanalysis
+PLSanalysis(met.data,
+           plsmethod = "plsr",
+           path = "Demo for PLSanalysis")
+
+load("Demo for PLSanalysis/vip")
+vip <- apply(vip, 2, mean)
+##VIP
+tags <- met.data[["tags"]]
+tags <- data.frame(tags, vip)
+met.data[["tags"]] <- tags
+##UnivariateTest
+met.data <- UnivariateTest(met.data)
 ## run
-MarkerShow(met.data.after.pre)
+new.met.data <- MarkerSelection(met.data)
+run
+MarkerShow(new.met.data, path = "Demo for MarkerShow")
 }
 }
 \author{

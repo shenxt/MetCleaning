@@ -41,8 +41,28 @@
 #' or in \href{https://www.readcube.com/library/fe13374b-5bc9-4c61-9b7f-6a354690947e:d8b5fcff-c725-4689-a97d-7ff106322fb6}{my library}.
 #' @examples
 #' \dontrun{
+#' #' #load the demo data
+#' data(data, package = "MetCleaning")
+#' data(sample.information, package = "MetCleaning")
+#'
+#' ##create a folder for MetCleaning demo
+#' dir.create("Demo for MetCleaning")
+#' setwd("Demo for MetCleaning")
+#'
+#' # export the demo data as csv
+#' write.csv(data, "data.csv", row.names = FALSE)
+#' write.csv(sample.information, "sample.information.csv", row.names = FALSE)
+#'
+#' #run MetCleaning
+#' MetCleaning(#ImportData para
+#' data = "data.csv",
+#' sample.information = "sample.information.csv",
+#' polarity = "positive",
+#' #DataNormalization
+#' method = "svr",
+#' threads = 2)
+#'
 #' ## load the demo data
-#'data(met.data.after.pre, package = "MetCleaning")
 #'data(new.group, package = "MetCleaning")
 #'
 #'##create a folder for MetStat demo

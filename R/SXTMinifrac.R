@@ -9,6 +9,7 @@
 #' @param minifrac.observation The cutoff for observation. Default is 0.5.
 #' @return Return a SXTMinifracData.
 #' @examples
+#' @export
 #' \dontrun{
 #' ## Generate
 #' data1 <- matrix(1:20, ncol = 4)

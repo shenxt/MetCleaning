@@ -20,6 +20,35 @@ group informatio.
 Change the group information in MetFlowData for statistical
 analysis.
 }
+\examples{
+\dontrun{
+#load the demo data
+data(data, package = "MetCleaning")
+data(sample.information, package = "MetCleaning")
+data(new.group, package = "MetCleaning")
+
+##create a folder for demo
+dir.create("demo")
+setwd("demo")
+
+# export the demo data as csv
+write.csv(data, "data.csv", row.names = FALSE)
+write.csv(sample.information, "sample.information.csv", row.names = FALSE)
+write.csv(new.group, "new.group.csv", row.names = FALSE)
+
+# MetCleaning process
+MetCleaning(#ImportData para
+data = "data.csv",
+sample.information = "sample.information.csv",
+polarity = "positive",
+#DataNormalization
+method = "svr",
+threads = 2)
+
+#run
+new.met.data <- ReChangeGroup(met.data.after.pre)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

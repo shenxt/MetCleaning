@@ -30,10 +30,27 @@ Filter feature and samples according to MV/zero ratio.
 }
 \examples{
 \dontrun{
-## load the demo data
-data(met.data.after.pre, package = "MetCleaning")
-## run
-new.met.data <- MZfilter(met.data.after.pre)
+#load the demo data
+data(data, package = "MetCleaning")
+data(sample.information, package = "MetCleaning")
+
+##create a folder for demo
+dir.create("demo")
+setwd("demo")
+
+# export the demo data as csv
+write.csv(data, "data.csv", row.names = FALSE)
+write.csv(sample.information, "sample.information.csv", row.names = FALSE)
+Import data
+met.data <- ImportData(data = "data.csv",
+                      sample.information = "sample.information.csv",
+                      polarity = "positive")
+#MV filtering
+new.met.data <- MZfilter(MetFlowData = met.data,
+                        obs.per.cutoff = 0.5,
+                        var.per.cutoff = 0.5,
+                        what = "mv",
+                        path = "Demo for MV filter")
 }
 }
 \author{

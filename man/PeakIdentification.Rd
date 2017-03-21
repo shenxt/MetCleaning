@@ -33,12 +33,28 @@ Identify the features using other identification information
 }
 \examples{
 \dontrun{
-## load the demo data
-data(met.data.after.pre, package = "MetCleaning")
-data(ms2_1, package = "MetCleaning")
+#load the demo data
+data(data, package = "MetCleaning")
+data(sample.information, package = "MetCleaning")
+
 ##create a folder for demo
-dir.create("Demo")
-setwd("Demo")
+dir.create("demo")
+setwd("demo")
+
+# export the demo data as csv
+write.csv(data, "data.csv", row.names = FALSE)
+write.csv(sample.information, "sample.information.csv", row.names = FALSE)
+
+# MetCleaning process
+MetCleaning(#ImportData para
+data = "data.csv",
+sample.information = "sample.information.csv",
+polarity = "positive",
+#DataNormalization
+method = "svr",
+threads = 2)
+
+data(ms2_1, package = "MetCleaning")
 dir.create("peak identification")
 write.csv(ms2_1, "peak identification/ms2_1.csv", row.names = FALSE)
 ## run

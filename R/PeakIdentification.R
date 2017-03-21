@@ -15,12 +15,28 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' ## load the demo data
-#'data(met.data.after.pre, package = "MetCleaning")
+#' #load the demo data
+#' data(data, package = "MetCleaning")
+#' data(sample.information, package = "MetCleaning")
+#'
+#' ##create a folder for demo
+#' dir.create("demo")
+#' setwd("demo")
+#'
+#' # export the demo data as csv
+#' write.csv(data, "data.csv", row.names = FALSE)
+#' write.csv(sample.information, "sample.information.csv", row.names = FALSE)
+#'
+#' # MetCleaning process
+#' MetCleaning(#ImportData para
+#' data = "data.csv",
+#' sample.information = "sample.information.csv",
+#' polarity = "positive",
+#' #DataNormalization
+#' method = "svr",
+#' threads = 2)
+#'
 #'data(ms2_1, package = "MetCleaning")
-#'##create a folder for demo
-#'dir.create("Demo")
-#'setwd("Demo")
 #'dir.create("peak identification")
 #'write.csv(ms2_1, "peak identification/ms2_1.csv", row.names = FALSE)
 #'## run
@@ -36,6 +52,7 @@ PeakIdentification <- function(MetFlowData,
                                mz.tolerance = 30,
                                rt.tolerance = 180,
                                re.match = TRUE) {
+  # browser()
   options(warn = -1)
   if (is.null(path)) {
     path <- getwd()
@@ -106,8 +123,8 @@ PeakIdentification <- function(MetFlowData,
 
     for (i in 1:length(ms2)) {
       msms <- ms2[[i]]
-      forward <- as.character(msms[, "hits.forward"])
-      reverse <- as.character(msms[, "hits.reverse"])
+      forward <- as.character(msms[, "hits..forward."])
+      reverse <- as.character(msms[, "hits..reverse."])
       forward[is.na(forward)] <- ""
       reverse[is.na(reverse)] <- ""
       #remove the unidentified feature
@@ -136,8 +153,8 @@ PeakIdentification <- function(MetFlowData,
       write.csv(msms, file.path(path1, paste("marker", ms2.name[i], "csv", sep = ".")), row.names = FALSE)
       msmsinfo <- msms[, c("mzmed", "rtmed")]
       #get the information of metabolite
-      forward <- as.character(msms[, "hits.forward"])
-      reverse <- as.character(msms[, "hits.reverse"])
+      forward <- as.character(msms[, "hits..forward."])
+      reverse <- as.character(msms[, "hits..reverse."])
       forward[is.na(forward)] <- ""
       reverse[is.na(reverse)] <- ""
       name <- as.character(msms[, "name"])

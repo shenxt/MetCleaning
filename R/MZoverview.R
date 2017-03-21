@@ -16,15 +16,25 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' ## load the demo data
-#'data(met.data.after.pre, package = "MetCleaning")
+#' #load the demo data
+#' data(data, package = "MetCleaning")
+#' data(sample.information, package = "MetCleaning")
 #'
-#'##create a folder for demo
-#'dir.create("Demo")
-#'setwd("Demo")
+#' ##create a folder for demo
+#' dir.create("demo")
+#' setwd("demo")
 #'
-#'## run
-#'MZoverview(met.data.after.pre, what = "zero")
+#' # export the demo data as csv
+#' write.csv(data, "data.csv", row.names = FALSE)
+#' write.csv(sample.information, "sample.information.csv", row.names = FALSE)
+#'Import data
+#'met.data <- ImportData(data = "data.csv",
+#'                       sample.information = "sample.information.csv",
+#'                       polarity = "positive")
+#'#run
+#'MZoverview(MetFlowData = met.data,
+#'                     what = "mv",
+#'                     path = "Demo for MZoverview")
 #' }
 
 MZoverview <- function(MetFlowData,

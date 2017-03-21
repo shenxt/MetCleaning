@@ -37,10 +37,29 @@
 #' \href{https://www.readcube.com/library/fe13374b-5bc9-4c61-9b7f-6a354690947e:c9d05d0f-e945-43d0-bb4a-50ea0f90338e}{Guida's} paper.
 #' @examples
 #' \dontrun{
-#' ## load the demo data
-#'data(met.data.after.pre, package = "MetCleaning")
-#'## run
-#'new.met.data <- MVimputation(met.data.after.pre)
+#' #load the demo data
+#' data(data, package = "MetCleaning")
+#' data(sample.information, package = "MetCleaning")
+#'
+#' ##create a folder for demo
+#' dir.create("demo")
+#' setwd("demo")
+#'
+#' # export the demo data as csv
+#' write.csv(data, "data.csv", row.names = FALSE)
+#' write.csv(sample.information, "sample.information.csv", row.names = FALSE)
+#'Import data
+#'met.data <- ImportData(data = "data.csv",
+#'                       sample.information = "sample.information.csv",
+#'                       polarity = "positive")
+#'#MV filtering
+#'met.data <- MZfilter(MetFlowData = met.data,
+#'                     obs.per.cutoff = 0.5,
+#'                     var.per.cutoff = 0.5,
+#'                     what = "mv",
+#'                     path = "Demo for MV filter")
+#'run
+#'new.met.data <- MVimputation(met.data)
 #' }
 
 MVimputation <- function(MetFlowData,

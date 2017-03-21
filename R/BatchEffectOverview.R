@@ -9,14 +9,31 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' #demo data
-#' data(met.data.after.pre, package = "MetCleaning")
-#' ##create a folder for demo
-#' dir.create("Demo")
-#' setwd("Demo")
+#' #load the demo data
+#' data(data, package = "MetCleaning")
+#' data(sample.information, package = "MetCleaning")
 #'
-#' #run ChangeWorklist
-#' BatchEffectOverview(met.data.after.pre , met.data.after.pre)
+#' ##create a folder for demo
+#' dir.create("demo")
+#' setwd("demo")
+#'
+#' # export the demo data as csv
+#' write.csv(data, "data.csv", row.names = FALSE)
+#' write.csv(sample.information, "sample.information.csv", row.names = FALSE)
+#'
+#' # MetCleaning process
+#' MetCleaning(#ImportData para
+#' data = "data.csv",
+#' sample.information = "sample.information.csv",
+#' polarity = "positive",
+#' #DataNormalization
+#' method = "svr",
+#' threads = 2)
+#'
+#' #run BatchEffectOverview
+#' BatchEffectOverview(met.data.after.pre ,
+#'                     met.data.after.pre,
+#'                     path = "Demo for BatchEffectOverview")
 #' }
 
 ### Batch effect for multiple batch datasets

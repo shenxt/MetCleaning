@@ -19,8 +19,6 @@
 #' #run ChangeWorklist
 #' ChangeWorklist()
 #' }
-#' @export
-
 
 ChangeWorklist <-
   function(date = gsub("-", "", as.character(Sys.Date()))) {

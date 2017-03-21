@@ -25,12 +25,27 @@ method has been used in this function.
 }
 \examples{
 \dontrun{
-## load the demo data
-data(met.data.after.pre, package = "MetCleaning")
+#load the demo data
+data(data, package = "MetCleaning")
+data(sample.information, package = "MetCleaning")
+
 ##create a folder for demo
-dir.create("Demo")
-setwd("Demo")
-## run
+dir.create("demo")
+setwd("demo")
+
+# export the demo data as csv
+write.csv(data, "data.csv", row.names = FALSE)
+write.csv(sample.information, "sample.information.csv", row.names = FALSE)
+
+# MetCleaning process
+MetCleaning(#ImportData para
+data = "data.csv",
+sample.information = "sample.information.csv",
+polarity = "positive",
+#DataNormalization
+method = "svr",
+threads = 2)
+## run DataIntegration
 new.met.data <- DataIntegration(MetFlowData = met.data.after.pre)
 }
 }
