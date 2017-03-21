@@ -6,31 +6,14 @@
 #' @param MetFlowData.after MetFlowData.after.
 #' @param path Work directory.
 #' @return RSD comparation.
+#' @export
 #' @examples
-#' \donttest{
 #' #load the demo data
-#' data(data, package = "MetCleaning")
-#' data(sample.information, package = "MetCleaning")
-#'
+#' data(met.data, package = "MetCleaning")
 #' ##create a folder for demo
 #' dir.create("demo")
 #' setwd("demo")
-#'
-#' # export the demo data as csv
-#' write.csv(data, "data.csv", row.names = FALSE)
-#' write.csv(sample.information, "sample.information.csv", row.names = FALSE)
-#'
-#' # MetCleaning process
-#' MetCleaning(#ImportData para
-#' data = "data.csv",
-#' sample.information = "sample.information.csv",
-#' polarity = "positive",
-#' #DataNormalization
-#' method = "svr",
-#' threads = 2)
-#'## run
-#'RSDoverview(met.data.after.pre, met.data.after.pre, path = "Demo for RSDoverview")
-#' }
+#'RSDoverview(met.data, met.data, path = "Demo for RSDoverview")
 
 RSDoverview <- function(MetFlowData.before,
                         MetFlowData.after,

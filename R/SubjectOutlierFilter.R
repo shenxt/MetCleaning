@@ -6,7 +6,6 @@
 #' @param CI Confidence interva.
 #' @param path Work directory.
 #' @return MetFlowData whose subject outliers have been removed.
-#' @export
 #' @seealso \code{\link{QCOutlierFilter}}
 #' @examples
 #' \donttest{

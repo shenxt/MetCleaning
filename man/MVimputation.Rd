@@ -66,7 +66,7 @@ Return a MetFlowData whose MVs have been imputated.
 Impute MV in data.
 }
 \examples{
-\dontrun{
+\donttest{
 #load the demo data
 data(data, package = "MetCleaning")
 data(sample.information, package = "MetCleaning")
@@ -78,7 +78,7 @@ setwd("demo")
 # export the demo data as csv
 write.csv(data, "data.csv", row.names = FALSE)
 write.csv(sample.information, "sample.information.csv", row.names = FALSE)
-Import data
+#Import data
 met.data <- ImportData(data = "data.csv",
                       sample.information = "sample.information.csv",
                       polarity = "positive")
@@ -89,7 +89,7 @@ met.data <- MZfilter(MetFlowData = met.data,
                     what = "mv",
                     path = "Demo for MV filter")
 run
-new.met.data <- MVimputation(met.data)
+new.met.data <- MVimputation(met.data, rowmax = 0.9, colmax = 0.9)
 }
 }
 \references{

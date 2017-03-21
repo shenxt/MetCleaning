@@ -24,6 +24,24 @@ Return a SXTMinifracData.
 \description{
 Remove feature or samples according to the MV or zero ratio.
 }
+\examples{
+\donttest{
+## Generate
+data1 <- matrix(1:20, ncol = 4)
+data2 <- matrix(21:40, ncol = 4)
+## Give MV in to data1 and data2
+data1[sample(1:20,5)] <- NA
+data2[sample(1:20,5)] <- NA
+## Run SXTMinifrac
+SXTMinifracData <- SXTMinifrac(data1, data2,
+                              filter.item = "MV",
+                              filter.rule = "intersect",
+                              minifrac.variable = 0.4,
+                              minifrac.observation = 0.4)
+attributes(SXTMinifracData)
+print(SXTMinifracData)
+}
+}
 \author{
 Xiaotao Shen
 \email{shenxt@sioc.ac.cn}

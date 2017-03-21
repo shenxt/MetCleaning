@@ -22,7 +22,6 @@
 #' @param xlim1 x axis limitation. Default is NULL.
 #' @param ylim1 y axis limitation. Default is NULL.
 #' @return PCA score plot.
-#' @export
 #' @examples
 #' \donttest{
 #' #load the demo data

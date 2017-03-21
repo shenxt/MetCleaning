@@ -20,7 +20,7 @@ MetFlowData whose subject outliers have been removed.
 Using PCA to filter subject outliers.
 }
 \examples{
-\dontrun{
+\donttest{
 #load the demo data
 data(data, package = "MetCleaning")
 data(sample.information, package = "MetCleaning")

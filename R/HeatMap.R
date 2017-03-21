@@ -20,7 +20,6 @@
 #' @param clustering_method Default is"ward.D",
 #' @param ... other parameters for pheatmap.
 #' @return A heatmap plot.
-#' @export
 #' @seealso \code{\link[pheatmap]{pheatmap}}
 #' @examples
 #' \donttest{

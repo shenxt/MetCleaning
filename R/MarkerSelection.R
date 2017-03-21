@@ -14,7 +14,6 @@
 #' @param vip VIP.
 #' @return MetFlowData: MetFlowData which has been added is.marker information into tags.
 #' @return maker.information.csv: The marker information.
-#' @export
 #' @examples
 #' \donttest{
 #' #load the demo data

@@ -12,7 +12,6 @@
 #' @param vip.cutoff VIP value cutoff.
 #' @param path The directory you want to write results.
 #' @return volcano plot.
-#' @export
 #' @examples
 #' \donttest{
 #' #load the demo data

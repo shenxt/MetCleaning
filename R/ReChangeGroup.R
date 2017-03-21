@@ -8,7 +8,6 @@
 #'  be use the sample.information which is only changed the group column.
 #' @return Return a standard MetProcesser data which is changed the
 #' group informatio.
-#' @export
 #' @examples
 #' \donttest{
 #' #load the demo data

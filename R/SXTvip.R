@@ -1,3 +1,18 @@
+#' @title SXTvip
+#' @description Get VIP from pls object.
+#' @author Xiaotao Shen
+#' \email{shenxt@@sioc.ac.cn}
+#' @param object PLS object.
+#' @return Return VIP.
+#' @export
+#' @examples
+#' library(pls)
+#' x <- matrix(rnorm(1000),nrow = 10,ncol = 100)
+#' y <- rep(0:1,5)
+#' res <- plsr(y~x, method = "oscorespls")
+#' SXTvip(res)
+
+
 SXTvip <- function(object) {
   if (object$method != "oscorespls")
     stop("Only implemented for orthogonal scores algorithm.  Refit with 'method = \"oscorespls\"'")

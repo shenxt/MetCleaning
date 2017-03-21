@@ -7,7 +7,6 @@
 #' @param path Work directory.
 #' @param figure Figure type you want to draw. jpeg ot pdf, default is jpeg.
 #' @return Return the metabolite plot before and after processing.
-#' @export
 #' @examples
 #' \donttest{
 #' #load the demo data

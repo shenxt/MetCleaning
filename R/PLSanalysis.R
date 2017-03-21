@@ -20,7 +20,6 @@
 #' @param ylim1 y axis limitation. Default is NULL.
 #' @return PLS score plot: PLS score plot.
 #' @return permutation test plot: Permutation test plot.
-#' @export
 #' @examples
 #' \donttest{
 #' #load the demo data

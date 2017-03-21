@@ -9,8 +9,7 @@
 #' @param minifrac.observation The cutoff for observation. Default is 0.5.
 #' @return Return a SXTMinifracData.
 #' @examples
-#' @export
-#' \dontrun{
+#' \donttest{
 #' ## Generate
 #' data1 <- matrix(1:20, ncol = 4)
 #' data2 <- matrix(21:40, ncol = 4)
@@ -26,6 +25,7 @@
 #' attributes(SXTMinifracData)
 #' print(SXTMinifracData)
 #' }
+
 
 SXTMinifrac <- function(...,
                         filter.item = "mv",

@@ -7,7 +7,6 @@
 #' @param path Work directory.
 #' @return Data overview_RT vs mz vs intensity.pdf:  A RT vs mz vs intensity plot.
 #' @return Data overview.txt: A overview information for MetFlowData.
-#' @export
 #' @examples
 #' \donttest{
 #' #load the demo data

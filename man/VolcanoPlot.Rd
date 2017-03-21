@@ -34,7 +34,7 @@ volcano plot.
 Draw volcano plot.
 }
 \examples{
-\dontrun{
+\donttest{
 #load the demo data
 data(data, package = "MetCleaning")
 data(sample.information, package = "MetCleaning")

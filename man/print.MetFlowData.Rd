@@ -18,7 +18,7 @@ Print some information of class object in your screen.
 Print method for class in MetProcesser.
 }
 \examples{
-\dontrun{
+\donttest{
 #load the demo data
 data(data, package = "MetCleaning")
 data(sample.information, package = "MetCleaning")

@@ -20,7 +20,7 @@ MetFlowData whose qc outliers have been removed.
 Using PCA to find QC outliers.
 }
 \examples{
-\dontrun{
+\donttest{
 #load the demo data
 data(data, package = "MetCleaning")
 data(sample.information, package = "MetCleaning")

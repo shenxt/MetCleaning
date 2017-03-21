@@ -37,7 +37,7 @@ Select markers using fold change and p values.
 Select markers using fold change and p values.
 }
 \examples{
-\dontrun{
+\donttest{
 #load the demo data
 data(data, package = "MetCleaning")
 data(sample.information, package = "MetCleaning")

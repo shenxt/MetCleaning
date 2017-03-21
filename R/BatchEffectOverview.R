@@ -6,35 +6,7 @@
 #' @param MetFlowData.after MetFlowData after normalization or integration.
 #' @param path work directory
 #' @return Give PCA score plot for QC and subject.
-#' @export
-#' @examples
-#' \donttest{
-#' #load the demo data
-#' data(data, package = "MetCleaning")
-#' data(sample.information, package = "MetCleaning")
-#'
-#' ##create a folder for demo
-#' dir.create("demo")
-#' setwd("demo")
-#'
-#' # export the demo data as csv
-#' write.csv(data, "data.csv", row.names = FALSE)
-#' write.csv(sample.information, "sample.information.csv", row.names = FALSE)
-#'
-#' # MetCleaning process
-#' MetCleaning(#ImportData para
-#' data = "data.csv",
-#' sample.information = "sample.information.csv",
-#' polarity = "positive",
-#' #DataNormalization
-#' method = "svr",
-#' threads = 2)
-#'
-#' #run BatchEffectOverview
-#' BatchEffectOverview(met.data.after.pre ,
-#'                     met.data.after.pre,
-#'                     path = "Demo for BatchEffectOverview")
-#'                     }
+
 
 ### Batch effect for multiple batch datasets
 BatchEffectOverview <- function(MetFlowData.before,

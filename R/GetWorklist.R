@@ -17,7 +17,6 @@
 #' @param user Default is "other".
 #' @param dir Directory.
 #' @return New worklist.
-#' @export
 #' @examples
 #' \donttest{
 #' #demo data

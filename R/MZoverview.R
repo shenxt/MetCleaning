@@ -13,7 +13,6 @@
 #' @return Batch i Subject feature MV/zero ratio.pdf: Batch i Subject feature
 #'  MV/zero ratio distribution.
 #' @return Sample MV/zero distribution.csv: Sample MV/zero ratio distribution.
-#' @export
 #' @examples
 #' \donttest{
 #' #load the demo data
@@ -27,7 +26,7 @@
 #' # export the demo data as csv
 #' write.csv(data, "data.csv", row.names = FALSE)
 #' write.csv(sample.information, "sample.information.csv", row.names = FALSE)
-#'Import data
+#'#Import data
 #'met.data <- ImportData(data = "data.csv",
 #'                       sample.information = "sample.information.csv",
 #'                       polarity = "positive")
@@ -35,7 +34,7 @@
 #'MZoverview(MetFlowData = met.data,
 #'                     what = "mv",
 #'                     path = "Demo for MZoverview")
-#' }
+#'                     }
 
 MZoverview <- function(MetFlowData,
                        path = NULL,

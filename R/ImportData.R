@@ -21,10 +21,8 @@
 #' @param peak.identification The data has identification result or not?
 #' Default is "no".
 #' @return  Return a standard MetProcesser dataset.
-#' @seealso \code{\link{ExportData}}
 #' @export
 #' @examples
-#' \donttest{
 #' #load the demo data
 #' data(data, package = "MetCleaning")
 #' data(sample.information, package = "MetCleaning")
@@ -36,11 +34,11 @@
 #' # export the demo data as csv
 #' write.csv(data, "data.csv", row.names = FALSE)
 #' write.csv(sample.information, "sample.information.csv", row.names = FALSE)
-#'Import data
+#'#Import data
 #'met.data <- ImportData(data = "data.csv",
 #'                       sample.information = "sample.information.csv",
 #'                       polarity = "positive")
-#' }
+
 
 ImportData <- function(data = "data.csv",
                        sample.information = "sample.information.csv",

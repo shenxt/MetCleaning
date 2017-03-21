@@ -45,7 +45,6 @@ Return a standard MetProcesser dataset.
 Import data and retrun a standard MetProcessor data.
 }
 \examples{
-\dontrun{
 #load the demo data
 data(data, package = "MetCleaning")
 data(sample.information, package = "MetCleaning")
@@ -57,14 +56,10 @@ setwd("demo")
 # export the demo data as csv
 write.csv(data, "data.csv", row.names = FALSE)
 write.csv(sample.information, "sample.information.csv", row.names = FALSE)
-Import data
+#Import data
 met.data <- ImportData(data = "data.csv",
                       sample.information = "sample.information.csv",
                       polarity = "positive")
-}
-}
-\seealso{
-\code{\link{ExportData}}
 }
 \author{
 Xiaotao Shen

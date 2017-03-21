@@ -21,7 +21,6 @@
 #' @return The normalization results can be got from help of
 #' \code{\link{MetNormalizer}}.
 #' @seealso \code{\link{MetNormalizer}}
-#' @export
 #' @details Data normalization is a useful method to reduce unwanted variances
 #' in metabolomics data. The most used normalization methods is
 #' \href{https://www.readcube.com/library/fe13374b-5bc9-4c61-9b7f-6a354690947e:2303e537-2864-4df5-91f0-c3ae731711af}{sample scale method}

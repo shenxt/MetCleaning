@@ -12,7 +12,6 @@
 #' @param what Filter missing values ("mv") or zero values ("zero")?
 #' @param path Work directory.
 #' @return Return a MetFlowData which has been filtered according MV/zero ratio.
-#' @export
 #' @examples
 #' \donttest{
 #' #load the demo data
@@ -26,7 +25,7 @@
 #' # export the demo data as csv
 #' write.csv(data, "data.csv", row.names = FALSE)
 #' write.csv(sample.information, "sample.information.csv", row.names = FALSE)
-#'Import data
+#'#Import data
 #'met.data <- ImportData(data = "data.csv",
 #'                       sample.information = "sample.information.csv",
 #'                       polarity = "positive")
@@ -36,7 +35,8 @@
 #'                         var.per.cutoff = 0.5,
 #'                         what = "mv",
 #'                         path = "Demo for MV filter")
-#' }
+#'                         }
+
 
 MZfilter <- function(MetFlowData,
                      obs.per.cutoff = 0.5,

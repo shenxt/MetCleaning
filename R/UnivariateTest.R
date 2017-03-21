@@ -8,7 +8,6 @@
 #' @param log.scale Data transformation method, defaulst is FALSE.
 #' @param class Class used to do test.
 #' @return MetFlowData which has been added p and AUC information in tags.
-#' @export
 #' @seealso The details of univariate test can be found in \code{\link[stats]{t.test}},
 #' \code{\link[stats]{p.adjust}} and \code{\link[stats]{wilcox.test}}.
 #' @examples

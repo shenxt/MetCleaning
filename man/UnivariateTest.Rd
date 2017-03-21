@@ -25,7 +25,7 @@ MetFlowData which has been added p and AUC information in tags.
 Calculate p value and AUC for each feature.
 }
 \examples{
-\dontrun{
+\donttest{
 #load the demo data
 data(data, package = "MetCleaning")
 data(sample.information, package = "MetCleaning")

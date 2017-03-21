@@ -3,9 +3,9 @@ title: "MetCleaning v0.99.3"
 author: "Xiaotao Shen(shenxt@sioc.ac.cn) and Zhengjiang Zhu"
 date: '`r Sys.Date()`'
 output:
-  word_document: default
-  pdf_document: default
   html_document: default
+  pdf_document: default
+  word_document: default
 vignette: |
   %\VignetteIndexEntry{Vignette Title} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
 ---
@@ -25,7 +25,7 @@ vignette: |
 ### *MetCleaning* is published in github. So you can install it via to github.
 
 #### code 1: Installation of *MetCleaning*
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 ##pcaMethodsand impute should be installed form bioconductor
 ##pcaMethos
 source("http://bioconductor.org/biocLite.R")
@@ -62,7 +62,7 @@ Batch 1      |       141       |        116      |     34    |  291
 ### Data cleaning is integrated as a function named as *MetCleaning*. We use the demo data as the example. Copy the code below and paste in you R console.
 
 #### code 2: Demo data of *MetCleaning*
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 library(MetCleaning)
 ##demo data
 data(data, package = "MetCleaning")
@@ -86,7 +86,7 @@ write.csv(sample.information , "sample.information.csv", row.names = FALSE)
 ### Then you can run *MetCleaning* function to do data cleaning of data. All the arguments of *MetCleaning* can be found in MetCleaning. You can use help(package = "MetCleaning") to see the help page of *MetCleaning*.
 
 #### code 3: Running of *MetCleaning*
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 ##demo data
 library(MetCleaning)
 MetCleaning(polarity = "positive")
@@ -126,7 +126,7 @@ MetCleaning(polarity = "positive")
 ### Data statistical analysis is integrated as a function named as MetStat in *MetCleaning*. We use the demo data as the example. Please note that now *MetStat* can only process two class data. Copy the code below and paste in you R console.
 
 #### code 4: Demo data of *MetStat*
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 data(new.group, package = "MetCleaning")
 ##create a folder for MetStat demo
 dir.create("Demo for MetStat")
@@ -142,7 +142,7 @@ write.csv(new.group, "new.group.csv", row.names = FALSE)
 **Figure6.** Group information for statistical analysis.
 
 #### code 5: Running of *MetStat*
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 MetStat(MetFlowData = met.data.after.pre, new.group = TRUE)
 ```
 

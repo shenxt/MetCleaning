@@ -28,7 +28,6 @@
 #' @param maxSteps See ?bpca
 #' @param threshold See ?bpca
 #' @return Return a MetFlowData whose MVs have been imputated.
-#' @export
 #' @seealso The MV imputation methods can see in
 #' \code{\link[impute]{impute.knn}}, \code{\link[missForest]{missForest}},
 #' \code{\link[pcaMethods]{bpca}}, \code{\link[pcaMethods]{ppca}} and
@@ -48,7 +47,7 @@
 #' # export the demo data as csv
 #' write.csv(data, "data.csv", row.names = FALSE)
 #' write.csv(sample.information, "sample.information.csv", row.names = FALSE)
-#'Import data
+#'#Import data
 #'met.data <- ImportData(data = "data.csv",
 #'                       sample.information = "sample.information.csv",
 #'                       polarity = "positive")
@@ -59,8 +58,9 @@
 #'                     what = "mv",
 #'                     path = "Demo for MV filter")
 #'run
-#'new.met.data <- MVimputation(met.data)
-#' }
+#'new.met.data <- MVimputation(met.data, rowmax = 0.9, colmax = 0.9)
+#'}
+
 
 MVimputation <- function(MetFlowData,
                          ##MV imputation method

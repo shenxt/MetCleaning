@@ -12,7 +12,6 @@
 #' @param re.match Default is TRUE.
 #' @return Return a MetFlowData which has been added peak identification
 #' information into tags.
-#' @export
 #' @examples
 #' \donttest{
 #' #load the demo data

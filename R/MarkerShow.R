@@ -6,7 +6,6 @@
 #' @param path The directory you want to write results.
 #' @param beeswarm Do you want draw beeswarm on the boxplot? Deafult is TRUE.
 #' @return Box plot of markers.
-#' @export
 #' @examples
 #' \donttest{
 #' #load the demo data
