@@ -226,7 +226,7 @@ MetNormalizer <- function(filename = "Metabolomics data",
 # browser()
   if (normalization.method == "svr") {
     cat("SVR normalization...\n")
-    if(multiple != 1){
+    if(threads != 1){
     SXTsvrNor(
       sample = sample,QC = qc,tags = tags, sample.order = sampleorder,
       QC.order = qcorder, multiple = multiple, path = path,
