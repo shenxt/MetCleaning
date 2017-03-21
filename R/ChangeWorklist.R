@@ -5,7 +5,7 @@
 #' @param date Date you want to change in you worklist. Default is today.
 #' @return Return a new worklist.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' #demo data
 #' batch.design <- paste("A",c(1:100), sep = "")
 #' ##create a folder for demo
@@ -19,6 +19,7 @@
 #' #run ChangeWorklist
 #' ChangeWorklist()
 #' }
+
 
 ChangeWorklist <-
   function(date = gsub("-", "", as.character(Sys.Date()))) {

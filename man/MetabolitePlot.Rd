@@ -48,7 +48,7 @@ threads = 2)
 MetabolitePlot(met.data.after.pre,
               met.data.after.pre,
               path = "Demo for MetabolitePlot")
-}
+              }
 }
 \author{
 Xiaotao Shen

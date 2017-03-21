@@ -8,7 +8,7 @@
 #' @return Give PCA score plot for QC and subject.
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' #load the demo data
 #' data(data, package = "MetCleaning")
 #' data(sample.information, package = "MetCleaning")
@@ -34,7 +34,7 @@
 #' BatchEffectOverview(met.data.after.pre ,
 #'                     met.data.after.pre,
 #'                     path = "Demo for BatchEffectOverview")
-#' }
+#'                     }
 
 ### Batch effect for multiple batch datasets
 BatchEffectOverview <- function(MetFlowData.before,

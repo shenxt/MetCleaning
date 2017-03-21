@@ -9,7 +9,7 @@
 #' @return Return the metabolite plot before and after processing.
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' #load the demo data
 #' data(data, package = "MetCleaning")
 #' data(sample.information, package = "MetCleaning")
@@ -34,7 +34,7 @@
 #'MetabolitePlot(met.data.after.pre,
 #'               met.data.after.pre,
 #'               path = "Demo for MetabolitePlot")
-#' }
+#'               }
 
 MetabolitePlot <- function(MetFlowData.before,
                            MetFlowData.after,

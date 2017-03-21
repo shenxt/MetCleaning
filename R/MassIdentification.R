@@ -12,7 +12,6 @@
 #'  +Na, +H-2H2O, +H-H2O, +K have been considered, and in negative mode, -H,
 #'  +Cl, +CH3COO, -H-H2O, +F have been considered.
 
-
 MassIdentification <- function(MetFlowData,
                                mass.tolerance = 30,
                                polarity = "positive",

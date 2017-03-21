@@ -76,7 +76,6 @@ met.data[["tags"]] <- tags
 met.data <- UnivariateTest(met.data)
 ## run
 new.met.data <- MarkerSelection(met.data)
-
 }
 }
 \author{

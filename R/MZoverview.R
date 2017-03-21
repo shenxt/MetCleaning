@@ -15,7 +15,7 @@
 #' @return Sample MV/zero distribution.csv: Sample MV/zero ratio distribution.
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' #load the demo data
 #' data(data, package = "MetCleaning")
 #' data(sample.information, package = "MetCleaning")

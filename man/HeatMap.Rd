@@ -79,7 +79,7 @@ HeatMap(MetFlowData = met.data.after.pre,
        path = "Demo for HeatMap",
        Group = c("0", "1"),
        path = "Demo for HeatMap")
-}
+       }
 }
 \seealso{
 \code{\link[pheatmap]{pheatmap}}

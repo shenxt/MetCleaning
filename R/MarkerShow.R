@@ -8,7 +8,7 @@
 #' @return Box plot of markers.
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' #load the demo data
 #' data(data, package = "MetCleaning")
 #' data(sample.information, package = "MetCleaning")
@@ -49,7 +49,7 @@
 #'new.met.data <- MarkerSelection(met.data)
 #'run
 #'MarkerShow(new.met.data, path = "Demo for MarkerShow")
-#' }
+#'}
 
 MarkerShow <- function(MetFlowData,
                        beeswarm = TRUE,

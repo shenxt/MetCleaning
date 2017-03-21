@@ -12,7 +12,7 @@
 #' @seealso The details of univariate test can be found in \code{\link[stats]{t.test}},
 #' \code{\link[stats]{p.adjust}} and \code{\link[stats]{wilcox.test}}.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' #load the demo data
 #' data(data, package = "MetCleaning")
 #' data(sample.information, package = "MetCleaning")

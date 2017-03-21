@@ -29,7 +29,6 @@ export(SubjectOutlierFilter)
 export(UnivariateTest)
 export(VolcanoPlot)
 
-
 import(pls)
 import(impute)
 import(missForest)

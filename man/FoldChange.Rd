@@ -44,7 +44,7 @@ threads = 2)
 ## run
 new.met.data <- FoldChange(MetFlowData = met.data.after.pre,
                           to = c("1", "0"))
-}
+                          }
 }
 \author{
 Xiaotao Shen

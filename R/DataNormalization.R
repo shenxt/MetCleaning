@@ -32,7 +32,7 @@
 #' normalization are two most used normalization
 #' methods.
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' #load the demo data
 #' data(data, package = "MetCleaning")
 #' data(sample.information, package = "MetCleaning")
@@ -55,7 +55,8 @@
 #' threads = 2)
 #'## run
 #'new.met.data <- DataNormalization(MetFlowData = met.data.after.pre)
-#' }
+#'}
+
 
 
 ### Data normalization for MetFlowData

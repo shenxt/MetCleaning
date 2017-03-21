@@ -16,7 +16,7 @@
 #' @return maker.information.csv: The marker information.
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' #load the demo data
 #' data(data, package = "MetCleaning")
 #' data(sample.information, package = "MetCleaning")
@@ -55,8 +55,7 @@
 #'met.data <- UnivariateTest(met.data)
 #'## run
 #'new.met.data <- MarkerSelection(met.data)
-#'
-#' }
+#'}
 
 MarkerSelection <- function(MetFlowData,
                             foldchange = "foldchange",

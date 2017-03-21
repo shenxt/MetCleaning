@@ -23,7 +23,7 @@
 #' @export
 #' @seealso \code{\link[pheatmap]{pheatmap}}
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' #load the demo data
 #' data(data, package = "MetCleaning")
 #' data(sample.information, package = "MetCleaning")
@@ -49,7 +49,7 @@
 #'        path = "Demo for HeatMap",
 #'        Group = c("0", "1"),
 #'        path = "Demo for HeatMap")
-#' }
+#'        }
 
 HeatMap <- function(MetFlowData,
                     log.scale = FALSE,

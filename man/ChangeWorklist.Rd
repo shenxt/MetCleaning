@@ -16,7 +16,7 @@ Return a new worklist.
 Change date in worklist from GetWorklist.
 }
 \examples{
-\dontrun{
+\donttest{
 #demo data
 batch.design <- paste("A",c(1:100), sep = "")
 ##create a folder for demo

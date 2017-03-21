@@ -1,9 +1,9 @@
 ##############svr normalization function
-SXTsvrNor1 <- function(sample = sample,
-                       QC = qc,
+SXTsvrNor1 <- function(sample,
+                       QC,
                        tags = tags,
-                       sample.order = sampleorder,
-                       QC.order = qcorder,
+                       sample.order,
+                       QC.order,
                        #used data
                        multiple = 5,
                        rerun = TRUE,

@@ -19,7 +19,7 @@
 #' @return New worklist.
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' #demo data
 #' batch.design <- paste("A",c(1:100), sep = "")
 #' ##create a folder for demo

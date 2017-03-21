@@ -20,7 +20,7 @@ Give PCA score plot for QC and subject.
 Using PCA score plot to view the batch effect.
 }
 \examples{
-\dontrun{
+\donttest{
 #load the demo data
 data(data, package = "MetCleaning")
 data(sample.information, package = "MetCleaning")
@@ -46,7 +46,7 @@ threads = 2)
 BatchEffectOverview(met.data.after.pre ,
                     met.data.after.pre,
                     path = "Demo for BatchEffectOverview")
-}
+                    }
 }
 \author{
 Xiaotao Shen

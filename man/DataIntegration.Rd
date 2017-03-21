@@ -24,7 +24,7 @@ Data integration is a necessary step for multiple batch dataset.
 method has been used in this function.
 }
 \examples{
-\dontrun{
+\donttest{
 #load the demo data
 data(data, package = "MetCleaning")
 data(sample.information, package = "MetCleaning")

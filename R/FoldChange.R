@@ -8,7 +8,7 @@
 #' @return MetFlowData which has been added fold change information in tags.
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' #load the demo data
 #' data(data, package = "MetCleaning")
 #' data(sample.information, package = "MetCleaning")
@@ -32,7 +32,7 @@
 #'## run
 #'new.met.data <- FoldChange(MetFlowData = met.data.after.pre,
 #'                           to = c("1", "0"))
-#' }
+#'                           }
 
 FoldChange <- function(MetFlowData,
                        to = c("case", "control"),

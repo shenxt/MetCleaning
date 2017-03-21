@@ -22,7 +22,7 @@ Data overview.txt: A overview information for MetFlowData.
 Give a overview of MetFlowData.
 }
 \examples{
-\dontrun{
+\donttest{
 #load the demo data
 data(data, package = "MetCleaning")
 data(sample.information, package = "MetCleaning")

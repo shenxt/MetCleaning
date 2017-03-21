@@ -6,7 +6,7 @@
 #' @return Return a data (list), subject, qc, subject.info and qc.info.
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' #load the demo data
 #' data(data, package = "MetCleaning")
 #' data(sample.information, package = "MetCleaning")

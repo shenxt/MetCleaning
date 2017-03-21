@@ -14,7 +14,7 @@
 #' @seealso \code{\link{ImportData}}
 #' @export
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' #load the demo data
 #' data(data, package = "MetCleaning")
 #' data(sample.information, package = "MetCleaning")
@@ -37,7 +37,7 @@
 #' threads = 2)
 #'## run
 #'ExportData(MetFlowData = met.data.after.pre, path = "Demo for ExportData")
-#' }
+#'}
 
 ExportData <- function(MetFlowData,
                        data.name = "data_new",
