@@ -126,6 +126,7 @@ MetStat <- function(MetFlowData,
     dir.create(path)
   }
 
+  options(warn = -1)
   path.inter <- file.path(path, "intermediate")
   dir.create(path.inter)
 
@@ -291,4 +292,5 @@ MetStat <- function(MetFlowData,
 
   cat("------------------------------------------------------------------\n")
   cat("MetStat is done.\n")
+  options(warn = 0)
 }
