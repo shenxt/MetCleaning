@@ -12,7 +12,7 @@ MetCleaning(data = "data.csv",
   var.zero.cutoff = 0.5, normalization = TRUE, method = "svr",
   multiple = 5, threads = 2, hmdb.matching = FALSE, show = 5,
   mass.tolerance = 30, mz.tolerance = 30, rt.tolerance = 180,
-  met.plot = TRUE, path = NULL, worklist.from = "manual",
+  met.plot = TRUE, path = ".", worklist.from = "manual",
   qc.outlier.filter = TRUE, subject.outlier.filter = TRUE,
   integration = TRUE)
 }

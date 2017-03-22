@@ -5,7 +5,7 @@
 \title{MZfilter}
 \usage{
 MZfilter(MetFlowData, obs.per.cutoff = 0.5, var.per.cutoff = 0.5,
-  what = "mv", path = NULL)
+  what = "mv", path = ".")
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}

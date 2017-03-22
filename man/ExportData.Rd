@@ -6,7 +6,7 @@
 \usage{
 ExportData(MetFlowData, data.name = "data_new",
   subject.info.name = "subject.info", qc.info.name = "qc.info",
-  path = NULL)
+  path = ".")
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}

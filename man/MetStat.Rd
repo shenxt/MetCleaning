@@ -12,8 +12,7 @@ MetStat(MetFlowData, new.group = TRUE, rsd.cutoff = 30, log.scale = FALSE,
   foldchange.cutoff = c(4/3, 3/4), p.cutoff = 0.05, vip.cutoff = 0,
   x = "foldchange", y = "p", z = "vip", col = c("black", "firebrick1"),
   variable = "all", Group = c("control", "case"), beeswarm = TRUE,
-  pls.analysis = TRUE, pca.analysis = TRUE, uni.test = TRUE,
-  path = NULL)
+  pls.analysis = TRUE, pca.analysis = TRUE, uni.test = TRUE, path = ".")
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}

@@ -5,9 +5,9 @@
 \title{ImportData}
 \usage{
 ImportData(data = "data.csv", sample.information = "sample.information.csv",
-  polarity = "positive", posfix = NULL, qc.has.order = FALSE,
+  polarity = "positive", posfix = NULL, ordered.qc = FALSE,
   worklist.from = "manual", hasIS = "no", hasQC = "yes",
-  peak.identification = "no", path = NULL)
+  peak.identification = "no", path = ".")
 }
 \arguments{
 \item{data}{Data name for analysis. Default is "data.csv". Data are csv
@@ -25,7 +25,7 @@ default is positive.}
 
 \item{posfix}{Default is NULL.}
 
-\item{qc.has.order}{Default is FALSE.}
+\item{ordered.qc}{Default is FALSE.}
 
 \item{worklist.from}{Default is "manual".}
 

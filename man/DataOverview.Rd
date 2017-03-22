@@ -4,7 +4,7 @@
 \alias{DataOverview}
 \title{DataOverview}
 \usage{
-DataOverview(MetFlowData, feature.distribution = TRUE, path = NULL)
+DataOverview(MetFlowData, feature.distribution = TRUE, path = ".")
 }
 \arguments{
 \item{MetFlowData}{MetFlowData}

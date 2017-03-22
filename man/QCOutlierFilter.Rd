@@ -4,7 +4,7 @@
 \alias{QCOutlierFilter}
 \title{QCOutlierFilter}
 \usage{
-QCOutlierFilter(MetFlowData, CI = 0.95, path = NULL)
+QCOutlierFilter(MetFlowData, CI = 0.95, path = ".")
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}

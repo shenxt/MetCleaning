@@ -4,7 +4,7 @@
 \alias{MetabolitePlot}
 \title{MetabolitePlot}
 \usage{
-MetabolitePlot(MetFlowData.before, MetFlowData.after, path = NULL,
+MetabolitePlot(MetFlowData.before, MetFlowData.after, path = ".",
   figure = "jpeg")
 }
 \arguments{

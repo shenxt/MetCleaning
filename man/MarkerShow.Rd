@@ -4,7 +4,7 @@
 \alias{MarkerShow}
 \title{MarkerShow}
 \usage{
-MarkerShow(MetFlowData, beeswarm = TRUE, path = NULL)
+MarkerShow(MetFlowData, beeswarm = TRUE, path = ".")
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}

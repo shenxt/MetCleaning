@@ -4,7 +4,7 @@
 \alias{MZoverview}
 \title{MZOverview}
 \usage{
-MZoverview(MetFlowData, path = NULL, what = "mv")
+MZoverview(MetFlowData, path = ".", what = "mv")
 }
 \arguments{
 \item{MetFlowData}{MetFlowData.}

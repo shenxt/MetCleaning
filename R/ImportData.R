@@ -344,7 +344,7 @@ ImportData <- function(data = "data.csv",
                      foldchange = "temp",
                      marker.selection.condition = "no",
                      mv.filter = "no",
-                     mv.filter.criteria = "no"，
+                     mv.filter.criteria = "no",
                      univariate.test = "no")
 
 

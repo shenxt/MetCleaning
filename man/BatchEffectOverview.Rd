@@ -4,7 +4,7 @@
 \alias{BatchEffectOverview}
 \title{BatchEffectOverview}
 \usage{
-BatchEffectOverview(MetFlowData.before, MetFlowData.after, path = NULL)
+BatchEffectOverview(MetFlowData.before, MetFlowData.after, path = ".")
 }
 \arguments{
 \item{MetFlowData.before}{MetFlowData before normalization or integration.}

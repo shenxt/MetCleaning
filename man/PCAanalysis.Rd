@@ -5,7 +5,7 @@
 \title{PCAanalysis}
 \usage{
 PCAanalysis(MetFlowData, QC = FALSE, log.scale = FALSE,
-  scale.method = "auto", path = NULL, color = c("palegreen", "royalblue",
+  scale.method = "auto", path = ".", color = c("palegreen", "royalblue",
   "firebrick1", "tan1", "deepskyblue", "cyan", "gray48", "chocolate4",
   "darkmagenta", "indianred1"), shape = c(17, 19, 15, 18, 2, 8, 11, 13, 12,
   14), cex.lab = 1.3, cex.axis = 1.3, cex = 1.3, cex.text = 1,
