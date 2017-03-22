@@ -99,12 +99,12 @@ SXTpcaFindOutlier <- function(SXTpcaData,
   x1 <- data.for.plot[, 1]
   y1 <- data.for.plot[, 2]
   ellipse.standard <-
-    mean(sqrt((x1 - p1[1]) ^ 2 + (y1 - p1[2]) ^ 2) + sqrt((x1 - p2[1]) ^ 2 + (y1 -
-                                                                                p2[2]) ^ 2))
+    mean(sqrt((x1 - p1[1]) ^ 2 + (y1 - p1[2]) ^ 2) +
+           sqrt((x1 - p2[1]) ^ 2 + (y1 - p2[2]) ^ 2))
 
   distance <-
-    sqrt((x - p1[1]) ^ 2 + (y - p1[2]) ^ 2) + sqrt((x - p2[1]) ^ 2 + (y - p2[2]) ^
-                                                     2)
+    sqrt((x - p1[1]) ^ 2 + (y - p1[2]) ^ 2) +
+    sqrt((x - p2[1]) ^ 2 + (y - p2[2]) ^2)
 
   outlier.index <- which(distance > ellipse.standard)
   if (length(outlier.index) > 0) {

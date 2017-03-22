@@ -38,45 +38,53 @@
 
 ## data integration
 DataIntegration <- function(MetFlowData,
-                            method = "qc.mean"){
-
+                            method = "qc.mean") {
   subject <- MetFlowData[["subject"]]
   qc <- MetFlowData[["qc"]]
   subject.info <- MetFlowData[["subject.info"]]
   qc.info <- MetFlowData[["qc.info"]]
-  subject.name <- subject.info[,1]
-  qc.name <- qc.info[,1]
+  subject.name <- subject.info[, 1]
+  qc.name <- qc.info[, 1]
 
-  subject.batch <- subject.info[,4]
-  qc.batch <- qc.info[,4]
+  subject.batch <- subject.info[, 4]
+  qc.batch <- qc.info[, 4]
 
   subject1 <- list()
   qc1 <- list()
 
-data <- SplitBatch(MetFlowData = MetFlowData)
-subject1 <- data[[1]]
-qc1 <- data[[2]]
+  data <- SplitBatch(MetFlowData = MetFlowData)
+  subject1 <- data[[1]]
+  qc1 <- data[[2]]
 
-  subject1.mean <- lapply(subject1, function(x) {apply(x, 1, mean)})
-  qc1.mean <- lapply(qc1, function(x) {apply(x, 1, mean)})
+  subject1.mean <- lapply(subject1, function(x) {
+    apply(x, 1, mean)
+  })
+  qc1.mean <- lapply(qc1, function(x) {
+    apply(x, 1, mean)
+  })
 
-  ref.qc <- lapply(qc1.mean, function(x) {qc1.mean[[1]]/x})
-  ref.subject <- lapply(subject1.mean, function(x) {qc1.mean[[1]]/x})
+  ref.qc <- lapply(qc1.mean, function(x) {
+    qc1.mean[[1]] / x
+  })
+  ref.subject <-
+    lapply(subject1.mean, function(x) {
+      qc1.mean[[1]] / x
+    })
 
-  subject2 <- as.list(rep(NA,length(subject1)))
-  qc2 <- as.list(rep(NA,length(qc1)))
+  subject2 <- as.list(rep(NA, length(subject1)))
+  qc2 <- as.list(rep(NA, length(qc1)))
 
-  if(method == "qc.mean"){
+  if (method == "qc.mean") {
     for (i in 1:seq_along(subject1)) {
-      subject2[[i]] <- subject1[[i]]*ref.qc[[i]]
-      qc2[[i]] <- qc1[[i]]*ref.qc[[i]]
+      subject2[[i]] <- subject1[[i]] * ref.qc[[i]]
+      qc2[[i]] <- qc1[[i]] * ref.qc[[i]]
     }
   }
 
-  if(method == "subject.mean"){
+  if (method == "subject.mean") {
     for (i in 1:seq_along(subject1)) {
-      subject2[[i]] <- subject1[[i]]*ref.subject[[i]]
-      qc2[[i]] <- qc1[[i]]*ref.qc[[i]]
+      subject2[[i]] <- subject1[[i]] * ref.subject[[i]]
+      qc2[[i]] <- qc1[[i]] * ref.qc[[i]]
     }
   }
 

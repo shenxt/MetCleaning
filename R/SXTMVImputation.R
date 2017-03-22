@@ -65,13 +65,15 @@ SXTMVimputation <- function(data,
 
   ## mean imputation
   if (method == "mean") {
-    data.mean <- apply(data,1,function(x) {x <- ifelse (is.na(x), mean(x, na.rm = TRUE), x)})
+    data.mean <-
+      apply(data,1,function(x) {x <- ifelse (is.na(x), mean(x, na.rm = TRUE), x)})
     return(t(data.mean))
   }
 
   ## median imputation
   if (method == "median") {
-    data.median <- apply(data,1,function(x) {x <- ifelse (is.na(x), median(x, na.rm = TRUE), x)})
+    data.median <-
+      apply(data,1,function(x) {x <- ifelse (is.na(x), median(x, na.rm = TRUE), x)})
     return(t(data.median))
   }
 
@@ -84,7 +86,8 @@ SXTMVimputation <- function(data,
 
   ## minimum imputation
   if (method == "minimum") {
-    data.minimum <- apply(data,1,function(x) {x <- ifelse (is.na(x), min(x, na.rm = TRUE), x)})
+    data.minimum <-
+      apply(data,1,function(x) {x <- ifelse (is.na(x), min(x, na.rm = TRUE), x)})
     return(t(data.minimum))
   }
 

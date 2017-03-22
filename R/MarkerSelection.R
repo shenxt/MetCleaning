@@ -60,11 +60,11 @@ MarkerSelection <- function(MetFlowData,
                             foldchange = "foldchange",
                             p = "p.correct",
                             vip = "vip",
-                            foldchange.cutoff = c(4/3, 3/4),
+                            foldchange.cutoff = c(4 / 3, 3 / 4),
                             p.cutoff = 0.05,
                             vip.cutoff = 1,
                             path = ".") {
-   # browser()
+  # browser()
   if (path != ".") {
     dir.create(path)
   }
@@ -81,11 +81,12 @@ MarkerSelection <- function(MetFlowData,
 
   ##foldchange selection
   if (foldchange != FALSE) {
-  if (all(colnames(tags) != "foldchange")) {
-    stop("Please calculate fold change first.")
-  }
-    foldchange <- as.numeric(tags[,foldchange])
-    marker.index1 <- which(foldchange > f.cutoff1 | foldchange < f.cutoff2)
+    if (all(colnames(tags) != "foldchange")) {
+      stop("Please calculate fold change first.")
+    }
+    foldchange <- as.numeric(tags[, foldchange])
+    marker.index1 <-
+      which(foldchange > f.cutoff1 | foldchange < f.cutoff2)
   }
   else {
     marker.index1 <- c(1:nrow(tags))
@@ -96,7 +97,7 @@ MarkerSelection <- function(MetFlowData,
     if (all(colnames(tags) != "vip")) {
       stop("Please calculate VIP first.")
     }
-    vip <- as.numeric(tags[,"vip"])
+    vip <- as.numeric(tags[, "vip"])
     marker.index2 <- which(vip > vip.cutoff)
   } else {
     marker.index2 <- c(1:nrow(tags))
@@ -104,34 +105,52 @@ MarkerSelection <- function(MetFlowData,
 
   ##p selection
   if (p != FALSE) {
-  if (all(colnames(tags) != "p")) {
-    stop("Please calculate p value first.")
-  }
-    p <- as.numeric(tags[,p])
+    if (all(colnames(tags) != "p")) {
+      stop("Please calculate p value first.")
+    }
+    p <- as.numeric(tags[, p])
     marker.index3 <- which(p < p.cutoff)
   } else {
     marker.index3 <- c(1:nrow(tags))
   }
 
-  marker.index <- intersect(intersect(marker.index1, marker.index2), marker.index3)
-  if (length(marker.index) == 0) {stop("No marker are selected, please change canditios and try again.")}
-  cat(paste("There are",length(marker.index), "variables are selected as marker.\n"))
-  marker.info <- tags[marker.index,]
-  write.csv(marker.info, file.path(path,"marker.info.csv"), row.names = FALSE)
+  marker.index <-
+    intersect(intersect(marker.index1, marker.index2), marker.index3)
+  if (length(marker.index) == 0) {
+    stop("No marker are selected, please change canditios and try again.")
+  }
+  cat(paste(
+    "There are",
+    length(marker.index),
+    "variables are selected as marker.\n"
+  ))
+  marker.info <- tags[marker.index, ]
+  write.csv(marker.info, file.path(path, "marker.info.csv"), row.names = FALSE)
   is.marker <- rep(NA, nrow(tags))
   is.marker[marker.index] <- "yes"
   is.marker[is.na(is.marker)] <- "no"
 
   if (any(colnames(tags) == "is.marker")) {
-    tags[,"is.marker"] <- is.marker
-  }else{
-  tags <- cbind(tags, is.marker)
+    tags[, "is.marker"] <- is.marker
+  } else{
+    tags <- cbind(tags, is.marker)
   }
 
   MetFlowData[["tags"]] <- tags
   MetFlowData[["marker.selection.condition"]] <-
-  paste("foldchange:",foldchange,"fc:",
-        paste(foldchange.cutoff,collapse = ","),"p:",p,"pc:",
-        p.cutoff,"vip:",vip,"vc:",vip.cutoff)
+    paste(
+      "foldchange:",
+      foldchange,
+      "fc:",
+      paste(foldchange.cutoff, collapse = ","),
+      "p:",
+      p,
+      "pc:",
+      p.cutoff,
+      "vip:",
+      vip,
+      "vc:",
+      vip.cutoff
+    )
   return(MetFlowData)
 }

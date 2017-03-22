@@ -62,7 +62,8 @@
   summary.batch <- cbind(summary.subject.batch, summary.qc.batch)
 
   ## batch information
-  cat("There are", length(unique.batch), ifelse(length(unique.batch)==1, "batch", "batches"))
+  cat("There are", length(unique.batch),
+      ifelse(length(unique.batch)==1, "batch", "batches"))
   cat("\n")
 
   for (i in 1:length(unique.batch)){

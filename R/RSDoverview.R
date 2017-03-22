@@ -80,7 +80,7 @@ RSDoverview <- function(MetFlowData.before,
     )
     abline(h = 30, lty = 2)
     legend("topleft",
-           paste("RSD<30%: ", round(sum(QC.rsd < 30) / length(QC.rsd), 4) * 100, "%"),
+    paste("RSD<30%: ", round(sum(QC.rsd < 30) / length(QC.rsd), 4) * 100, "%"),
            bty = "n",
            cex = 1.3)
 
@@ -107,7 +107,7 @@ RSDoverview <- function(MetFlowData.before,
     )
     abline(h = 30, lty = 2)
     legend("topleft",
-           paste("RSD<30%: ", round(sum(QC.rsd < 30) / length(QC.rsd), 4) * 100, "%"),
+    paste("RSD<30%: ", round(sum(QC.rsd < 30) / length(QC.rsd), 4) * 100, "%"),
            bty = "n",
            cex = 1.3)
 
@@ -141,7 +141,7 @@ RSDoverview <- function(MetFlowData.before,
   )
   abline(h = 30, lty = 2)
   legend("topleft",
-         paste("RSD<30%: ", round(sum(qc.rsd < 30) / length(qc.rsd), 4) * 100, "%"),
+    paste("RSD<30%: ", round(sum(qc.rsd < 30) / length(qc.rsd), 4) * 100, "%"),
          bty = "n",
          cex = 1.3)
 
@@ -165,7 +165,7 @@ RSDoverview <- function(MetFlowData.before,
   )
   abline(h = 30, lty = 2)
   legend("topleft",
-         paste("RSD<30%: ", round(sum(qc.rsd < 30) / length(qc.rsd), 4) * 100, "%"),
+    paste("RSD<30%: ", round(sum(qc.rsd < 30) / length(qc.rsd), 4) * 100, "%"),
          bty = "n",
          cex = 1.3)
 

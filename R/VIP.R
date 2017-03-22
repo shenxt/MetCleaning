@@ -87,29 +87,34 @@ VIP <- function(MetFlowData,
       {cat("You must give a comps number to continute.\n")
         comps.number <- readline("How many comps do you want to see? ")}
       comps.number <- as.numeric(comps.number)
-      plot(x = c(1:comps.number),y=msep[1,2:(comps.number+1)],type="b",col="firebrick1",pch=20,
+      plot(x = c(1:comps.number),y=msep[1,2:(comps.number+1)],
+           type="b",col="firebrick1",pch=20,
            xlab = "ncomp",ylab = "MSEP",cex.lab=1.3,cex.axis=1.3)
       points(x=c(1:comps.number),y=msep[2,2:(comps.number+1)],type="b",pch=2)
-      legend("top",legend = c("CV","adjCV"),col = c("firebrick1","black"),pch=c(20,2),
+      legend("top",legend = c("CV","adjCV"),
+             col = c("firebrick1","black"),pch=c(20,2),
              bty = "n",cex = 1.3,pt.cex = 1.3)
       yesnot <- readline("Do you want to see the next plot? (y/n)")
     }
 
     pdf(file.path(path, "MSEP plot.pdf"))
-    plot(x=c(1:comps.number),y=msep[1,2:(comps.number+1)],type="b",col="firebrick1",pch=20,
+    plot(x=c(1:comps.number),y=msep[1,2:(comps.number+1)],
+         type="b",col="firebrick1",pch=20,
          xlab="ncomp",ylab="MSEP",cex.lab=1.3,cex.axis=1.3)
     points(x=c(1:comps.number),y=msep[2,2:(comps.number+1)],type="b",pch=2)
-    legend("top",legend = c("CV","adjCV"),col = c("firebrick1","black"),pch=c(20,2),
+    legend("top",legend = c("CV","adjCV"),
+           col = c("firebrick1","black"),pch=c(20,2),
            bty = "n",cex = 1.3,pt.cex = 1.3)
     dev.off()
 
     number<-readline("Please type number and press Enter  to continute:  ")
     while (!exists("number")|number=="") {cat("You must give a number to continute.\n")
-      number<-readline("Please type comps number value and press Enter  to continute: ")}
+  number<-readline("Please type comps number value and press Enter  to continute: ")}
     number<-as.numeric(number)
 
     ##################construct final pls model###################
-    pls2 <- plsr(int.Y~int.scale, scale = FALSE,validation = "CV",ncomp = number,method = "oscorespls")
+    pls2 <- plsr(int.Y~int.scale, scale = FALSE,validation = "CV",
+                 ncomp = number,method = "oscorespls")
     save(pls2, file = file.path(path, "pls2"))
     vip <- SXTvip(pls2)
     vip <- apply(vip, 1, mean)
@@ -134,8 +139,10 @@ VIP <- function(MetFlowData,
       while (!exists("comps.number")|comps.number=="") {cat("You must give a comps number to continute.\n")
         comps.number<-readline("How many comps do you want to see? ")}
       comps.number<-as.numeric(comps.number)
-      barplot(Q2cum[1:comps.number],xlab="ncomp",ylab="Q2cum",cex.lab=1.3,cex.axis=1.3)
-      a <- barplot(Q2cum[1:comps.number],xlab="ncomp",ylab="Q2cum",cex.lab=1.3,cex.axis=1.3)
+      barplot(Q2cum[1:comps.number],xlab="ncomp",
+              ylab="Q2cum",cex.lab=1.3,cex.axis=1.3)
+      a <- barplot(Q2cum[1:comps.number],xlab="ncomp",
+                   ylab="Q2cum",cex.lab=1.3,cex.axis=1.3)
       abline(h=0)
       points(a,Q2cum[1:comps.number],type="b",col="red",pch=20,cex=2)
       yesnot <- readline("Do you want to see the next plot? (y/n)")

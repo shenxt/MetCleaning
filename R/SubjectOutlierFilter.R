@@ -61,7 +61,7 @@ SubjectOutlierFilter <- function(MetFlowData,
       cat("\n")
       temp.idx <-
         readline(
-          "Which subject you want to remove(please type the index of subject sample,
+    "Which subject you want to remove(please type the index of subject sample,
           and separate them using comma,
           if you don't want to remove any subject, please type n):"
         )

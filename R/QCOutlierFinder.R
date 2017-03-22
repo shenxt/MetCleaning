@@ -37,7 +37,7 @@ QCOutlierFinder <- function(MetFlowData,
     ## The first and last QC shouldn't be removed
     if (any(c(1, ncol(qc1[[i]])) %in% index2)) {
       index2 <-
-        index2[-match(c(1, ncol(qc1[[i]])), index2)[!is.na(match(c(1, ncol(qc1[[i]])), index2))]]
+  index2[-match(c(1, ncol(qc1[[i]])), index2)[!is.na(match(c(1, ncol(qc1[[i]])), index2))]]
     }
 
     obs.remove[[i]] <- index2

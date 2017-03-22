@@ -44,7 +44,8 @@ SXTMTmatch <- function(data1,
     }
     cat("\n")
     if (is.null(result)) {
-      cat("There are not any peak be matched\n,please change the mz or rt tolerance and try again")
+      cat("There are not any peak be matched\n,
+          please change the mz or rt tolerance and try again")
       cat("\n")
     }
     else {

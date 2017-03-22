@@ -37,10 +37,10 @@ SXTsvrNor1 <- function(sample,
     sample.nor <- NULL
 
     data <- apply(rbind(sample, QC), 2, function(x) list(x))
-    # QC.cor <- cor(data, method = "spearman")#not normal distribution, so use spearman correction
     for (i in 1:ncol(QC)) {
       all.cor <- unlist(lapply(data, function(x) {cor(data[[1]][[1]], x[[1]])}))
-      cor.peak <- match(sort(all.cor, decreasing = TRUE)[2:(as.numeric(multiple)+1)], all.cor)
+      cor.peak <-
+        match(sort(all.cor, decreasing = TRUE)[2:(as.numeric(multiple)+1)], all.cor)
 
       if (multiple != 1) {
         svr.reg <- svm(QC[,cor.peak],QC[,i])
@@ -124,9 +124,6 @@ SXTsvrNor1 <- function(sample,
   sample.svr <-
     rbind(tags,sample.nor.rsd,QC.nor.rsd,sample.nor,QC.nor)
 
-  #   save(sample.nor,QC.nor,tags,sample.order,QC.order,file=file.path(path1,"data svr nor"))
-  #   save(sample,QC,tags,sample.order,QC.order,file=file.path(path1,"data no nor"))
-  # write.csv(t(sample.no.nor),file.path(path1,"data no nor.csv"))
   write.csv(t(sample.svr),file.path(path1,"data svr nor.csv"))
 
   #generate all peaks plot
@@ -137,8 +134,8 @@ SXTsvrNor1 <- function(sample,
     if (datastyle == "tof")
     {
       peakplot5(
-        sample = sample,sample.nor = sample.nor,QC = QC,QC.nor = QC.nor,sample.order =
-          sample.order,
+        sample = sample,sample.nor = sample.nor,
+        QC = QC,QC.nor = QC.nor,sample.order = sample.order,
         QC.order = QC.order,tags = tags,path = path2,
         sample.rsd = sample.rsd,QC.rsd = QC.rsd,sample.nor.rsd =
           sample.nor.rsd,
@@ -147,8 +144,8 @@ SXTsvrNor1 <- function(sample,
     }
     else {
       peakplot6(
-        sample = sample,sample.nor = sample.nor,QC = QC,QC.nor = QC.nor,sample.order =
-          sample.order,
+        sample = sample,sample.nor = sample.nor,QC = QC,QC.nor = QC.nor,
+        sample.order = sample.order,
         QC.order = QC.order,tags = tags,path = path2,
         sample.rsd = sample.rsd,QC.rsd = QC.rsd,sample.nor.rsd =
           sample.nor.rsd,
@@ -157,14 +154,10 @@ SXTsvrNor1 <- function(sample,
     }
   }
 
-
-  ##generate some statistics information
-
   compare.rsd(
     sample.rsd = sample.rsd,sample.nor.rsd = sample.nor.rsd,QC.rsd = QC.rsd,QC.nor.rsd =
       QC.nor.rsd,path = path1
   )
 
   cat("SVR normalization is done\n")
-
 }

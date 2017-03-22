@@ -19,7 +19,8 @@ obs.remove <- list()
   ## PCA analysis
   for (i in 1:seq_along(subject1)) {
     info <- list("Subject" = colnames(subject1[[i]]))
-    SXTpcaData <- SXTpca(subject = subject1[[i]], info = info, QC = FALSE, scale.method = "auto")
+    SXTpcaData <- SXTpca(subject = subject1[[i]],
+                         info = info, QC = FALSE, scale.method = "auto")
     index2 <- SXTpcaFindOutlier(SXTpcaData = SXTpcaData,
                                 CI = CI,
                                 plot.name = paste("Batch",i,"outliers"),

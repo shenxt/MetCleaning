@@ -4,8 +4,10 @@ SXTpcaPlot <- function(SXTpcaData,
                        plot = "score",
                        loading.plot.name = "PCA loading",
                        score.plot.name = "PCA score",
-                       color = c("palegreen","royalblue","firebrick1","tan1","deepskyblue",
-                                 "cyan","gray48", "chocolate4","darkmagenta","indianred1"),
+                       color = c("palegreen","royalblue","firebrick1",
+                                 "tan1","deepskyblue",
+                                 "cyan","gray48", "chocolate4",
+                                 "darkmagenta","indianred1"),
                        shape = c(17,19,15,18,2,8,11,13,12,14),
                        cexlab = 1.3,
                        cexaxis = 1.3,
@@ -74,7 +76,8 @@ SXTpcaPlot <- function(SXTpcaData,
     colour[label[[i]]] <- colourlist[i]
   }
   if (QC) {
-    colour[(ncol(subject)+1):(ncol(subject)+ncol(qc))] <- colourlist[length(info) + 1]
+    colour[(ncol(subject)+1):(ncol(subject)+ncol(qc))] <-
+      colourlist[length(info) + 1]
   }
 
   pcha <- NULL
@@ -85,7 +88,8 @@ SXTpcaPlot <- function(SXTpcaData,
     pcha[label[[i]]] <- pchalist[i]
   }
   if (QC) {
-    pcha[(ncol(subject)+1):(ncol(subject)+ncol(qc))] <- pchalist[length(info) + 1]
+    pcha[(ncol(subject)+1):(ncol(subject)+ncol(qc))] <-
+      pchalist[length(info) + 1]
   }
 
   if (plot == "loading") {

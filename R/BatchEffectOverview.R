@@ -13,7 +13,7 @@ BatchEffectOverview <- function(MetFlowData.before,
                                 MetFlowData.after,
                                 path = ".") {
   options(warn = -1)
-# browser()
+  # browser()
   if (path != ".") {
     dir.create(path)
   }
@@ -44,101 +44,172 @@ BatchEffectOverview <- function(MetFlowData.before,
   subject.info.aft1 <- data.aft[[3]]
   qc.info.aft1 <- data.aft[[4]]
 
-  if(hasQC != "no"){
-  ##PCA analysis  for QC samples
-  qc.name <- qc.info[,1]
-  qc.batch <- as.numeric(qc.info[,4])
+  if (hasQC != "no") {
+    ##PCA analysis  for QC samples
+    qc.name <- qc.info[, 1]
+    qc.batch <- as.numeric(qc.info[, 4])
 
-  qc.info <- list()
-  for (i in 1:seq_along(qc.bef1)) {
-    qc.info[[i]] <- colnames(qc.bef1[[i]])
+    qc.info <- list()
+    for (i in 1:seq_along(qc.bef1)) {
+      qc.info[[i]] <- colnames(qc.bef1[[i]])
+    }
+
+
+    names(qc.info) <- paste("Batch", c(1:length(qc.info)), sep = "")
+    ##before
+    qc.SXTpcaData <- SXTpca(
+      subject = qc.bef,
+      info = qc.info,
+      QC = FALSE,
+      scale.method = "auto"
+    )
+
+    SXTpcaPlot(
+      SXTpcaData = qc.SXTpcaData,
+      score.plot.name = "Before Batch effect in QC PCA",
+      ellipse = TRUE,
+      path = path
+    )
+    ##after
+    qc.SXTpcaData <- SXTpca(
+      subject = qc.aft,
+      info = qc.info,
+      QC = FALSE,
+      scale.method = "auto"
+    )
+
+    SXTpcaPlot(
+      SXTpcaData = qc.SXTpcaData,
+      score.plot.name = "After Batch effect in QC PCA",
+      ellipse = TRUE,
+      path = path
+    )
   }
-
-
-  names(qc.info) <- paste("Batch", c(1:length(qc.info)),sep = "")
-  ##before
-  qc.SXTpcaData <- SXTpca(subject = qc.bef,
-                          info = qc.info,
-                          QC = FALSE,
-                          scale.method = "auto")
-
-  SXTpcaPlot(SXTpcaData = qc.SXTpcaData,
-             score.plot.name = "Before Batch effect in QC PCA",
-             ellipse = TRUE,
-             path = path)
-  ##after
-  qc.SXTpcaData <- SXTpca(subject = qc.aft,
-                          info = qc.info,
-                          QC = FALSE,
-                          scale.method = "auto")
-
-  SXTpcaPlot(SXTpcaData = qc.SXTpcaData,
-             score.plot.name = "After Batch effect in QC PCA",
-             ellipse = TRUE,
-             path = path)
-}
   ##PCA analysis for subject samples
   subject.info <- list()
   for (i in 1:seq_along(subject.bef1)) {
     subject.info[[i]] <- colnames(subject.bef1[[i]])
   }
-  names(subject.info) <- paste("Batch", c(1:length(subject.info)),sep = "")
+  names(subject.info) <-
+    paste("Batch", c(1:length(subject.info)), sep = "")
 
   ##before
-  subject.SXTpcaData <- SXTpca(subject = subject.bef,
-                               info = subject.info,
-                               QC = FALSE,
-                               scale.method = "auto")
+  subject.SXTpcaData <- SXTpca(
+    subject = subject.bef,
+    info = subject.info,
+    QC = FALSE,
+    scale.method = "auto"
+  )
 
-  SXTpcaPlot(SXTpcaData = subject.SXTpcaData,
-             score.plot.name = "Before Batch effect in Subject PCA",
-             ellipse = TRUE,
-             path = path)
-
-  ##after
-  subject.SXTpcaData <- SXTpca(subject = subject.aft,
-                               info = subject.info,
-                               QC = FALSE,
-                               scale.method = "auto")
-
-  SXTpcaPlot(SXTpcaData = subject.SXTpcaData,
-             score.plot.name = "After Batch effect in Subject PCA",
-             ellipse = TRUE,
-             path = path)
-
-  if (hasQC != "no"){
-  ## QC sum intensity distribution
-  colours.list <- c("palegreen","royalblue","firebrick1","tan1","deepskyblue",
-                            "cyan","gray48", "chocolate4","darkmagenta","indianred1")
-  colours <- NULL
-  for (i in 1:seq_along(qc.bef1)) {
-  colours[match(colnames(qc.bef1[[i]]), colnames(qc.bef))] <- colours.list[i]
-  }
-
-  pdf(file.path(path, "QC total intensity distribution.pdf"), width = 14, height = 7)
-  layout(matrix(c(1:2), ncol = 2))
-  par(mar = c(5,5,4,2))
-  ##before
-  plot(colSums(qc.bef), col = colours, pch = 19, xlab = "QC injection order", ylab = "Total intensity",
-       cex.lab = 1.3, cex.axis = 1.3, cex = 1.3,
-       ylim = c(0.5*min(colSums(qc.bef)), 1.5*max(colSums(qc.bef))),
-       main = "Before")
-
-  qc.scale <- t(apply(qc.bef, 1, function(x) {(x-mean(x))/sd(x)}))
-  boxplot(qc.scale, col = colours, xlab = "QC index", ylab = "Intensity (auto scaled)",
-          cex.lab = 1.3, cex.axis = 1.3, notch = FALSE, outline = FALSE, main = "Before")
+  SXTpcaPlot(
+    SXTpcaData = subject.SXTpcaData,
+    score.plot.name = "Before Batch effect in Subject PCA",
+    ellipse = TRUE,
+    path = path
+  )
 
   ##after
-  plot(colSums(qc.aft), col = colours, pch = 19, xlab = "QC injection order", ylab = "Total intensity",
-       cex.lab = 1.3, cex.axis = 1.3, cex = 1.3,
-       ylim = c(0.5*min(colSums(qc.bef)), 1.5*max(colSums(qc.bef))),
-       main = "After")
+  subject.SXTpcaData <- SXTpca(
+    subject = subject.aft,
+    info = subject.info,
+    QC = FALSE,
+    scale.method = "auto"
+  )
 
-  qc.scale <- t(apply(qc.aft, 1, function(x) {(x-mean(x))/sd(x)}))
-  boxplot(qc.scale, col = colours, xlab = "QC index", ylab = "Intensity (auto scaled)",
-          cex.lab = 1.3, cex.axis = 1.3, notch = FALSE, outline = FALSE, main = "After")
+  SXTpcaPlot(
+    SXTpcaData = subject.SXTpcaData,
+    score.plot.name = "After Batch effect in Subject PCA",
+    ellipse = TRUE,
+    path = path
+  )
 
-  dev.off()
+  if (hasQC != "no") {
+    ## QC sum intensity distribution
+    colours.list <-
+      c(
+        "palegreen",
+        "royalblue",
+        "firebrick1",
+        "tan1",
+        "deepskyblue",
+        "cyan",
+        "gray48",
+        "chocolate4",
+        "darkmagenta",
+        "indianred1"
+      )
+    colours <- NULL
+    for (i in 1:seq_along(qc.bef1)) {
+      colours[match(colnames(qc.bef1[[i]]), colnames(qc.bef))] <-
+        colours.list[i]
+    }
+
+    pdf(
+      file.path(path, "QC total intensity distribution.pdf"),
+      width = 14,
+      height = 7
+    )
+    layout(matrix(c(1:2), ncol = 2))
+    par(mar = c(5, 5, 4, 2))
+    ##before
+    plot(
+      colSums(qc.bef),
+      col = colours,
+      pch = 19,
+      xlab = "QC injection order",
+      ylab = "Total intensity",
+      cex.lab = 1.3,
+      cex.axis = 1.3,
+      cex = 1.3,
+      ylim = c(0.5 * min(colSums(qc.bef)), 1.5 * max(colSums(qc.bef))),
+      main = "Before"
+    )
+
+    qc.scale <- t(apply(qc.bef, 1, function(x) {
+      (x - mean(x)) / sd(x)
+    }))
+    boxplot(
+      qc.scale,
+      col = colours,
+      xlab = "QC index",
+      ylab = "Intensity (auto scaled)",
+      cex.lab = 1.3,
+      cex.axis = 1.3,
+      notch = FALSE,
+      outline = FALSE,
+      main = "Before"
+    )
+
+    ##after
+    plot(
+      colSums(qc.aft),
+      col = colours,
+      pch = 19,
+      xlab = "QC injection order",
+      ylab = "Total intensity",
+      cex.lab = 1.3,
+      cex.axis = 1.3,
+      cex = 1.3,
+      ylim = c(0.5 * min(colSums(qc.bef)), 1.5 * max(colSums(qc.bef))),
+      main = "After"
+    )
+
+    qc.scale <- t(apply(qc.aft, 1, function(x) {
+      (x - mean(x)) / sd(x)
+    }))
+    boxplot(
+      qc.scale,
+      col = colours,
+      xlab = "QC index",
+      ylab = "Intensity (auto scaled)",
+      cex.lab = 1.3,
+      cex.axis = 1.3,
+      notch = FALSE,
+      outline = FALSE,
+      main = "After"
+    )
+
+    dev.off()
   }
   options(warn = -1)
 }

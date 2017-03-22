@@ -51,9 +51,12 @@ GetWorklist <- function(x = NULL,
   if (instrument == "AB") {
     dir = ""
   }
-if(is.null(x)) {
-  x <- read.csv(file[file == "batch.design.csv"], check.names = FALSE, stringsAsFactors = FALSE)
-}
+  if (is.null(x)) {
+    x <-
+      read.csv(file[file == "batch.design.csv"],
+               check.names = FALSE,
+               stringsAsFactors = FALSE)
+  }
   # --------------------------------------------------------------------------------
   options(warn = 0)
   x <- as.character(x[, 1])
@@ -174,7 +177,7 @@ if(is.null(x)) {
     if (randommethod == "position") {
       random.order <- sample(1:(samplenumber * replication))
       x <- data.frame(random.order, x)
-      x <- x[order(as.numeric(x[, 1])), ]
+      x <- x[order(as.numeric(x[, 1])),]
       x <- as.character(x[, -1])
       x <-
         cbind(x, position, real.position, position96, real.position96)
@@ -208,7 +211,7 @@ if(is.null(x)) {
       write.csv(x, sprintf("%s sample info.csv", name))
       random.order <- sample(1:(samplenumber * replication))
       x <- data.frame(random.order, x)
-      x <- x[order(x[, 1]), ]
+      x <- x[order(x[, 1]),]
       x <- x[, -c(1, 4, 5, 6)]
     }
 
@@ -233,7 +236,7 @@ if(is.null(x)) {
     if (randommethod == "position") {
       random.order <- sample(1:(samplenumber * replication))
       x <- data.frame(random.order, x)
-      x <- x[order(as.numeric(x[, 1])), ]
+      x <- x[order(as.numeric(x[, 1])),]
       x <- x[, -1]
       x <-
         cbind(x,
@@ -275,7 +278,7 @@ if(is.null(x)) {
       write.csv(x, "sample info.csv")
       random.order <- sample(1:(samplenumber * replication))
       x <- cbind(random.order, x)
-      x <- x[order(as.numeric(x[, 1])),]
+      x <- x[order(as.numeric(x[, 1])), ]
       x <- x[, -c(1, 5, 6, 7)]
     }
 
@@ -321,10 +324,10 @@ if(is.null(x)) {
   x <-
     lapply(seq(1, nrow(x), by = QCstep), function(y)
       if (y + QCstep - 1 <= (samplenumber * replication)) {
-        x[y:(y + QCstep - 1), ]
+        x[y:(y + QCstep - 1),]
       }
       else {
-        x[y:nrow(x), ]
+        x[y:nrow(x),]
       })
 
 
@@ -338,10 +341,10 @@ if(is.null(x)) {
     x2 <- rbind(x2, x1)
   }
   x <- x2
-  x <- x[-1,]
+  x <- x[-1, ]
 
   x <- rbind(x, Blank.QC)
-  x <- x[-(nrow(x)-1),]
+  x <- x[-(nrow(x) - 1), ]
   #insert Test.mix
   if (testmixstep == 0) {
     x = x
@@ -350,9 +353,9 @@ if(is.null(x)) {
     x <-
       lapply(seq(1, nrow(x), by = testmixstep), function(y)
         if (y + testmixstep - 1 <= nrow(x)) {
-          x[y:(y + testmixstep - 1), ]
+          x[y:(y + testmixstep - 1),]
         } else {
-          x[y:nrow(x), ]
+          x[y:nrow(x),]
         })
 
     colnames(Test.mix) <- colnames(x[[1]])
@@ -370,14 +373,14 @@ if(is.null(x)) {
 
   if (instrument == "Agilent") {
     colnames(x) <- c('Sample.Name', "Sample.Position")
-    x[,1] <- as.character(x[,1])
-    x[,2] <- as.character(x[,2])
+    x[, 1] <- as.character(x[, 1])
+    x[, 2] <- as.character(x[, 2])
   }
   if (instrument == "AB") {
     colnames(x) <- c('Sample.Name', "Plate.Position", "Vial.Postion")
-    x[,1] <- as.character(x[,1])
-    x[,2] <- as.character(x[,2])
-    x[,3] <- as.character(x[,3])
+    x[, 1] <- as.character(x[, 1])
+    x[, 2] <- as.character(x[, 2])
+    x[, 3] <- as.character(x[, 3])
   }
 
   if (instrument == "Agilent")
@@ -390,8 +393,8 @@ if(is.null(x)) {
     colnames(temp1) <-
       colnames(temp2) <- colnames(temp3) <- colnames(x)
     x <- rbind(temp1, temp2, x, temp3)
-    x[,1] <- as.character(x[,1])
-    x[,2] <- as.character(x[,2])
+    x[, 1] <- as.character(x[, 1])
+    x[, 2] <- as.character(x[, 2])
   }
   if (instrument == "AB") {
     temp1 <- matrix(rep(Blank, 3), ncol = 3, byrow = TRUE)
@@ -402,9 +405,9 @@ if(is.null(x)) {
     colnames(temp1) <-
       colnames(temp2) <- colnames(temp3) <- colnames(x)
     x <- rbind(temp1, temp2, x, temp3)
-    x[,1] <- as.character(x[,1])
-    x[,2] <- as.character(x[,2])
-    x[,3] <- as.character(x[,3])
+    x[, 1] <- as.character(x[, 1])
+    x[, 2] <- as.character(x[, 2])
+    x[, 3] <- as.character(x[, 3])
   }
 
   Blank.number <- length(grep("Blank", x[, 1]))
@@ -422,35 +425,39 @@ if(is.null(x)) {
   x[, 1][grep("QC", x[, 1])][conditionQCnumber + 1:QC.number] <-
     paste("QC", c(1:(QC.number - conditionQCnumber)), sep = "")
   first <- which(x[, 1] == "QC1")
-  last <- which(x[, 1] == sprintf("QC%s", QC.number - conditionQCnumber))
+  last <-
+    which(x[, 1] == sprintf("QC%s", QC.number - conditionQCnumber))
 
 
-  before.info <- x[1:(first - 1), ]
+  before.info <- x[1:(first - 1),]
   Data.File1 <- before.info[, 1]
 
-  after.info <- x[(last + 1):nrow(x), ]
+  after.info <- x[(last + 1):nrow(x),]
   Data.File5 <- after.info[, 1]
 
-  middle.info <- x[first:last,]
+  middle.info <- x[first:last, ]
   middle.info <- cbind(middle.info, c(1:nrow(middle.info)))
   Sample.QC <-
-    middle.info[setdiff(1:nrow(middle.info), grep("Blank", middle.info[, 1])),]#remove Blank in middle.info
+    middle.info[setdiff(1:nrow(middle.info), grep("Blank", middle.info[, 1])), ]
+  #remove Blank in middle.info
   Sample.QC <-
-    Sample.QC[setdiff(1:nrow(Sample.QC), grep("Test_mix", Sample.QC[, 1])),]#remove Test.mix in middle.info
+    Sample.QC[setdiff(1:nrow(Sample.QC), grep("Test_mix", Sample.QC[, 1])), ]
+  #remove Test.mix in middle.info
 
   middle.blank <-
-    middle.info[grep("Blank", middle.info[, 1]), , drop = FALSE]#column 3 is number
+    middle.info[grep("Blank", middle.info[, 1]), , drop = FALSE]
+  #column 3 is number
   middle.testmix <-
     middle.info[grep("Test_mix", middle.info[, 1]), , drop = FALSE]
 
   Data.File2 <-
-    paste("Sample", c(injectionfrom:(nrow(Sample.QC) + injectionfrom - 1)), sep = "")
+  paste("Sample", c(injectionfrom:(nrow(Sample.QC) + injectionfrom - 1)), sep = "")
 
   Data.File2 <- paste(Data.File2, Sample.QC[, 1], sep = "_")
 
 
   if (user == "other") {
-    Data.File2 <- Sample.QC[,1]
+    Data.File2 <- Sample.QC[, 1]
   }
 
   if (instrument == "Agilent") {
@@ -468,7 +475,7 @@ if(is.null(x)) {
   colnames(Data.File4) <- colnames(Data.File3) <-
     colnames(Data.File2) <- paste("test", c(1:ncol(Data.File2)))
   Data.File2 <- rbind(Data.File2, Data.File3, Data.File4)
-  Data.File2 <- Data.File2[order(as.numeric(Data.File2[, 2])), ]
+  Data.File2 <- Data.File2[order(as.numeric(Data.File2[, 2])),]
   Data.File2 <- Data.File2[, -2]
 
 

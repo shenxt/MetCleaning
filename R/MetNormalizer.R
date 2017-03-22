@@ -101,7 +101,7 @@ MetNormalizer <- function(filename = "Metabolomics data",
       cat("Importing POS data...\n")
       if (substr(file.pos,nchar(file.pos) - 2,nchar(file.pos)) == "csv")
       {
-        pos.data <- read.csv(file.pos, stringsAsFactors = FALSE, check.names = FALSE)
+  pos.data <- read.csv(file.pos, stringsAsFactors = FALSE, check.names = FALSE)
       }
       else
       {
@@ -112,7 +112,7 @@ MetNormalizer <- function(filename = "Metabolomics data",
       cat("Importing NEG data...\n")
       if (substr(file.neg,nchar(file.neg) - 2,nchar(file.neg)) == "csv")
       {
-        neg.data <- read.csv(file.neg, stringsAsFactors = FALSE, check.names = FALSE)
+  neg.data <- read.csv(file.neg, stringsAsFactors = FALSE, check.names = FALSE)
       }
       else
       {
@@ -161,7 +161,7 @@ MetNormalizer <- function(filename = "Metabolomics data",
 
       cat("Filtering NEG data...\n")
       SXTdatafilter(
-        sample = sample.neg, qc = qc.neg, tags = tags.neg, sampleorder = sampleorder,
+  sample = sample.neg, qc = qc.neg, tags = tags.neg, sampleorder = sampleorder,
         qcorder = qcorder, filter = filter,
         minfrac.qc = minfrac.qc, minfrac.sample = minfrac.sample, path = path,
         filename = paste(filename,"NEG","after filter")
@@ -189,18 +189,14 @@ MetNormalizer <- function(filename = "Metabolomics data",
       }
 
       cat("Importing data...\n")
-      data <- read.csv(file.path(path,"data.csv"), stringsAsFactors = FALSE, check.names = FALSE)
-      # browser()
-      # data.name <- colnames(data)
-      # for (i in 1:length(data.name)) {
-      #   if (substr(x = data.name[i], start = 1,stop = 1) == "X") data.name[i] <- sub(pattern = "X",replacement = "",x = data.name[i])
-      # }
-      # colnames(data) <- data.name
+      data <- read.csv(file.path(path,"data.csv"),
+                       stringsAsFactors = FALSE, check.names = FALSE)
 
       cat("Getting data...\n")
       # browser()
       SXTgetdata(
-        data = data,filename = filename, polarity = polarity, path = path, user = user,
+      data = data,filename = filename,
+      polarity = polarity, path = path, user = user,
         datastyle = datastyle
       )
       # browser()
@@ -266,13 +262,6 @@ MetNormalizer <- function(filename = "Metabolomics data",
 
   }
 
-
-  # save(
-  #   filename, polarity, minfrac.qc, minfrac.sample, filter, normalization.method, optimization, begin, end, step,
-  #   multiple, rerun.loess, rerun.svr, peakplot, datastyle,
-  #   file = file.path(path,"The parameters fo this processing")
-  # )
-  # cat("The pre-analyis of data is done.\n")
   options(warn = 0)
 }
 
@@ -313,7 +302,8 @@ SXTloessNor <- function(sample,
   else{
     cat("rerun=TRUE\n")
     # Sys.sleep(1)
-    #loess normalization is time-cosuming so save this file and load if the rerun is FALSE
+    #loess normalization is time-cosuming so
+    #save this file and load if the rerun is FALSE
     cat("LOESS normalization is finished: %\n")
     # Sys.sleep(1)
     QC.nor <- NULL
@@ -323,7 +313,8 @@ SXTloessNor <- function(sample,
 
     for (i in 1:ncol(QC)) {
       if (optimization) {
-        para <- cvMSE( unlist(QC[,i]),QC.order, begin1 = begin,end1 = end,step1 = step)
+        para <- cvMSE( unlist(QC[,i]),QC.order,
+                       begin1 = begin,end1 = end,step1 = step)
         loess.reg <-
           loess(unlist(QC[,i]) ~ QC.order,span = para[2],degree = para[1])
         best.span[i] <- para[2]
@@ -379,7 +370,8 @@ SXTloessNor <- function(sample,
     sample.nor <- t(t(sample.nor) * QC.median)
   }
 
-  save(QC.nor,sample.nor,best.span,best.degree,file = file.path(path1,"normalization file"))
+  save(QC.nor,sample.nor,best.span,best.degree,
+       file = file.path(path1,"normalization file"))
 
 
   rsd <- function(x) {
@@ -401,9 +393,9 @@ SXTloessNor <- function(sample,
   sample.loess <-
     rbind(tags, sample.nor.rsd, QC.nor.rsd, sample.nor, QC.nor)
 
-  save(sample.nor, QC.nor, tags, sample.order, QC.order, file = file.path(path1,"data loess nor"))
-  #   save(sample,QC, tags, sample.order, QC.order, file = file.path(path1,"data no nor"))
-  # write.csv(t(sample.no.nor),file.path(path1, "data no nor.csv"))
+  save(sample.nor, QC.nor, tags, sample.order, QC.order,
+       file = file.path(path1,"data loess nor"))
+
   write.csv(t(sample.loess),file.path(path1, "data loess nor.csv"))
 
   #generate all peaks plot
@@ -413,7 +405,8 @@ SXTloessNor <- function(sample,
     dir.create(path2)
     if (datastyle == "tof")
     {
-      peakplot1(sample = sample,sample.nor = sample.nor,QC = QC,QC.nor = QC.nor,sample.order =
+      peakplot1(sample = sample,sample.nor = sample.nor,
+                QC = QC,QC.nor = QC.nor,sample.order =
                   sample.order, QC.order = QC.order,tags = tags,path = path2,
                 best.span = best.span,best.degree = best.degree,
                 sample.rsd = sample.rsd,QC.rsd = QC.rsd,
@@ -423,8 +416,8 @@ SXTloessNor <- function(sample,
     }
     else {
       peakplot2(
-        sample = sample,sample.nor = sample.nor,QC = QC,QC.nor = QC.nor,sample.order =
-          sample.order,
+        sample = sample,sample.nor = sample.nor,QC = QC,QC.nor = QC.nor,
+        sample.order = sample.order,
         QC.order = QC.order,tags = tags,path = path2,best.span =
           best.span,best.degree = best.degree,
         sample.rsd = sample.rsd,QC.rsd = QC.rsd,sample.nor.rsd =
@@ -438,7 +431,8 @@ SXTloessNor <- function(sample,
   ##generate some statistics information
 
   compare.rsd(
-    sample.rsd = sample.rsd,sample.nor.rsd = sample.nor.rsd,QC.rsd = QC.rsd,QC.nor.rsd =
+    sample.rsd = sample.rsd,sample.nor.rsd = sample.nor.rsd,
+    QC.rsd = QC.rsd,QC.nor.rsd =
       QC.nor.rsd,
     path = path1
   )
@@ -496,16 +490,18 @@ peakplot1 <-
       layout(matrix(c(1,2),ncol = 2))
       par(mar = c(5,5,4,2))
       plot(
-        c(sample.order,QC.order),c(sample[,i],QC[,i]),xlab = "Injection order",ylab =
-          "Intensity",
+        c(sample.order,QC.order),c(sample[,i],QC[,i]),
+        xlab = "Injection order",ylab = "Intensity",
         main = sprintf('Peak %s',tags["name",i]), pch = 19,
-        col = c(rep("royalblue",length(sample.order)),rep("firebrick1",length(QC.order))),cex.lab =
-          1.3,cex.axis = 1.3
+        col = c(rep("royalblue",length(sample.order)),
+                rep("firebrick1",length(QC.order))),
+        cex.lab = 1.3,cex.axis = 1.3
       )
 
 
       loess.reg <-
-        loess(unlist(QC[,i]) ~ QC.order,span = best.span[i],degree = best.degree[i])
+        loess(unlist(QC[,i]) ~ QC.order,span = best.span[i],
+              degree = best.degree[i])
       lines(
         QC.order,summary(loess.reg)$fitted,lty = 2,lwd = 1.5,col = "firebrick1"
       )
@@ -528,10 +524,11 @@ peakplot1 <-
 
 
       plot(
-        c(sample.order,QC.order),c(sample.nor[,i],QC.nor[,i]),xlab = "Injection order",ylab =
-          "Intensity (LOESS)",
+        c(sample.order,QC.order),c(sample.nor[,i],QC.nor[,i]),
+        xlab = "Injection order",ylab = "Intensity (LOESS)",
         main = sprintf('Peak %s',tags["name",i]),pch = 19,
-        col = c(rep("royalblue",length(sample.order)),rep("firebrick1",length(QC.order))),
+        col = c(rep("royalblue",length(sample.order)),
+                rep("firebrick1",length(QC.order))),
         cex.lab = 1.3,cex.axis = 1.3
       )
 
@@ -576,16 +573,17 @@ peakplot2 <-
       layout(matrix(c(1,2),ncol = 2))
 
       plot(
-        c(sample.order,QC.order),c(sample[,i],QC[,i]),xlab = "Injection order",ylab =
-          "Intensity",
+        c(sample.order,QC.order),c(sample[,i],QC[,i]),xlab = "Injection order",
+        ylab = "Intensity",
         main = sprintf('Peak %s',tags["name",i]),pch = 19,
-        col = c(rep("royalblue",length(sample.order)),rep("firebrick1",length(QC.order))),cex.lab =
-          1.3,cex.axis = 1.3
+        col = c(rep("royalblue",length(sample.order)),
+                rep("firebrick1",length(QC.order))),cex.lab = 1.3,cex.axis = 1.3
       )
 
 
       loess.reg <-
-        loess(unlist(QC[,i]) ~ QC.order,span = best.span[i],degree = best.degree[i])
+        loess(unlist(QC[,i]) ~ QC.order,
+              span = best.span[i],degree = best.degree[i])
       lines(
         QC.order,summary(loess.reg)$fitted,lty = 2,lwd = 1.5,col = "firebrick1"
       )
@@ -598,15 +596,17 @@ peakplot2 <-
         pch = c(19,19),bty = "n",cex = 1.3, pt.cex = 1.3
       )
       if (optimization) {
-        legend( "topright",c( sprintf("span: %s",best.span[i]),sprintf("degree: %s",best.degree[i])),
+        legend( "topright",
+      c( sprintf("span: %s",best.span[i]),sprintf("degree: %s",best.degree[i])),
                 bty = "n", cex = 1.3, pt.cex = 1.3)
       }
 
       plot(
-        c(sample.order,QC.order),c(sample.nor[,i],QC.nor[,i]),xlab = "Injection order",ylab =
-          "Intensity",
+        c(sample.order,QC.order),c(sample.nor[,i],QC.nor[,i]),
+        xlab = "Injection order",ylab = "Intensity",
         main = sprintf('Peak %s',tags["name",i]),pch = 19,
-        col = c(rep("royalblue",length(sample.order)),rep("firebrick1",length(QC.order))),cex.lab =
+        col = c(rep("royalblue",length(sample.order)),
+                rep("firebrick1",length(QC.order))),cex.lab =
           1.3,cex.axis = 1.3
       )
 
@@ -633,7 +633,8 @@ peakplot2 <-
     # Sys.sleep(1)
   }
 
-##compare.rsd is a function to compare sample and qc rsd before and after normalization
+##compare.rsd is a function to compare sample
+##and qc rsd before and after normalization
 compare.rsd <-
   function(sample.rsd,sample.nor.rsd,QC.rsd,QC.nor.rsd,path = NULL) {
     if (is.null(path)) {
@@ -664,9 +665,10 @@ compare.rsd <-
     layout(matrix(c(1,2),ncol = 2))
     par(mar = c(5,5,4,2))
     plot(
-      sample.rsd,sample.nor.rsd,xlab = "RSD (Before normalization)",ylab = "RSD (After normalization)",
-      col = colour1,cex.lab = 1.3,cex.axis = 1.3,main = "Sample RSD change",cex.main =
-        1.3,pch = 19
+      sample.rsd,sample.nor.rsd,xlab = "RSD (Before normalization)",
+      ylab = "RSD (After normalization)",
+      col = colour1,cex.lab = 1.3,cex.axis = 1.3,
+      main = "Sample RSD change",cex.main = 1.3,pch = 19
     )
     abline(0,1,lwd = 1,lty = 2)
     abline(h = 30,lwd = 1,lty = 2)
@@ -680,14 +682,16 @@ compare.rsd <-
         paste("No change after normaliztion:",round(s.rsd.no),"%"),
         paste("Decrease after normaliztion:",round(s.rsd.down),"%")
       ),
-      col = c("firebrick1","royalblue","palegreen"),pch = 19, cex = 1.3, pt.cex = 1.3
+      col = c("firebrick1","royalblue","palegreen"),
+      pch = 19, cex = 1.3, pt.cex = 1.3
     )
 
     par(mar = c(5,5,4,2))
     plot(
-      QC.rsd,QC.nor.rsd,xlab = "RSD (Before normalization)",ylab = "RSD (After normalization)",
-      col = colour2,cex.lab = 1.3,cex.axis = 1.3,main = "QC RSD change",cex.main =
-        1.3,pch = 19
+      QC.rsd,QC.nor.rsd,xlab = "RSD (Before normalization)",
+      ylab = "RSD (After normalization)",
+      col = colour2,cex.lab = 1.3,cex.axis = 1.3,main = "QC RSD change",
+      cex.main = 1.3,pch = 19
     )
 
     abline(0,1,lwd = 1,lty = 2)
@@ -701,7 +705,8 @@ compare.rsd <-
         paste("No change after normaliztion:",round(q.rsd.no),"%"),
         paste("Decrease after normaliztion:",round(q.rsd.down),"%")
       ),
-      col = c("firebrick1","royalblue","palegreen"),pch = 19, cex = 1.3,pt.cex = 1.3
+      col = c("firebrick1","royalblue","palegreen"),
+      pch = 19, cex = 1.3,pt.cex = 1.3
     )
     dev.off()
     ##
@@ -808,7 +813,8 @@ SXTgetdata <- function(data, filename = "SXT data", polarity = "positive",
   data <- t(data)
 
   if (user == "other") {
-    worklist <- read.csv(file.path(path,"worklist.csv"),stringsAsFactors = FALSE, check.names = FALSE)
+    worklist <- read.csv(file.path(path,"worklist.csv"),stringsAsFactors = FALSE,
+                         check.names = FALSE)
     name <- worklist[,1]
     ###judge if worklist name contains POS or NEG
     pos.have <- length(grep("POS", toupper(name)))

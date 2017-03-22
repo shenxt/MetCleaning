@@ -109,8 +109,6 @@ SXTsvrNor <- function(sample,
        sample.order,
        QC.order,
        file = file.path(path1, "data svr nor"))
-  #   save(sample,QC,tags,sample.order,QC.order,file=file.path(path1,"data no nor"))
-  # write.csv(t(sample.no.nor),file.path(path1,"data no nor.csv"))
   write.csv(t(sample.svr), file.path(path1, "data svr nor.csv"))
 
   #generate all peaks plot
@@ -196,12 +194,14 @@ svr.function <-
 
     if(multiple != 1){
       data <- rbind(sample, QC)
-      QC.cor <- cor(data, method = "spearman")#not normal distribution, so use spearman correction
+      QC.cor <- cor(data, method = "spearman")
+      #not normal distribution, so use spearman correction
     }
 
     for (i in index) {
       if (multiple != 1) {
-        cor.peak <- as.numeric(which(QC.cor[, i] %in% rev(sort(QC.cor[-i, i]))[1:as.numeric(multiple)]))
+        cor.peak <-
+as.numeric(which(QC.cor[, i] %in% rev(sort(QC.cor[-i, i]))[1:as.numeric(multiple)]))
         svr.reg <- e1071::svm(QC[, cor.peak], QC[, i])
       } else{
         svr.reg <- e1071::svm(unlist(QC[, i]) ~ QC.order)

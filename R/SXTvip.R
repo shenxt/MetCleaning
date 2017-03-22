@@ -15,7 +15,8 @@
 
 SXTvip <- function(object) {
   if (object$method != "oscorespls")
-    stop("Only implemented for orthogonal scores algorithm.  Refit with 'method = \"oscorespls\"'")
+    stop("Only implemented for orthogonal scores algorithm.
+         Refit with 'method = \"oscorespls\"'")
   if (nrow(object$Yloadings) > 1)
     stop("Only implemented for single-response models")
   SS <- c(object$Yloadings)^2 * colSums(object$scores^2)

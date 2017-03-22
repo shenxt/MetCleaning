@@ -55,111 +55,211 @@ ImportData <- function(data = "data.csv",
     dir.create(path)
   }
   if (worklist.from != "GetWorklist")
-  {data <- ChangeSampleName(data = data,
-                            sample.information = sample.information,
-                            polarity = polarity,
-                            posfix = posfix,
-                            ordered.qc = ordered.qc,
-                            output = FALSE,
-                            path = path)
-  sample.information <- read.csv("sample.information1.csv", stringsAsFactors = FALSE, check.names = FALSE)}
+  {
+    data <- ChangeSampleName(
+      data = data,
+      sample.information = sample.information,
+      polarity = polarity,
+      posfix = posfix,
+      ordered.qc = ordered.qc,
+      output = FALSE,
+      path = path
+    )
+    sample.information <-
+      read.csv(
+        "sample.information1.csv",
+        stringsAsFactors = FALSE,
+        check.names = FALSE
+      )
+  }
 
-  else {data <- read.csv(file.path(path,data), stringsAsFactors = FALSE, check.names = FALSE)
-  if(sum(duplicated(colnames(data))) > 0) {stop("There are duplicated samples (names) in you data.")}
-  sample.information <- read.csv(file.path(path,sample.information), stringsAsFactors = FALSE, check.names = FALSE)}
+  else {
+    data <-
+      read.csv(file.path(path, data),
+               stringsAsFactors = FALSE,
+               check.names = FALSE)
+    if (sum(duplicated(colnames(data))) > 0) {
+      stop("There are duplicated samples (names) in you data.")
+    }
+    sample.information <-
+      read.csv(
+        file.path(path, sample.information),
+        stringsAsFactors = FALSE,
+        check.names = FALSE
+      )
+  }
 
   ## read sample information
-  sample.information <- sample.information[!is.na(sample.information[,1]),]
+  sample.information <-
+    sample.information[!is.na(sample.information[, 1]), ]
 
   ## sort sample information according to sample order
-  sample.information <- sample.information[order(as.numeric(sample.information[,2])),]
-  write.csv(sample.information,file.path(path, "sample.information1.csv"), row.names = FALSE)
+  sample.information <-
+    sample.information[order(as.numeric(sample.information[, 2])), ]
+  write.csv(sample.information,
+            file.path(path, "sample.information1.csv"),
+            row.names = FALSE)
 
   ## sort sample in data according to sample order
   sample.index <- grep("Sample", colnames(data))
-  sample <- data[,sample.index]
-  tags <- data[,-sample.index]
+  sample <- data[, sample.index]
+  tags <- data[, -sample.index]
   sample.name <- colnames(sample)
   sample.order <-
-    as.numeric(substr(x = sample.name, start = 7, stop = unlist(lapply(gregexpr("_", sample.name),function(x) {x[1][1]}))-1))
-  sample <- sample[,order(sample.order)]
+    as.numeric(substr(
+      x = sample.name,
+      start = 7,
+      stop = unlist(lapply(gregexpr("_", sample.name), function(x) {
+        x[1][1]
+      })) - 1
+    ))
+  sample <- sample[, order(sample.order)]
   data <- cbind(tags, sample)
 
   ## get subject, qc and tags
   data.name <- colnames(data)
   sample.index <- grep("Sample", data.name)
-  sample <- data[,sample.index]
-  tags <- data[,-sample.index]
+  sample <- data[, sample.index]
+  tags <- data[, -sample.index]
   sample.name <- colnames(sample)
 
   qc.index <- grep("QC", sample.name)
   ## has QC or not?
-  if(length(qc.index) == 0) {hasQC = "no"}
+  if (length(qc.index) == 0) {
+    hasQC = "no"
+  }
 
-  if (hasQC == "no") {qc <- NULL; subject <- sample; qc.name <- NULL}
-  else {qc <- sample[,qc.index]; subject <- sample[,-qc.index]; qc.name <- colnames(qc)}
+  if (hasQC == "no") {
+    qc <- NULL
+    subject <- sample
+    qc.name <- NULL
+  }
+  else {
+    qc <-
+      sample[, qc.index]
+    subject <- sample[, -qc.index]
+    qc.name <- colnames(qc)
+  }
 
   subject.name <- colnames(subject)
 
   ## the sample name from sample information vs the sample name from data
-  a <- setdiff(sample.information[,1], sample.name)
-  b <- setdiff(sample.name, sample.information[,1])
+  a <- setdiff(sample.information[, 1], sample.name)
+  b <- setdiff(sample.name, sample.information[, 1])
   if (length(a) != 0)
-  {stop(paste(paste(a,collapse = " "),"are in sample information but not in data."))}
-
-  if (length(b) != 0)
-  {stop(paste(paste(b,collapse = " "),"are in data but not in sample information."))}
-
-  ## the sample order form sample information vs the sample order form sample name
-  sample.name.from.sample.information <- sample.information[,1]
-  sample.order.from.sample.information <-
-    substr(x = sample.name.from.sample.information,start = 7,
-           stop = unlist(lapply(gregexpr("_", sample.name.from.sample.information),function(x) {x[1][1]}))-1)
-
-  sample.different.index <- which(sample.order.from.sample.information != sample.information[,2])
-  if (length(sample.different.index) != 0)
-  { print(sample.information[sample.different.index,c(1,2)])
-  stop("The sample order from data and form sample information are different.")}
-
-  if (hasQC == "no") {qc.order <- NULL}
-  else {
-  qc.order <- substr(x = qc.name,start = 7,stop = unlist(lapply(gregexpr("_", qc.name),function(x) {x[1][1]}))-1)
+  {
+    stop(paste(
+      paste(a, collapse = " "),
+      "are in sample information but not in data."
+    ))
   }
 
-  subject.order <- substr(x = subject.name,start = 7,stop = unlist(lapply(gregexpr("_", subject.name),function(x) {x[1][1]}))-1)
+  if (length(b) != 0)
+  {
+    stop(paste(
+      paste(b, collapse = " "),
+      "are in data but not in sample information."
+    ))
+  }
 
-  subject.name <- substr(subject.name, start = unlist(lapply(gregexpr("_", subject.name),function(x) {x[1][1]}))+1,
-                          stop = unlist(lapply(gregexpr("_", subject.name),function(x) {x[2][1]}))-1)
+  ## the sample order form sample information vs the sample order form sample name
+  sample.name.from.sample.information <- sample.information[, 1]
+  sample.order.from.sample.information <-
+    substr(x = sample.name.from.sample.information,
+           start = 7,
+           stop = unlist(lapply(gregexpr("_", sample.name.from.sample.information), function(x) {
+             x[1][1]
+           })) - 1)
 
-  if (hasQC == "no") {qc.name <- NULL}
+  sample.different.index <-
+    which(sample.order.from.sample.information != sample.information[, 2])
+  if (length(sample.different.index) != 0)
+  {
+    print(sample.information[sample.different.index, c(1, 2)])
+    stop("The sample order from data and form sample information are different.")
+  }
+
+  if (hasQC == "no") {
+    qc.order <- NULL
+  }
   else {
-  qc.name <- substr(qc.name, start = unlist(lapply(gregexpr("_", qc.name),function(x) {x[1][1]}))+1,
-                         stop = unlist(lapply(gregexpr("_", qc.name),function(x) {x[2][1]}))-1)
+    qc.order <-
+      substr(x = qc.name,
+             start = 7,
+             stop = unlist(lapply(gregexpr("_", qc.name), function(x) {
+               x[1][1]
+             })) - 1)
+  }
+
+  subject.order <-
+    substr(x = subject.name,
+           start = 7,
+           stop = unlist(lapply(gregexpr("_", subject.name), function(x) {
+             x[1][1]
+           })) - 1)
+
+  subject.name <-
+    substr(subject.name,
+           start = unlist(lapply(gregexpr("_", subject.name), function(x) {
+             x[1][1]
+           })) + 1,
+           stop = unlist(lapply(gregexpr("_", subject.name), function(x) {
+             x[2][1]
+           })) - 1)
+
+  if (hasQC == "no") {
+    qc.name <- NULL
+  }
+  else {
+    qc.name <-
+      substr(qc.name,
+             start = unlist(lapply(gregexpr("_", qc.name), function(x) {
+               x[1][1]
+             })) + 1,
+             stop = unlist(lapply(gregexpr("_", qc.name), function(x) {
+               x[2][1]
+             })) - 1)
   }
   colnames(subject) <- subject.name
   names(subject.order) <- subject.name
   if (hasQC != "no") {
-  colnames(qc) <- qc.name
-  names(qc.order) <- qc.name
+    colnames(qc) <- qc.name
+    names(qc.order) <- qc.name
   }
-  ## remove sample order form sample.name.from.data and sample.name.from.sample.information
+  ## remove sample order form sample.name.from.data and
+  ## sample.name.from.sample.information
   sample.name.from.data <- colnames(sample)
-  sample.name.from.sample.information <- sample.information[,1]
-    sample.name.from.data <-
-    substr(sample.name.from.data, start = unlist(lapply(gregexpr("_", sample.name.from.data),function(x) {x[1][1]}))+1,
-    stop = unlist(lapply(gregexpr("_", sample.name.from.data),function(x) {x[2][1]}))-1)
+  sample.name.from.sample.information <- sample.information[, 1]
+  sample.name.from.data <-
+    substr(sample.name.from.data,
+           start = unlist(lapply(gregexpr("_", sample.name.from.data), function(x) {
+             x[1][1]
+           })) + 1,
+           stop = unlist(lapply(gregexpr("_", sample.name.from.data), function(x) {
+             x[2][1]
+           })) - 1)
 
-    sample.name.from.sample.information <-
-      substr(sample.name.from.sample.information, start = unlist(lapply(gregexpr("_", sample.name.from.sample.information),function(x) {x[1][1]}))+1,
-             stop = unlist(lapply(gregexpr("_", sample.name.from.sample.information),function(x) {x[2][1]}))-1)
+  sample.name.from.sample.information <-
+    substr(
+      sample.name.from.sample.information,
+      start = unlist(lapply(gregexpr("_", sample.name.from.sample.information), function(x) {
+        x[1][1]
+      })) + 1,
+      stop = unlist(lapply(gregexpr("_", sample.name.from.sample.information), function(x) {
+        x[2][1]
+      })) - 1
+    )
 
-    colnames(sample) <- sample.name.from.data
-    sample.information[,1] <- sample.name.from.sample.information
+  colnames(sample) <- sample.name.from.data
+  sample.information[, 1] <- sample.name.from.sample.information
 
-  subject.info <- sample.information[sample.information[,3]=="Subject",]
-  if (hasQC == "no") {qc.info <- NULL}
+  subject.info <-
+    sample.information[sample.information[, 3] == "Subject", ]
+  if (hasQC == "no") {
+    qc.info <- NULL
+  }
   else {
-  qc.info <- sample.information[sample.information[,3]=="QC",]
+    qc.info <- sample.information[sample.information[, 3] == "QC", ]
   }
 
   if ((sum(is.na(subject)) + sum(is.na(qc))) == 0) {
@@ -171,39 +271,44 @@ ImportData <- function(data = "data.csv",
     imputation.method <- "no"
   }
 
-  name <- tags[,"name"]
-  if(polarity == "positive")
-  {tags[,"name"] <- paste(name,"POS", sep = "_")
-  pol <- rep("POS", nrow(tags))
-  tags <- data.frame(pol,tags)
-  colnames(tags)[1] <- "polarity"}
-  if(polarity == "negative")
-  {tags[,"name"] <- paste(name,"NEG", sep = "_")
-  pol <- rep("NEG", nrow(tags))
-  tags <- data.frame(pol,tags)
-  colnames(tags)[1] <- "polarity"}
+  name <- tags[, "name"]
+  if (polarity == "positive")
+  {
+    tags[, "name"] <- paste(name, "POS", sep = "_")
+    pol <- rep("POS", nrow(tags))
+    tags <- data.frame(pol, tags)
+    colnames(tags)[1] <- "polarity"
+  }
+  if (polarity == "negative")
+  {
+    tags[, "name"] <- paste(name, "NEG", sep = "_")
+    pol <- rep("NEG", nrow(tags))
+    tags <- data.frame(pol, tags)
+    colnames(tags)[1] <- "polarity"
+  }
 
-  MetFlowData <- list(subject = subject,
-                      qc = qc,
-                      tags = tags,
-                      subject.info = subject.info,
-                      qc.info = qc.info,
-                      subject.order = subject.order,
-                      qc.order = qc.order,
-                      ## some preprocessing information
-                      mv.imputation = mv.imputation,
-                      imputation.method = imputation.method,
-                      zero.filter = "no",
-                      zero.filter.criteria = "no",
-                      qc.outlier.filter = "no",
-                      normalization = "no",
-                      normalization.method = "no",
-                      data.integration = "no",
-                      data.integration.method = "no",
-                      hasIS = hasIS,
-                      hasQC = hasQC,
-                      peak.identification = peak.identification)
+  MetFlowData <- list(
+    subject = subject,
+    qc = qc,
+    tags = tags,
+    subject.info = subject.info,
+    qc.info = qc.info,
+    subject.order = subject.order,
+    qc.order = qc.order,
+    ## some preprocessing information
+    mv.imputation = mv.imputation,
+    imputation.method = imputation.method,
+    zero.filter = "no",
+    zero.filter.criteria = "no",
+    qc.outlier.filter = "no",
+    normalization = "no",
+    normalization.method = "no",
+    data.integration = "no",
+    data.integration.method = "no",
+    hasIS = hasIS,
+    hasQC = hasQC,
+    peak.identification = peak.identification
+  )
   class(MetFlowData) <- "MetFlowData"
   return(MetFlowData)
 }
-

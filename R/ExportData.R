@@ -26,7 +26,7 @@ ExportData <- function(MetFlowData,
                        data.name = "data_new",
                        subject.info.name = "subject.info",
                        qc.info.name = "qc.info",
-                       path = "."){
+                       path = ".") {
   if (path != ".") {
     dir.create(path)
   }
@@ -39,12 +39,22 @@ ExportData <- function(MetFlowData,
 
   has.qc <- MetFlowData[["hasQC"]]
 
-  if(has.qc == "yes"){
-  write.csv(cbind(tags, subject, qc), file.path(path,paste(data.name,".csv", sep = "")), row.names = FALSE)
-  write.csv(subject.info, file.path(path,paste(subject.info.name,".csv", sep = "")), row.names = FALSE)
-  write.csv(qc.info, file.path(path,paste(qc.info.name,".csv", sep = "")), row.names = FALSE)
-  }else{
-    write.csv(cbind(tags, subject), file.path(path,paste(data.name,".csv", sep = "")), row.names = FALSE)
-    write.csv(subject.info, file.path(path,paste(subject.info.name,".csv", sep = "")), row.names = FALSE)
+  if (has.qc == "yes") {
+    write.csv(cbind(tags, subject, qc),
+              file.path(path, paste(data.name, ".csv", sep = "")),
+              row.names = FALSE)
+    write.csv(subject.info,
+              file.path(path, paste(subject.info.name, ".csv", sep = "")),
+              row.names = FALSE)
+    write.csv(qc.info,
+              file.path(path, paste(qc.info.name, ".csv", sep = "")),
+              row.names = FALSE)
+  } else{
+    write.csv(cbind(tags, subject),
+              file.path(path, paste(data.name, ".csv", sep = "")),
+              row.names = FALSE)
+    write.csv(subject.info,
+              file.path(path, paste(subject.info.name, ".csv", sep = "")),
+              row.names = FALSE)
   }
 }

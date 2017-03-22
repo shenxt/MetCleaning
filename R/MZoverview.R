@@ -342,7 +342,8 @@ MZoverview <- function(MetFlowData,
         sum(x == 0) * 100 / nrow(subject)
       })
   }
-  pdf(file.path(path, paste("Sample", ifelse(what == "mv", "MV", "zero") ,"distribution.pdf")))
+  pdf(file.path(path, paste("Sample", ifelse(what == "mv", "MV", "zero") ,
+                            "distribution.pdf")))
   par(mar = c(5, 5, 4, 2))
   plot(
     subject.order,
@@ -594,7 +595,8 @@ MZoverview <- function(MetFlowData,
           sum(x == 0) * 100 / nrow(subject)
         })
     }
-    pdf(file.path(path, paste("Sample", ifelse(what == "mv", "MV", "zero") ,"distribution.pdf")))
+    pdf(file.path(path, paste("Sample", ifelse(what == "mv", "MV", "zero"),
+                              "distribution.pdf")))
     par(mar = c(5, 5, 4, 2))
     plot(
       subject.order,
