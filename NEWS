@@ -25,6 +25,7 @@ o Add a default path argument (i.e., ".") rather than NULL to avoid doing
 path <- getwd() in all functions.
 o Remove 1:n style iterations.
 o qc.has.order. is changed to ordered.qc.
+o Remove static images in the vignette.
 
 
 

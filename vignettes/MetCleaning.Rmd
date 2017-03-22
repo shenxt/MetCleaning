@@ -1,11 +1,11 @@
 ---
-title: "MetCleaning v0.99.3"
+title: "MetCleaning v0.99.4"
 author: "Xiaotao Shen(shenxt@sioc.ac.cn) and Zhengjiang Zhu"
 date: '`r Sys.Date()`'
 output:
-  html_document: default
-  pdf_document: default
   word_document: default
+  pdf_document: default
+  html_document: default
 vignette: |
   %\VignetteIndexEntry{Vignette Title} %\VignetteEngine{knitr::rmarkdown} %\VignetteEncoding{UTF-8}
 ---
@@ -93,19 +93,11 @@ MetCleaning(polarity = "positive")
 ```
 
 ### Running results of *MetCleaning*
-1. Missing or zero values filtering. In the missing or zero value filtering step, if there are samples which beyond the threshold you set, you should decide to remove them or not. We recommend removing all of them as Figure 3 shows.
+1. Missing or zero values filtering. In the missing or zero value filtering step, if there are samples which beyond the threshold you set, you should decide to remove them or not. We recommend removing all of them.
 
-![Figure3 Missing or zero value filtering](http://a3.qpic.cn/psb?/V12nMOGs3RiKv2/lClw1oe2dY6SX4Fxd5HvZzsv8MT3FROlrvyt6tBP4HE!/b/dHkBAAAAAAAA&bo=pwPDAAAAAAADB0U!&rf=viewer_4)
+2. Detection of sample outliers. In the detection of QC or subject sample outlier step (based on PCA), if there are samples which beyond the threshold you set, you should decide to remove them or not. We don't recommend to remove them, because they should be considered combined other information.
 
-**Figure3.** Missing or zero value filtering.
-
-2. Detection of sample outliers. In the detection of QC or subject sample outlier step (based on PCA), if there are samples which beyond the threshold you set, you should decide to remove them or not. We don't recommend to remove them as Figure 4 shows, because they should be considered combined other information.
-
-![Figure4 Sample filtering](http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/1xq.NZ7PorsAHVPMNruGAWJw6WjSbtKnIa4gcm4cweg!/b/dAkBAAAAAAAA&bo=QAPRAAAAAAADB7A!&rf=viewer_4)
-
-**Figure4.** The detection of sample outliers step in MetCleaning.
-
-#### 3.Output files. Output files of *MetCleaning* are listed as Figure 5 shows.
+#### 3.Output files. Output files of *MetCleaning* 
 * (1) "1MV overview", "2MV filter", "3Zero overview" and "4Zero filter" are missing and zero values filtering information.
 * (2) "5QC outlier filter" and "6Subject outlier filter" are sample filtering based on PCA information.
 * (3) "7Normalization result" is the data normalization information for each batch.
@@ -115,10 +107,6 @@ MetCleaning(polarity = "positive")
 * (7) "11RSD overview" is the RSD distribution for each batch both before and after data cleaning.
 * (8) **"data_after_pre.csv", "qc.info.csv" and "subject.info"** are the data and sample information after data cleaning.
 * (9) "intermediate" is the intermediate data during processing.
-
-![Figure5 Output files of *MetCleaning*](http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/DqhpGarOe2QXl6rZyq8UQJmQG5g1hlWGOtqF*C*ZWPc!/b/dHgBAAAAAAAA&bo=xAOAAgAAAAADB2c!&rf=viewer_4)
-
-**Figure5.** Output files of *MetCleaning*
 
 ## **Statistical analysis**
 ******************************************
@@ -135,11 +123,7 @@ setwd("Demo for MetStat")
 write.csv(new.group, "new.group.csv", row.names = FALSE)
 ```
 
-### The demo data have been added in your work directory. "new.group.csv" is a sample.information which has been changed the group information you want to use for statistical analysis. For the sample which you don't want to use them for statistical analysis, you can set they group information as NA like Figure 6 shows.
-
-![Figure6 new group information](http://a3.qpic.cn/psb?/V12nMOGs3RiKv2/SmB0Cnb3VBFxRT4YVx9Ce5ilzE*hWMbPlLtgr2NsBOU!/b/dN0AAAAAAAAA&bo=QQSxAQAAAAADB9c!&rf=viewer_4)
-
-**Figure6.** Group information for statistical analysis.
+### The demo data have been added in your work directory. "new.group.csv" is a sample.information which has been changed the group information you want to use for statistical analysis. For the sample which you don't want to use them for statistical analysis, you can set they group information as NA.
 
 #### code 5: Running of *MetStat*
 ```{r, eval=TRUE}
@@ -148,19 +132,11 @@ MetStat(MetFlowData = met.data.after.pre, new.group = TRUE)
 
 ### Running results of *MetStat*
 
-#### 1.Sample removing. Firstly, you need to confirm the samples which you want to remove form dataset as Figure 7 shows.
-
-![Figure7 sample removing confirmation](http://a2.qpic.cn/psb?/V12nMOGs3RiKv2/mQH*23gM4ylq0.thcyNr4EqVyiZra7sBkZohrEz1spk!/b/dAkBAAAAAAAA&bo=DQOAAAAAAAADB6w!&rf=viewer_4)
-
-**Figure7.** The confirmation of the samples you want to remove.
+#### 1.Sample removing. Firstly, you need to confirm the samples which you want to remove form dataset.
 
 #### 2.The selection of best number of component in PLS-DA analysis. In PLS-DA analysis, you should manually select the best choice of the number of component. When the console show "How many comps do you want to see?", you can type 10 and hit "Enter" key. Then a MSE plot is showing, and the best number of component is the one has the smallest CV values. So type the number (in this example is 4) and hit "Enter" key.
 
-![Figure8 Number of component selection in PLS-DA analysis](http://a3.qpic.cn/psb?/V12nMOGs3RiKv2/.7pTKCwR*6k*n*vEDmva1Y4oiMuulgD34b.CCh4EIrI!/b/dN0AAAAAAAAA&bo=lwKAAgAAAAADBzU!&rf=viewer_4)
-
-**Figure8.** The selection of best number of component in PLS-DA analysis.
-
-#### 3.Output files. Output files of *MetStat* are listed as Figure 9 shows.
+#### 3.Output files. Output files of *MetStat*
 * (1) "12PCA analysis" is the PCA score plot.
 * (2) "13PLS analysis" contains the PLS-DA results.
 * (3) "14heatmap" is the heatmap.
@@ -168,6 +144,3 @@ MetStat(MetFlowData = met.data.after.pre, new.group = TRUE)
 * (5) **"data_after_stat.csv", "qc.info.csv" and "subject.info"** are the data and sample information after statistical analysis.
 * (6) "intermediate" is the intermediate data during processing.
 
-![Figure9 Output files of *MetStat*](http://a1.qpic.cn/psb?/V12nMOGs3RiKv2/x6rTunGHESfE393LkCQ*0Br.yInIa0fll*hk4gJuIM4!/b/dN4AAAAAAAAA&bo=gAKRAgAAAAADBzM!&rf=viewer_4)
-
-**Figure9.** Output files of *MetStat*.
