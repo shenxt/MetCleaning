@@ -8,30 +8,9 @@
 #' @export
 #' @seealso \code{\link{print}}
 #' @examples
-#' \donttest{
-#' #load the demo data
-#' data(data, package = "MetCleaning")
-#' data(sample.information, package = "MetCleaning")
-#'
-#' ##create a folder for demo
-#' dir.create("demo")
-#' setwd("demo")
-#'
-#' # export the demo data as csv
-#' write.csv(data, "data.csv", row.names = FALSE)
-#' write.csv(sample.information, "sample.information.csv", row.names = FALSE)
-#'
-#' # MetCleaning process
-#' MetCleaning(#ImportData para
-#' data = "data.csv",
-#' sample.information = "sample.information.csv",
-#' polarity = "positive",
-#' #DataNormalization
-#' method = "svr",
-#' threads = 2)
-#'
-#' print(met.data.after.pre)
-#' }
+#' data("met.data", package = "MetCleaning")
+#' met.data
+
 
 ## MetFlowData
 setMethod("show", "MetFlowData",
@@ -129,53 +108,5 @@ setMethod("show", "MetFlowData",
             cat("\n")
             cat("Peak identification:",object@"peak.identification")
             cat("\n")
-
           })
 
-# ###print method for SXTMinfracData
-# print.SXTMinifracData <- function(SXTMinifracData, ...) {
-#   data <- SXTMinifracData[["data"]]
-#   var.index <- SXTMinifracData[["var.index"]]
-#   obs.index <- SXTMinifracData[["obs.index"]]
-#   filter.item <- SXTMinifracData[["filter.item"]]
-#   filter.rule <- SXTMinifracData[["filter.rule"]]
-#   minifrac.variable <- SXTMinifracData[["minifrac.variable"]]
-#   minifrac.observation <- SXTMinifracData[["minifrac.observation"]]
-#
-#   ##filter information
-#   cat("filter.item:",filter.item)
-#   cat("\n")
-#   cat("filter.rule:",filter.rule)
-#   cat("\n")
-#   cat("minifrac.variable:",minifrac.variable)
-#   cat("\n")
-#   cat("minifrac.observation:",minifrac.observation)
-#   cat("\n")
-#   cat("\n")
-#
-#   cat("There are",length(data), "data.\n")
-#   cat("-------------------------------\n")
-#
-#   for (i in 1:length(data)) {
-#     temp.data <- data[[i]]
-#     cat("Data",i)
-#     cat("\n")
-#     cat(nrow(temp.data),"rows\n")
-#     cat(ncol(temp.data),"columns\n")
-#     cat("\n")
-#     }
-#
-# }
-#
-# ##print method for SXTpcaData
-# print.SXTpcaData <- function(SXTpcaData, ...) {
-# info <- SXTpcaData[["info"]]
-# QC <- SXTpcaData[["QC"]]
-# scale.method <- SXTpcaData[["scale.method"]]
-#   cat("There are",length(info), "class in this PCA analysis:\n")
-#   cat(names(info))
-#   cat("\n")
-#   cat("---------------------------------------\n")
-#   cat("QC are contained in this PCA analysis?",QC)
-# }
-#
