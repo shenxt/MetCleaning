@@ -63,10 +63,11 @@ MarkerSelection <- function(MetFlowData,
                             foldchange.cutoff = c(4/3, 3/4),
                             p.cutoff = 0.05,
                             vip.cutoff = 1,
-                            path = NULL) {
+                            path = ".") {
    # browser()
-  if (is.null(path)) {path <- getwd()}
-  else {dir.create(path)}
+  if (path != ".") {
+    dir.create(path)
+  }
 
   tags <- MetFlowData[["tags"]]
   if (any(colnames(tags) == "is.marker")) {

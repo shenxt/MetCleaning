@@ -4,9 +4,11 @@ ChangeSampleName <- function(data = "data.csv",
            posfix = NULL,
            qc.has.order = FALSE,
            output = TRUE,
-           path = NULL) {
+           path = ".") {
   # browser()
-if (is.null(path)) path <- getwd()
+  if (path != ".") {
+    dir.create(path)
+  }
   data <- read.csv(file.path(path,data), stringsAsFactors = FALSE, check.names = FALSE)
 
   if(sum(duplicated(colnames(data))) > 0) {stop("There are duplicated samples (names) in you data!")}

@@ -64,7 +64,7 @@ HeatMap <- function(MetFlowData,
                     scale.method = "auto",
                     show_rownames = FALSE,
                     show_colnames = FALSE,
-                    path = NULL,
+                    path = ".",
                     width = 7,
                     height = 7,
                     border_color = NA,
@@ -74,9 +74,7 @@ HeatMap <- function(MetFlowData,
                     clustering_method = "ward.D",
                     ...) {
   # browser()
-  if (is.null(path)) {
-    path <- getwd()
-  } else {
+  if (path != ".") {
     dir.create(path)
   }
 

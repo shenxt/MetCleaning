@@ -4,11 +4,12 @@ MZfinder <- function(MetFlowData,
                      obs.per.cutoff = 0.5,
                      var.per.cutoff = 0.5,
                      what = "mv",
-                     path = NULL) {
+                     path = ".") {
 
   options(warn = -1)
-  if (is.null(path))
-    path <- getwd()
+  if (path != ".") {
+    dir.create(path)
+  }
   hasQC <- MetFlowData[["hasQC"]]
   if (what == "mv") {
     path1 <- file.path(path, "mv finder")

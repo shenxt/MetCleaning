@@ -118,12 +118,10 @@ MetStat <- function(MetFlowData,
                     pls.analysis = TRUE,
                     pca.analysis = TRUE,
                     uni.test = TRUE,
-                    path = NULL) {
+                    path = ".") {
   options(warn = -1)
   # browser()
-  if (is.null(path)) {
-    path <- getwd()
-  } else{
+  if (path != ".") {
     dir.create(path)
   }
 

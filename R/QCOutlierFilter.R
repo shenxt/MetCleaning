@@ -37,7 +37,7 @@
 
 QCOutlierFilter <- function(MetFlowData,
                             CI = 0.95,
-                            path = NULL) {
+                            path = ".") {
   # browser()
   QCOutlierFiderData <- QCOutlierFinder(MetFlowData = MetFlowData,
                                         CI = CI,

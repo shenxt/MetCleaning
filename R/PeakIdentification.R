@@ -53,9 +53,7 @@ PeakIdentification <- function(MetFlowData,
                                re.match = TRUE) {
   # browser()
   options(warn = -1)
-  if (is.null(path)) {
-    path <- getwd()
-  } else{
+  if (path != ".") {
     dir.create(path)
   }
 

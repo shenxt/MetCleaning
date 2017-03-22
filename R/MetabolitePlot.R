@@ -37,11 +37,9 @@
 
 MetabolitePlot <- function(MetFlowData.before,
                            MetFlowData.after,
-                           path = NULL,
+                           path = ".",
                            figure = "jpeg") {
-  if (is.null(path)) {
-    path <- getwd()
-  } else{
+  if (path != ".") {
     dir.create(path)
   }
 

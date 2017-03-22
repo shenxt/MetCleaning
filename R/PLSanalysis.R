@@ -55,7 +55,7 @@ PLSanalysis <- function(MetFlowData,
                         log.scale = 10,
                         scalemethod = "auto",
                         plsmethod = "plsreg",
-                        path = NULL,
+                        path = ".",
                         width = 7,
                         height = 7,
                         text = FALSE,
@@ -75,9 +75,7 @@ PLSanalysis <- function(MetFlowData,
 {
   # browser()
   # requireNamespace("pls")
-  if (is.null(path)) {
-    path <- getwd()
-  } else{
+  if (path != ".") {
     dir.create(path)
   }
   options(warn = -1)

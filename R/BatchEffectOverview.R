@@ -11,12 +11,10 @@
 ### Batch effect for multiple batch datasets
 BatchEffectOverview <- function(MetFlowData.before,
                                 MetFlowData.after,
-                                path = NULL) {
+                                path = ".") {
   options(warn = -1)
 # browser()
-  if (is.null(path)) {
-    path <- getwd()
-  } else {
+  if (path != ".") {
     dir.create(path)
   }
 

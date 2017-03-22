@@ -60,7 +60,7 @@
 
 ### Data normalization for MetFlowData
 DataNormalization <- function(MetFlowData,
-                              path = NULL,
+                              path = ".",
                               method = "svr",
                               dimension1 = TRUE,
                               ## parameters for loess normalization
@@ -77,8 +77,8 @@ DataNormalization <- function(MetFlowData,
                               datastyle = "tof",
                               user = "other") {
   options(warn = -1)
-  if (is.null(path)) {
-    path <- getwd()
+  if (path != ".") {
+    dir.create(path)
   }
   # browser()
   path1 <- file.path(path, "7 Normalization result")

@@ -49,9 +49,11 @@ ImportData <- function(data = "data.csv",
                        hasIS = "no",
                        hasQC = "yes",
                        peak.identification = "no",
-                       path = NULL) {
+                       path = ".") {
   # browser()
-  if (is.null(path)) path <- getwd()
+  if (path != ".") {
+    dir.create(path)
+  }
   if (worklist.from != "GetWorklist")
   {data <- ChangeSampleName(data = data,
                             sample.information = sample.information,

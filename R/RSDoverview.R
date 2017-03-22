@@ -17,10 +17,8 @@
 
 RSDoverview <- function(MetFlowData.before,
                         MetFlowData.after,
-                        path = NULL) {
-  if (is.null(path)) {
-    path <- getwd()
-  } else{
+                        path = ".") {
+  if (path != ".") {
     dir.create(path)
   }
 

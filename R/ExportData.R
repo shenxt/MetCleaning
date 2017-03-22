@@ -26,9 +26,10 @@ ExportData <- function(MetFlowData,
                        data.name = "data_new",
                        subject.info.name = "subject.info",
                        qc.info.name = "qc.info",
-                       path = NULL){
-  if (is.null(path)) {path <- getwd()}
-  else {dir.create(path)}
+                       path = "."){
+  if (path != ".") {
+    dir.create(path)
+  }
 
   subject <- MetFlowData[["subject"]]
   qc <- MetFlowData[["qc"]]

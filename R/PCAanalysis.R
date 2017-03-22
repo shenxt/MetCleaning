@@ -52,7 +52,7 @@ PCAanalysis <- function(MetFlowData,
                         QC = FALSE,
                         log.scale = FALSE,
                         scale.method = "auto",
-                        path = NULL,
+                        path = ".",
                         color = c(
                           "palegreen",
                           "royalblue",
@@ -77,10 +77,7 @@ PCAanalysis <- function(MetFlowData,
                         xlim1 = NULL,
                         ylim1 = NULL) {
   # browser()
-  if (is.null(path)) {
-    path <- getwd()
-  }
-  else {
+  if (path != ".") {
     dir.create(path)
   }
   subject <- MetFlowData[["subject"]]

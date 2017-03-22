@@ -37,17 +37,15 @@
 #'                     }
 
 MZoverview <- function(MetFlowData,
-                       path = NULL,
+                       path = ".",
                        what = "mv") {
   # browser()
   has.qc <- MetFlowData[["hasQC"]]
 
-  if (is.null(path)) {
-    path <- getwd()
-  }
-  else {
+  if (path != ".") {
     dir.create(path)
   }
+
   # browser()
   subject <- MetFlowData[["subject"]]
   qc <- MetFlowData[["qc"]]

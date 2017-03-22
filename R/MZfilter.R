@@ -42,11 +42,8 @@ MZfilter <- function(MetFlowData,
                      obs.per.cutoff = 0.5,
                      var.per.cutoff = 0.5,
                      what = "mv",
-                     path = NULL) {
-  if (is.null(path)) {
-    path <- getwd()
-  }
-  else {
+                     path = ".") {
+  if (path != ".") {
     dir.create(path)
   }
   options(warn = -1)

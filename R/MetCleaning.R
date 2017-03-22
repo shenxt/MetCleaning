@@ -106,7 +106,7 @@ MetCleaning <- function(#ImportData para
                    rt.tolerance = 180,
                    #DataOverview para
                    met.plot = TRUE,
-                   path = NULL,
+                   path = ".",
                    worklist.from = "manual",
                    #other slection
                    qc.outlier.filter = TRUE,
@@ -114,9 +114,7 @@ MetCleaning <- function(#ImportData para
                    integration = TRUE
                    ){
 
-  if (is.null(path)) {
-    path <- getwd()
-  } else{
+  if (path != ".") {
     dir.create(path)
   }
 

@@ -2,12 +2,10 @@
 #subject outlier filtering according to zero ratio and PCA
 SubjectOutlierFinder <- function(MetFlowData,
                                  CI = 0.95,
-                                 path = NULL){
+                                 path = "."){
   options(warn = -1)
   # browser()
-  if (is.null(path)) {
-    path <- getwd()
-  }else{
+  if (path != ".") {
     dir.create(path)
   }
   subject <- MetFlowData[["subject"]]

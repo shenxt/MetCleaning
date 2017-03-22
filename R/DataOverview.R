@@ -36,11 +36,8 @@
 ### DataOverview for MeeFlowData
 DataOverview <- function(MetFlowData,
                          feature.distribution = TRUE,
-                         path = NULL) {
-  if (is.null(path)) {
-    path <- getwd()
-  }
-  else{
+                         path = ".") {
+  if (path != ".") {
     dir.create(path)
   }
   # browser()

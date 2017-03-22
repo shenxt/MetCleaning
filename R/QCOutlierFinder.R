@@ -2,12 +2,10 @@
 #QC outlier filtering according to zero ratio and PCA
 QCOutlierFinder <- function(MetFlowData,
                             CI = 0.95,
-                            path = NULL) {
+                            path = ".") {
   # browser()
   options(warn = -1)
-  if (is.null(path)) {
-    path <- getwd()
-  } else {
+  if (path != ".") {
     dir.create(path)
   }
   qc <- MetFlowData[["qc"]]

@@ -53,7 +53,7 @@ MetNormalizer <- function(filename = "Metabolomics data",
                           datastyle = "tof",
                           dimension1 = TRUE,
                           user = "other",
-                          path = NULL) {
+                          path = ".") {
   options(warn = -1)
    # browser()
   if (datastyle == "mrm") {
@@ -63,7 +63,10 @@ MetNormalizer <- function(filename = "Metabolomics data",
   # browser()
   options(warn = -1)
   temp <- dir()
-  if (is.null(path)) path <- getwd()
+
+  if (path != ".") {
+    dir.create(path)
+  }
 
   path1 <- file.path(path,"running results")
   dir.create(path1)
