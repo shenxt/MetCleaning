@@ -68,7 +68,7 @@ if(is.null(x)) {
       na.number,
       "NAs and",
       space.number,
-      "spaces in your batch design, please confirm there are no error!\n"
+      "spaces in your batch design, please confirm there are no error.\n"
     )
   )
 
@@ -79,7 +79,7 @@ if(is.null(x)) {
   else {
     if (samplenumber > length(x)) {
       samplenumber <- samplenumber
-      warning("The sample number you set is larger than the sample in your batch design!!!\n")
+      warning("The sample number you set is larger than the sample in your batch design.\n")
     }
     else {
       samplenumber <- samplenumber
@@ -192,7 +192,7 @@ if(is.null(x)) {
     if (randommethod == "injection") {
       if (length(x) > 108)
       {
-        warning("The sample number is larger than 108, injection order random is not commended!!!")
+        warning("The sample number is larger than 108, injection order random is not commended.")
       }
 
       x <-

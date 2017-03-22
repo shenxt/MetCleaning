@@ -92,7 +92,7 @@ HeatMap <- function(MetFlowData,
     data <- t(subject)
   } else{
     if (all(colnames(tags) != "is.marker")) {
-      stop("Please select marker first!!!")
+      stop("Please select marker first.")
     }
     is.marker <- tags[, "is.marker"]
     var.index <- which(is.marker == "yes")

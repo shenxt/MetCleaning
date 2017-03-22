@@ -66,7 +66,7 @@ PeakIdentification <- function(MetFlowData,
 
   if ("ms2mz" %in% colnames(tags) &
       "ms2rt" %in% colnames(tags)) {
-    warning("The data has been done peak identification!")
+    warning("The data has been done peak identification.")
   }
 
 

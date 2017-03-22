@@ -92,7 +92,7 @@ DataNormalization <- function(MetFlowData,
 
   if (sum(is.na(MetFlowData[["qc"]]))+sum(is.na(MetFlowData[["subject"]])) != 0)
   {
-    stop("Plase impute MV in sampe first!!!")
+    stop("Plase impute MV in sampe first.")
   }
 
   ##mean normalization

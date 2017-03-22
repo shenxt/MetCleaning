@@ -84,7 +84,7 @@ VIP <- function(MetFlowData,
     while (yesnot == "y"|yesnot == "") {
       comps.number <-readline("How many comps do you want to see? ")
       while (!exists("comps.number")|comps.number=="")
-      {cat("You must give a comps number to continute!!!\n")
+      {cat("You must give a comps number to continute.\n")
         comps.number <- readline("How many comps do you want to see? ")}
       comps.number <- as.numeric(comps.number)
       plot(x = c(1:comps.number),y=msep[1,2:(comps.number+1)],type="b",col="firebrick1",pch=20,
@@ -104,7 +104,7 @@ VIP <- function(MetFlowData,
     dev.off()
 
     number<-readline("Please type number and press Enter  to continute:  ")
-    while (!exists("number")|number=="") {cat("You must give a number to continute!!!\n")
+    while (!exists("number")|number=="") {cat("You must give a number to continute.\n")
       number<-readline("Please type comps number value and press Enter  to continute: ")}
     number<-as.numeric(number)
 
@@ -131,7 +131,7 @@ VIP <- function(MetFlowData,
     yesnot <- "y"
     while (yesnot=="y"|yesnot=="") {
       comps.number<-readline("How many comps do you want to see? ")
-      while (!exists("comps.number")|comps.number=="") {cat("You must give a comps number to continute!!!\n")
+      while (!exists("comps.number")|comps.number=="") {cat("You must give a comps number to continute.\n")
         comps.number<-readline("How many comps do you want to see? ")}
       comps.number<-as.numeric(comps.number)
       barplot(Q2cum[1:comps.number],xlab="ncomp",ylab="Q2cum",cex.lab=1.3,cex.axis=1.3)
@@ -142,7 +142,7 @@ VIP <- function(MetFlowData,
     }
 
     number <- readline("Please type number and press Enter  to continute:  ")
-    while (!exists("number")|number=="") {cat("You must give a number to continute!!!\n")
+    while (!exists("number")|number=="") {cat("You must give a number to continute.\n")
       number <- readline("Please type comps number value and press Enter  to continute: ")}
     number <- as.numeric(number)
 

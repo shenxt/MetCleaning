@@ -53,7 +53,7 @@ ReChangeGroup <- function(MetFlowData,
   cat(remove.name)
   right <- readline("Right(y) or wrong(n)?")
   if (right == "n") {
-    cat("Please change your new group information again!\n")
+    cat("Please change your new group information again.\n")
     return(MetFlowData)}
   }
 

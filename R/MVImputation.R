@@ -93,7 +93,7 @@ MVimputation <- function(MetFlowData,
   #### MV imputation
   if ((sum(is.na(MetFlowData[["subject"]])) + sum(is.na(MetFlowData[["qc"]]))) == 0)
   {
-    warning("MVs have been imputed!!!")
+    warning("MVs have been imputed.")
     return(MetFlowData)
   }
   qc <- MetFlowData[["qc"]]

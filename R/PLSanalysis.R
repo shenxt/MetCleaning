@@ -165,7 +165,7 @@ PLSanalysis <- function(MetFlowData,
       comps.number <- readline("How many comps do you want to see?")
       while (!exists("comps.number") | comps.number == "")
       {
-        cat("You must give a comps number to continute!!!\n")
+        cat("You must give a comps number to continute.\n")
         comps.number <-
           readline("How many comps do you want to see?")
       }
@@ -239,7 +239,7 @@ PLSanalysis <- function(MetFlowData,
     number <-
       readline("Please type number and press Enter to continute:")
     while (!exists("number") | number == "") {
-      cat("You must give a number to continute!!!\n")
+      cat("You must give a number to continute.\n")
       number <-
         readline("Please type comps number value and press Enter  to continute:")
     }
@@ -290,7 +290,7 @@ PLSanalysis <- function(MetFlowData,
       comps.number <- readline("How many comps do you want to see?")
       while (!exists("comps.number") |
              comps.number == "") {
-        cat("You must give a comps number to continute!!!\n")
+        cat("You must give a comps number to continute.\n")
         comps.number <-
           readline("How many comps do you want to see?")
       }
@@ -341,7 +341,7 @@ PLSanalysis <- function(MetFlowData,
       readline("Please type number and press Enter to continute:")
     while (!exists("number") |
            number == "") {
-      cat("You must give a number to continute!!!\n")
+      cat("You must give a number to continute.\n")
       number <-
         readline("Please type comps number value and press Enter to continute:")
     }

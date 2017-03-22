@@ -83,13 +83,13 @@ MetNormalizer <- function(filename = "Metabolomics data",
       file <- dir()[!file.info(dir())$isdir]
       if (user == "other") {
         if (length(grep("worklist",file)) == 0) {
-          stop("There are no worklist file!")
+          stop("There are no worklist file.")
         }
         file <- file[-grep("worklist",file)]
       }
 
       if (length(file) != 2) {
-        stop(paste("There are",length(file),"files,not two files!"))
+        stop(paste("There are",length(file),"files,not two files."))
       }
       if (length(grep("POS",c(toupper(file)))) == 0)
         stop("The file name should contains POS or NEG")
@@ -183,7 +183,7 @@ MetNormalizer <- function(filename = "Metabolomics data",
       file <- dir(path)######
       if (user == "other") {
         if (length(grep("worklist",file)) == 0) {
-          stop("There are no worklist file!")
+          stop("There are no worklist file.")
         }
         file <- file[-grep("worklist",file)]
       }
@@ -272,7 +272,7 @@ MetNormalizer <- function(filename = "Metabolomics data",
   #   multiple, rerun.loess, rerun.svr, peakplot, datastyle,
   #   file = file.path(path,"The parameters fo this processing")
   # )
-  # cat("The pre-analyis of data is done!\n")
+  # cat("The pre-analyis of data is done.\n")
   options(warn = 0)
 }
 
@@ -917,10 +917,10 @@ SXTgetdata <- function(data, filename = "SXT data", polarity = "positive",
   NA.qc <- sum(is.na(qc))
   options(warn = 1)
   if (NA.sample > 0)
-    warning(paste("There are", NA.sample, "NAs in your sample!"))
+    warning(paste("There are", NA.sample, "NAs in your sample."))
   sample[is.na(sample)] <- 0
   if (NA.qc > 0)
-    warning(paste("There are", NA.qc, "NAs in your QC!"))
+    warning(paste("There are", NA.qc, "NAs in your QC."))
   qc[is.na(qc)] <- 0
 
   save(sample,qc,tags,sampleorder,qcorder,file = file.path(path,filename))

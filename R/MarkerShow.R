@@ -65,7 +65,7 @@ MarkerShow <- function(MetFlowData,
   subject <- MetFlowData[["subject"]]
   subject.info <- MetFlowData[["subject.info"]]
   if (all(colnames(tags) != "is.marker")) {
-    stop("Please select marker first(use MarkerSelection function)!!!")
+    stop("Please select marker first(use MarkerSelection function).")
   }
 
   is.marker <- tags[, "is.marker"]

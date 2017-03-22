@@ -77,21 +77,21 @@ VolcanoPlot <- function(MetFlowData,
   #   cat(paste("Use", foldchange, "as fold change.\n"))
   #   cat("\n")
   # }else {
-  #   stop(paste("No", foldchange,"!!!"))
+  #   stop(paste("No", foldchange,"."))
   # }
   #
   # if (p %in% colnames(tags)) {
   #   cat(paste("Use", p, "as p value.\n"))
   #   cat("\n")
   # }else {
-  #   stop(paste("No", p,"!!!"))
+  #   stop(paste("No", p,"."))
   # }
   #
   # if (vip %in% colnames(tags)) {
   #   cat(paste("Use", vip, "as VIP value.\n"))
   #   cat("\n")
   # }else {
-  #   stop(paste("No", vip,"!!!"))
+  #   stop(paste("No", vip,"."))
   # }
 
   x1 <- as.numeric(tags[, x])
@@ -149,10 +149,10 @@ VolcanoPlot <- function(MetFlowData,
   if ("is.marker" %in% colnames(tags)) {
     marker.index <- which(tags[, "is.marker"] == "yes")
     if (length(marker.index) == 0) {
-      stop("No marker are selected, please change canditios and try again!!!")
+      stop("No marker are selected, please change canditios and try again.")
     }
   } else {
-    stop("Please select marker first (Using MarkerSelection function)!!!")
+    stop("Please select marker first (Using MarkerSelection function).")
   }
 
   colour <- rep(NA, length(x1))

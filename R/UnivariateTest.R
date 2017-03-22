@@ -51,11 +51,11 @@ UnivariateTest <- function(MetFlowData,
 
   if (length(class) != 2 &
       test.method == "t" | test.method == "wilcox") {
-    stop("Not two class data!!!")
+    stop("Not two class data.")
   }
 
   if (length(class) <= 2 & test.method == "anova") {
-    stop("Not multiple (>2) class data!!!")
+    stop("Not multiple (>2) class data.")
   }
 
   if (test.method == "t" | test.method == "wilcox") {

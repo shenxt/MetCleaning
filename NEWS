@@ -26,6 +26,7 @@ path <- getwd() in all functions.
 o Remove 1:n style iterations.
 o qc.has.order. is changed to ordered.qc.
 o Remove static images in the vignette.
+o Remove excitement in error messages (!!!)
 
 
 

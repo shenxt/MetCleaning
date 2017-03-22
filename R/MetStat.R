@@ -141,7 +141,7 @@ MetStat <- function(MetFlowData,
     cat("---------------------------------------------------------------------\n")
     cat("Change group information\n")
     if (all(dir() != "new.group.csv"))
-      stop("No new.group information!!!")
+      stop("No new.group information.")
     met.data <- ReChangeGroup(MetFlowData = MetFlowData)
     #save data
     met.data.new.group <- met.data
@@ -287,5 +287,5 @@ MetStat <- function(MetFlowData,
   options(warn = 0)
 
   cat("---------------------------------------------------------------------\n")
-  cat("MetStat is done!!!\n")
+  cat("MetStat is done.\n")
 }

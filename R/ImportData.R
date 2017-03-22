@@ -65,7 +65,7 @@ ImportData <- function(data = "data.csv",
   sample.information <- read.csv("sample.information1.csv", stringsAsFactors = FALSE, check.names = FALSE)}
 
   else {data <- read.csv(file.path(path,data), stringsAsFactors = FALSE, check.names = FALSE)
-  if(sum(duplicated(colnames(data))) > 0) {stop("There are duplicated samples (names) in you data!")}
+  if(sum(duplicated(colnames(data))) > 0) {stop("There are duplicated samples (names) in you data.")}
   sample.information <- read.csv(file.path(path,sample.information), stringsAsFactors = FALSE, check.names = FALSE)}
 
   ## read sample information
@@ -105,10 +105,10 @@ ImportData <- function(data = "data.csv",
   a <- setdiff(sample.information[,1], sample.name)
   b <- setdiff(sample.name, sample.information[,1])
   if (length(a) != 0)
-  {stop(paste(paste(a,collapse = " "),"are in sample information but not in data!!!"))}
+  {stop(paste(paste(a,collapse = " "),"are in sample information but not in data."))}
 
   if (length(b) != 0)
-  {stop(paste(paste(b,collapse = " "),"are in data but not in sample information!!!"))}
+  {stop(paste(paste(b,collapse = " "),"are in data but not in sample information."))}
 
   ## the sample order form sample information vs the sample order form sample name
   sample.name.from.sample.information <- sample.information[,1]
@@ -119,7 +119,7 @@ ImportData <- function(data = "data.csv",
   sample.different.index <- which(sample.order.from.sample.information != sample.information[,2])
   if (length(sample.different.index) != 0)
   { print(sample.information[sample.different.index,c(1,2)])
-  stop("The sample order from data and form sample information are different!!!")}
+  stop("The sample order from data and form sample information are different.")}
 
   if (hasQC == "no") {qc.order <- NULL}
   else {

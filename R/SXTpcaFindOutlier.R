@@ -108,7 +108,7 @@ SXTpcaFindOutlier <- function(SXTpcaData,
 
   outlier.index <- which(distance > ellipse.standard)
   if (length(outlier.index) > 0) {
-    cat(names(x)[outlier.index], " are outliers!!!\n")
+    cat(names(x)[outlier.index], " are outliers.\n")
   }
 
   if (output.plot) {

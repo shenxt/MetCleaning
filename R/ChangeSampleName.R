@@ -11,7 +11,7 @@ ChangeSampleName <- function(data = "data.csv",
   }
   data <- read.csv(file.path(path,data), stringsAsFactors = FALSE, check.names = FALSE)
 
-  if(sum(duplicated(colnames(data))) > 0) {stop("There are duplicated samples (names) in you data!")}
+  if(sum(duplicated(colnames(data))) > 0) {stop("There are duplicated samples (names) in you data.")}
 
   sample.information <- read.csv(file.path(path,sample.information), stringsAsFactors = FALSE, check.names = FALSE)
   sample.information <- sample.information[!is.na(sample.information[,1]),]
@@ -31,7 +31,7 @@ ChangeSampleName <- function(data = "data.csv",
   if (length(sample.not.in.data.index) != 0)
   {
     stop(paste(paste(sample.name[sample.not.in.data.index], collapse = " "),
-               "in sample information are not found in data!!!"))
+               "in sample information are not found in data."))
   }
 
   ## sort sample in data according to sample order

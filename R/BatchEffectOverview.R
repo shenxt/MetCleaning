@@ -29,7 +29,7 @@ BatchEffectOverview <- function(MetFlowData.before,
   qc.aft <- MetFlowData.after[["qc"]]
 
   if ((sum(is.na(subject.bef)) + sum(is.na(qc.bef))) != 0) {
-    stop("The data has MV, please do MV imputation first!!!")
+    stop("The data has MV, please do MV imputation first.")
   }
 
   data.bef <- SplitBatch(MetFlowData = MetFlowData.before)

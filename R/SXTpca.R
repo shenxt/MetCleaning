@@ -12,7 +12,7 @@ SXTpca <- function(subject = NULL,
   }
   if (any(is.na(subject)) |
       any(is.na(qc)))
-    stop("Please impute MV in subject or QC samples!!!")
+    stop("Please impute MV in subject or QC samples.")
   if (is.null(subject))
     stop("Subject sample is NULL")
   if (!is.null(qc)) {

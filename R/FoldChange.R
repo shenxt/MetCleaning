@@ -24,7 +24,7 @@ FoldChange <- function(MetFlowData,
   tags <- MetFlowData[["tags"]]
 
   if (length(unique(group)) != 2) {
-    stop("No two class data!!!")
+    stop("No two class data.")
   }
   group2.index <- which(group == to[1])
   group1.index <- which(group == to[2])

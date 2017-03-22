@@ -354,7 +354,7 @@ MetCleaning <- function(#ImportData para
   met.data.after.pre <- met.data
   save(met.data.after.pre, file = file.path(path, "met.data.after.pre"))
   cat("---------------------------------------------------------------------\n")
-  cat("MetCleaning is done!!!\n")
+  cat("MetCleaning is done.\n")
   options(warn = 0)
 }
 
@@ -371,7 +371,7 @@ RSDoverview <- function(MetFlowData.before = MetFlowData1,
   }
 
   hasQC <- MetFlowData.before[["hasQC"]]
-  if (hasQC == 'no') {stop("Data has no QC!!!")}
+  if (hasQC == 'no') {stop("Data has no QC.")}
   ##before
   subject.bef <- MetFlowData.before[["subject"]]
   qc.bef <- MetFlowData.before[["qc"]]

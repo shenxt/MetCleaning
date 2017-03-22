@@ -24,7 +24,7 @@ RSDoverview <- function(MetFlowData.before,
 
   hasQC <- MetFlowData.before[["hasQC"]]
   if (hasQC == 'no') {
-    stop("Data has no QC!!!")
+    stop("Data has no QC.")
   }
   ##before
   subject.bef <- MetFlowData.before[["subject"]]

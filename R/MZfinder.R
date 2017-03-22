@@ -169,7 +169,7 @@ MZfinder <- function(MetFlowData,
       cat("No QC should be removed.\n")
     }
     else {
-      cat(colnames(qc2)[qc.remove], "sholud be removed!!!\n")
+      cat(colnames(qc2)[qc.remove], "sholud be removed.\n")
     }
   }
 
@@ -177,7 +177,7 @@ MZfinder <- function(MetFlowData,
     cat("No subject should be removed.\n")
   }
   else {
-    cat(colnames(subject2)[subject.remove], "sholud be removed!!!\n")
+    cat(colnames(subject2)[subject.remove], "sholud be removed.\n")
   }
   options(warn = 0)
   MZfinderData <- list(
