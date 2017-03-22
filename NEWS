@@ -21,9 +21,10 @@ o Demo data is make more small (only one batch) because the package is very larg
 
 Version 0.99.4
 --------------
-o add a default path argument (i.e., ".") rather than NULL to avoid doing
+o Add a default path argument (i.e., ".") rather than NULL to avoid doing
 path <- getwd() in all functions.
-o Avoid 1:n style iterations.
+o Remove 1:n style iterations.
+o qc.has.order. is changed to ordered.qc.
 
 
 

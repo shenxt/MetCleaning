@@ -15,7 +15,7 @@
 #' @param hasQC The data has QC samples or not? Default is "yes".
 #' @param hasIS The data has IS or not? Default is "no".
 #' @param posfix Default is NULL.
-#' @param qc.has.order Default is FALSE.
+#' @param ordered.qc Default is FALSE.
 #' @param worklist.from Default is "manual".
 #' @param path Work directory.
 #' @param peak.identification The data has identification result or not?
@@ -44,7 +44,7 @@ ImportData <- function(data = "data.csv",
                        sample.information = "sample.information.csv",
                        polarity = "positive",
                        posfix = NULL,
-                       qc.has.order = FALSE,
+                       ordered.qc = FALSE,
                        worklist.from = "manual",
                        hasIS = "no",
                        hasQC = "yes",
@@ -59,7 +59,7 @@ ImportData <- function(data = "data.csv",
                             sample.information = sample.information,
                             polarity = polarity,
                             posfix = posfix,
-                            qc.has.order = qc.has.order,
+                            ordered.qc = ordered.qc,
                             output = FALSE,
                             path = path)
   sample.information <- read.csv("sample.information1.csv", stringsAsFactors = FALSE, check.names = FALSE)}

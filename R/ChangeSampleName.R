@@ -2,7 +2,7 @@ ChangeSampleName <- function(data = "data.csv",
            sample.information = "sample.information.csv",
            polarity = "positive",
            posfix = NULL,
-           qc.has.order = FALSE,
+           ordered.qc = FALSE,
            output = TRUE,
            path = ".") {
   # browser()
@@ -55,7 +55,7 @@ ChangeSampleName <- function(data = "data.csv",
   qc.order <- injection.order[qc.index]
 
   subject.name <- paste(paste("Sample", subject.order, sep=""),subject.name,sep="_")
-  if (qc.has.order) {qc.name <- paste(paste("Sample", qc.order, sep=""),qc.name,sep="_")}
+  if (ordered.qc) {qc.name <- paste(paste("Sample", qc.order, sep=""),qc.name,sep="_")}
    else {
      qc.name <- paste("QC", rank(qc.order), sep="")
      qc.name <- paste(paste("Sample", qc.order, sep=""),qc.name,sep="_")
