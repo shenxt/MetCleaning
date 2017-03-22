@@ -5,9 +5,11 @@
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
 #' @param x batch.design file.
-#' @param instrument Which instrument you use? "Agilent" or "AB", default is "Agilent".
+#' @param instrument Which instrument you use?
+#' "Agilent" or "AB", default is "Agilent".
 #' @param name The name of worklist.
-#' @param randommethod Which random method you want to use? "no", "position" or "injection". Default is "no".
+#' @param randommethod Which random method you want to use?
+#' "no", "position" or "injection". Default is "no".
 #' @param samplenumber Sample number.
 #' @param replication Replication times.
 #' @param QCstep QC step.
@@ -57,7 +59,7 @@ GetWorklist <- function(x = NULL,
                check.names = FALSE,
                stringsAsFactors = FALSE)
   }
-  # --------------------------------------------------------------------------------
+  # --------------------------------------------------------------------------
   options(warn = 0)
   x <- as.character(x[, 1])
   na.number <- sum(is.na(x))
@@ -75,14 +77,15 @@ GetWorklist <- function(x = NULL,
     )
   )
 
-  # ------------------------------------------------------------------------------
+  # ---------------------------------------------------------------------------
   if (is.null(samplenumber)) {
     samplenumber <- length(x)
   }
   else {
     if (samplenumber > length(x)) {
       samplenumber <- samplenumber
-      warning("The sample number you set is larger than the sample in your batch design.\n")
+  warning("The sample number you set is larger than
+          the sample in your batch design.\n")
     }
     else {
       samplenumber <- samplenumber
@@ -90,7 +93,7 @@ GetWorklist <- function(x = NULL,
 
   }
   x <- x[1:samplenumber]
-  # ------------------------------------------------------------------------------
+  # ------------------------------------------------------------------------
   options(warn = -1)
   plate1 <- rep(1, 51)
   plate2 <- rep(2, 51)
@@ -156,7 +159,7 @@ GetWorklist <- function(x = NULL,
     ), 8)
   position96 <- position96[1:(samplenumber * replication)]
 
-  # ------------------------------------------------------------------------------
+  # -------------------------------------------------------------------------
 
   ###repeat samples?
   if (replication == 1) {
@@ -195,7 +198,8 @@ GetWorklist <- function(x = NULL,
     if (randommethod == "injection") {
       if (length(x) > 108)
       {
-        warning("The sample number is larger than 108, injection order random is not commended.")
+        warning("The sample number is larger than 108,
+                injection order random is not commended.")
       }
 
       x <-
@@ -438,7 +442,7 @@ GetWorklist <- function(x = NULL,
   middle.info <- x[first:last, ]
   middle.info <- cbind(middle.info, c(1:nrow(middle.info)))
   Sample.QC <-
-    middle.info[setdiff(1:nrow(middle.info), grep("Blank", middle.info[, 1])), ]
+    middle.info[setdiff(1:nrow(middle.info),grep("Blank", middle.info[, 1])), ]
   #remove Blank in middle.info
   Sample.QC <-
     Sample.QC[setdiff(1:nrow(Sample.QC), grep("Test_mix", Sample.QC[, 1])), ]
@@ -451,7 +455,8 @@ GetWorklist <- function(x = NULL,
     middle.info[grep("Test_mix", middle.info[, 1]), , drop = FALSE]
 
   Data.File2 <-
-  paste("Sample", c(injectionfrom:(nrow(Sample.QC) + injectionfrom - 1)), sep = "")
+  paste("Sample", c(injectionfrom:(nrow(Sample.QC) + injectionfrom - 1)),
+        sep = "")
 
   Data.File2 <- paste(Data.File2, Sample.QC[, 1], sep = "_")
 

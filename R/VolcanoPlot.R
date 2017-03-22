@@ -188,7 +188,7 @@ VolcanoPlot <- function(MetFlowData,
   # abline(v = log(f.cutoff2,2), lty = 2)
   vip.mean <- (min(z1) + max(z1)) / 2
   cexa.mean <-
-    round(lm.reg[["coefficients"]][2] * vip.mean + lm.reg[["coefficients"]][1], 1)
+round(lm.reg[["coefficients"]][2] * vip.mean + lm.reg[["coefficients"]][1], 1)
   if (z != FALSE) {
     legend(
       "topleft",

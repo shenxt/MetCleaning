@@ -48,18 +48,11 @@ Import data and retrun a standard MetProcessor data.
 #load the demo data
 data(data, package = "MetCleaning")
 data(sample.information, package = "MetCleaning")
-
-##create a folder for demo
-dir.create("demo")
-setwd("demo")
-
 # export the demo data as csv
 write.csv(data, "data.csv", row.names = FALSE)
 write.csv(sample.information, "sample.information.csv", row.names = FALSE)
 #Import data
-met.data <- ImportData(data = "data.csv",
-                      sample.information = "sample.information.csv",
-                      polarity = "positive")
+met.data <- ImportData()
 }
 \author{
 Xiaotao Shen

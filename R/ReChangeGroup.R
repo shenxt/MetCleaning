@@ -4,8 +4,8 @@
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
 #' @param MetFlowData MetFlowData.
-#' @param new.group New Group information name. Default is new.group.csv. It can
-#'  be use the sample.information which is only changed the group column.
+#' @param new.group New Group information name. Default is new.group.csv.
+#' It can be use the sample.information which is only changed the group column.
 #' @return Return a standard MetProcesser data which is changed the
 #' group informatio.
 #' @examples
@@ -40,7 +40,8 @@
 ReChangeGroup <- function(MetFlowData,
                           new.group = "new.group.csv") {
   # browser()
-  new.group <- read.csv(new.group, stringsAsFactors = FALSE, check.names = FALSE)
+  new.group <-
+    read.csv(new.group, stringsAsFactors = FALSE, check.names = FALSE)
 
   subject.info <- MetFlowData@subject.info
   subject <- MetFlowData@subject

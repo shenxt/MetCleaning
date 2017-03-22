@@ -241,7 +241,7 @@ PLSanalysis <- function(MetFlowData,
     while (!exists("number") | number == "") {
       cat("You must give a number to continute.\n")
       number <-
-        readline("Please type comps number value and press Enter  to continute:")
+    readline("Please type comps number value and press Enter  to continute:")
     }
     number <- as.numeric(number)
 
@@ -343,7 +343,7 @@ PLSanalysis <- function(MetFlowData,
            number == "") {
       cat("You must give a number to continute.\n")
       number <-
-        readline("Please type comps number value and press Enter to continute:")
+    readline("Please type comps number value and press Enter to continute:")
     }
     number <- as.numeric(number)
 

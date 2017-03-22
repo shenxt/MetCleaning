@@ -148,7 +148,7 @@ PeakIdentification <- function(MetFlowData,
 
       save(msms, file = file.path(path1, ms2.name[i]))
       write.csv(msms,
-                file.path(path1, paste("marker", ms2.name[i], "csv", sep = ".")),
+              file.path(path1, paste("marker", ms2.name[i], "csv", sep = ".")),
                 row.names = FALSE)
       msmsinfo <- msms[, c("mzmed", "rtmed")]
       #get the information of metabolite
@@ -253,7 +253,7 @@ PeakIdentification <- function(MetFlowData,
     which(as.numeric(peak.mzerror[[i]]) - min(as.numeric(peak.mzerror[[i]])) <=
                 5)
       index <-
-  match(min(as.numeric(peak.rterror[[i]])[index]), as.numeric(peak.rterror[[i]]))
+match(min(as.numeric(peak.rterror[[i]])[index]), as.numeric(peak.rterror[[i]]))
       jpeg(file.path(path2, paste("peak", ms1name[i], ".jpeg", sep = "")))
       plot(
         as.numeric(peak.rterror[[i]]),

@@ -7,7 +7,7 @@ Author: Xiaotao Shen, Zhengjiang Zhu
 Maintainer: Xiaotao Shen<shenxt@sioc.ac.cn>
 Description: A data cleaning (preparation) and statistical analysis pipeline for large-scale mass spectrometry-based untargeted metabolomics.
 LazyData: true
-Depends: R (>= 3.2)
+Depends: R (>= 3.3)
 Imports:
     ggplot2,
     pcaMethods,

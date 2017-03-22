@@ -9,12 +9,14 @@ DataOverview(MetFlowData, feature.distribution = TRUE, path = ".")
 \arguments{
 \item{MetFlowData}{MetFlowData}
 
-\item{feature.distribution}{Draw a rt vs mz vs intensity plot or not. Default is TRUE.}
+\item{feature.distribution}{Draw a rt vs mz vs intensity plot or not.
+Default is TRUE.}
 
 \item{path}{Work directory.}
 }
 \value{
-Data overview_RT vs mz vs intensity.pdf:  A RT vs mz vs intensity plot.
+Data overview_RT vs mz vs intensity.pdf:
+A RT vs mz vs intensity plot.
 
 Data overview.txt: A overview information for MetFlowData.
 }

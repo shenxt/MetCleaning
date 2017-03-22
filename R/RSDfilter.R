@@ -11,12 +11,8 @@
 #' data and 30\% in GC-MS data.
 #' @export
 #' @examples
-#' #load the demo data
 #' data(met.data, package = "MetCleaning")
-#' ##create a folder for demo
-#' dir.create("demo")
-#' setwd("demo")
-#'new.met.data <- RSDfilter(met.data)
+#' new.met.data <- RSDfilter(met.data)
 
 RSDfilter <- function(MetFlowData,
                       rsd.cutoff = 30) {
@@ -30,3 +26,37 @@ RSDfilter <- function(MetFlowData,
   MetFlowData@subject <- MetFlowData@subject[var.index,]
   return(MetFlowData)
 }
+
+
+#S4 class
+setClass("MetFlowData",
+         representation(
+           subject = "matrix",
+           qc = "matrix",
+           tags = "matrix",
+           tags.old = "matrix",
+           subject.info = "matrix",
+           qc.info = "matrix",
+           subject.order = "numeric",
+           qc.order = "numeric",
+           ## some preprocessing information
+           mv.imputation = "character",
+           imputation.method = "character",
+           zero.filter = "character",
+           zero.filter.criteria = "character",
+           normalization = "character",
+           normalization.method = "character",
+           data.integration = "character",
+           data.integration.method = "character",
+           hasIS = "character",
+           hasQC = "character",
+           peak.identification = "character",
+           foldchange = "character",
+           marker.selection.condition = "character",
+           mv.filter = "character",
+           mv.filter.criteria = "character",
+           univariate.test = "character",
+           qc.outlier.filter = "character",
+           subject.outlier.filter = "character"
+         )
+)

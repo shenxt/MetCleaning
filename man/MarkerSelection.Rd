@@ -26,7 +26,8 @@ MarkerSelection(MetFlowData, foldchange = "foldchange", p = "p.correct",
 \item{path}{The directory you want to write results.}
 }
 \value{
-MetFlowData: MetFlowData which has been added is.marker information into tags.
+MetFlowData: MetFlowData which has been added is.
+marker information into tags.
 
 maker.information.csv: The marker information.
 }

@@ -10,9 +10,11 @@ SXTMinifrac(..., filter.item = "mv", filter.rule = "intersect",
 \arguments{
 \item{...}{Datases you want to remove features and samples.}
 
-\item{filter.item}{The item you want to filter. MV (missing values) or zero. Default is MV.}
+\item{filter.item}{The item you want to filter. MV (missing values) or zero.
+Default is MV.}
 
-\item{filter.rule}{For feature filtering, which rule you want to use, intersect or union. Default is intersect.}
+\item{filter.rule}{For feature filtering, which rule you want to use,
+intersect or union. Default is intersect.}
 
 \item{minifrac.variable}{The cutoff for variable. Default is 0.5.}
 

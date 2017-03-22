@@ -26,19 +26,11 @@
 #' #load the demo data
 #' data(data, package = "MetCleaning")
 #' data(sample.information, package = "MetCleaning")
-#'
-#' ##create a folder for demo
-#' dir.create("demo")
-#' setwd("demo")
-#'
 #' # export the demo data as csv
 #' write.csv(data, "data.csv", row.names = FALSE)
 #' write.csv(sample.information, "sample.information.csv", row.names = FALSE)
 #'#Import data
-#'met.data <- ImportData(data = "data.csv",
-#'                       sample.information = "sample.information.csv",
-#'                       polarity = "positive")
-
+#'met.data <- ImportData()
 
 ImportData <- function(data = "data.csv",
                        sample.information = "sample.information.csv",
@@ -162,12 +154,14 @@ ImportData <- function(data = "data.csv",
     ))
   }
 
-  ## the sample order form sample information vs the sample order form sample name
+  ## the sample order form sample information
+  ## vs the sample order form sample name
   sample.name.from.sample.information <- sample.information[, 1]
   sample.order.from.sample.information <-
     substr(x = sample.name.from.sample.information,
            start = 7,
-           stop = unlist(lapply(gregexpr("_", sample.name.from.sample.information), function(x) {
+  stop = unlist(lapply(gregexpr("_", sample.name.from.sample.information),
+                       function(x) {
              x[1][1]
            })) - 1)
 
@@ -176,7 +170,8 @@ ImportData <- function(data = "data.csv",
   if (length(sample.different.index) != 0)
   {
     print(sample.information[sample.different.index, c(1, 2)])
-    stop("The sample order from data and form sample information are different.")
+    stop("The sample order from data and from
+         sample information are different.")
   }
 
   if (hasQC == "no") {
@@ -232,20 +227,24 @@ ImportData <- function(data = "data.csv",
   sample.name.from.sample.information <- sample.information[, 1]
   sample.name.from.data <-
     substr(sample.name.from.data,
-           start = unlist(lapply(gregexpr("_", sample.name.from.data), function(x) {
+           start = unlist(lapply(gregexpr("_", sample.name.from.data),
+                                 function(x) {
              x[1][1]
            })) + 1,
-           stop = unlist(lapply(gregexpr("_", sample.name.from.data), function(x) {
+           stop = unlist(lapply(gregexpr("_", sample.name.from.data),
+                                function(x) {
              x[2][1]
            })) - 1)
 
   sample.name.from.sample.information <-
     substr(
       sample.name.from.sample.information,
-      start = unlist(lapply(gregexpr("_", sample.name.from.sample.information), function(x) {
+      start = unlist(lapply(gregexpr("_", sample.name.from.sample.information),
+                            function(x) {
         x[1][1]
       })) + 1,
-      stop = unlist(lapply(gregexpr("_", sample.name.from.sample.information), function(x) {
+      stop = unlist(lapply(gregexpr("_", sample.name.from.sample.information),
+                           function(x) {
         x[2][1]
       })) - 1
     )
@@ -287,38 +286,6 @@ ImportData <- function(data = "data.csv",
     colnames(tags)[1] <- "polarity"
   }
   # browser()
-  #S4 class
-  setClass("MetFlowData",
-           representation(
-             subject = "matrix",
-             qc = "matrix",
-             tags = "matrix",
-             tags.old = "matrix",
-             subject.info = "matrix",
-             qc.info = "matrix",
-             subject.order = "numeric",
-             qc.order = "numeric",
-             ## some preprocessing information
-             mv.imputation = "character",
-             imputation.method = "character",
-             zero.filter = "character",
-             zero.filter.criteria = "character",
-             normalization = "character",
-             normalization.method = "character",
-             data.integration = "character",
-             data.integration.method = "character",
-             hasIS = "character",
-             hasQC = "character",
-             peak.identification = "character",
-             foldchange = "character",
-             marker.selection.condition = "character",
-             mv.filter = "character",
-             mv.filter.criteria = "character",
-             univariate.test = "character",
-             qc.outlier.filter = "character",
-             subject.outlier.filter = "character"
-           )
-  )
 
   MetFlowData <- new("MetFlowData",
                      subject = as.matrix(subject),
@@ -349,29 +316,7 @@ ImportData <- function(data = "data.csv",
                      qc.outlier.filter = "no",
                      subject.outlier.filter = "no")
 
-
-  # MetFlowData <- list(
-  #   subject = subject,
-  #   qc = qc,
-  #   tags = tags,
-  #   subject.info = subject.info,
-  #   qc.info = qc.info,
-  #   subject.order = subject.order,
-  #   qc.order = qc.order,
-  #   ## some preprocessing information
-  #   mv.imputation = mv.imputation,
-  #   imputation.method = imputation.method,
-  #   zero.filter = "no",
-  #   zero.filter.criteria = "no",
-  #   qc.outlier.filter = "no",
-  #   normalization = "no",
-  #   normalization.method = "no",
-  #   data.integration = "no",
-  #   data.integration.method = "no",
-  #   hasIS = hasIS,
-  #   hasQC = hasQC,
-  #   peak.identification = peak.identification
-  # )
-  # class(MetFlowData) <- "MetFlowData"
   return(MetFlowData)
 }
+
+

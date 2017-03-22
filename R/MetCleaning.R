@@ -1,6 +1,6 @@
 #' @title MetCleaning
-#' @description A whole work flow for high throughput MS based metabolomics data
-#'cleaning.
+#' @description A whole work flow for high throughput
+#' MS based metabolomics data cleaning.
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
 #' @param data Data name for analysis. Default is "data.csv". Data are csv
@@ -20,15 +20,16 @@
 #' @param normalization Data normalization or not? Default is TRUE.
 #' @param integration Data integration or not? Default is TRUE.
 #' @param qc.outlier.filter Filter QC outliers or not? Default is TRUE.
-#' @param subject.outlier.filter Filter subject outliers or not? Default is TRUE.
+#' @param subject.outlier.filter Filter subject outliers or not?
+#' Default is TRUE.
 #' @param obs.mv.cutoff The observation MV ratio cutoff.
 #' @param var.mv.cutoff The variable MV ratio cutoff.
 #' @param obs.zero.cutoff The observation zero ratio cutoff.
 #' @param var.zero.cutoff The variable zero ratio cutoff.
 #' @param imputation.method Which imputation method you want to use? It
 #' contains "knn", "rf" (missForest), "mean", "median", "zero", "minium",
-#' "bpca" (BPCA), "svd" (SVD) and "ppca" (PPCA). Default is "knn". The detial of
-#' this method can be find in detail and reference paperes.
+#' "bpca" (BPCA), "svd" (SVD) and "ppca" (PPCA). Default is "knn".
+#' The detial of this method can be find in detail and reference paperes.
 #' @param k See ?impute.knn
 #' @param rowmax See ?impute.knn
 #' @param colmax See ?impute.knn
@@ -121,7 +122,7 @@ MetCleaning <- function(#ImportData para
 
   options(warn = -1)
 
-  #----------------------------------------------------------------------------
+  #--------------------------------------------------------------------------
   #read data
   cat("Importing data...\n")
 
@@ -145,7 +146,7 @@ MetCleaning <- function(#ImportData para
   batch <- unique(met.data@subject.info[, 4])
   subject <- met.data@subject
 
-  #----------------------------------------------------------------------------
+  #-------------------------------------------------------------------------
   if (sum(is.na(subject)) != 0) {
     MZoverview(
       MetFlowData = met.data,
@@ -155,7 +156,7 @@ MetCleaning <- function(#ImportData para
 
     if (mv.filter) {
       cat(
-        "---------------------------------------------------------------------\n"
+        "------------------------------------------------------------------\n"
       )
       cat("Missing values filter...\n")
       #filter mv
@@ -172,7 +173,7 @@ MetCleaning <- function(#ImportData para
            file = file.path(path.inter, "met.data.mv.filter"))
     }
 
-    cat("---------------------------------------------------------------------\n")
+    cat("---------------------------------------------------------------\n")
     cat("Missing values imputation...\n")
     #mv imputation
     met.data <- MVimputation(
@@ -201,7 +202,7 @@ MetCleaning <- function(#ImportData para
   )
 
   if (zero.filter) {
-    cat("---------------------------------------------------------------------\n")
+    cat("------------------------------------------------------------------\n")
     cat("Zero filter...\n")
     #filter zero
     met.data <- MZfilter(
@@ -217,7 +218,7 @@ MetCleaning <- function(#ImportData para
          file = file.path(path.inter, "met.data.zero.filter"))
   }
 
-  cat("---------------------------------------------------------------------\n")
+  cat("------------------------------------------------------------------\n")
   cat("Peak identification...\n")
   #peak identification
   if (any(dir() == "peak identification")) {
@@ -260,7 +261,7 @@ MetCleaning <- function(#ImportData para
 
 
   if (qc.outlier.filter) {
-    cat("---------------------------------------------------------------------\n")
+    cat("------------------------------------------------------------------\n")
     cat("QC outlier filtering...\n")
     #QC outlier
     if (all(dir("intermediate") != "met.data.qc.outlier.filter")) {
@@ -279,7 +280,7 @@ MetCleaning <- function(#ImportData para
   }
 
   if (normalization) {
-    cat("---------------------------------------------------------------------\n")
+    cat("------------------------------------------------------------------\n")
     cat("Data normalization...\n")
     ##Data Normalization
     if (length(batch) > 1) {
@@ -306,7 +307,7 @@ MetCleaning <- function(#ImportData para
   }
 
   if (subject.outlier.filter) {
-    cat("---------------------------------------------------------------------\n")
+    cat("------------------------------------------------------------------\n")
     cat("Subject outlier filtering...\n")
     #subject outlier
     if (all(dir("intermediate") != "met.data.subject.outlier.filter")) {
@@ -327,7 +328,7 @@ MetCleaning <- function(#ImportData para
   }
 
   if (integration) {
-    cat("---------------------------------------------------------------------\n")
+    cat("------------------------------------------------------------------\n")
     cat("Data integration...\n")
 
     if (length(batch) > 1) {
@@ -352,7 +353,7 @@ MetCleaning <- function(#ImportData para
 
     if (met.plot) {
       cat(
-        "---------------------------------------------------------------------\n"
+        "------------------------------------------------------------------\n"
       )
       cat("Metabolite plot...\n")
       #metabolite plot
@@ -365,7 +366,7 @@ MetCleaning <- function(#ImportData para
   }
   cat("\n")
   if (zero.filter) {
-    cat("---------------------------------------------------------------------\n")
+    cat("------------------------------------------------------------------\n")
     cat("RSD overview...\n")
     #RSD distribution
     RSDoverview(
@@ -393,7 +394,7 @@ MetCleaning <- function(#ImportData para
   #save data
   met.data.after.pre <- met.data
   save(met.data.after.pre, file = file.path(path, "met.data.after.pre"))
-  cat("---------------------------------------------------------------------\n")
+  cat("------------------------------------------------------------------\n")
   cat("MetCleaning is done.\n")
   options(warn = 0)
 }
@@ -468,7 +469,8 @@ RSDoverview <- function(MetFlowData.before = MetFlowData1,
     )
     abline(h = 30, lty = 2)
     legend("topleft",
-           paste("RSD<30%: ", round(sum(QC.rsd < 30) / length(QC.rsd), 4) * 100, "%"),
+           paste("RSD<30%: ",
+                 round(sum(QC.rsd < 30) / length(QC.rsd), 4) * 100, "%"),
            bty = "n",
            cex = 1.3)
 
@@ -495,7 +497,8 @@ RSDoverview <- function(MetFlowData.before = MetFlowData1,
     )
     abline(h = 30, lty = 2)
     legend("topleft",
-           paste("RSD<30%: ", round(sum(QC.rsd < 30) / length(QC.rsd), 4) * 100, "%"),
+           paste("RSD<30%: ",
+                 round(sum(QC.rsd < 30) / length(QC.rsd), 4) * 100, "%"),
            bty = "n",
            cex = 1.3)
 
@@ -529,7 +532,8 @@ RSDoverview <- function(MetFlowData.before = MetFlowData1,
   )
   abline(h = 30, lty = 2)
   legend("topleft",
-         paste("RSD<30%: ", round(sum(qc.rsd < 30) / length(qc.rsd), 4) * 100, "%"),
+         paste("RSD<30%: ",
+               round(sum(qc.rsd < 30) / length(qc.rsd), 4) * 100, "%"),
          bty = "n",
          cex = 1.3)
 
@@ -553,7 +557,8 @@ RSDoverview <- function(MetFlowData.before = MetFlowData1,
   )
   abline(h = 30, lty = 2)
   legend("topleft",
-         paste("RSD<30%: ", round(sum(qc.rsd < 30) / length(qc.rsd), 4) * 100, "%"),
+         paste("RSD<30%: ",
+               round(sum(qc.rsd < 30) / length(qc.rsd), 4) * 100, "%"),
          bty = "n",
          cex = 1.3)
 

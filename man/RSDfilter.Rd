@@ -24,11 +24,7 @@ recommen the cutoff value of RSD should be set as 20\% in LC-MS
 data and 30\% in GC-MS data.
 }
 \examples{
-#load the demo data
 data(met.data, package = "MetCleaning")
-##create a folder for demo
-dir.create("demo")
-setwd("demo")
 new.met.data <- RSDfilter(met.data)
 }
 \author{

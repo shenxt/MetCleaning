@@ -3,9 +3,11 @@
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
 #' @param MetFlowData MetFlowData
-#' @param feature.distribution Draw a rt vs mz vs intensity plot or not. Default is TRUE.
+#' @param feature.distribution Draw a rt vs mz vs intensity plot or not.
+#' Default is TRUE.
 #' @param path Work directory.
-#' @return Data overview_RT vs mz vs intensity.pdf:  A RT vs mz vs intensity plot.
+#' @return Data overview_RT vs mz vs intensity.pdf:
+#' A RT vs mz vs intensity plot.
 #' @return Data overview.txt: A overview information for MetFlowData.
 #' @examples
 #' \donttest{
@@ -72,9 +74,13 @@ DataOverview <- function(MetFlowData,
     # library(ggplot2)
     par(mar = c(5, 5, 4, 2))
     rt.mz.int <-
-      ggplot2::ggplot(data = rt.mz.int, aes(x = rt, y = mz, colour = int.log)) + geom_point(alpha = 0.3) +
+      ggplot2::ggplot(data = rt.mz.int,
+                      aes(x = rt, y = mz, colour = int.log)) +
+      geom_point(alpha = 0.3) +
       scale_color_gradient(low = "green", high = "red") +
-      labs(x = "Retention time (RT)", y = "Mass to charge ratio (m/z)", colour = "log10(intensity)") +
+      labs(x = "Retention time (RT)",
+           y = "Mass to charge ratio (m/z)",
+           colour = "log10(intensity)") +
       theme(axis.title.x = element_text(size = 14),
             axis.title.y = element_text(size = 14)) +
       theme(axis.text.x = element_text(size = 10),

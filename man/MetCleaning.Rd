@@ -42,8 +42,8 @@ default is positive.}
 
 \item{imputation.method}{Which imputation method you want to use? It
 contains "knn", "rf" (missForest), "mean", "median", "zero", "minium",
-"bpca" (BPCA), "svd" (SVD) and "ppca" (PPCA). Default is "knn". The detial of
-this method can be find in detail and reference paperes.}
+"bpca" (BPCA), "svd" (SVD) and "ppca" (PPCA). Default is "knn".
+The detial of this method can be find in detail and reference paperes.}
 
 \item{k}{See ?impute.knn}
 
@@ -86,7 +86,8 @@ default is svr. Please see the details.}
 
 \item{qc.outlier.filter}{Filter QC outliers or not? Default is TRUE.}
 
-\item{subject.outlier.filter}{Filter subject outliers or not? Default is TRUE.}
+\item{subject.outlier.filter}{Filter subject outliers or not?
+Default is TRUE.}
 
 \item{integration}{Data integration or not? Default is TRUE.}
 }
@@ -94,8 +95,8 @@ default is svr. Please see the details.}
 All the results can be got form other functions and instruction.
 }
 \description{
-A whole work flow for high throughput MS based metabolomics data
-cleaning.
+A whole work flow for high throughput
+MS based metabolomics data cleaning.
 }
 \details{
 The manual of MetCleaning can be found in \href{https://github.com/jaspershen/MetCleaning/blob/master/vignettes/MetCleaning.pdf}{github}

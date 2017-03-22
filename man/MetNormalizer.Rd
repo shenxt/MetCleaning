@@ -22,7 +22,8 @@ MetNormalizer(filename = "Metabolomics data", polarity = "none",
 
 \item{filter}{Default is "no".}
 
-\item{normalization.method}{svr: SVR normalization; loess: LOESS normalization; all: SVR&LOESS.Default is svr.}
+\item{normalization.method}{svr: SVR normalization;
+loess: LOESS normalization; all: SVR&LOESS.Default is svr.}
 
 \item{optimization}{Parameter optimization or not?.Default is TRUE.}
 
@@ -46,26 +47,32 @@ If multiple >= 2, the svr is built using top mutiple peaks correlated peaks.
 
 \item{datastyle}{Default is "tof".}
 
-\item{dimension1}{The data after normalization is given dimension or not. Defaulte is TRUE.}
+\item{dimension1}{The data after normalization is given dimension or not.
+Defaulte is TRUE.}
 
 \item{user}{Default is "other".}
 
 \item{path}{Directory}
 }
 \value{
-peakplot: A folder contains all the peaks plot before and sfter SVR normalization.
+peakplot: A folder contains all the peaks plot before and sfter
+SVR normalization.
 
 data svr nor.csv: A csv data after SVR normalization.
 
 normalization file: The intermediate data.
 
-RSD compare plot.jpeg: A figure show the comparing of RSDs of peaks before and after SVR normalization.
+RSD compare plot.jpeg: A figure show the comparing of
+RSDs of peaks before and after SVR normalization.
 
-RSD distribution.csv: RSD distributions of data before and after SVR normalization.
+RSD distribution.csv: RSD distributions of data before
+and after SVR normalization.
 
-RSD distribution.jpeg: A figure show the RSD distributions before and after SVR normalization.
+RSD distribution.jpeg: A figure show the RSD distributions
+before and after SVR normalization.
 
-rsd.change.csv: A table show the RSDs of peaks before and after SVR normalization.
+rsd.change.csv: A table show the RSDs of peaks before and
+after SVR normalization.
 }
 \description{
 Normalize data using different normalization methods.

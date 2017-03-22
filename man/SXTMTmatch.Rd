@@ -7,9 +7,11 @@
 SXTMTmatch(data1, data2, mz.tolerance = 25, rt.tolerance = 180)
 }
 \arguments{
-\item{data1}{First data for matching, first column must be mz and seconod column must be rt.}
+\item{data1}{First data for matching, first column must be mz
+and seconod column must be rt.}
 
-\item{data2}{Second data for matching, first column must be mz and seconod column must be rt.}
+\item{data2}{Second data for matching, first column must be mz
+and seconod column must be rt.}
 
 \item{mz.tolerance}{mz tolerance for ms1 and ms2 data matching.}
 

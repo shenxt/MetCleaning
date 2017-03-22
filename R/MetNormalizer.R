@@ -9,7 +9,8 @@
 #' @param minfrac.qc Default is 0.
 #' @param minfrac.sample Default is 0.
 #' @param filter Default is "no".
-#' @param normalization.method svr: SVR normalization; loess: LOESS normalization; all: SVR&LOESS.Default is svr.
+#' @param normalization.method svr: SVR normalization;
+#' loess: LOESS normalization; all: SVR&LOESS.Default is svr.
 #' @param optimization Parameter optimization or not?.Default is TRUE.
 #' @param begin The begin of span to optimize.
 #' @param end The end of span to optimize.
@@ -24,14 +25,20 @@
 #' @param datastyle Default is "tof".
 #' @param user Default is "other".
 #' @param path Directory
-#' @param dimension1 The data after normalization is given dimension or not. Defaulte is TRUE.
-#' @return peakplot: A folder contains all the peaks plot before and sfter SVR normalization.
+#' @param dimension1 The data after normalization is given dimension or not.
+#' Defaulte is TRUE.
+#' @return peakplot: A folder contains all the peaks plot before and sfter
+#' SVR normalization.
 #' @return data svr nor.csv: A csv data after SVR normalization.
 #' @return normalization file: The intermediate data.
-#' @return RSD compare plot.jpeg: A figure show the comparing of RSDs of peaks before and after SVR normalization.
-#' @return RSD distribution.csv: RSD distributions of data before and after SVR normalization.
-#' @return RSD distribution.jpeg: A figure show the RSD distributions before and after SVR normalization.
-#' @return rsd.change.csv: A table show the RSDs of peaks before and after SVR normalization.
+#' @return RSD compare plot.jpeg: A figure show the comparing of
+#' RSDs of peaks before and after SVR normalization.
+#' @return RSD distribution.csv: RSD distributions of data before
+#' and after SVR normalization.
+#' @return RSD distribution.jpeg: A figure show the RSD distributions
+#' before and after SVR normalization.
+#' @return rsd.change.csv: A table show the RSDs of peaks before and
+#' after SVR normalization.
 
 MetNormalizer <- function(filename = "Metabolomics data",
                           polarity = "none",
@@ -373,7 +380,8 @@ SXTloessNor <- function(sample,
   }
 
 
-  #following objects are the rsd of sample and QC before and after normalization
+  #following objects are the rsd of sample and QC before
+  #and after normalization
   sample.rsd <- apply(sample,2,rsd)
   sample.nor.rsd <- apply(sample.nor,2,rsd)
   QC.rsd <- apply(QC,2,rsd)
@@ -510,7 +518,8 @@ peakplot1 <-
       if (optimization) {
         legend(
           "topright",c(
-            sprintf("span: %s",best.span[i]),sprintf("degree: %s",best.degree[i])
+            sprintf("span: %s",best.span[i]),
+            sprintf("degree: %s",best.degree[i])
           ),bty = "n",
           cex = 1.3, pt.cex = 1.3
         )
@@ -571,7 +580,7 @@ peakplot2 <-
         ylab = "Intensity",
         main = sprintf('Peak %s',tags["name",i]),pch = 19,
         col = c(rep("royalblue",length(sample.order)),
-                rep("firebrick1",length(QC.order))),cex.lab = 1.3,cex.axis = 1.3
+            rep("firebrick1",length(QC.order))),cex.lab = 1.3,cex.axis = 1.3
       )
 
 
@@ -610,7 +619,8 @@ peakplot2 <-
         "top",c(
           sprintf("Sample RSD %.2f%s",sample.nor.rsd[i],"%"),
           sprintf("QC RSD %.2f%s",QC.nor.rsd[i],"%")
-        ),col = c("royalblue","firebrick1"),pch = c(19,19),horiz = TRUE,bty = "n"
+        ),col = c("royalblue","firebrick1"),pch = c(19,19),
+        horiz = TRUE,bty = "n"
       )
 
       dev.off()
@@ -644,13 +654,17 @@ compare.rsd <-
     colour2[(QC.nor.rsd / QC.rsd) == 1] <- "royalblue"
     colour2[(QC.nor.rsd / QC.rsd) < 1] <- "palegreen"
 
-    s.rsd.up <- sum(colour1 == "firebrick1",na.rm = TRUE) * 100 / length(colour1)
-    s.rsd.no <- sum(colour1 == "royalblue",na.rm = TRUE) * 100 / length(colour1)
+    s.rsd.up <-
+      sum(colour1 == "firebrick1",na.rm = TRUE) * 100 / length(colour1)
+    s.rsd.no <-
+      sum(colour1 == "royalblue",na.rm = TRUE) * 100 / length(colour1)
     s.rsd.down <-
       sum(colour1 == "palegreen",na.rm = TRUE) * 100 / length(colour1)
 
-    q.rsd.up <- sum(colour2 == "firebrick1",na.rm = TRUE) * 100 / length(colour2)
-    q.rsd.no <- sum(colour2 == "royalblue",na.rm = TRUE) * 100 / length(colour2)
+    q.rsd.up <-
+      sum(colour2 == "firebrick1",na.rm = TRUE) * 100 / length(colour2)
+    q.rsd.no <-
+      sum(colour2 == "royalblue",na.rm = TRUE) * 100 / length(colour2)
     q.rsd.down <-
       sum(colour2 == "palegreen",na.rm = TRUE) * 100 / length(colour2)
 
@@ -734,7 +748,8 @@ compare.rsd <-
     par(mar = c(8,8,4,2))
     par(mgp = c(5,1,0))
     barplot(
-      rsd.dis[1:2,],horiz = TRUE,beside = TRUE,col = c("firebrick1", "palegreen"),
+      rsd.dis[1:2,],horiz = TRUE,
+      beside = TRUE,col = c("firebrick1", "palegreen"),
       names.arg = paste(seq(0,190,10),seq(10,200,10),sep = "-"),
       xlab = "Feature Percentage (%)",
       ylab = "RSD range (%)",
@@ -748,7 +763,8 @@ compare.rsd <-
     par(mar = c(8,8,4,2))
     par(mgp = c(5,1,0))
     barplot(
-      rsd.dis[3:4,],horiz = TRUE,beside = TRUE,col = c("firebrick1", "palegreen"),
+      rsd.dis[3:4,],horiz = TRUE,
+      beside = TRUE,col = c("firebrick1", "palegreen"),
       names.arg = paste(seq(0,190,10),seq(10,200,10),sep = "-"),
       xlab = "Feature Percentage (%)",
       ylab = "RSD range (%)",
@@ -804,7 +820,8 @@ SXTgetdata <- function(data, filename = "SXT data", polarity = "positive",
   data <- t(data)
 
   if (user == "other") {
-    worklist <- read.csv(file.path(path,"worklist.csv"),stringsAsFactors = FALSE,
+    worklist <-
+      read.csv(file.path(path,"worklist.csv"),stringsAsFactors = FALSE,
                          check.names = FALSE)
     name <- worklist[,1]
     ###judge if worklist name contains POS or NEG
@@ -829,7 +846,7 @@ SXTgetdata <- function(data, filename = "SXT data", polarity = "positive",
     sample <- data[match(sample.name,rownames(data)),]
     qc <- data[match(qc.name,rownames(data)),]
     tags <-
-      data[-c(match(sample.name,rownames(data)),match(qc.name,rownames(data))),]
+    data[-c(match(sample.name,rownames(data)),match(qc.name,rownames(data))),]
     sampleorder <- all.order[sample.index]
     qcorder <- all.order[qc.index]
   }

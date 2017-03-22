@@ -105,9 +105,10 @@ MZfilter <- function(MetFlowData,
     cat("\n")
     subject.remove <-
       readline(
-        "Which subject you want to remove(please type the index of subject sample,
-        and separate them using comma,
-        if you don't want to remove any subject, please type n):"
+        "Which subject you want to remove(
+         please type the index of subject sample,
+         and separate them using comma,
+         if you don't want to remove any subject, please type n):"
       )
     if (subject.remove == "n") {
       subject <- subject

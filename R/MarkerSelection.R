@@ -12,7 +12,8 @@
 #' @param p.cutoff The cutoff of p value.
 #' @param vip.cutoff The cutoff of VIP value.
 #' @param vip VIP.
-#' @return MetFlowData: MetFlowData which has been added is.marker information into tags.
+#' @return MetFlowData: MetFlowData which has been added is.
+#' marker information into tags.
 #' @return maker.information.csv: The marker information.
 #' @examples
 #' \donttest{

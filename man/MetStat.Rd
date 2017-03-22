@@ -38,9 +38,11 @@ defaulit is "auto".}
 
 \item{to}{Which the ratio you want? default is case/control.}
 
-\item{ratio}{Which ratio you want to use to calculate fold change. median ot mean.}
+\item{ratio}{Which ratio you want to use to calculate fold
+change. median ot mean.}
 
-\item{test.method}{Which test you want to use? "t" means stutent t test and "wilcox" mean wilcoxon test.}
+\item{test.method}{Which test you want to use? "t" means
+stutent t test and "wilcox" mean wilcoxon test.}
 
 \item{adjust.method}{p value correction method. See p.adjust function.}
 

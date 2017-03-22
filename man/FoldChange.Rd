@@ -11,7 +11,8 @@ FoldChange(MetFlowData, to = c("case", "control"), ratio = "median")
 
 \item{to}{Which the ratio you want? default is case/control.}
 
-\item{ratio}{Which ratio you want to use to calculate fold change. median ot mean.}
+\item{ratio}{Which ratio you want to use to calculate fold
+change. median ot mean.}
 }
 \value{
 MetFlowData which has been added fold change information in tags.
@@ -20,13 +21,11 @@ MetFlowData which has been added fold change information in tags.
 Calculate fold change for MetFlowData.
 }
 \examples{
-\donttest{
 #load the demo data
 data(met.data, package = "MetCleaning")
 ## run
 new.met.data <- FoldChange(MetFlowData = met.data,
                           to = c("1", "0"))
-                          }
 }
 \author{
 Xiaotao Shen

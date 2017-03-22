@@ -2,8 +2,10 @@
 #' @description Match two data according to mz and RT.
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
-#' @param data1 First data for matching, first column must be mz and seconod column must be rt.
-#' @param data2 Second data for matching, first column must be mz and seconod column must be rt.
+#' @param data1 First data for matching, first column must be mz
+#' and seconod column must be rt.
+#' @param data2 Second data for matching, first column must be mz
+#' and seconod column must be rt.
 #' @param mz.tolerance mz tolerance for ms1 and ms2 data matching.
 #' @param rt.tolerance RT tolerance for ms1 and ms2 data matching.
 #' @return Return a result which give the matching result of data1 and database.

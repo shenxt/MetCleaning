@@ -16,7 +16,8 @@ MVimputation(MetFlowData, imputation.method = "knn", k = 10, rowmax = 0.5,
 
 \item{imputation.method}{Which imputation method you want to use? It
 contains "knn", "rf" (missForest), "mean", "median", "zero", "minium",
-"bpca" (BPCA), "svd" (SVD) and "ppca" (PPCA). Default is "knn". The detial of
+"bpca" (BPCA), "svd" (SVD) and "ppca" (PPCA). Default is "knn".
+The detial of
 this method can be find in detail and reference paperes.}
 
 \item{k}{See ?impute.knn}

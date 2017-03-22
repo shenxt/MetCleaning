@@ -15,8 +15,10 @@
 #' @param plsmethod Default is "plsreg".
 #' @param fc Default is TRUE.
 #' @param to Which the ratio you want? default is case/control.
-#' @param ratio Which ratio you want to use to calculate fold change. median ot mean.
-#' @param test.method Which test you want to use? "t" means stutent t test and "wilcox" mean wilcoxon test.
+#' @param ratio Which ratio you want to use to calculate fold
+#'  change. median ot mean.
+#' @param test.method Which test you want to use? "t" means
+#' stutent t test and "wilcox" mean wilcoxon test.
 #' @param adjust.method p value correction method. See p.adjust function.
 #' @param foldchange which foldchange information your want to use?
 #' @param p which p value information your want to use?
@@ -137,7 +139,7 @@ MetStat <- function(MetFlowData,
 
   ##ReChangeGroup
   if (new.group) {
-    cat("---------------------------------------------------------------------\n")
+    cat("-----------------------------------------------------------------\n")
     cat("Change group information\n")
     if (all(dir() != "new.group.csv"))
       stop("No new.group information.")
@@ -149,7 +151,7 @@ MetStat <- function(MetFlowData,
   }
 
   if (pca.analysis) {
-    cat("---------------------------------------------------------------------\n")
+    cat("------------------------------------------------------------------\n")
     cat("PCA analysis\n")
     ##PCA analysis
     PCAanalysis(
@@ -164,7 +166,7 @@ MetStat <- function(MetFlowData,
   }
 
   if (pls.analysis) {
-    cat("---------------------------------------------------------------------\n")
+    cat("------------------------------------------------------------------\n")
     cat("PLS analysis\n")
     ##PLS analysis
     PLSanalysis(
@@ -192,7 +194,7 @@ MetStat <- function(MetFlowData,
   met.data.vip <- met.data
   save(met.data.vip, file = file.path(path.inter, "met.data.vip"))
 
-  cat("---------------------------------------------------------------------\n")
+  cat("------------------------------------------------------------------\n")
   cat("Heat map...\n")
   # browser()
   HeatMap(
@@ -206,7 +208,7 @@ MetStat <- function(MetFlowData,
 
   if (fc) {
     ##FoldChange
-    cat("---------------------------------------------------------------------\n")
+    cat("------------------------------------------------------------------\n")
     met.data <- FoldChange(MetFlowData = met.data,
                            to = to,
                            ratio = ratio)
@@ -217,7 +219,7 @@ MetStat <- function(MetFlowData,
 
   if (uni.test) {
     ##UnivariateTest
-    cat("---------------------------------------------------------------------\n")
+    cat("------------------------------------------------------------------\n")
     cat("Univariate test\n")
     met.data <- UnivariateTest(
       MetFlowData = met.data,
@@ -232,7 +234,7 @@ MetStat <- function(MetFlowData,
   }
 
   ##MarkerSelection
-  cat("---------------------------------------------------------------------\n")
+  cat("------------------------------------------------------------------\n")
   cat("Marker selection\n")
   met.data <- MarkerSelection(
     MetFlowData = met.data,
@@ -263,7 +265,7 @@ MetStat <- function(MetFlowData,
        file = file.path(path.inter, "met.data.after.stat"))
 
   ##VolcanoPlot
-  cat("---------------------------------------------------------------------\n")
+  cat("------------------------------------------------------------------\n")
   cat("Draw volcano plot\n")
   VolcanoPlot(
     MetFlowData = met.data,
@@ -278,7 +280,7 @@ MetStat <- function(MetFlowData,
   )
 
   ##MarkerShow
-  cat("---------------------------------------------------------------------\n")
+  cat("------------------------------------------------------------------\n")
   cat("Marker show\n")
   MarkerShow(
     MetFlowData = met.data,
@@ -287,6 +289,6 @@ MetStat <- function(MetFlowData,
   )
   options(warn = 0)
 
-  cat("---------------------------------------------------------------------\n")
+  cat("------------------------------------------------------------------\n")
   cat("MetStat is done.\n")
 }

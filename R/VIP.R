@@ -72,7 +72,8 @@ VIP <- function(MetFlowData,
   ncompa <- nrow(int) - 1
 
   if (plsmethod == "plsr") {
-    pls1 <- plsr(int.Y~int.scale,scale = FALSE,validation = "CV",ncomp = ncompa,method = "oscorespls")
+    pls1 <- plsr(int.Y~int.scale,scale = FALSE,
+                 validation = "CV",ncomp = ncompa,method = "oscorespls")
     save(pls1,file = "pls1")
 
     #########select the number of compents#################
@@ -107,9 +108,11 @@ VIP <- function(MetFlowData,
            bty = "n",cex = 1.3,pt.cex = 1.3)
     dev.off()
 
-    number<-readline("Please type number and press Enter  to continute:  ")
+    number<-readline("Please type number and
+                     press Enter  to continute:  ")
     while (!exists("number")|number=="") {cat("You must give a number to continute.\n")
-  number<-readline("Please type comps number value and press Enter  to continute: ")}
+  number<-
+    readline("Please type comps number value and press Enter  to continute: ")}
     number<-as.numeric(number)
 
     ##################construct final pls model###################
@@ -150,11 +153,12 @@ VIP <- function(MetFlowData,
 
     number <- readline("Please type number and press Enter  to continute:  ")
     while (!exists("number")|number=="") {cat("You must give a number to continute.\n")
-      number <- readline("Please type comps number value and press Enter  to continute: ")}
+      number <-
+    readline("Please type comps number value and press Enter  to continute: ")}
     number <- as.numeric(number)
 
     ##################construct final pls model###################
-    cat(paste("Construct PLS model with all peaks using",number,"comps ...","\n"))
+cat(paste("Construct PLS model with all peaks using",number,"comps ...","\n"))
     pls2 <- plsdepot::plsreg1(int.scale,Y,comps = number)
     pls.temp <- plsdepot::plsreg2(int.scale,int.dummy, comps = number)
     vip <- pls.temp$VIP
@@ -163,7 +167,7 @@ VIP <- function(MetFlowData,
 
   tags <- MetFlowData@tags
   tags <- data.frame(tags, vip)
-  MetFlowDatatags <- as.matrix(tags)
+  MetFlowData@tags <- as.matrix(tags)
   return(MetFlowData)
 }
 

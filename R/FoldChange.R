@@ -4,17 +4,16 @@
 #' \email{shenxt@@sioc.ac.cn}
 #' @param MetFlowData MetFlowData.
 #' @param to Which the ratio you want? default is case/control.
-#' @param ratio Which ratio you want to use to calculate fold change. median ot mean.
+#' @param ratio Which ratio you want to use to calculate fold
+#' change. median ot mean.
 #' @return MetFlowData which has been added fold change information in tags.
 #' @export
 #' @examples
-#' \donttest{
 #' #load the demo data
 #' data(met.data, package = "MetCleaning")
 #'## run
 #'new.met.data <- FoldChange(MetFlowData = met.data,
 #'                           to = c("1", "0"))
-#'                           }
 
 FoldChange <- function(MetFlowData,
                        to = c("case", "control"),

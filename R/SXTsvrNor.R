@@ -89,7 +89,8 @@ SXTsvrNor <- function(sample,
     x <- sd(x) * 100 / mean(x)
   }
 
-  #following objects are the rsd of sample and QC before and after normalization
+  #following objects are the rsd of sample
+  #and QC before and after normalization
   sample.rsd <- apply(sample, 2, rsd)
   sample.nor.rsd <- apply(sample.nor, 2, rsd)
   QC.rsd <- apply(QC, 2, rsd)

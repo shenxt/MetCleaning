@@ -12,11 +12,13 @@ GetWorklist(x = NULL, instrument = "Agilent", name = "worklist",
 \arguments{
 \item{x}{batch.design file.}
 
-\item{instrument}{Which instrument you use? "Agilent" or "AB", default is "Agilent".}
+\item{instrument}{Which instrument you use?
+"Agilent" or "AB", default is "Agilent".}
 
 \item{name}{The name of worklist.}
 
-\item{randommethod}{Which random method you want to use? "no", "position" or "injection". Default is "no".}
+\item{randommethod}{Which random method you want to use?
+"no", "position" or "injection". Default is "no".}
 
 \item{samplenumber}{Sample number.}
 

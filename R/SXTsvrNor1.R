@@ -30,7 +30,8 @@ SXTsvrNor1 <- function(sample,
   else{
     cat("rerun=TRUE\n")
     # Sys.sleep(1)
-    #svr normalization is time-cosuming so save this file and load if the rerun is FALSE
+    #svr normalization is time-cosuming so save this file
+    #and load if the rerun is FALSE
     cat("SVR normalization is finished: %\n")
     # Sys.sleep(1)
     QC.nor <- NULL
@@ -38,9 +39,9 @@ SXTsvrNor1 <- function(sample,
 
     data <- apply(rbind(sample, QC), 2, function(x) list(x))
     for (i in 1:ncol(QC)) {
-      all.cor <- unlist(lapply(data, function(x) {cor(data[[1]][[1]], x[[1]])}))
+    all.cor <- unlist(lapply(data, function(x) {cor(data[[1]][[1]], x[[1]])}))
       cor.peak <-
-        match(sort(all.cor, decreasing = TRUE)[2:(as.numeric(multiple)+1)], all.cor)
+  match(sort(all.cor, decreasing = TRUE)[2:(as.numeric(multiple)+1)], all.cor)
 
       if (multiple != 1) {
         svr.reg <- svm(QC[,cor.peak],QC[,i])
@@ -155,7 +156,8 @@ SXTsvrNor1 <- function(sample,
   }
 
   compare.rsd(
-    sample.rsd = sample.rsd,sample.nor.rsd = sample.nor.rsd,QC.rsd = QC.rsd,QC.nor.rsd =
+    sample.rsd = sample.rsd,
+    sample.nor.rsd = sample.nor.rsd,QC.rsd = QC.rsd,QC.nor.rsd =
       QC.nor.rsd,path = path1
   )
 

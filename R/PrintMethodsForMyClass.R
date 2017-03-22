@@ -1,3 +1,69 @@
+#' @title MetFlowData
+#' @description S4 class for data in MetCleaning.
+#' @author Xiaotao Shen
+#' \email{shenxt@@sioc.ac.cn}
+#' @export
+#' @slot subject Subject data.
+#' @slot qc QC data.
+#' @slot tags Peak information.
+#' @slot tags.old Old peak information.
+#' @slot subject.info Subject data information.
+#' @slot qc.info QC data information.
+#' @slot subject.order Subject data injection order.
+#' @slot qc.order QC injection order.
+#' @slot mv.imputation MV imputation or not.
+#' @slot imputation.method MV imputation method.
+#' @slot zero.filter Zero filtering or not.
+#' @slot zero.filter.criteria Zero filtering criteria.
+#' @slot normalization Normalization or not.
+#' @slot normalization.method Normalization method.
+#' @slot data.integration Data integration or not.
+#' @slot data.integration.method Data integration method.
+#' @slot hasIS Data has internal standard or not.
+#' @slot hasQC QC or not.
+#' @slot peak.identification Peak identification or not.
+#' @slot foldchange How to calculate fold change.
+#' @slot marker.selection.condition Marker selection condition.
+#' @slot mv.filter MV filtering or not.
+#' @slot mv.filter.criteria MV filtering condition.
+#' @slot univariate.test univariate test method.
+#' @slot qc.outlier.filter QC outlier filtering or not.
+#' @slot subject.outlier.filter Subject outlier filtering or not.
+#' @return MetFlowData
+
+setClass("MetFlowData",
+         representation(
+           subject = "matrix",
+           qc = "matrix",
+           tags = "matrix",
+           tags.old = "matrix",
+           subject.info = "matrix",
+           qc.info = "matrix",
+           subject.order = "numeric",
+           qc.order = "numeric",
+           ## some preprocessing information
+           mv.imputation = "character",
+           imputation.method = "character",
+           zero.filter = "character",
+           zero.filter.criteria = "character",
+           normalization = "character",
+           normalization.method = "character",
+           data.integration = "character",
+           data.integration.method = "character",
+           hasIS = "character",
+           hasQC = "character",
+           peak.identification = "character",
+           foldchange = "character",
+           marker.selection.condition = "character",
+           mv.filter = "character",
+           mv.filter.criteria = "character",
+           univariate.test = "character",
+           qc.outlier.filter = "character",
+           subject.outlier.filter = "character"
+         )
+)
+
+
 #' @title Print.MetFlowData
 #' @description Print method for class in MetProcesser.
 #' @author Xiaotao Shen
@@ -10,8 +76,6 @@
 #' data("met.data", package = "MetCleaning")
 #' met.data
 
-
-## MetFlowData
 setMethod("show", "MetFlowData",
           function(object){
             hasQC <- object@"hasQC"
