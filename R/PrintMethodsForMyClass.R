@@ -2,8 +2,7 @@
 #' @description Print method for class in MetProcesser.
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
-#' @param x MetFlowData.
-#' @param ... Other parameters for print.
+#' @param object MetFlowData.
 #' @return Print some information of class object in your screen.
 #' @export
 #' @seealso \code{\link{print}}

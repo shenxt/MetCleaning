@@ -55,12 +55,10 @@ MetNormalizer <- function(filename = "Metabolomics data",
                           user = "other",
                           path = ".") {
   options(warn = -1)
-   # browser()
   if (datastyle == "mrm") {
     multiple <- 1
   }
 
-  # browser()
   options(warn = -1)
   temp <- dir()
 
@@ -193,13 +191,11 @@ MetNormalizer <- function(filename = "Metabolomics data",
                        stringsAsFactors = FALSE, check.names = FALSE)
 
       cat("Getting data...\n")
-      # browser()
       SXTgetdata(
       data = data,filename = filename,
       polarity = polarity, path = path, user = user,
         datastyle = datastyle
       )
-      # browser()
       load(file.path(path,filename))
       cat("Filtering data...\n")
       SXTdatafilter(
@@ -285,7 +281,6 @@ SXTloessNor <- function(sample,
                         path = NULL
                         #parameters setting
 ){
-  # browser()
   if (is.null(path)) {
     path <- getwd()
   }
@@ -340,7 +335,6 @@ SXTloessNor <- function(sample,
       sample.nor1[is.infinite(unlist(sample.nor1))] <- 0
       sample.nor1[is.na(unlist(sample.nor1))] <- 0
       sample.nor1[which(unlist(sample.nor1) < 0)] <- 0
-      #browser()
 
       QC.nor <- cbind(QC.nor,QC.nor1)
       sample.nor <- cbind(sample.nor,sample.nor1)
@@ -735,7 +729,6 @@ compare.rsd <-
       paste(paste(seq(0,190,10),seq(10,200,10),sep = "-"),"%",sep = "")
     rownames(rsd.dis) <- c("sample","sample.nor","QC","QC.nor")
     # write.csv(rsd.dis,file.path(path,"RSD distribution.csv"))
-    # browser()
     pdf(file.path(path,"RSD distribution.pdf"),width = 14)
     layout(matrix(c(1,2),ncol = 2))
     par(mar = c(8,8,4,2))
@@ -778,7 +771,6 @@ SXTcbindposneg <- function(filename = "SXT data",path = NULL)
     path <- getwd()
   }
   file <- dir(path)
-  # browser()
   file.pos <- file[grep("POS",file)]
   file.neg <- file[grep("NEG",file)]
   sampleorder <- NA
@@ -806,7 +798,6 @@ SXTcbindposneg <- function(filename = "SXT data",path = NULL)
 ####get data function
 SXTgetdata <- function(data, filename = "SXT data", polarity = "positive",
                        path = NULL, user = "other",datastyle = "tof") {
-   # browser()
   if (is.null(path)) {
     path <- getwd()
   }
@@ -849,7 +840,6 @@ SXTgetdata <- function(data, filename = "SXT data", polarity = "positive",
     tags <- data[-grep("Sample",rownames(data)),]
   }
 
-# browser()
   ######data have positive or negative mode?
   if (polarity == "positive") {
     tags <- rbind(rep("POS", ncol(tags)), tags)
@@ -944,7 +934,6 @@ SXTdatafilter <- function(sample, qc, tags, sampleorder, qcorder,
                           path = NULL
                           #parameters setting
 ) {
-  # browser()
   #if all is TRUE, the not annotated peak are also regarded as monoisotopes
   if (is.null(path)) {
     path <- getwd()
@@ -992,7 +981,6 @@ SXTdatafilter <- function(sample, qc, tags, sampleorder, qcorder,
   minfrac.filter <- function(x, minfrac = 0.8) {
     ifelse(sum(x != 0,na.rm = TRUE) / length(x) >= minfrac,!0,!1)
   }
-  # browser()
   #use qc to filter sample, tags and qc
   sample <-
     sample[,apply(qc,2,function(x) {

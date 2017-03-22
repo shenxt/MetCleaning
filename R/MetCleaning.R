@@ -444,7 +444,7 @@ RSDoverview <- function(MetFlowData.before = MetFlowData1,
   )
   layout(matrix(c(1:2), ncol = 2))
   par(mar = c(5, 5, 4, 2))
-  for (i in 1:seq_along(qc.bef1)) {
+  for (i in seq_along(qc.bef1)) {
     #before
     QC <- qc.bef1[[i]]
     QC.rsd <- apply(QC, 1, function(x) {

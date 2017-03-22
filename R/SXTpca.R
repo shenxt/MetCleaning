@@ -5,10 +5,9 @@ SXTpca <- function(subject = NULL,
                    #used data
                    QC = FALSE,
                    scale.method = "auto",
-                   path = NULL) {
-  # browser()
-  if (is.null(path)) {
-    path <- getwd()
+                   path = ".") {
+  if (path != ".") {
+    dir.create(path)
   }
   if (any(is.na(subject)) |
       any(is.na(qc)))
@@ -26,7 +25,7 @@ SXTpca <- function(subject = NULL,
 
   #select the subject in info and need QC or not
   index <- NULL
-  for (i in 1:seq_along(info)) {
+  for (i in seq_along(info)) {
     index1 <- as.character(info[[i]])
     index <- c(index, index1)
   }
@@ -42,7 +41,7 @@ SXTpca <- function(subject = NULL,
 
 
   ##discard the subject's name who is not in the subject data
-  for (i in 1:seq_along(info)) {
+  for (i in seq_along(info)) {
     idx <- as.character(info[[i]])
     idx <- match(idx, colnames(subject))
     idx <- idx[!is.na(idx)]

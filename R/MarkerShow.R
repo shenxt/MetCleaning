@@ -76,14 +76,14 @@ MarkerShow <- function(MetFlowData,
   group.unique <- sort(unique(group))
 
   info <- list()
-  for (i in 1:seq_along(group.unique)) {
+  for (i in seq_along(group.unique)) {
     info[[i]] <- subject.name[which(group == group.unique[i])]
   }
   names(info) <- group.unique
 
   for (i in marker.index) {
     temp.data <- list()
-    for (j in 1:seq_along(info)) {
+    for (j in seq_along(info)) {
       temp.data[[j]] <-
         as.numeric(subject[i,])[match(info[[j]], subject.name)]
     }

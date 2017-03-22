@@ -114,19 +114,18 @@ threads = 2)
 
 ## load the demo data
 data(new.group, package = "MetCleaning")
-
+load("met.data.after.pre")
 ##create a folder for MetStat demo
 dir.create("Demo for MetStat")
 setwd("Demo for MetStat")
-
 ## export the demo data as csv
 write.csv(new.group, "new.group.csv", row.names = FALSE)
 
 ## run MetStat
 MetStat(MetFlowData = met.data.after.pre,
 new.group = TRUE,
-xlim1 = c(-40, 40),
-ylim1 = c(-40, 40))
+Group = c("0", "1"),
+to = c("1", "0"))
 }
 }
 \author{

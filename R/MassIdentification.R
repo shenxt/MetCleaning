@@ -51,7 +51,7 @@ MassIdentification <- function(MetFlowData,
 
   ## positive
   if (polarity == "positive") {
-    for (i in 1:seq_along(mz1)) {
+    for (i in seq_along(mz1)) {
       mz.error <- abs(mz1[i] - mz2.all.pos) * 10 ^ 6 / mz1[i]
       idx <-
         apply(mz.error, 2, function(x) {
@@ -72,7 +72,7 @@ MassIdentification <- function(MetFlowData,
 
         add <- c("+H", "+NH4", "+Na", "+H-2H2O", "+H-H2O", "+K")
 
-        for (j in 1:seq_along(idx)) {
+        for (j in seq_along(idx)) {
           hmdb.name1[[j]] <- HMDB.name[idx[[j]]]
           hmdb.id1[[j]] <- HMDB.ID[idx[[j]]]
           hmdb.formula1[[j]] <- HMDB.formula[idx[[j]]]
@@ -81,7 +81,7 @@ MassIdentification <- function(MetFlowData,
         }
 
         mass.error1 <-
-          lapply(c(1:seq_along(idx)), function(x) {
+          lapply(c(seq_along(idx)), function(x) {
             mz.error[idx[[x]], x]
           })
 
@@ -118,7 +118,7 @@ MassIdentification <- function(MetFlowData,
 
   ## negative
   if (polarity == "negative") {
-    for (i in 1:seq_along(mz1)) {
+    for (i in seq_along(mz1)) {
       mz.error <- abs(mz1[i] - mz2.all.neg) * 10 ^ 6 / mz1[i]
       idx <-
         apply(mz.error, 2, function(x) {
@@ -139,7 +139,7 @@ MassIdentification <- function(MetFlowData,
 
         add <- c("-H", "+Cl", "+CH3COO", "-H-H2O", "+F")
 
-        for (j in 1:seq_along(idx)) {
+        for (j in seq_along(idx)) {
           hmdb.name1[[j]] <- HMDB.name[idx[[j]]]
           hmdb.id1[[j]] <- HMDB.ID[idx[[j]]]
           hmdb.formula1[[j]] <- HMDB.formula[idx[[j]]]
@@ -148,7 +148,7 @@ MassIdentification <- function(MetFlowData,
         }
 
         mass.error1 <-
-          lapply(c(1:seq_along(idx)), function(x) {
+          lapply(c(seq_along(idx)), function(x) {
             mz.error[idx[[x]], x]
           })
 

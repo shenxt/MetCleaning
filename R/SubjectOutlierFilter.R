@@ -37,7 +37,6 @@
 SubjectOutlierFilter <- function(MetFlowData,
                                  CI = 0.95,
                                  path = ".") {
-  # browser()
   SubjectOutlierFiderData <- SubjectOutlierFinder(MetFlowData = MetFlowData,
                                         CI = CI,
                                         path = path)
@@ -48,7 +47,7 @@ SubjectOutlierFilter <- function(MetFlowData,
   data <- SplitBatch(MetFlowData = metData)
   subject1 <- data[[1]]
 
-  for (i in 1:seq_along(subject1)) {
+  for (i in seq_along(subject1)) {
     cat(paste("Batch",i))
     cat("\n")
     cat("-------------------------------------------\n")
@@ -90,8 +89,8 @@ SubjectOutlierFilter <- function(MetFlowData,
 
   ##remove subject information who have been removed from data
   subject.name <- colnames(subject2)
-  subject.info <- metData[["subject.info"]]
-  subject.order <- metData[["subject.order"]]
+  subject.info <- metData@subject.info
+  subject.order <- metData@subject.order
   subject.index <- which(is.na(match(subject.info[, 1], subject.name)))
 
   if (length(subject.index) != 0) {
@@ -99,10 +98,10 @@ SubjectOutlierFilter <- function(MetFlowData,
     subject.order <- subject.order[-subject.index]
   }
 
-  metData[["subject.info"]] <- subject.info
-  metData[["subject"]] <- subject2
-  metData[["subject.order"]] <- subject.order
-  metData[["subject.outlier.filter"]] <- "yes"
+  metData@subject.info <- as.matrix(subject.info)
+  metData@subject <- as.matrix(subject2)
+  metData@subject.order <- as.numeric(subject.order)
+  metData@subject.outlier.filter <- "yes"
   return(metData)
 
   }

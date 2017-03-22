@@ -118,7 +118,7 @@ PeakIdentification <- function(MetFlowData,
         read.csv(file.path(path, x), stringsAsFactors = FALSE)
       })
 
-    for (i in 1:seq_along(ms2)) {
+    for (i in seq_along(ms2)) {
       msms <- ms2[[i]]
       forward <- as.character(msms[, "hits..forward."])
       reverse <- as.character(msms[, "hits..reverse."])
@@ -186,7 +186,7 @@ PeakIdentification <- function(MetFlowData,
         index1 <- result[, "Index1"]
         index2 <- result[, "Index2"]
 
-        for (i in 1:seq_along(index1)) {
+        for (i in seq_along(index1)) {
           peak.forward[[index1[i]]] <-
             c(peak.forward[[index1[i]]], forward[index2[i]])
           peak.reverse[[index1[i]]] <-
@@ -243,7 +243,7 @@ PeakIdentification <- function(MetFlowData,
   ms1name <- as.character(ms1[, "name"])
 
 
-  for (i in 1:seq_len(peak.number)) {
+  for (i in seq_len(peak.number)) {
     if (is.null(peak.name[[i]]) | length(peak.name[[i]]) == 1) {
       next
     }
@@ -325,7 +325,7 @@ PeakIdentification <- function(MetFlowData,
 
 
   index <- NULL
-  for (i in 1:seq_len(peak.number)) {
+  for (i in seq_len(peak.number)) {
     if (is.null(peak.name[[i]])) {
       index <- index
     }
@@ -410,7 +410,7 @@ PeakIdentification <- function(MetFlowData,
     names(reverse) <- NULL
   lib <- rep(NA, peak.number)
   identification <- rep(NA, peak.number)
-  for (i in 1:seq_along(forward)) {
+  for (i in seq_along(forward)) {
     # cat(i);cat(" ")
     if (!is.na(forward[i]) | !is.na(reverse[i])) {
       if (!is.na(forward[i])) {
@@ -441,10 +441,10 @@ PeakIdentification <- function(MetFlowData,
   dup.ide <- unique(ide[duplicated(ide)])
 
   if (length(dup.ide) != 0) {
-    for (k in 1:seq_along(dup.ide)) {
+    for (k in seq_along(dup.ide)) {
       temp.idx <- grep(dup.ide[k], ide)
       ide[temp.idx] <-
-        paste(dup.ide[k], c(1:seq_along(temp.idx)), sep = "_")
+        paste(dup.ide[k], c(seq_along(temp.idx)), sep = "_")
     }
 
     identification[ide.idx] <- ide
@@ -484,7 +484,7 @@ PeakIdentification <- function(MetFlowData,
   path3 <- file.path(path1, "how select many to one")
   dir.create(path3)
 
-  for (i in 1:seq_along(marker.ms2name)) {
+  for (i in seq_along(marker.ms2name)) {
     temp <-
       marker[marker[, "ms2name"] == marker.ms2name[i], , drop = FALSE]
     if (nrow(temp) == 1) {
@@ -538,7 +538,7 @@ PeakIdentification <- function(MetFlowData,
 
 
   remain <- new.marker[, "remain"]
-  for (i in 1:seq_along(remain)) {
+  for (i in seq_along(remain)) {
     if (remain[i]) {
       next
     }

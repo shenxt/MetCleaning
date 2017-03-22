@@ -8,9 +8,7 @@
 \S4method{show}{MetFlowData}(object)
 }
 \arguments{
-\item{x}{MetFlowData.}
-
-\item{...}{Other parameters for print.}
+\item{object}{MetFlowData.}
 }
 \value{
 Print some information of class object in your screen.

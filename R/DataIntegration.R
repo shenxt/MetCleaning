@@ -77,14 +77,14 @@ DataIntegration <- function(MetFlowData,
   qc2 <- as.list(rep(NA, length(qc1)))
 
   if (method == "qc.mean") {
-    for (i in 1:seq_along(subject1)) {
+    for (i in seq_along(subject1)) {
       subject2[[i]] <- subject1[[i]] * ref.qc[[i]]
       qc2[[i]] <- qc1[[i]] * ref.qc[[i]]
     }
   }
 
   if (method == "subject.mean") {
-    for (i in 1:seq_along(subject1)) {
+    for (i in seq_along(subject1)) {
       subject2[[i]] <- subject1[[i]] * ref.subject[[i]]
       qc2[[i]] <- qc1[[i]] * ref.qc[[i]]
     }

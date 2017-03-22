@@ -170,7 +170,7 @@ DataNormalization <- function(MetFlowData,
 
   ##SVR normalization
   if (method == "svr") {
-    for (i in 1:seq_along(qc1)) {
+    for (i in seq_along(qc1)) {
       cat(paste("Batch", i))
       cat("\n")
       cat("------------------\n")
@@ -198,7 +198,7 @@ DataNormalization <- function(MetFlowData,
     }
     # browser()
     ## replace subject and qc
-    for (i in 1:seq_along(qc1)) {
+    for (i in seq_along(qc1)) {
       path.for.data <- file.path(path1, paste("Batch", i, "normalization"))
       sample.nor <- NA
       QC.nor <- NA
@@ -222,7 +222,7 @@ DataNormalization <- function(MetFlowData,
 
   ## LOESS normalization
   if (method == "loess") {
-    for (i in 1:seq_along(qc1)) {
+    for (i in seq_along(qc1)) {
       cat(paste("Batch", i))
       cat("\n")
       cat("------------------\n")

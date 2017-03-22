@@ -12,7 +12,7 @@
 
 SXTpaste<-function(x,sep=" ") {
   y<-NULL
-  for (i in 1:seq_along(x)) {
+  for (i in seq_along(x)) {
     if (i==1) {y<-paste(y,x[i],sep="")}
     else {y<-paste(y,x[i],sep=sep)}
   }

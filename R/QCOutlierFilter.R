@@ -38,7 +38,6 @@
 QCOutlierFilter <- function(MetFlowData,
                             CI = 0.95,
                             path = ".") {
-  # browser()
   QCOutlierFiderData <- QCOutlierFinder(MetFlowData = MetFlowData,
                                         CI = CI,
                                         path = path)
@@ -49,7 +48,7 @@ QCOutlierFilter <- function(MetFlowData,
   data <- SplitBatch(MetFlowData = metData)
   qc1 <- data[[2]]
 
-  for (i in 1:seq_along(qc1)) {
+  for (i in seq_along(qc1)) {
     cat(paste("Batch", i))
     cat("\n")
     cat("-----------------------\n")
@@ -65,7 +64,6 @@ QCOutlierFilter <- function(MetFlowData,
           and separate them using comma,
           if you don't want to remove any QC, please type n):"
         )
-      # browser()
       if (temp.idx == "n") {
         temp.qc <- temp.qc
       } else {
@@ -90,8 +88,8 @@ QCOutlierFilter <- function(MetFlowData,
 
   ##remove QC information who have been removed from data
   qc.name <- colnames(qc2)
-  qc.info <- metData[["qc.info"]]
-  qc.order <- metData[["qc.order"]]
+  qc.info <- metData@qc.info
+  qc.order <- metData@qc.order
   qc.index <- which(is.na(match(qc.info[, 1], qc.name)))
 
   if (length(qc.index) != 0) {
@@ -99,10 +97,10 @@ QCOutlierFilter <- function(MetFlowData,
     qc.order <- qc.order[-qc.index]
   }
 
-  metData[["qc.info"]] <- qc.info
-  metData[["qc"]] <- qc2
-  metData[["qc.order"]] <- qc.order
-  metData[["qc.outlier.filter"]] <- "yes"
+  metData@qc.info <- as.matrix(qc.info)
+  metData@qc <- as.matrix(qc2)
+  metData@qc.order <- as.numeric(qc.order)
+  metData@qc.outlier.filter <- "yes"
   return(metData)
 
   }

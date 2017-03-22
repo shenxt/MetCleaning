@@ -37,7 +37,7 @@ SXTMinifrac <- function(...,
   var.index <- list()
   obs.index <- list()
 
-  for (i in 1:seq_along(data)) {
+  for (i in seq_along(data)) {
     temp <- data[[i]]
     if (filter.item == "mv") {
       var.per <- apply(temp, 1, function(x) {
@@ -70,7 +70,7 @@ SXTMinifrac <- function(...,
     var.index <- union.for.this.foo(var.index)
   }
 
-  for (i in 1:seq_along(data)) {
+  for (i in seq_along(data)) {
     data[[i]] <- data[[i]][var.index, obs.index[[i]]]
   }
 
@@ -93,7 +93,7 @@ SXTMinifrac <- function(...,
 intersect.for.this.foo <- function(x) {
   # browser()
   index <- x[[1]]
-  for (i in 1:seq_along(x)) {
+  for (i in seq_along(x)) {
     index <- intersect(index, x[[i]])
   }
   return(index)
@@ -101,7 +101,7 @@ intersect.for.this.foo <- function(x) {
 
 union.for.this.foo <- function (x) {
   index <- x[[1]]
-  for (i in 1:seq_along(x)) {
+  for (i in seq_along(x)) {
     index <- union(index, x[[i]])
   }
   return(index)

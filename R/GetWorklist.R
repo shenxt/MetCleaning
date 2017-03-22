@@ -163,7 +163,7 @@ GetWorklist <- function(x = NULL,
     x <- x
   } else{
     x2 <- NULL
-    for (i in 1:seq_len(replication)) {
+    for (i in seq_len(replication)) {
       x1 <- paste(x, i, sep = "_")
       x2 <- cbind(x2, x1)
     }
@@ -336,7 +336,7 @@ GetWorklist <- function(x = NULL,
     rbind(Blank.QC, y))
   ###
   x2 <- NULL
-  for (i in 1:seq_along(x)) {
+  for (i in seq_along(x)) {
     x1 <- x[[i]]
     x2 <- rbind(x2, x1)
   }
@@ -363,7 +363,7 @@ GetWorklist <- function(x = NULL,
       rbind(Test.mix, y))
 
     x3 <- NULL
-    for (i in 1:seq_along(x)) {
+    for (i in seq_along(x)) {
       x1 <- x[[i]]
       x3 <- rbind(x3, x1)
     }

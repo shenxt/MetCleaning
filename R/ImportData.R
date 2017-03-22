@@ -303,7 +303,6 @@ ImportData <- function(data = "data.csv",
              imputation.method = "character",
              zero.filter = "character",
              zero.filter.criteria = "character",
-             qc.outlier.filter = "character",
              normalization = "character",
              normalization.method = "character",
              data.integration = "character",
@@ -315,7 +314,9 @@ ImportData <- function(data = "data.csv",
              marker.selection.condition = "character",
              mv.filter = "character",
              mv.filter.criteria = "character",
-             univariate.test = "character"
+             univariate.test = "character",
+             qc.outlier.filter = "character",
+             subject.outlier.filter = "character"
            )
   )
 
@@ -333,7 +334,6 @@ ImportData <- function(data = "data.csv",
                      imputation.method = imputation.method,
                      zero.filter = "no",
                      zero.filter.criteria = "no",
-                     qc.outlier.filter = "no",
                      normalization = "no",
                      normalization.method = "no",
                      data.integration = "no",
@@ -345,7 +345,9 @@ ImportData <- function(data = "data.csv",
                      marker.selection.condition = "no",
                      mv.filter = "no",
                      mv.filter.criteria = "no",
-                     univariate.test = "no")
+                     univariate.test = "no",
+                     qc.outlier.filter = "no",
+                     subject.outlier.filter = "no")
 
 
   # MetFlowData <- list(

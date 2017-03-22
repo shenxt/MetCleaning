@@ -25,7 +25,7 @@ SXTMTmatch <- function(data1,
     result <- NULL
     cat("finished: %")
     cat("\n")
-    for (i in 1:seq_along(mz1)) {
+    for (i in seq_along(mz1)) {
       mz.error <- abs(mz1[i] - mz2) * 10 ^ 6 / mz1[i]
       rt.error <- abs(rt1[i] - rt2)
       j <- which(mz.error <= mz.tolerance & rt.error <= rt.tolerance)

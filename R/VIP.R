@@ -24,7 +24,7 @@ VIP <- function(MetFlowData,
   if (is.null(qc)) {QC <- FALSE}
 
   info <- list()
-  for (i in 1:seq_along(group.unique)) {
+  for (i in seq_along(group.unique)) {
     info[[i]] <- subject.name[which(group == group.unique[i])]
   }
 
@@ -43,7 +43,7 @@ VIP <- function(MetFlowData,
 
   int <- t(subject)
   index <- NULL
-  for (i in 1:seq_along(info)) {
+  for (i in seq_along(info)) {
     index1 <- as.character(info[[i]])
     index <- c(index,index1)
   }
@@ -59,7 +59,7 @@ VIP <- function(MetFlowData,
   # browser()
   Y <- NULL
   label <- list()
-  for (i in 1:seq_along( info )) {
+  for (i in seq_along( info )) {
     label[[i]] <- match(as.character(info[[i]]),name)
     label[[i]] <- label[[i]][!is.na(label[[i]])]
     Y[label[[i]]] <- i-1

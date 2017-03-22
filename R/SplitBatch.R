@@ -45,7 +45,7 @@ SplitBatch <- function(MetFlowData) {
   subject.info1 <- list()
   qc.info1 <- list()
   # browser()
-  for (i in 1:seq_along(unique(subject.batch))) {
+  for (i in seq_along(unique(subject.batch))) {
     subject.name.for.this.batch <- subject.name[subject.batch == i]
     if (hasQC == "no") {
       qc.name.for.this.batch <- NULL
