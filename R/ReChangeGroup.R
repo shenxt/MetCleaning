@@ -42,9 +42,9 @@ ReChangeGroup <- function(MetFlowData,
   # browser()
   new.group <- read.csv(new.group, stringsAsFactors = FALSE, check.names = FALSE)
 
-  subject.info <- MetFlowData[['subject.info']]
-  subject <- MetFlowData[['subject']]
-  subject.order <- MetFlowData[['subject.order']]
+  subject.info <- MetFlowData@subject.info
+  subject <- MetFlowData@subject
+  subject.order <- MetFlowData@subject.order
 
   ##which sample you want to remove from the dataset
   remove.name <- as.character(new.group[,1][which(is.na(new.group[,"group"]))])
@@ -79,8 +79,8 @@ ReChangeGroup <- function(MetFlowData,
   index <- match(subject.name, new.subject.name)
   new.subject.info <- new.subject.info[index, ]
 
-  MetFlowData[["subject.info"]] <- new.subject.info
-  MetFlowData[["subject"]] <- subject
-  MetFlowData[["subject,order"]] <- subject.order
+  MetFlowData@subject.info <- as.matrix(new.subject.info)
+  MetFlowData@subject <- as.matrix(subject)
+  MetFlowData@subject.order <- as.numeric(subject.order)
   return(MetFlowData)
 }

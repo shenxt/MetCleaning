@@ -42,10 +42,10 @@ UnivariateTest <- function(MetFlowData,
                            log.scale = FALSE,
                            class = c("control", "case")) {
   # browser()
-  subject <- MetFlowData[["subject"]]
-  subject.info <- MetFlowData[["subject.info"]]
+  subject <- MetFlowData@subject
+  subject.info <- MetFlowData@subject.info
   group <- subject.info[, "group"]
-  tags <- MetFlowData[["tags"]]
+  tags <- MetFlowData@tags
 
   group.unique <- sort(unique(group))
 
@@ -157,7 +157,7 @@ UnivariateTest <- function(MetFlowData,
     tags <- cbind(tags, feature.auc)
   }
 
-  MetFlowData[["tags"]] <- tags
-  MetFlowData[["univariate test"]] <- test.method
+  MetFlowData@tags <- as.matrix(tags)
+  MetFlowData@univariate.test <- test.method
   return(MetFlowData)
 }

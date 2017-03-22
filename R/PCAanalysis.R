@@ -76,23 +76,23 @@ PCAanalysis <- function(MetFlowData,
                         ellipse = TRUE,
                         xlim1 = NULL,
                         ylim1 = NULL) {
-  # browser()
+
   if (path != ".") {
     dir.create(path)
   }
-  subject <- MetFlowData[["subject"]]
-  subject.info <- MetFlowData[["subject.info"]]
+  subject <- MetFlowData@subject
+  subject.info <- MetFlowData@subject.info
   group <- subject.info[, "group"]
   group.unique <- sort(unique(group))
   subject.name <- subject.info[, 1]
-  qc <- MetFlowData[["qc"]]
+  qc <- MetFlowData@qc
   if (is.null(qc)) {
     QC <- FALSE
   }
 
 
   info <- list()
-  for (i in 1:seq_along(group.unique)) {
+  for (i in 1:length(group.unique)) {
     info[[i]] <- subject.name[which(group == group.unique[i])]
   }
 
@@ -132,7 +132,7 @@ PCAanalysis <- function(MetFlowData,
 
   ifelse(QC, int <- cbind(subject, qc) , int <- subject)
   name <- colnames(int)
-  #browser()
+
   q <- grep("QC", name)
 
   ##log transformation
@@ -241,66 +241,6 @@ PCAanalysis <- function(MetFlowData,
     pcha[(ncol(subject) + 1):(ncol(subject) + ncol(qc))] <-
       pchalist[length(info) + 1]
   }
-
-  # if (plot == "loading") {
-  #   #laoding plot
-  #   pdf(file.path(path, paste(loading.plot.name,".pdf", sep = "")),
-  #       width = width,
-  #       height = height)
-  #   plot(
-  #     loading[, 1],
-  #     loading[, 2],
-  #     pch = 20,
-  #     xlab = "Component 1",
-  #     ylab = "Component 2",
-  #     cex.lab = cex.lab,
-  #     cex.axis = cex.axis
-  #   )
-  #   abline(v = 0, lty = 2)
-  #   abline(h = 0, lty = 2)
-  #
-  #   plot(
-  #     loading[, 2],
-  #     loading[, 3],
-  #     pch = 20,
-  #     xlab = "Component 2",
-  #     ylab = "Component 3",
-  #     cex.lab = cex.lab,
-  #     cex.axis = cex.axis
-  #   )
-  #   abline(v = 0, lty = 2)
-  #   abline(h = 0, lty = 2)
-  #
-  #   plot(
-  #     loading[, 1],
-  #     loading[, 3],
-  #     pch = 20,
-  #     xlab = "Component 1",
-  #     ylab = "Component 3",
-  #     cex.lab = cex.lab,
-  #     cex.axis = cex.axis
-  #   )
-  #   abline(v = 0, lty = 2)
-  #   abline(h = 0, lty = 2)
-  #
-  #   #loading plot 3d
-  #   scatterplot3d(
-  #     loading[, 1],
-  #     loading[, 2],
-  #     loading[, 3],
-  #     xlab = "Component 1",
-  #     ylab = "Component 2",
-  #     zlab = "Component 3",
-  #     angle = 40,
-  #     pch = 20,
-  #     box = FALSE,
-  #     cex.symbol = 1,
-  #     cex.lab = 1.3,
-  #     cex.axis = 0.8
-  #   )
-  #   dev.off()
-  # }
-
 
   #PCA 2D
   pdf(file.path(path, "PCA score plot.pdf"),

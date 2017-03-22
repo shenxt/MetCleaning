@@ -17,12 +17,12 @@
 SplitBatch <- function(MetFlowData) {
   ## split batch
   # browser()
-  hasQC <- MetFlowData[["hasQC"]]
-  qc <- MetFlowData[["qc"]]
-  subject <- MetFlowData[["subject"]]
-  qc.info <- MetFlowData[["qc.info"]]
-  subject.info <- MetFlowData[["subject.info"]]
-  tags <- MetFlowData[["tags"]]
+  hasQC <- MetFlowData@"hasQC"
+  qc <- MetFlowData@"qc"
+  subject <- MetFlowData@"subject"
+  qc.info <- MetFlowData@"qc.info"
+  subject.info <- MetFlowData@"subject.info"
+  tags <- MetFlowData@"tags"
 
   subject.name <- as.character(subject.info[, 1])
   if (hasQC != "no") {

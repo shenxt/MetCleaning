@@ -71,7 +71,7 @@ VolcanoPlot <- function(MetFlowData,
     dir.create(path)
   }
 
-  tags <- MetFlowData[["tags"]]
+  tags <- MetFlowData@tags
 
   # if (foldchange %in% colnames(tags)) {
   #   cat(paste("Use", foldchange, "as fold change.\n"))

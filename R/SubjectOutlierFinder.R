@@ -8,9 +8,9 @@ SubjectOutlierFinder <- function(MetFlowData,
   if (path != ".") {
     dir.create(path)
   }
-  subject <- MetFlowData[["subject"]]
-  subject.info <- MetFlowData[["subject.info"]]
-  tags <- MetFlowData[["tags"]]
+  subject <- MetFlowData@subject
+  subject.info <- MetFlowData@subject.info
+  tags <- MetFlowData@tags
 
 data <- SplitBatch(MetFlowData = MetFlowData)
 subject1 <- data[[1]]

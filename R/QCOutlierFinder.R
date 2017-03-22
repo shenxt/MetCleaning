@@ -8,9 +8,9 @@ QCOutlierFinder <- function(MetFlowData,
   if (path != ".") {
     dir.create(path)
   }
-  qc <- MetFlowData[["qc"]]
-  qc.info <- MetFlowData[["qc.info"]]
-  tags <- MetFlowData[["tags"]]
+  qc <- MetFlowData@qc
+  qc.info <- MetFlowData@qc.info
+  tags <- MetFlowData@tags
 
   data <- SplitBatch(MetFlowData = MetFlowData)
   qc1 <- data[[2]]

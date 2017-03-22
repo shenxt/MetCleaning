@@ -61,9 +61,9 @@ MarkerShow <- function(MetFlowData,
   }
 
   # library(beeswarm)
-  tags <- MetFlowData[["tags"]]
-  subject <- MetFlowData[["subject"]]
-  subject.info <- MetFlowData[["subject.info"]]
+  tags <- MetFlowData@tags
+  subject <- MetFlowData@subject
+  subject.info <- MetFlowData@subject.info
   if (all(colnames(tags) != "is.marker")) {
     stop("Please select marker first(use MarkerSelection function).")
   }

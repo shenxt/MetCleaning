@@ -91,16 +91,16 @@ MVimputation <- function(MetFlowData,
   options(warn = -1)
   # browser()
   #### MV imputation
-  if ((sum(is.na(MetFlowData[["subject"]])) + sum(is.na(MetFlowData[["qc"]]))) == 0)
+  if ((sum(is.na(MetFlowData@subject)) + sum(is.na(MetFlowData@qc))) == 0)
   {
     warning("MVs have been imputed.")
     return(MetFlowData)
   }
-  qc <- MetFlowData[["qc"]]
-  subject <- MetFlowData[["subject"]]
-  qc.info <- MetFlowData[["qc.info"]]
-  subject.info <- MetFlowData[["subject.info"]]
-  tags <- MetFlowData[["tags"]]
+  qc <- MetFlowData@qc
+  subject <- MetFlowData@subject
+  qc.info <- MetFlowData@qc.info
+  subject.info <- MetFlowData@subject.info
+  tags <- MetFlowData@tags
 
   subject.name <- subject.info[, 1]
   qc.name <- qc.info[, 1]
@@ -156,10 +156,10 @@ MVimputation <- function(MetFlowData,
   }
   }
 
-  MetFlowData[["subject"]] <- subject2
-  MetFlowData[["qc"]] <- qc2
-  MetFlowData[["mv.imputation"]] <- "yes"
-  MetFlowData[["imputation.method"]] <- imputation.method
+  MetFlowData@subject <- as.matrix(subject2)
+  MetFlowData@qc <- as.matrix(qc2)
+  MetFlowData@mv.imputation <- "yes"
+  MetFlowData@imputation.method <- imputation.method
   options(warn = 0)
   return(MetFlowData)
 }

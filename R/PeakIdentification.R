@@ -57,8 +57,8 @@ PeakIdentification <- function(MetFlowData,
     dir.create(path)
   }
 
-  subject <- MetFlowData[["subject"]]
-  tags <- MetFlowData[["tags"]]
+  subject <- MetFlowData@subject
+  tags <- MetFlowData@tags
   if (all(colnames(tags) != "name")) {
     tags[, ncol(tags) + 1] <- paste("feature", c(1:nrow(tags)))
     colnames(tags)[ncol(tags)] <- "name"
@@ -236,7 +236,7 @@ PeakIdentification <- function(MetFlowData,
   if (all(colnames(ms1) != 'name')) {
     tags[, 1 + ncol(tags)] <- paste("peak", 1:nrow(tags), sep = "")
     colnames(tags)[ncol(tags)] <- "name"
-    MetFlowData[["tags"]] <- tags
+    MetFlowData@tags <- as.matrix(tags)
     ms1 <- tags
     peak <- tags
   }
@@ -579,13 +579,13 @@ PeakIdentification <- function(MetFlowData,
     tags.old <- tags
     tags <- tags[, -c(16:31)]
     tags <- cbind(tags, peak.identification)
-    MetFlowData[["tags"]] <- tags
-    MetFlowData[["tags.old"]] <- tags.old
-    MetFlowData[["peak.identification"]] <- "yes"
+    MetFlowData@tags <- as.matrix(tags)
+    MetFlowData@tags.old <- as.matrix(tags.old)
+    MetFlowData@peak.identification <- "yes"
   } else {
     tags <- cbind(tags, peak.identification)
-    MetFlowData[["tags"]] <- tags
-    MetFlowData[["peak.identification"]] <- "yes"
+    MetFlowData@tags <- tags
+    MetFlowData@peak.identification <- "yes"
   }
   options(warn = -1)
   return(MetFlowData)

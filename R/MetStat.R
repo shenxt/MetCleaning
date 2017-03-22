@@ -183,9 +183,9 @@ MetStat <- function(MetFlowData,
   }
 
   ##VIP
-  tags <- met.data[["tags"]]
+  tags <- met.data@tags
   tags <- data.frame(tags, vip)
-  met.data[["tags"]] <- tags
+  met.data@tags <- as.matrix(tags)
 
   #save data
   met.data.vip <- met.data

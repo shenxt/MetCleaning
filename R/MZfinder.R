@@ -10,7 +10,7 @@ MZfinder <- function(MetFlowData,
   if (path != ".") {
     dir.create(path)
   }
-  hasQC <- MetFlowData[["hasQC"]]
+  hasQC <- MetFlowData@hasQC
   if (what == "mv") {
     path1 <- file.path(path, "mv finder")
   } else {
@@ -18,13 +18,13 @@ MZfinder <- function(MetFlowData,
   }
   dir.create(path1)
 
-  qc <- MetFlowData[["qc"]]
-  subject <- MetFlowData[["subject"]]
-  qc.info <- MetFlowData[["qc.info"]]
-  subject.info <- MetFlowData[["subject.info"]]
-  tags <- MetFlowData[["tags"]]
-  subject.order <- as.numeric(MetFlowData[["subject.order"]])
-  qc.order <- as.numeric(MetFlowData[["qc.order"]])
+  qc <- MetFlowData@qc
+  subject <- MetFlowData@subject
+  qc.info <- MetFlowData@qc.info
+  subject.info <- MetFlowData@subject.info
+  tags <- MetFlowData@tags
+  subject.order <- as.numeric(MetFlowData@subject.order)
+  qc.order <- as.numeric(MetFlowData@qc.order)
 
   subject.name <- subject.info[, 1]
   if (hasQC != "no") {

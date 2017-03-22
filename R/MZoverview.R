@@ -39,26 +39,26 @@
 MZoverview <- function(MetFlowData,
                        path = ".",
                        what = "mv") {
-  # browser()
-  has.qc <- MetFlowData[["hasQC"]]
+
+  has.qc <- MetFlowData@hasQC
 
   if (path != ".") {
     dir.create(path)
   }
 
-  # browser()
-  subject <- MetFlowData[["subject"]]
-  qc <- MetFlowData[["qc"]]
+
+  subject <- MetFlowData@subject
+  qc <- MetFlowData@qc
 
   if(is.null(qc)) {has.qc <- "no"}
 
-  tags <- MetFlowData[["tags"]]
-  subject.order <- as.numeric(MetFlowData[["subject.order"]])
+  tags <- MetFlowData@tags
+  subject.order <- as.numeric(MetFlowData@subject.order)
 
   if(has.qc == "no") {
     qc.order <- NULL
   }else{
-  qc.order <- as.numeric(MetFlowData[["qc.order"]])
+  qc.order <- as.numeric(MetFlowData@qc.order)
   }
 
   if (what == "zero" & (sum(is.na(qc)) + sum(is.na(subject))) != 0){
@@ -222,11 +222,11 @@ MZoverview <- function(MetFlowData,
       ),
       cex.main = 1.3
     )
-# browser()
+
     #subject
     plot(
       x = sort(s.feature.per),
-      y = c(1:seq_along(s.feature.per)) * 100 / length(s.feature.per),
+      y = c(1:length(s.feature.per)) * 100 / length(s.feature.per),
       type = "l",
       xlab = paste(ifelse(what == "mv", "MV", "zero"), "ratio (%)"),
       ylab = "Cumulative feature percentage (%)",
@@ -256,7 +256,7 @@ MZoverview <- function(MetFlowData,
     #QC
     plot(
       x = sort(q.feature.per),
-      y = c(1:seq_along(q.feature.per)) * 100 / length(q.feature.per),
+      y = c(1:length(q.feature.per)) * 100 / length(q.feature.per),
       type = "l",
       xlab = paste(ifelse(what == "mv", "MV", "zero"), "ratio (%)"),
       ylab = "Cumulative feature percentage (%)",
@@ -321,7 +321,7 @@ MZoverview <- function(MetFlowData,
                         "feature",
                         ifelse(what == "mv", "MV", "zero") , "ratio.csv"
                       )))
-# browser()
+
   ## whole data
   if (what == "mv") {
     q.sample.ratio <-
@@ -398,14 +398,14 @@ MZoverview <- function(MetFlowData,
   dev.off()
   c <- data.frame(c(q.sample.ratio, s.sample.ratio))
   colnames(c) <- paste(ifelse(what == "mv", "MV", "zero"), "ratio")
-  # browser()
+
   write.csv(c, file.path(path,
                          paste(
                            "Sample",
                            ifelse(what == "mv", "MV", "zero"),
                            "distribution.csv"
                          )))
-  # browser()
+
   ## MV information in each batch
   batch.info <-
     data.frame(s.number.all,
@@ -513,7 +513,7 @@ MZoverview <- function(MetFlowData,
         ),
         cex.main = 1.3
       )
-      # browser()
+
       #subject
       plot(
         x = sort(s.feature.per),
@@ -582,7 +582,7 @@ MZoverview <- function(MetFlowData,
     #                       "feature",
     #                       ifelse(what == "mv", "MV", "zero") , "ratio.csv"
     #                     )))
-    # browser()
+
     ## whole data
     if (what == "mv") {
       s.sample.ratio <-
@@ -632,14 +632,14 @@ MZoverview <- function(MetFlowData,
     #
     # c <- data.frame(c(q.sample.ratio, s.sample.ratio))
     # colnames(c) <- paste(ifelse(what == "mv", "MV", "zero"), "ratio")
-    # # browser()
+
     # write.csv(c, file.path(path,
     #                        paste(
     #                          "Sample",
     #                          ifelse(what == "mv", "MV", "zero"),
     #                          "distribution.csv"
     #                        )))
-    # browser()
+
     ## MV information in each batch
     # batch.info <-
     #   data.frame(s.number.all,

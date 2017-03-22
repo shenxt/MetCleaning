@@ -41,14 +41,14 @@ DataOverview <- function(MetFlowData,
     dir.create(path)
   }
   # browser()
-  hasQC <- MetFlowData[["hasQC"]]
-  subject <- MetFlowData[["subject"]]
-  qc <- MetFlowData[["qc"]]
-  tags <- MetFlowData[["tags"]]
-  subject.info <- MetFlowData[["subject.info"]]
-  qc.info <- MetFlowData[["qc.info"]]
-  subject.order <- as.numeric(MetFlowData[["subject.order"]])
-  qc.order <- as.numeric(MetFlowData[["qc.order"]])
+  hasQC <- MetFlowData@hasQC
+  subject <- MetFlowData@subject
+  qc <- MetFlowData@qc
+  tags <- MetFlowData@tags
+  subject.info <- MetFlowData@subject.info
+  qc.info <- MetFlowData@qc.info
+  subject.order <- as.numeric(MetFlowData@subject.order)
+  qc.order <- as.numeric(MetFlowData@qc.order)
 
   #### a 3D figure: mz vs RT vs intensity
   if (feature.distribution) {
@@ -190,47 +190,47 @@ DataOverview <- function(MetFlowData,
       file = file.name.for.txt,
       append = TRUE)
   cat("MV imputation:",
-      MetFlowData[["mv.imputation"]],
+      MetFlowData@mv.imputation,
       file = file.name.for.txt,
       append = TRUE)
   cat("\n", file = file.name.for.txt, append = TRUE)
   cat("Imputation method:",
-      MetFlowData[["imputation.method"]],
+      MetFlowData@imputation.method,
       file = file.name.for.txt,
       append = TRUE)
   cat("\n", file = file.name.for.txt, append = TRUE)
   cat("Zero filter:",
-      MetFlowData[["zero.filter"]],
+      MetFlowData@zero.filter,
       file = file.name.for.txt,
       append = TRUE)
   cat("\n", file = file.name.for.txt, append = TRUE)
   cat("Zero filter criteria:",
-      MetFlowData[["zero.filter.criteria"]],
+      MetFlowData@zero.filter.criteria,
       file = file.name.for.txt,
       append = TRUE)
   cat("\n", file = file.name.for.txt, append = TRUE)
   cat("QC outlier filter:",
-      MetFlowData[["qc.outlier.filter"]],
+      MetFlowData@qc.outlier.filter,
       file = file.name.for.txt,
       append = TRUE)
   cat("\n", file = file.name.for.txt, append = TRUE)
   cat("Normalization:",
-      MetFlowData[["normalization"]],
+      MetFlowData@normalization,
       file = file.name.for.txt,
       append = TRUE)
   cat("\n", file = file.name.for.txt, append = TRUE)
   cat("Normalization method:",
-      MetFlowData[["normalization.method"]],
+      MetFlowData@normalization.method,
       file = file.name.for.txt,
       append = TRUE)
   cat("\n", file = file.name.for.txt, append = TRUE)
   cat("Data integration:",
-      MetFlowData[["data.integration"]],
+      MetFlowData@data.integration,
       file = file.name.for.txt,
       append = TRUE)
   cat("\n", file = file.name.for.txt, append = TRUE)
   cat("Data integration method:",
-      MetFlowData[["data.integration.method"]],
+      MetFlowData@data.integration.method,
       file = file.name.for.txt,
       append = TRUE)
   cat("\n", file = file.name.for.txt, append = TRUE)

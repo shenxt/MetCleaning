@@ -56,8 +56,6 @@
 #'new.met.data <- DataNormalization(MetFlowData = met.data.after.pre)
 #'}
 
-
-
 ### Data normalization for MetFlowData
 DataNormalization <- function(MetFlowData,
                               path = ".",
@@ -84,13 +82,13 @@ DataNormalization <- function(MetFlowData,
   path1 <- file.path(path, "7 Normalization result")
   dir.create(path1)
 
-  qc <- MetFlowData[["qc"]]
-  subject <- MetFlowData[["subject"]]
-  tags <- MetFlowData[["tags"]]
-  subject.info <- MetFlowData[["subject.info"]]
-  qc.info <- MetFlowData[["qc.info"]]
+  qc <- MetFlowData@qc
+  subject <- MetFlowData@subject
+  tags <- MetFlowData@tags
+  subject.info <- MetFlowData@subject.info
+  qc.info <- MetFlowData@qc.info
 
-  if (sum(is.na(MetFlowData[["qc"]]))+sum(is.na(MetFlowData[["subject"]])) != 0)
+  if (sum(is.na(MetFlowData@qc))+sum(is.na(MetFlowData@subject)) != 0)
   {
     stop("Plase impute MV in sampe first.")
   }
@@ -108,12 +106,12 @@ DataNormalization <- function(MetFlowData,
       qc.mean <- apply(qc, 1, mean)
       qc2 <- qc1 * qc.mean
       subject2 <- subject1 * qc.mean
-      MetFlowData[["qc"]] <- qc2
-      MetFlowData[["subject"]] <- subject2
+      MetFlowData@qc <- as.matrix(qc2)
+      MetFlowData@subject <- as.matrix(subject2)
     }
     else {
-      MetFlowData[["qc"]] <- qc1
-      MetFlowData[["subject"]] <- subject1
+      MetFlowData@qc <- as.matrix(qc1)
+      MetFlowData@subject <- as.matrix(subject1)
     }
   }
 
@@ -130,12 +128,12 @@ DataNormalization <- function(MetFlowData,
       qc.median <- apply(qc, 1, median)
       qc2 <- qc1 * qc.median
       subject2 <- subject1 * qc.median
-      MetFlowData[["qc"]] <- qc2
-      MetFlowData[["subject"]] <- subject2
+      MetFlowData@qc <- as.matrix(qc2)
+      MetFlowData@subject <- as.matrix(subject2)
     }
     else {
-      MetFlowData[["qc"]] <- qc1
-      MetFlowData[["subject"]] <- subject1
+      MetFlowData@qc <- as.matrix(qc1)
+      MetFlowData@subject <- as.matrix(subject1)
     }
   }
 
@@ -152,12 +150,12 @@ DataNormalization <- function(MetFlowData,
       qc.mean <- apply(qc, 1, mean)
       qc2 <- qc1 * qc.mean
       subject2 <- subject1 * qc.mean
-      MetFlowData[["qc"]] <- qc2
-      MetFlowData[["subject"]] <- subject2
+      MetFlowData@qc <- as.matrix(qc2)
+      MetFlowData@subject <- as.matrix(subject2)
     }
     else {
-      MetFlowData[["qc"]] <- qc1
-      MetFlowData[["subject"]] <- subject1
+      MetFlowData@qc <- as.matrix(qc1)
+      MetFlowData@subject <- as.matrix(subject1)
     }
   }
   # browser()
@@ -176,8 +174,8 @@ DataNormalization <- function(MetFlowData,
       cat(paste("Batch", i))
       cat("\n")
       cat("------------------\n")
-      MetFlowData[["data.normalization"]] <- "yes"
-      tags <- MetFlowData[["tags"]]
+      MetFlowData@normalization <- "yes"
+      tags <- MetFlowData@tags
       data <- cbind(tags, qc1[[i]], subject1[[i]])
       sample.info <- rbind(subject.info1[[i]], qc.info1[[i]])
 
@@ -218,8 +216,8 @@ DataNormalization <- function(MetFlowData,
         qc2 <- cbind(qc2, qc1[[i]])
       }
     }
-    MetFlowData[["subject"]] <- subject2
-    MetFlowData[["qc"]] <- qc2
+    MetFlowData@subject <- as.matrix(subject2)
+    MetFlowData@qc <- as.matrix(qc2)
   }
 
   ## LOESS normalization
@@ -228,7 +226,7 @@ DataNormalization <- function(MetFlowData,
       cat(paste("Batch", i))
       cat("\n")
       cat("------------------\n")
-      tags <- MetFlowData[["tags"]]
+      tags <- MetFlowData@tags
       data <- cbind(tags, subject1[[i]], qc1[[i]])
       sample.info <- rbind(subject.info1[[i]], qc.info1[[i]])
       path2 <- file.path(path1, paste("Batch", i, "normalization"))
@@ -262,11 +260,11 @@ DataNormalization <- function(MetFlowData,
         qc2 <- cbind(qc2, qc1[[i]])
       }
     }
-    MetFlowData[["subject"]] <- subject2
-    MetFlowData[["qc"]] <- qc2
+    MetFlowData@subject <- as.matrix(subject2)
+    MetFlowData@qc <- as.matrix(qc2)
   }
-  MetFlowData[["normalization"]] <- "yes"
-  MetFlowData[["normalization.method"]] <- method
+  MetFlowData@normalization <- "yes"
+  MetFlowData@normalization.method <- method
   options(warn = 0)
   return(MetFlowData)
 

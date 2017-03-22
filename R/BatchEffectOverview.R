@@ -18,15 +18,15 @@ BatchEffectOverview <- function(MetFlowData.before,
     dir.create(path)
   }
 
-  hasQC <- MetFlowData.before[["hasQC"]]
-  subject.info <- MetFlowData.before[["subject.info"]]
-  qc.info <- MetFlowData.before[["qc.info"]]
+  hasQC <- MetFlowData.before@"hasQC"
+  subject.info <- MetFlowData.before@"subject.info"
+  qc.info <- MetFlowData.before@"qc.info"
 
-  subject.bef <- MetFlowData.before[["subject"]]
-  qc.bef <- MetFlowData.before[["qc"]]
+  subject.bef <- MetFlowData.before@"subject"
+  qc.bef <- MetFlowData.before@"qc"
 
-  subject.aft <- MetFlowData.after[["subject"]]
-  qc.aft <- MetFlowData.after[["qc"]]
+  subject.aft <- MetFlowData.after@"subject"
+  qc.aft <- MetFlowData.after@"qc"
 
   if ((sum(is.na(subject.bef)) + sum(is.na(qc.bef))) != 0) {
     stop("The data has MV, please do MV imputation first.")

@@ -61,12 +61,12 @@ MZfilter <- function(MetFlowData,
   qc.remove <- MZfinderData[[3]]
   subject.remove <- MZfinderData[[4]]
 
-  qc <- MetFlowData[["qc"]]
-  subject <- MetFlowData[["subject"]]
-  qc.info <- MetFlowData[["qc.info"]]
-  subject.info <- MetFlowData[["subject.info"]]
-  tags <- MetFlowData[["tags"]]
-  hasQC <- MetFlowData[["hasQC"]]
+  qc <- MetFlowData@qc
+  subject <- MetFlowData@subject
+  qc.info <- MetFlowData@qc.info
+  subject.info <- MetFlowData@subject.info
+  tags <- MetFlowData@tags
+  hasQC <- MetFlowData@hasQC
 
   if (length(feature.remove) != 0) {
     if (hasQC == "yes")  {
@@ -134,26 +134,26 @@ MZfilter <- function(MetFlowData,
     which(is.na(match(subject.info[, 1], subject.name)))
   if (length(subject.index) != 0) {
     subject.info <- subject.info[-subject.index,]
-    MetFlowData[["subject.order"]] <-
-      MetFlowData[["subject.order"]][-subject.index]
+    MetFlowData@subject.order <-
+      MetFlowData@subject.order[-subject.index]
   }
 
   if (hasQC == 'yes') {
     qc.index <- which(is.na(match(qc.info[, 1], qc.name)))
     if (length(qc.index) != 0) {
       qc.info <- qc.info[-qc.index,]
-      MetFlowData[["qc.order"]] <-
-        MetFlowData[["qc.order"]][-qc.index]
+      MetFlowData@qc.order <-
+        MetFlowData@qc.order[-qc.index]
     }
   }
 
-  MetFlowData[["subject.info"]] <- subject.info
-  MetFlowData[["qc.info"]] <- qc.info
-  MetFlowData[["subject"]] <- subject
-  MetFlowData[["qc"]] <- qc
-  MetFlowData[["tags"]] <- tags
-  MetFlowData[["mv.filter"]] <- "yes"
-  MetFlowData[["mv.filter.criteria"]] <-
+  MetFlowData@subject.info <- as.matrix(subject.info)
+  MetFlowData@qc.info <- as.matrix(qc.info)
+  MetFlowData@subject <- as.matrix(subject)
+  MetFlowData@qc <- as.matrix(qc)
+  MetFlowData@tags <- as.matrix(tags)
+  MetFlowData@mv.filter <- "yes"
+  MetFlowData@mv.filter.criteria <-
     paste("varibale:",
           var.per.cutoff,
           "observation:",

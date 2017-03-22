@@ -42,7 +42,7 @@ SXTMVimputation <- function(data,
     return(data.knn)
   }
 
-  #missForest补齐
+  #missForest
   if (method=="rf") {
     # library(missForest)
     data.rf <- missForest::missForest(t(data),

@@ -16,7 +16,7 @@ MassIdentification <- function(MetFlowData,
                                mass.tolerance = 30,
                                polarity = "positive",
                                show = 5) {
-  tags <- MetFlowData[["tags"]]
+  tags <- MetFlowData@tags
   mz1 <- as.numeric(tags[, "mz"])
   hmdbdatabase <- MetCleaning::hmdbdatabase
   # data("hmdbdatabase")
@@ -190,7 +190,7 @@ MassIdentification <- function(MetFlowData,
   HMDB.match.result <- unlist(match.result)
   HMDB.identification <- unlist(iden)
   tags <- data.frame(tags, HMDB.match.result, HMDB.identification)
-  MetFlowData[["tags"]] <- tags
-  MetFlowData[["peak.identification"]] <- "yes"
+  MetFlowData@tags <- as.matrix(tags)
+  MetFlowData@peak.identification <- "yes"
   return(MetFlowData)
 }

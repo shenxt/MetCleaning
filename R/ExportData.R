@@ -31,13 +31,13 @@ ExportData <- function(MetFlowData,
     dir.create(path)
   }
 
-  subject <- MetFlowData[["subject"]]
-  qc <- MetFlowData[["qc"]]
-  tags <- MetFlowData[["tags"]]
-  subject.info <- MetFlowData[["subject.info"]]
-  qc.info <- MetFlowData[["qc.info"]]
+  subject <- MetFlowData@subject
+  qc <- MetFlowData@qc
+  tags <- MetFlowData@tags
+  subject.info <- MetFlowData@subject.info
+  qc.info <- MetFlowData@qc.info
 
-  has.qc <- MetFlowData[["hasQC"]]
+  has.qc <- MetFlowData@hasQC
 
   if (has.qc == "yes") {
     write.csv(cbind(tags, subject, qc),

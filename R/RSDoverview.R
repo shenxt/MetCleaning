@@ -22,15 +22,15 @@ RSDoverview <- function(MetFlowData.before,
     dir.create(path)
   }
 
-  hasQC <- MetFlowData.before[["hasQC"]]
+  hasQC <- MetFlowData.before@hasQC
   if (hasQC == 'no') {
     stop("Data has no QC.")
   }
   ##before
-  subject.bef <- MetFlowData.before[["subject"]]
-  qc.bef <- MetFlowData.before[["qc"]]
-  subject.info.bef <- MetFlowData.before[["subject.info"]]
-  qc.info.bef <- MetFlowData.before[["qc.info"]]
+  subject.bef <- MetFlowData.before@subject
+  qc.bef <- MetFlowData.before@qc
+  subject.info.bef <- MetFlowData.before@subject.info
+  qc.info.bef <- MetFlowData.before@qc.info
 
   ##split data
   data.bef <- SplitBatch(MetFlowData = MetFlowData.before)
@@ -38,10 +38,10 @@ RSDoverview <- function(MetFlowData.before,
   qc.bef1 <- data.bef[[2]]
 
   ##after
-  subject.aft <- MetFlowData.after[["subject"]]
-  qc.aft <- MetFlowData.after[["qc"]]
-  subject.info.aft <- MetFlowData.after[["subject.info"]]
-  qc.info.aft <- MetFlowData.after[["qc.info"]]
+  subject.aft <- MetFlowData.after@subject
+  qc.aft <- MetFlowData.after@qc
+  subject.info.aft <- MetFlowData.after@subject.info
+  qc.info.aft <- MetFlowData.after@qc.info
 
   ##split data
   data.aft <- SplitBatch(MetFlowData = MetFlowData.after)

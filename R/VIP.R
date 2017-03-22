@@ -14,9 +14,9 @@ VIP <- function(MetFlowData,
     dir.create(path)
   }
 
-  subject <- MetFlowData[["subject"]]
-  qc <- MetFlowData[["qc"]]
-  subject.info <- MetFlowData[["subject.info"]]
+  subject <- MetFlowData@subject
+  qc <- MetFlowData@qc
+  subject.info <- MetFlowData@subject.info
   group <- subject.info[,"group"]
   group.unique <- sort(unique(group))
   subject.name <- subject.info[,1]
@@ -161,9 +161,9 @@ VIP <- function(MetFlowData,
     vip <- apply(vip, 1, mean)
   }
 
-  tags <- MetFlowData[["tags"]]
+  tags <- MetFlowData@tags
   tags <- data.frame(tags, vip)
-  MetFlowData[["tags"]] <- tags
+  MetFlowDatatags <- as.matrix(tags)
   return(MetFlowData)
 }
 

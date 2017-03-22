@@ -44,9 +44,9 @@ MetabolitePlot <- function(MetFlowData.before,
   }
 
   # browser()
-  qc_bef <- MetFlowData.before[["qc"]]
-  subject_bef <- MetFlowData.before[["subject"]]
-  tags_bef <- MetFlowData.before[["tags"]]
+  qc_bef <- MetFlowData.before@qc
+  subject_bef <- MetFlowData.before@subject
+  tags_bef <- MetFlowData.before@tags
   data_bef <- SplitBatch(MetFlowData = MetFlowData.before)
   subject_bef1 <- data_bef[[1]]
   qc_bef1 <- data_bef[[2]]
@@ -54,20 +54,20 @@ MetabolitePlot <- function(MetFlowData.before,
   qc.info_bef1 <- data_bef[[4]]
 
 
-  qc_aft <- MetFlowData.after[["qc"]]
-  subject_aft <- MetFlowData.after[["subject"]]
-  tags_aft <- MetFlowData.after[["tags"]]
+  qc_aft <- MetFlowData.after@qc
+  subject_aft <- MetFlowData.after@subject
+  tags_aft <- MetFlowData.after@tags
   data_aft <- SplitBatch(MetFlowData = MetFlowData.after)
   subject_aft1 <- data_aft[[1]]
   qc_aft1 <- data_aft[[2]]
   subject.info_aft1 <- data_aft[[3]]
   qc.info_aft1 <- data_aft[[4]]
 
-  subject.order1 <- as.numeric(MetFlowData.before[["subject.order"]])
-  qc.order1 <- as.numeric(MetFlowData.before[["qc.order"]])
+  subject.order1 <- as.numeric(MetFlowData.before@subject.order)
+  qc.order1 <- as.numeric(MetFlowData.before@qc.order)
 
-  subject.order2 <- as.numeric(MetFlowData.after[["subject.order"]])
-  qc.order2 <- as.numeric(MetFlowData.after[["qc.order"]])
+  subject.order2 <- as.numeric(MetFlowData.after@subject.order)
+  qc.order2 <- as.numeric(MetFlowData.after@qc.order)
   feature.name <- as.character(tags_bef[, "name"])
 
   cat("Draw metabolite plot (%)\n")

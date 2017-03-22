@@ -18,10 +18,10 @@ FoldChange <- function(MetFlowData,
                        to = c("case", "control"),
                        ratio = "median") {
   # browser()
-  subject <- MetFlowData[["subject"]]
-  subject.info <- MetFlowData[["subject.info"]]
+  subject <- MetFlowData@subject
+  subject.info <- MetFlowData@subject.info
   group <- subject.info[, "group"]
-  tags <- MetFlowData[["tags"]]
+  tags <- MetFlowData@tags
 
   if (length(unique(group)) != 2) {
     stop("No two class data.")
@@ -49,8 +49,8 @@ FoldChange <- function(MetFlowData,
     tags <- cbind(tags, foldchange)
   }
 
-  MetFlowData[["tags"]] <- tags
-  MetFlowData[["foldchange"]] <-
+  MetFlowData@tags <- tags
+  MetFlowData@foldchange <-
     paste(to[1], " vs ", to[2], "(", ratio, ")", sep = "")
   return(MetFlowData)
 }

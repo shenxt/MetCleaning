@@ -39,15 +39,17 @@
 ## data integration
 DataIntegration <- function(MetFlowData,
                             method = "qc.mean") {
-  subject <- MetFlowData[["subject"]]
-  qc <- MetFlowData[["qc"]]
-  subject.info <- MetFlowData[["subject.info"]]
-  qc.info <- MetFlowData[["qc.info"]]
+  subject <- MetFlowData@"subject"
+  qc <- MetFlowData@"qc"
+  subject.info <- MetFlowData@"subject.info"
+  qc.info <- MetFlowData@"qc.info"
   subject.name <- subject.info[, 1]
   qc.name <- qc.info[, 1]
 
   subject.batch <- subject.info[, 4]
   qc.batch <- qc.info[, 4]
+
+  if(length(unique(subject.batch))) {return(MetFlowData)}
 
   subject1 <- list()
   qc1 <- list()
@@ -102,9 +104,9 @@ DataIntegration <- function(MetFlowData,
   subject3[is.infinite(subject3)] <- 0
   qc3[is.infinite(qc3)] <- 0
 
-  MetFlowData[["subject"]] <- subject3
-  MetFlowData[["qc"]] <- qc3
-  MetFlowData[["data.integration"]] <- "yes"
-  MetFlowData[["data.integration.method"]] <- method
+  MetFlowData@"subject" <- as.matrix(subject3)
+  MetFlowData@"qc" <- as.matrix(qc3)
+  MetFlowData@"data.integration" <- "yes"
+  MetFlowData@"data.integration.method" <- method
   return(MetFlowData)
 }

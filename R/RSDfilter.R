@@ -21,12 +21,12 @@
 RSDfilter <- function(MetFlowData,
                       rsd.cutoff = 30) {
   ##RSD filtering
-  qc <- MetFlowData[["qc"]]
+  qc <- MetFlowData@qc
   qc.rsd <- apply(qc, 1, function(x) {sd(x)*100/mean(x)})
 
   var.index <- which(qc.rsd <= rsd.cutoff)
-  MetFlowData[["qc"]] <- MetFlowData[["qc"]][var.index,]
-  MetFlowData[["tags"]] <- MetFlowData[["tags"]][var.index,]
-  MetFlowData[["subject"]] <- MetFlowData[["subject"]][var.index,]
+  MetFlowData@qc <- MetFlowData@qc[var.index,]
+  MetFlowData@tags <- MetFlowData@tags[var.index,]
+  MetFlowData@subject <- MetFlowData@subject[var.index,]
   return(MetFlowData)
 }

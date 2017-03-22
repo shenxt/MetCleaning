@@ -286,29 +286,90 @@ ImportData <- function(data = "data.csv",
     tags <- data.frame(pol, tags)
     colnames(tags)[1] <- "polarity"
   }
-
-  MetFlowData <- list(
-    subject = subject,
-    qc = qc,
-    tags = tags,
-    subject.info = subject.info,
-    qc.info = qc.info,
-    subject.order = subject.order,
-    qc.order = qc.order,
-    ## some preprocessing information
-    mv.imputation = mv.imputation,
-    imputation.method = imputation.method,
-    zero.filter = "no",
-    zero.filter.criteria = "no",
-    qc.outlier.filter = "no",
-    normalization = "no",
-    normalization.method = "no",
-    data.integration = "no",
-    data.integration.method = "no",
-    hasIS = hasIS,
-    hasQC = hasQC,
-    peak.identification = peak.identification
+  # browser()
+  #S4 class
+  setClass("MetFlowData",
+           representation(
+             subject = "matrix",
+             qc = "matrix",
+             tags = "matrix",
+             tags.old = "matrix",
+             subject.info = "matrix",
+             qc.info = "matrix",
+             subject.order = "numeric",
+             qc.order = "numeric",
+             ## some preprocessing information
+             mv.imputation = "character",
+             imputation.method = "character",
+             zero.filter = "character",
+             zero.filter.criteria = "character",
+             qc.outlier.filter = "character",
+             normalization = "character",
+             normalization.method = "character",
+             data.integration = "character",
+             data.integration.method = "character",
+             hasIS = "character",
+             hasQC = "character",
+             peak.identification = "character",
+             foldchange = "character",
+             marker.selection.condition = "character",
+             mv.filter = "character",
+             mv.filter.criteria = "character",
+             univariate.test = "character"
+           )
   )
-  class(MetFlowData) <- "MetFlowData"
+
+  MetFlowData <- new("MetFlowData",
+                     subject = as.matrix(subject),
+                     qc = as.matrix(qc),
+                     tags = as.matrix(tags),
+                     tags.old = as.matrix(tags),
+                     subject.info = as.matrix(subject.info),
+                     qc.info = as.matrix(qc.info),
+                     subject.order = as.numeric(subject.order),
+                     qc.order = as.numeric(qc.order),
+                     ## some preprocessing information
+                     mv.imputation = mv.imputation,
+                     imputation.method = imputation.method,
+                     zero.filter = "no",
+                     zero.filter.criteria = "no",
+                     qc.outlier.filter = "no",
+                     normalization = "no",
+                     normalization.method = "no",
+                     data.integration = "no",
+                     data.integration.method = "no",
+                     hasIS = hasIS,
+                     hasQC = hasQC,
+                     peak.identification = peak.identification,
+                     foldchange = "temp",
+                     marker.selection.condition = "no",
+                     mv.filter = "no",
+                     mv.filter.criteria = "no"，
+                     univariate.test = "no")
+
+
+  # MetFlowData <- list(
+  #   subject = subject,
+  #   qc = qc,
+  #   tags = tags,
+  #   subject.info = subject.info,
+  #   qc.info = qc.info,
+  #   subject.order = subject.order,
+  #   qc.order = qc.order,
+  #   ## some preprocessing information
+  #   mv.imputation = mv.imputation,
+  #   imputation.method = imputation.method,
+  #   zero.filter = "no",
+  #   zero.filter.criteria = "no",
+  #   qc.outlier.filter = "no",
+  #   normalization = "no",
+  #   normalization.method = "no",
+  #   data.integration = "no",
+  #   data.integration.method = "no",
+  #   hasIS = hasIS,
+  #   hasQC = hasQC,
+  #   peak.identification = peak.identification
+  # )
+  # class(MetFlowData) <- "MetFlowData"
   return(MetFlowData)
 }

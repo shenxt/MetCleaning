@@ -69,7 +69,7 @@ MarkerSelection <- function(MetFlowData,
     dir.create(path)
   }
 
-  tags <- MetFlowData[["tags"]]
+  tags <- MetFlowData@tags
   if (any(colnames(tags) == "is.marker")) {
     warning("Markers have been selected.")
   }
@@ -136,8 +136,8 @@ MarkerSelection <- function(MetFlowData,
     tags <- cbind(tags, is.marker)
   }
 
-  MetFlowData[["tags"]] <- tags
-  MetFlowData[["marker.selection.condition"]] <-
+  MetFlowData@tags <- as.matrix(tags)
+  MetFlowData@marker.selection.condition <-
     paste(
       "foldchange:",
       foldchange,

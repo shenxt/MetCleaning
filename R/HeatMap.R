@@ -73,14 +73,13 @@ HeatMap <- function(MetFlowData,
                     cluster_cols = TRUE,
                     clustering_method = "ward.D",
                     ...) {
-  # browser()
   if (path != ".") {
     dir.create(path)
   }
 
-  subject <- MetFlowData[["subject"]]
-  tags <- MetFlowData[["tags"]]
-  subject.info <- MetFlowData[["subject.info"]]
+  subject <- MetFlowData@subject
+  tags <- MetFlowData@tags
+  subject.info <- MetFlowData@subject.info
   group <- subject.info[, "group"]
 
   idx <- which(group %in% Group)
