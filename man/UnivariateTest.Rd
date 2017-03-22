@@ -10,7 +10,8 @@ UnivariateTest(MetFlowData, test.method = "t", adjust.method = "fdr",
 \arguments{
 \item{MetFlowData}{MetFlowData.}
 
-\item{test.method}{Which test you want to use? "t" means stutent t test and "wilcox" mean wilcoxon test.}
+\item{test.method}{Which test you want to use? "t" means stutent t test
+and "wilcox" mean wilcoxon test.}
 
 \item{adjust.method}{p value correction method. See p.adjust function.}
 
@@ -51,7 +52,8 @@ new.met.data <- UnivariateTest(met.data.after.pre)
 }
 }
 \seealso{
-The details of univariate test can be found in \code{\link[stats]{t.test}},
+The details of univariate test can
+be found in \code{\link[stats]{t.test}},
 \code{\link[stats]{p.adjust}} and \code{\link[stats]{wilcox.test}}.
 }
 \author{
