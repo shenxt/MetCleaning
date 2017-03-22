@@ -117,13 +117,13 @@ DataOverview <- function(MetFlowData,
   cat("\n", file = file.name.for.txt, append = TRUE)
   ##
   subject.number <- unlist(lapply(subject1, length))
-  names(subject.number) <- paste("Batch", 1:length(subject1))
+  names(subject.number) <- paste("Batch", 1:seq_along(subject1))
   if (hasQC == "no") {
     qc.number <- NULL
   }
   else {
     qc.number <- unlist(lapply(qc1, length))
-    names(qc.number) <- paste("Batch", 1:length(subject1))
+    names(qc.number) <- paste("Batch", 1:seq_along(subject1))
   }
 
   cat("Subject number in each Batch:\n",

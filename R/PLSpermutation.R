@@ -38,7 +38,7 @@ PLSpermutation <- function(data = NULL,
   # browser()
   Y <- NULL
   label <- as.list(rep(NA, length(info)))
-  for (i in 1:length(info)) {
+  for (i in 1:seq_along(info)) {
     label[[i]] <- match(as.character(info[[i]]), name)
     label[[i]] <- label[[i]][!is.na(label[[i]])]
     Y[label[[i]]] <- i - 1
@@ -75,7 +75,7 @@ PLSpermutation <- function(data = NULL,
   r2 <- rep(NA, repeats)
   cor <- rep(NA, repeats)
   cat("Permutation test...\n")
-  for (i in 1:repeats) {
+  for (i in 1:seq_len(repeats)) {
     temp.Y <- Y[order(sample(1:length(Y), length(Y)))]
     temp.pls <- plsdepot::plsreg1(int.scale, temp.Y, comps = ncomp)
     q2[i] <- temp.pls$Q2[ncomp, 5]

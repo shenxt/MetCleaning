@@ -113,7 +113,7 @@ MVimputation <- function(MetFlowData,
   qc1 <- data[[2]]
 
   # var.index <- list()
-  for (i in 1:length(subject1)) {
+  for (i in 1:seq_along(subject1)) {
     temp <- cbind(qc1[[i]], subject1[[i]])
     temp <- SXTMVimputation(
       data = temp,

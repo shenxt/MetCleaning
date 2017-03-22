@@ -398,7 +398,7 @@ RSDoverview <- function(MetFlowData.before = MetFlowData1,
   pdf(file.path(path, "RSD distribution in different batch.pdf"),width = 14, height = 7)
   layout(matrix(c(1:2), ncol = 2))
   par(mar = c(5,5,4,2))
-  for (i in 1:length(qc.bef1)) {
+  for (i in 1:seq_along(qc.bef1)) {
     #before
     QC <- qc.bef1[[i]]
     QC.rsd <- apply(QC, 1, function(x) {sd(x)*100/mean(x)})

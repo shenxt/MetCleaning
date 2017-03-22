@@ -43,7 +43,7 @@ MZfinder <- function(MetFlowData,
   var.index <- as.list(rep(NA, length(subject1)))
   if (hasQC == "yes") {
     ##remove peak whose MV/zero ratio more than 50%
-    for (i in 1:length(subject1)) {
+    for (i in 1:seq_along(subject1)) {
       if (what == "mv") {
         SXTMinifracData <- SXTMinifrac(
           subject1[[i]],
@@ -68,7 +68,7 @@ MZfinder <- function(MetFlowData,
     }
   }
   else {
-    for (i in 1:length(subject1)) {
+    for (i in 1:seq_along(subject1)) {
       if (what == "mv") {
         SXTMinifracData <- SXTMinifrac(
           subject1[[i]],

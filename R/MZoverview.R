@@ -79,7 +79,7 @@ MZoverview <- function(MetFlowData,
   q.per.all <- NULL
 
   b <- list()
-  for (i in 1:length(subject1)) {
+  for (i in 1:seq_along(subject1)) {
     temp.subject <- subject1[[i]]
     temp.qc <- qc1[[i]]
 
@@ -226,7 +226,7 @@ MZoverview <- function(MetFlowData,
     #subject
     plot(
       x = sort(s.feature.per),
-      y = c(1:length(s.feature.per)) * 100 / length(s.feature.per),
+      y = c(1:seq_along(s.feature.per)) * 100 / length(s.feature.per),
       type = "l",
       xlab = paste(ifelse(what == "mv", "MV", "zero"), "ratio (%)"),
       ylab = "Cumulative feature percentage (%)",
@@ -256,7 +256,7 @@ MZoverview <- function(MetFlowData,
     #QC
     plot(
       x = sort(q.feature.per),
-      y = c(1:length(q.feature.per)) * 100 / length(q.feature.per),
+      y = c(1:seq_along(q.feature.per)) * 100 / length(q.feature.per),
       type = "l",
       xlab = paste(ifelse(what == "mv", "MV", "zero"), "ratio (%)"),
       ylab = "Cumulative feature percentage (%)",
@@ -429,7 +429,7 @@ MZoverview <- function(MetFlowData,
     s.per.all <- NULL
 
     b <- list()
-    for (i in 1:length(subject1)) {
+    for (i in 1:seq_along(subject1)) {
       temp.subject <- subject1[[i]]
 
       if(what == "mv") {
@@ -516,7 +516,7 @@ MZoverview <- function(MetFlowData,
       #subject
       plot(
         x = sort(s.feature.per),
-        y = c(1:length(s.feature.per)) * 100 / length(s.feature.per),
+        y = c(1:seq_along(s.feature.per)) * 100 / length(s.feature.per),
         type = "l",
         xlab = paste(ifelse(what == "mv", "MV", "zero"), "ratio (%)"),
         ylab = "Cumulative feature percentage (%)",

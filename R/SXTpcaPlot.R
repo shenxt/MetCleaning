@@ -51,13 +51,13 @@ SXTpcaPlot <- function(SXTpcaData,
 
   name <- colnames(subject)
   label <- list()
-  for (i in 1:length(info)) {
+  for (i in 1:seq_along(info)) {
     label[[i]] <- match(as.character(info[[i]]), name)
     label[[i]] <- label[[i]][!is.na(label[[i]])]
   }
 
   legend <- NULL
-  for (i in 1:length(label)) {
+  for (i in 1:seq_along(label)) {
     legend[label[[i]]] <- names(info)[i]
   }
 
@@ -70,7 +70,7 @@ SXTpcaPlot <- function(SXTpcaData,
     stop("Color list is not enough")
 
   colourlist <- color
-  for (i in 1:length(label)) {
+  for (i in 1:seq_along(label)) {
     colour[label[[i]]] <- colourlist[i]
   }
   if (QC) {
@@ -81,7 +81,7 @@ SXTpcaPlot <- function(SXTpcaData,
   if (length(shape) < length(info))
     stop("shape list is not enough")
   pchalist <- shape
-  for (i in 1:length(label)) {
+  for (i in 1:seq_along(label)) {
     pcha[label[[i]]] <- pchalist[i]
   }
   if (QC) {

@@ -59,7 +59,7 @@ SXTsvrNor <- function(sample,
     QC.nor <- NULL
     index <- NULL
 
-    for (i in 1:nc) {
+    for (i in 1:seq_len(nc)) {
       sample.nor <- cbind(sample.nor, svr.data[[i]]$sample.nor)
       QC.nor <- cbind(QC.nor, svr.data[[i]]$QC.nor)
       index <- c(index, svr.data[[i]]$index)

@@ -100,7 +100,7 @@ UnivariateTest <- function(MetFlowData,
   if (test.method == "anova") {
     ##info
     info <- list()
-    for (i in 1:length(class)) {
+    for (i in 1:seq_along(class)) {
       info[[i]] <- subject.info[, 1][group == class[i]]
     }
     names(info) <- class
@@ -115,7 +115,7 @@ UnivariateTest <- function(MetFlowData,
     Y <- NULL
     name <- colnames(subject)
 
-    for (i in 1:length(info)) {
+    for (i in 1:seq_along(info)) {
       Y[match(info[[i]], name)] <- i - 1
     }
 

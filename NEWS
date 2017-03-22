@@ -19,4 +19,12 @@ Version 0.99.3
 o Remove m2p function and it's demo data.
 o Demo data is make more small (only one batch) because the package is very large.
 
+Version 0.99.4
+--------------
+o add a default path argument (i.e., ".") rather than NULL to avoid doing
+path <- getwd() in all functions.
+o Avoid 1:n style iterations.
+
+
+
 

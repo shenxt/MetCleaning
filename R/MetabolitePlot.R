@@ -103,7 +103,7 @@ MetabolitePlot <- function(MetFlowData.before,
            pch = 19,
            col = "firebrick1")
     ## add lines
-    for (j in 1:length(qc.info_bef1)) {
+    for (j in 1:seq_along(qc.info_bef1)) {
       abline(v = max(qc.info_bef1[[j]][, 2]), lty = 2)
     }
     ## after
@@ -123,7 +123,7 @@ MetabolitePlot <- function(MetFlowData.before,
            pch = 19,
            col = "firebrick1")
     ## add lines
-    for (j in 1:length(qc.info_aft1)) {
+    for (j in 1:seq_along(qc.info_aft1)) {
       abline(v = max(qc.info_aft1[[j]][, 2]), lty = 2)
     }
 

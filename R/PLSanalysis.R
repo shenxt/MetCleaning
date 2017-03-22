@@ -92,7 +92,7 @@ PLSanalysis <- function(MetFlowData,
   }
 
   info <- list()
-  for (i in 1:length(group.unique)) {
+  for (i in 1:seq_along(group.unique)) {
     info[[i]] <- subject.name[which(group == group.unique[i])]
   }
 
@@ -100,7 +100,7 @@ PLSanalysis <- function(MetFlowData,
 
   int <- t(subject)
   index <- NULL
-  for (i in 1:length(info)) {
+  for (i in 1:seq_along(info)) {
     index1 <- as.character(info[[i]])
     index <- c(index, index1)
   }
@@ -119,7 +119,7 @@ PLSanalysis <- function(MetFlowData,
   # browser()
   Y <- NULL
   label <- list()
-  for (i in 1:length(info)) {
+  for (i in 1:seq_along(info)) {
     label[[i]] <- match(as.character(info[[i]]), name)
     label[[i]] <- label[[i]][!is.na(label[[i]])]
     Y[label[[i]]] <- i - 1
@@ -172,7 +172,7 @@ PLSanalysis <- function(MetFlowData,
       comps.number <- as.numeric(comps.number)
       par(mar = c(5,5,4,2))
       plot(
-        x = c(1:comps.number),
+        x = c(1:seq_len(comps.number)),
         y = msep[1, 2:(comps.number + 1)],
         type = "b",
         col = "tomato",
@@ -185,7 +185,7 @@ PLSanalysis <- function(MetFlowData,
                 1.2 * max(msep[c(1, 2), 2:(comps.number + 1)]))
       )
       points(
-        x = c(1:comps.number),
+        x = c(1:seq_len(comps.number)),
         y = msep[2, 2:(comps.number + 1)],
         type = "b",
         pch = 17,
@@ -206,7 +206,7 @@ PLSanalysis <- function(MetFlowData,
     pdf(file.path(path, "MSEP plot.pdf"))
     par(mar = c(5,5,4,2))
     plot(
-      x = c(1:comps.number),
+      x = c(1:seq_len(comps.number)),
       y = msep[1, 2:(comps.number + 1)],
       type = "b",
       col = "tomato",
@@ -219,7 +219,7 @@ PLSanalysis <- function(MetFlowData,
               1.1 * max(msep[c(1, 2), 2:(comps.number + 1)]))
     )
     points(
-      x = c(1:comps.number),
+      x = c(1:seq_len(comps.number)),
       y = msep[2, 2:(comps.number + 1)],
       type = "b",
       pch = 17,
@@ -411,20 +411,20 @@ PLSanalysis <- function(MetFlowData,
   }
 
   legend <- NULL
-  for (i in 1:length(label)) {
+  for (i in 1:seq_along(label)) {
     legend[label[[i]]] <- names(info)[i]
   }
 
   colour <- NULL
   colourlist <- color
-  for (i in 1:length(label)) {
+  for (i in 1:seq_along(label)) {
     colour[label[[i]]] <- colourlist[i]
   }
 
 
   pcha <- NULL
   pchalist <- shape
-  for (i in 1:length(label)) {
+  for (i in 1:seq_along(label)) {
     pcha[label[[i]]] <- pchalist[i]
   }
 
@@ -473,8 +473,8 @@ PLSanalysis <- function(MetFlowData,
   legend(
     "topleft",
     names(info),
-    pch = pchalist[1:length(info)],
-    col = colourlist[1:length(info)],
+    pch = pchalist[1:seq_along(info)],
+    col = colourlist[1:seq_along(info)],
     bty = "n",
     cex = 1.5
   )

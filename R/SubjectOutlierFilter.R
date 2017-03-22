@@ -48,7 +48,7 @@ SubjectOutlierFilter <- function(MetFlowData,
   data <- SplitBatch(MetFlowData = metData)
   subject1 <- data[[1]]
 
-  for (i in 1:length(subject1)) {
+  for (i in 1:seq_along(subject1)) {
     cat(paste("Batch",i))
     cat("\n")
     cat("-------------------------------------------\n")

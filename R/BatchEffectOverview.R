@@ -50,7 +50,7 @@ BatchEffectOverview <- function(MetFlowData.before,
   qc.batch <- as.numeric(qc.info[,4])
 
   qc.info <- list()
-  for (i in 1:length(qc.bef1)) {
+  for (i in 1:seq_along(qc.bef1)) {
     qc.info[[i]] <- colnames(qc.bef1[[i]])
   }
 
@@ -79,7 +79,7 @@ BatchEffectOverview <- function(MetFlowData.before,
 }
   ##PCA analysis for subject samples
   subject.info <- list()
-  for (i in 1:length(subject.bef1)) {
+  for (i in 1:seq_along(subject.bef1)) {
     subject.info[[i]] <- colnames(subject.bef1[[i]])
   }
   names(subject.info) <- paste("Batch", c(1:length(subject.info)),sep = "")
@@ -111,7 +111,7 @@ BatchEffectOverview <- function(MetFlowData.before,
   colours.list <- c("palegreen","royalblue","firebrick1","tan1","deepskyblue",
                             "cyan","gray48", "chocolate4","darkmagenta","indianred1")
   colours <- NULL
-  for (i in 1:length(qc.bef1)) {
+  for (i in 1:seq_along(qc.bef1)) {
   colours[match(colnames(qc.bef1[[i]]), colnames(qc.bef))] <- colours.list[i]
   }
 

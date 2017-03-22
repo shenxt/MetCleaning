@@ -17,7 +17,7 @@ QCOutlierFinder <- function(MetFlowData,
 
   obs.remove <- list()
   ## PCA analysis
-  for (i in 1:length(qc1)) {
+  for (i in 1:seq_along(qc1)) {
     info <- list("QC" = colnames(qc1[[i]]))
     SXTpcaData <-
       SXTpca(

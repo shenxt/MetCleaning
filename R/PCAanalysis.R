@@ -92,7 +92,7 @@ PCAanalysis <- function(MetFlowData,
 
 
   info <- list()
-  for (i in 1:length(group.unique)) {
+  for (i in 1:seq_along(group.unique)) {
     info[[i]] <- subject.name[which(group == group.unique[i])]
   }
 
@@ -100,7 +100,7 @@ PCAanalysis <- function(MetFlowData,
 
   #select the subject in info and need QC or not
   index <- NULL
-  for (i in 1:length(info)) {
+  for (i in 1:seq_along(info)) {
     index1 <- as.character(info[[i]])
     index <- c(index, index1)
   }
@@ -116,7 +116,7 @@ PCAanalysis <- function(MetFlowData,
 
 
   ##discard the subject's name who is not in the subject data
-  for (i in 1:length(info)) {
+  for (i in 1:seq_along(info)) {
     idx <- as.character(info[[i]])
     idx <- match(idx, colnames(subject))
     idx <- idx[!is.na(idx)]
@@ -203,13 +203,13 @@ PCAanalysis <- function(MetFlowData,
 
   name <- colnames(subject)
   label <- list()
-  for (i in 1:length(info)) {
+  for (i in 1:seq_along(info)) {
     label[[i]] <- match(as.character(info[[i]]), name)
     label[[i]] <- label[[i]][!is.na(label[[i]])]
   }
 
   legend <- NULL
-  for (i in 1:length(label)) {
+  for (i in 1:seq_along(label)) {
     legend[label[[i]]] <- names(info)[i]
   }
 
@@ -222,7 +222,7 @@ PCAanalysis <- function(MetFlowData,
     stop("Color list is not enough")
 
   colourlist <- color
-  for (i in 1:length(label)) {
+  for (i in 1:seq_along(label)) {
     colour[label[[i]]] <- colourlist[i]
   }
   if (QC) {
@@ -234,7 +234,7 @@ PCAanalysis <- function(MetFlowData,
   if (length(shape) < length(info))
     stop("Shape list is not enough")
   pchalist <- shape
-  for (i in 1:length(label)) {
+  for (i in 1:seq_along(label)) {
     pcha[label[[i]]] <- pchalist[i]
   }
   if (QC) {

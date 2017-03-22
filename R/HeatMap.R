@@ -131,7 +131,7 @@ HeatMap <- function(MetFlowData,
 
   # Specify colors
   ann_col <- NULL
-  for (i in 1:length(Group)) {
+  for (i in 1:seq_along(Group)) {
     ann_col[i] <- color[i]
   }
 

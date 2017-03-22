@@ -49,7 +49,7 @@ QCOutlierFilter <- function(MetFlowData,
   data <- SplitBatch(MetFlowData = metData)
   qc1 <- data[[2]]
 
-  for (i in 1:length(qc1)) {
+  for (i in 1:seq_along(qc1)) {
     cat(paste("Batch", i))
     cat("\n")
     cat("-----------------------\n")

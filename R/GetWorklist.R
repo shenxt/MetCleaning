@@ -160,7 +160,7 @@ if(is.null(x)) {
     x <- x
   } else{
     x2 <- NULL
-    for (i in 1:replication) {
+    for (i in 1:seq_len(replication)) {
       x1 <- paste(x, i, sep = "_")
       x2 <- cbind(x2, x1)
     }
@@ -333,7 +333,7 @@ if(is.null(x)) {
     rbind(Blank.QC, y))
   ###
   x2 <- NULL
-  for (i in 1:length(x)) {
+  for (i in 1:seq_along(x)) {
     x1 <- x[[i]]
     x2 <- rbind(x2, x1)
   }
@@ -360,7 +360,7 @@ if(is.null(x)) {
       rbind(Test.mix, y))
 
     x3 <- NULL
-    for (i in 1:length(x)) {
+    for (i in 1:seq_along(x)) {
       x1 <- x[[i]]
       x3 <- rbind(x3, x1)
     }
