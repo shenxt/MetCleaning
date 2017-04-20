@@ -12,6 +12,7 @@
 #' @param re.match Default is TRUE.
 #' @return Return a MetFlowData which has been added peak identification
 #' information into tags.
+#' @export
 #' @examples
 #' \donttest{
 #' #load the demo data
@@ -535,7 +536,7 @@ match(min(as.numeric(peak.rterror[[i]])[index]), as.numeric(peak.rterror[[i]]))
   write.csv(new.marker,
             file.path(path1, "marker.with.many.to.one.csv"))
 
-
+ # browser()
 
   remain <- new.marker[, "remain"]
   for (i in seq_along(remain)) {
@@ -543,7 +544,7 @@ match(min(as.numeric(peak.rterror[[i]])[index]), as.numeric(peak.rterror[[i]]))
       next
     }
     else {
-      new.marker[i, c(5:15)] <- rep(NA, 12)
+      new.marker[i, c(5:15)] <- rep(NA, 11)
     }
   }
 
