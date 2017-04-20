@@ -120,8 +120,8 @@ PeakIdentification <- function(MetFlowData,
 
     for (i in seq_along(ms2)) {
       msms <- ms2[[i]]
-      forward <- as.character(msms[, "hits..forward."])
-      reverse <- as.character(msms[, "hits..reverse."])
+      forward <- as.character(msms[, "hits.forward"])
+      reverse <- as.character(msms[, "hits.reverse"])
       forward[is.na(forward)] <- ""
       reverse[is.na(reverse)] <- ""
       #remove the unidentified feature
@@ -152,8 +152,8 @@ PeakIdentification <- function(MetFlowData,
                 row.names = FALSE)
       msmsinfo <- msms[, c("mzmed", "rtmed")]
       #get the information of metabolite
-      forward <- as.character(msms[, "hits..forward."])
-      reverse <- as.character(msms[, "hits..reverse."])
+      forward <- as.character(msms[, "hits.forward"])
+      reverse <- as.character(msms[, "hits.reverse"])
       forward[is.na(forward)] <- ""
       reverse[is.na(reverse)] <- ""
       name <- as.character(msms[, "name"])

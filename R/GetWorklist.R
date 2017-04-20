@@ -50,12 +50,9 @@ GetWorklist <- function(x = NULL,
   options(warn = -1)
   file <- dir()
 
-  if (instrument == "AB") {
-    dir = ""
-  }
+  if (instrument == "AB") {dir = ""}
   if (is.null(x)) {
-    x <-
-      read.csv(file[file == "batch.design.csv"],
+    x <- read.csv(file[file == "batch.design.csv"],
                check.names = FALSE,
                stringsAsFactors = FALSE)
   }
@@ -78,9 +75,7 @@ GetWorklist <- function(x = NULL,
   )
 
   # ---------------------------------------------------------------------------
-  if (is.null(samplenumber)) {
-    samplenumber <- length(x)
-  }
+  if (is.null(samplenumber)) {samplenumber <- length(x)}
   else {
     if (samplenumber > length(x)) {
       samplenumber <- samplenumber
@@ -128,8 +123,6 @@ GetWorklist <- function(x = NULL,
 
   position <- position[1:(samplenumber * replication)]
   real.position <- real.position[1:(samplenumber * replication)]
-
-
   sub.position96 <-
     c(
       paste("A", c(1:12), sep = ""),
@@ -174,7 +167,6 @@ GetWorklist <- function(x = NULL,
   }
 
   x <- as.character(x)
-
   #random position or random injection order or no
   if (instrument == "Agilent") {
     if (randommethod == "position") {
@@ -201,7 +193,6 @@ GetWorklist <- function(x = NULL,
         warning("The sample number is larger than 108,
                 injection order random is not commended.")
       }
-
       x <-
         cbind(x, position, real.position, position96, real.position96)
       colnames(x) <-
@@ -218,7 +209,6 @@ GetWorklist <- function(x = NULL,
       x <- x[order(x[, 1]),]
       x <- x[, -c(1, 4, 5, 6)]
     }
-
     if (randommethod == "no") {
       x <- cbind(x, position, real.position, position96, real.position96)
       colnames(x) <-
@@ -232,9 +222,7 @@ GetWorklist <- function(x = NULL,
       write.csv(x, sprintf("%s sample info.csv", name))
       x <- x[, -c(3, 4, 5)]
     }
-
   }
-
   ##AB instrument
   if (instrument == "AB") {
     if (randommethod == "position") {
@@ -306,9 +294,7 @@ GetWorklist <- function(x = NULL,
       write.csv(x, "sample info.csv")
       x <- x[, -c(4, 5, 6)]
     }
-
   }
-
   #now x column 1 is Sample Name, column 2 is Sample Position
   if (instrument == "Agilent") {
     Blank <- c("Blank", "Vial1")
@@ -321,7 +307,6 @@ GetWorklist <- function(x = NULL,
     Test.mix <- c("Test_mix", "1", "53")
     QC <- c("QC", "1", "54")
     Blank.QC <- rbind(Blank, QC)
-
   }
 
   #insert Blank and QC
@@ -333,8 +318,6 @@ GetWorklist <- function(x = NULL,
       else {
         x[y:nrow(x),]
       })
-
-
   colnames(Blank.QC) <- colnames(x[[1]])
   x <- lapply(x, function(y)
     rbind(Blank.QC, y))
@@ -422,7 +405,6 @@ GetWorklist <- function(x = NULL,
   x[, 1][grep("Test_mix", x[, 1])] <-
     paste("Test_mix", c(1:Test.mix.number), sep = "")
 
-
   QC.number <- length(grep("QC", x[, 1]))
   x[, 1][grep("QC", x[, 1])][1:conditionQCnumber] <-
     paste("Condition_QC", c(1:conditionQCnumber), sep = "")
@@ -431,7 +413,6 @@ GetWorklist <- function(x = NULL,
   first <- which(x[, 1] == "QC1")
   last <-
     which(x[, 1] == sprintf("QC%s", QC.number - conditionQCnumber))
-
 
   before.info <- x[1:(first - 1),]
   Data.File1 <- before.info[, 1]
@@ -460,7 +441,6 @@ GetWorklist <- function(x = NULL,
 
   Data.File2 <- paste(Data.File2, Sample.QC[, 1], sep = "_")
 
-
   if (user == "other") {
     Data.File2 <- Sample.QC[, 1]
   }
@@ -476,13 +456,11 @@ GetWorklist <- function(x = NULL,
     Data.File4 <- middle.testmix[, c(1, 4)]
   }
 
-
   colnames(Data.File4) <- colnames(Data.File3) <-
     colnames(Data.File2) <- paste("test", c(1:ncol(Data.File2)))
   Data.File2 <- rbind(Data.File2, Data.File3, Data.File4)
   Data.File2 <- Data.File2[order(as.numeric(Data.File2[, 2])),]
   Data.File2 <- Data.File2[, -2]
-
 
   Data.File <- c(Data.File1, as.character(Data.File2), Data.File5)
   name.POS <- paste(name, "POS")
@@ -498,13 +476,11 @@ GetWorklist <- function(x = NULL,
     Data.File.NEG <- paste(Data.File.NEG, "d", sep = ".")
   }
 
-
   x.POS <- cbind(x, Data.File.POS)
   x.NEG <- cbind(x, Data.File.NEG)
 
   write.csv(x.POS, sprintf("%s POS.csv", name), row.names = FALSE)
   write.csv(x.NEG, sprintf("%s NEG.csv", name), row.names = FALSE)
-
   cat("Worklist is generated.\n")
   return(TRUE)
 }

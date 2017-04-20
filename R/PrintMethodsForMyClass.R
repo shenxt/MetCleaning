@@ -173,3 +173,12 @@ setMethod("show", "MetFlowData",
             cat("\n")
           })
 
+
+setGeneric(
+  name = "getIcecream",
+  def  = function(object,...) {
+    standardGeneric("getIcecream")
+  }
+)
+
+
