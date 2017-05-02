@@ -52,7 +52,6 @@ PeakIdentification <- function(MetFlowData,
                                mz.tolerance = 30,
                                rt.tolerance = 180,
                                re.match = TRUE) {
-  # browser()
   options(warn = -1)
   if (path != ".") {
     dir.create(path)
@@ -535,8 +534,6 @@ match(min(as.numeric(peak.rterror[[i]])[index]), as.numeric(peak.rterror[[i]]))
   new.marker <- new.marker[-1, ]
   write.csv(new.marker,
             file.path(path1, "marker.with.many.to.one.csv"))
-
- # browser()
 
   remain <- new.marker[, "remain"]
   for (i in seq_along(remain)) {

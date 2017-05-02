@@ -62,7 +62,7 @@ MetNormalizer <- function(filename = "Metabolomics data",
                           user = "other",
                           path = ".") {
   options(warn = -1)
-  browser()
+  # browser()
   if (datastyle == "mrm") {
     multiple <- 1
   }

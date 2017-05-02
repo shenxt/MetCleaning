@@ -31,6 +31,7 @@ o Change code which go over 80 columns.
 o Change MetFlowData as S4 class.
 o Change hits..forwards. to hits.forward
 o fix small bugs in peak identification
+o remove browser from MetNormalizer
 
 
 
