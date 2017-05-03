@@ -49,7 +49,7 @@ DataIntegration <- function(MetFlowData,
   subject.batch <- subject.info[, 4]
   qc.batch <- qc.info[, 4]
 
-  if(length(unique(subject.batch))) {return(MetFlowData)}
+  if(length(unique(subject.batch)) == 1) {return(MetFlowData)}
 
   subject1 <- list()
   qc1 <- list()

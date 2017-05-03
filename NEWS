@@ -33,6 +33,8 @@ o Change hits..forwards. to hits.forward
 o fix small bugs in peak identification
 o remove browser from MetNormalizer
 
-
+Version 0.99.5
+--------------
+o Fixed a bug in DataIntegration.
 
 
