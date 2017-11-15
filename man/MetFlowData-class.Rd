@@ -8,7 +8,7 @@
 MetFlowData
 }
 \description{
-S4 class for data in MetCleaning.
+S4 class for data.
 }
 \section{Slots}{
 

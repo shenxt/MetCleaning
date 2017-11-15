@@ -38,7 +38,8 @@
 
 ## data integration
 DataIntegration <- function(MetFlowData,
-                            method = "qc.mean") {
+                            method = c("qc.mean", "subject.mean")) {
+  method <- match.arg(method)
   subject <- MetFlowData@"subject"
   qc <- MetFlowData@"qc"
   subject.info <- MetFlowData@"subject.info"

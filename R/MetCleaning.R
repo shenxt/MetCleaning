@@ -45,7 +45,6 @@
 #' @param rt.tolerance RT tolerance for ms1 and ms2 data matching.
 #' @param met.plot Scatter of peak.
 #' @param path Work directory.
-#' @param worklist.from Default is "manual".
 #' @return  All the results can be got form other functions and instruction.
 #' @export
 #' @details The manual of MetCleaning can be found in \href{https://github.com/jaspershen/MetCleaning/blob/master/vignettes/MetCleaning.pdf}{github}
@@ -74,332 +73,399 @@
 #' threads = 2)
 #' }
 
-MetCleaning <- function(#ImportData para
-  data = "data.csv",
-  sample.information = "sample.information.csv",
-  polarity = "positive",
-  hasIS = "no",
-  hasQC = "yes",
-  #MVFilter para
-  mv.filter = TRUE,
-  obs.mv.cutoff = 0.5,
-  var.mv.cutoff = 0.5,
-  #MVimputation
-  imputation.method = "knn",
-  k = 10,
-  rowmax = 0.5,
-  colmax = 0.5,
-  maxp = 1500,
-  #ZeroFilter para
-  zero.filter = TRUE,
-  obs.zero.cutoff = 0.5,
-  var.zero.cutoff = 0.5,
-  #DataNormalization
-  normalization = TRUE,
-  method = "svr",
-  multiple = 5,
-  threads = 2,
-  #PeakIdentification
-  hmdb.matching = FALSE,
-  show = 5,
-  mass.tolerance = 30,
-  mz.tolerance = 30,
-  rt.tolerance = 180,
-  #DataOverview para
-  met.plot = TRUE,
-  path = ".",
-  worklist.from = "manual",
-  #other slection
-  qc.outlier.filter = TRUE,
-  subject.outlier.filter = TRUE,
-  integration = TRUE) {
-  if (path != ".") {
-    dir.create(path)
-  }
 
-  path.inter <- file.path(path, "intermediate")
-  dir.create(path.inter)
-
-  options(warn = -1)
-
-  #--------------------------------------------------------------------------
-  #read data
-  cat("Importing data...\n")
-
-  if (all(dir("intermediate") != "met.data.raw")) {
-    met.data <- ImportData(
-      data = data,
-      sample.information = sample.information,
-      polarity = polarity,
-      hasIS = hasIS,
-      hasQC = hasQC,
-      worklist.from = worklist.from
-    )
-    #save data
-    met.data.raw <- met.data
-    save(met.data.raw, file = file.path(path.inter, "met.data.raw"))
-  } else {
-    load(file.path(path.inter, "met.data.raw"))
-    met.data <- met.data.raw
-  }
-
-  batch <- unique(met.data@subject.info[, 4])
-  subject <- met.data@subject
-
-  #-------------------------------------------------------------------------
-  if (sum(is.na(subject)) != 0) {
-    MZoverview(
-      MetFlowData = met.data,
-      path = file.path(path, "1 MV overview"),
-      what = "mv"
-    )
-
-    if (mv.filter) {
-      cat(
-        "------------------------------------------------------------------\n"
-      )
-      cat("Missing values filter...\n")
-      #filter mv
-      met.data <- MZfilter(
-        MetFlowData = met.data,
-        obs.per.cutoff = obs.mv.cutoff,
-        var.per.cutoff = var.mv.cutoff,
-        what = "mv",
-        path = file.path(path, "2 MV filter")
-      )
-      #save data
-      met.data.mv.filter <- met.data
-      save(met.data.mv.filter,
-           file = file.path(path.inter, "met.data.mv.filter"))
-    }
-
-    cat("---------------------------------------------------------------\n")
-    cat("Missing values imputation...\n")
-    #mv imputation
-    met.data <- MVimputation(
-      MetFlowData = met.data,
-      ##MV imputation method
-      imputation.method = imputation.method,
-      # knn parameters
-      k = k,
-      rowmax = rowmax,
-      colmax = colmax,
-      maxp = maxp
-    )
-    #save data
-    met.data.mv.imputation <- met.data
-    save(met.data.mv.imputation,
-         file = file.path(path.inter, "met.data.mv.imputation"))
-  }
-
-  subject <- met.data@subject
-
-  #zero distribution
-  MZoverview(
-    MetFlowData = met.data,
-    what = "zero",
-    path = file.path(path, "3 Zero overview")
-  )
-
-  if (zero.filter) {
-    cat("------------------------------------------------------------------\n")
-    cat("Zero filter...\n")
-    #filter zero
-    met.data <- MZfilter(
-      MetFlowData = met.data,
-      obs.per.cutoff = obs.zero.cutoff,
-      var.per.cutoff = var.zero.cutoff,
-      what = "zero",
-      path = file.path(path, "4 Zero filter")
-    )
-    #save data
-    met.data.zero.filter <- met.data
-    save(met.data.zero.filter,
-         file = file.path(path.inter, "met.data.zero.filter"))
-  }
-
-  cat("------------------------------------------------------------------\n")
-  cat("Peak identification...\n")
-  #peak identification
-  if (any(dir() == "peak identification")) {
-    if (all(dir("intermediate") != "met.data.peak.iden")) {
-      met.data <- PeakIdentification(
-        MetFlowData = met.data,
-        ##parameters for matching
-        mz.tolerance = mz.tolerance,
-        rt.tolerance = rt.tolerance
-      )
-      #save data
-      met.data.peak.iden <- met.data
-      save(met.data.peak.iden,
-           file = file.path(path.inter, "met.data.peak.iden"))
-    } else{
-      load(file.path(path.inter, "met.data.peak.iden"))
-      met.data <- met.data.peak.iden
-    }
-  }
-
-  if (hmdb.matching) {
-    #mass identification
-
-    if (all(dir("intermediate") != "met.data.mass.iden")) {
-      met.data <- MassIdentification(
-        MetFlowData = met.data,
-        mass.tolerance = mass.tolerance,
-        polarity = "positive",
-        show = 5
-      )
-      #save data
-      met.data.mass.iden <- met.data
-      save(met.data.mass.iden,
-           file = file.path(path.inter, "met.data.mass.iden"))
-    } else{
-      load(file.path(path.inter, "met.data.mass.iden"))
-      met.data <- met.data.mass.iden
-    }
-  }
+# data = "data.csv"
+# sample.information = "sample.information.csv"
+# polarity = "positive"
+# hasIS = "no"
+# hasQC = "yes"
+# #MVFilter para
+# mv.filter = TRUE
+# obs.mv.cutoff = 0.5
+# var.mv.cutoff = 0.5
+# #MVimputation
+# imputation.method = "knn"
+# k = 10
+# rowmax = 0.5
+# colmax = 0.5
+# maxp = 1500
+# #ZeroFilter para
+# zero.filter = TRUE
+# obs.zero.cutoff = 0.5
+# var.zero.cutoff = 0.5
+# #DataNormalization
+# normalization = TRUE
+# method = "svr"
+# multiple = 5
+# threads = 2
+# #PeakIdentification
+# hmdb.matching = FALSE
+# show = 5
+# mass.tolerance = 30
+# mz.tolerance = 30
+# rt.tolerance = 180
+# #DataOverview para
+# met.plot = FALSE
+# path = "."
+# # worklist.from = "manual"
+# #other slection
+# qc.outlier.filter = TRUE
+# subject.outlier.filter = TRUE
+# integration = TRUE
 
 
-  if (qc.outlier.filter) {
-    cat("------------------------------------------------------------------\n")
-    cat("QC outlier filtering...\n")
-    #QC outlier
-    if (all(dir("intermediate") != "met.data.qc.outlier.filter")) {
-      met.data <- QCOutlierFilter(MetFlowData = met.data,
-                                  CI = 0.95,
-                                  path = "5 QC outlier filter")
-      met.data.qc.outlier.filter <- met.data
-      save(
-        met.data.qc.outlier.filter,
-        file = file.path(path.inter, "met.data.qc.outlier.filter")
-      )
-    } else {
-      load(file.path(path.inter, "met.data.qc.outlier.filter"))
-      met.data <- met.data.qc.outlier.filter
-    }
-  }
-
-  if (normalization) {
-    cat("------------------------------------------------------------------\n")
-    cat("Data normalization...\n")
-    ##Data Normalization
-    if (length(batch) > 1) {
-      peak.plot = FALSE
-    } else{
-      peak.plot = TRUE
-    }
-    if (all(dir("intermediate") != "met.data.nor")) {
-      met.data <- DataNormalization(
-        MetFlowData = met.data,
-        method = method,
-        multiple = multiple,
-        threads = threads,
-        path = path,
-        peakplot = peak.plot
-      )
-      #save data
-      met.data.nor <- met.data
-      save(met.data.nor, file = file.path(path.inter, "met.data.nor"))
-    } else{
-      load(file.path(path.inter, "met.data.nor"))
-      met.data <- met.data.nor
-    }
-  }
-
-  if (subject.outlier.filter) {
-    cat("------------------------------------------------------------------\n")
-    cat("Subject outlier filtering...\n")
-    #subject outlier
-    if (all(dir("intermediate") != "met.data.subject.outlier.filter")) {
-      met.data <- SubjectOutlierFilter(
-        MetFlowData = met.data,
-        CI = 0.95,
-        path = file.path("6 Subject outlier finder")
-      )
-      met.data.subject.outlier.filter <- met.data
-      save(
-        met.data.subject.outlier.filter,
-        file = file.path(path.inter, "met.data.subject.outlier.filter")
-      )
-    } else {
-      load(file.path(path.inter, "met.data.subject.outlier.filter"))
-      met.data <- met.data.subject.outlier.filter
-    }
-  }
-
-  if (integration) {
-    cat("------------------------------------------------------------------\n")
-    cat("Data integration...\n")
-
-    if (length(batch) > 1) {
-      ## data integration
-      met.data <- DataIntegration(MetFlowData = met.data)
-      #save data
-      met.data.integration <- met.data
-      save(met.data.integration,
-           file = file.path(path.inter, "met.data.integration"))
-    }
-  }
-
-  if (zero.filter) {
-    if (length(batch) > 1) {
-      #batch effect
-      BatchEffectOverview(
-        MetFlowData.before = met.data.zero.filter,
-        MetFlowData.after = met.data,
-        path = file.path(path, "8 Batch effect")
-      )
-    }
-
-    if (met.plot) {
-      cat(
-        "------------------------------------------------------------------\n"
-      )
-      cat("Metabolite plot...\n")
-      #metabolite plot
-      MetabolitePlot(
-        MetFlowData.before = met.data.zero.filter,
-        MetFlowData.after = met.data,
-        path = file.path(path, "9 metabolite plot")
-      )
-    }
-  }
-  cat("\n")
-  if (zero.filter) {
-    cat("------------------------------------------------------------------\n")
-    cat("RSD overview...\n")
-    #RSD distribution
-    RSDoverview(
-      MetFlowData.before = met.data.zero.filter,
-      MetFlowData.after = met.data,
-      path = file.path(path, "10 RSD overview")
-    )
-  }
-
-  #data overview
-  DataOverview(
-    MetFlowData = met.data,
-    feature.distribution = TRUE,
-    path = file.path("11 Data overview")
-  )
-
-  #ouput data
-  ExportData(
-    MetFlowData = met.data,
-    data.name = "data_after_pre",
-    subject.info.name = "subject.info",
-    qc.info.name = "qc.info"
-  )
-
-  #save data
-  met.data.after.pre <- met.data
-  save(met.data.after.pre, file = file.path(path, "met.data.after.pre"))
-  cat("------------------------------------------------------------------\n")
-  cat("MetCleaning is done.\n")
-  options(warn = 0)
-}
+# MetCleaning()
 
 
+setGeneric(name = "MetCleaning",
+           def = function(#ImportData para
+             data = "data.csv",
+             sample.information = "sample.information.csv",
+             polarity = c("positive", "negative", "none"),
+             hasIS = c("no", "yes"),
+             hasQC = c("yes", "no"),
+             #MVFilter para
+             mv.filter = TRUE,
+             obs.mv.cutoff = 0.5,
+             var.mv.cutoff = 0.5,
+             #MVimputation
+             imputation.method = "knn",
+             k = 10,
+             rowmax = 0.5,
+             colmax = 0.5,
+             maxp = 1500,
+             #ZeroFilter para
+             zero.filter = TRUE,
+             obs.zero.cutoff = 0.5,
+             var.zero.cutoff = 0.5,
+             #DataNormalization
+             normalization = TRUE,
+             method = c("svr", "loess"),
+             multiple = 5,
+             threads = 2,
+             #PeakIdentification
+             hmdb.matching = FALSE,
+             show = 5,
+             mass.tolerance = 30,
+             mz.tolerance = 30,
+             rt.tolerance = 180,
+             #DataOverview para
+             met.plot = FALSE,
+             path = ".",
+             # worklist.from = "manual",
+             #other slection
+             qc.outlier.filter = TRUE,
+             subject.outlier.filter = TRUE,
+             integration = TRUE){
+
+
+             polarity <- match.arg(polarity)
+             hasIS <- match.arg(hasIS)
+             hasQC <- match.arg(hasQC)
+             method <- match.arg(method)
+
+
+             if (path != ".") {
+               dir.create(path)
+             }
+
+             path.inter <- file.path(path, "intermediate")
+             dir.create(path.inter)
+
+             options(warn = -1)
+
+             #--------------------------------------------------------------------------
+             #check data
+             cat("\n")
+             cat("Check data...\n")
+             stat <- checkData(data = data, sample.info = sample.information, path = path)
+
+             if(any(as.numeric(stat[,4]) > 0)){
+               stop("Error in you data.")
+             }
+
+
+
+             #--------------------------------------------------------------------------
+             #read data
+             cat("\n")
+             cat("Importing data...\n")
+
+             if (all(dir("intermediate") != "met.data.raw")) {
+               met.data <- ImportData(
+                 data = data,
+                 sample.information = sample.information,
+                 polarity = polarity,
+                 hasIS = hasIS,
+                 hasQC = hasQC)
+               #save data
+               met.data.raw <- met.data
+               save(met.data.raw, file = file.path(path.inter, "met.data.raw"))
+             } else {
+               load(file.path(path.inter, "met.data.raw"))
+               met.data <- met.data.raw
+             }
+
+             batch <- unique(met.data@subject.info[, 4])
+             subject <- met.data@subject
+
+             #-------------------------------------------------------------------------
+             if (sum(is.na(subject)) != 0) {
+               MZoverview(
+                 MetFlowData = met.data,
+                 path = file.path(path, "1 MV overview"),
+                 what = "mv"
+               )
+
+               if (mv.filter) {
+                 cat(
+                   "------------------------------------------------------------------\n"
+                 )
+                 cat("Missing values filter...\n")
+                 #filter mv
+                 met.data <- MZfilter(
+                   MetFlowData = met.data,
+                   obs.per.cutoff = obs.mv.cutoff,
+                   var.per.cutoff = var.mv.cutoff,
+                   what = "mv",
+                   path = file.path(path, "2 MV filter")
+                 )
+                 #save data
+                 met.data.mv.filter <- met.data
+                 save(met.data.mv.filter,
+                      file = file.path(path.inter, "met.data.mv.filter"))
+               }
+
+               cat("---------------------------------------------------------------\n")
+               cat("Missing values imputation...\n")
+               #mv imputation
+               met.data <- MVimputation(
+                 MetFlowData = met.data,
+                 ##MV imputation method
+                 imputation.method = imputation.method,
+                 # knn parameters
+                 k = k,
+                 rowmax = rowmax,
+                 colmax = colmax,
+                 maxp = maxp
+               )
+               #save data
+               met.data.mv.imputation <- met.data
+               save(met.data.mv.imputation,
+                    file = file.path(path.inter, "met.data.mv.imputation"))
+             }
+
+             subject <- met.data@subject
+
+             #zero distribution
+             MZoverview(
+               MetFlowData = met.data,
+               what = "zero",
+               path = file.path(path, "3 Zero overview")
+             )
+
+             if (zero.filter) {
+               cat("------------------------------------------------------------------\n")
+               cat("Zero filter...\n")
+               #filter zero
+               met.data <- MZfilter(
+                 MetFlowData = met.data,
+                 obs.per.cutoff = obs.zero.cutoff,
+                 var.per.cutoff = var.zero.cutoff,
+                 what = "zero",
+                 path = file.path(path, "4 Zero filter")
+               )
+               #save data
+               met.data.zero.filter <- met.data
+               save(met.data.zero.filter,
+                    file = file.path(path.inter, "met.data.zero.filter"))
+             }
+
+             cat("------------------------------------------------------------------\n")
+             cat("Peak identification...\n")
+             #peak identification
+             if (any(dir() == "peak identification")) {
+               if (all(dir("intermediate") != "met.data.peak.iden")) {
+                 met.data <- PeakIdentification(
+                   MetFlowData = met.data,
+                   ##parameters for matching
+                   mz.tolerance = mz.tolerance,
+                   rt.tolerance = rt.tolerance
+                 )
+                 #save data
+                 met.data.peak.iden <- met.data
+                 save(met.data.peak.iden,
+                      file = file.path(path.inter, "met.data.peak.iden"))
+               } else{
+                 load(file.path(path.inter, "met.data.peak.iden"))
+                 met.data <- met.data.peak.iden
+               }
+             }
+
+             if (hmdb.matching) {
+               #mass identification
+
+               if (all(dir("intermediate") != "met.data.mass.iden")) {
+                 met.data <- MassIdentification(
+                   MetFlowData = met.data,
+                   mass.tolerance = mass.tolerance,
+                   polarity = "positive",
+                   show = 5
+                 )
+                 #save data
+                 met.data.mass.iden <- met.data
+                 save(met.data.mass.iden,
+                      file = file.path(path.inter, "met.data.mass.iden"))
+               } else{
+                 load(file.path(path.inter, "met.data.mass.iden"))
+                 met.data <- met.data.mass.iden
+               }
+             }
+
+
+             if (qc.outlier.filter) {
+
+               cat("------------------------------------------------------------------\n")
+               cat("QC outlier filtering...\n")
+               #QC outlier
+               if (all(dir("intermediate") != "met.data.qc.outlier.filter")) {
+                 met.data <- QCOutlierFilter(MetFlowData = met.data,
+                                             CI = 0.95,
+                                             path = "5 QC outlier filter")
+                 met.data.qc.outlier.filter <- met.data
+                 save(
+                   met.data.qc.outlier.filter,
+                   file = file.path(path.inter, "met.data.qc.outlier.filter")
+                 )
+               } else {
+                 load(file.path(path.inter, "met.data.qc.outlier.filter"))
+                 met.data <- met.data.qc.outlier.filter
+               }
+             }
+
+             if (normalization) {
+               cat("------------------------------------------------------------------\n")
+               cat("Data normalization...\n")
+               ##Data Normalization
+               if (length(batch) > 1) {
+                 peak.plot = FALSE
+               } else{
+                 peak.plot = TRUE
+               }
+               if (all(dir("intermediate") != "met.data.nor")) {
+                 met.data <- DataNormalization(
+                   MetFlowData = met.data,
+                   method = method,
+                   multiple = multiple,
+                   threads = threads,
+                   path = path,
+                   peakplot = peak.plot
+                 )
+                 #save data
+                 met.data.nor <- met.data
+                 save(met.data.nor, file = file.path(path.inter, "met.data.nor"))
+               } else{
+                 load(file.path(path.inter, "met.data.nor"))
+                 met.data <- met.data.nor
+               }
+             }
+
+             if (subject.outlier.filter) {
+               cat("------------------------------------------------------------------\n")
+               cat("Subject outlier filtering...\n")
+               #subject outlier
+               if (all(dir("intermediate") != "met.data.subject.outlier.filter")) {
+                 met.data <- SubjectOutlierFilter(
+                   MetFlowData = met.data,
+                   CI = 0.95,
+                   path = file.path("6 Subject outlier finder")
+                 )
+                 met.data.subject.outlier.filter <- met.data
+                 save(
+                   met.data.subject.outlier.filter,
+                   file = file.path(path.inter, "met.data.subject.outlier.filter")
+                 )
+               } else {
+                 load(file.path(path.inter, "met.data.subject.outlier.filter"))
+                 met.data <- met.data.subject.outlier.filter
+               }
+             }
+
+             if (integration) {
+               cat("------------------------------------------------------------------\n")
+               cat("Data integration...\n")
+
+               if (length(batch) > 1) {
+                 ## data integration
+                 met.data <- DataIntegration(MetFlowData = met.data)
+                 #save data
+                 met.data.integration <- met.data
+                 save(met.data.integration,
+                      file = file.path(path.inter, "met.data.integration"))
+               }
+             }
+
+             if (zero.filter) {
+               if (length(batch) > 1) {
+                 #batch effect
+                 BatchEffectOverview(
+                   MetFlowData.before = met.data.zero.filter,
+                   MetFlowData.after = met.data,
+                   path = file.path(path, "8 Batch effect")
+                 )
+               }
+
+               if (met.plot) {
+                 #
+                 cat(
+                   "------------------------------------------------------------------\n"
+                 )
+                 cat("Metabolite plot...\n")
+                 #metabolite plot
+                 MetabolitePlot(
+                   MetFlowData.before = met.data.zero.filter,
+                   MetFlowData.after = met.data,
+                   path = file.path(path, "9 metabolite plot")
+                 )
+               }
+             }
+             cat("\n")
+             if (zero.filter) {
+               cat("------------------------------------------------------------------\n")
+               cat("RSD overview...\n")
+               #RSD distribution
+               RSDoverview(
+                 MetFlowData.before = met.data.zero.filter,
+                 MetFlowData.after = met.data,
+                 path = file.path(path, "10 RSD overview")
+               )
+             }
+
+             #data overview
+             cat("------------------------------------------------------------------\n")
+             cat("Data overview...\n")
+             DataOverview(
+               MetFlowData = met.data,
+               feature.distribution = TRUE,
+               path = file.path("11 Data overview")
+             )
+
+             #ouput data
+             ExportData(
+               MetFlowData = met.data,
+               data.name = "data_after_pre",
+               subject.info.name = "subject.info",
+               qc.info.name = "qc.info"
+             )
+
+             #save data
+             met.data.after.pre <- met.data
+             save(met.data.after.pre, file = file.path(path, "met.data.after.pre"))
+             cat("------------------------------------------------------------------\n")
+             cat("MetCleaning is done.\n")
+             options(warn = 0)
+
+           })
 
 ##RSDoverview function
 RSDoverview <- function(MetFlowData.before = MetFlowData1,

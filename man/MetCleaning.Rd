@@ -5,16 +5,16 @@
 \title{MetCleaning}
 \usage{
 MetCleaning(data = "data.csv",
-  sample.information = "sample.information.csv", polarity = "positive",
-  hasIS = "no", hasQC = "yes", mv.filter = TRUE, obs.mv.cutoff = 0.5,
-  var.mv.cutoff = 0.5, imputation.method = "knn", k = 10, rowmax = 0.5,
-  colmax = 0.5, maxp = 1500, zero.filter = TRUE, obs.zero.cutoff = 0.5,
-  var.zero.cutoff = 0.5, normalization = TRUE, method = "svr",
+  sample.information = "sample.information.csv", polarity = c("positive",
+  "negative", "none"), hasIS = c("no", "yes"), hasQC = c("yes", "no"),
+  mv.filter = TRUE, obs.mv.cutoff = 0.5, var.mv.cutoff = 0.5,
+  imputation.method = "knn", k = 10, rowmax = 0.5, colmax = 0.5,
+  maxp = 1500, zero.filter = TRUE, obs.zero.cutoff = 0.5,
+  var.zero.cutoff = 0.5, normalization = TRUE, method = c("svr", "loess"),
   multiple = 5, threads = 2, hmdb.matching = FALSE, show = 5,
   mass.tolerance = 30, mz.tolerance = 30, rt.tolerance = 180,
-  met.plot = TRUE, path = ".", worklist.from = "manual",
-  qc.outlier.filter = TRUE, subject.outlier.filter = TRUE,
-  integration = TRUE)
+  met.plot = FALSE, path = ".", qc.outlier.filter = TRUE,
+  subject.outlier.filter = TRUE, integration = TRUE)
 }
 \arguments{
 \item{data}{Data name for analysis. Default is "data.csv". Data are csv
@@ -81,8 +81,6 @@ default is svr. Please see the details.}
 \item{met.plot}{Scatter of peak.}
 
 \item{path}{Work directory.}
-
-\item{worklist.from}{Default is "manual".}
 
 \item{qc.outlier.filter}{Filter QC outliers or not? Default is TRUE.}
 

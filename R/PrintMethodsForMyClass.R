@@ -1,8 +1,7 @@
 #' @title MetFlowData
-#' @description S4 class for data in MetCleaning.
+#' @description S4 class for data.
 #' @author Xiaotao Shen
 #' \email{shenxt@@sioc.ac.cn}
-#' @export
 #' @slot subject Subject data.
 #' @slot qc QC data.
 #' @slot tags Peak information.
@@ -30,6 +29,7 @@
 #' @slot qc.outlier.filter QC outlier filtering or not.
 #' @slot subject.outlier.filter Subject outlier filtering or not.
 #' @return MetFlowData
+#' @export
 
 setClass("MetFlowData",
          representation(
@@ -72,9 +72,7 @@ setClass("MetFlowData",
 #' @return Print some information of class object in your screen.
 #' @export
 #' @seealso \code{\link{print}}
-#' @examples
-#' data("met.data", package = "MetCleaning")
-#' met.data
+
 
 setMethod("show", "MetFlowData",
           function(object){
@@ -174,11 +172,11 @@ setMethod("show", "MetFlowData",
           })
 
 
-setGeneric(
-  name = "getIcecream",
-  def  = function(object,...) {
-    standardGeneric("getIcecream")
-  }
-)
+# setGeneric(
+#   name = "getIcecream",
+#   def  = function(object,...) {
+#     standardGeneric("getIcecream")
+#   }
+# )
 
 

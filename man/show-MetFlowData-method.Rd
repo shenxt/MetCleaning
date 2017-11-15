@@ -16,10 +16,6 @@ Print some information of class object in your screen.
 \description{
 Print method for class in MetProcesser.
 }
-\examples{
-data("met.data", package = "MetCleaning")
-met.data
-}
 \seealso{
 \code{\link{print}}
 }

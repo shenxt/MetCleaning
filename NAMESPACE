@@ -14,29 +14,3 @@ export(SXTvip)
 export(SplitBatch)
 exportClasses(MetFlowData)
 exportMethods(show)
-
-
-import(pls)
-import(impute)
-import(missForest)
-import(scatterplot3d)
-import(pheatmap)
-import(beeswarm)
-import(ellipse)
-import(plsdepot)
-import(pROC)
-import(e1071)
-import(snow)
-import(methods)
- importFrom("utils", "data", "edit", "head", "install.packages",
-             "read.csv", "write.csv")
-   importFrom("grDevices", "colorRampPalette", "dev.off", "jpeg", "pdf",
-             "tiff")
-  importFrom("graphics", "abline", "arrows", "barplot", "boxplot",
-             "hist", "layout", "legend", "lines", "par", "plot",
-             "points", "segments", "text")
-  importFrom("stats", "TukeyHSD", "aov", "cor", "lm", "loess", "median",
-             "p.adjust", "prcomp", "predict", "qchisq", "sd", "t.test",
-             "uniroot", "wilcox.test")
-  importFrom("ggplot2", "aes","labs","theme","element_text","ggtitle","theme_bw",
-             "ggsave","scale_color_gradient", "geom_point")

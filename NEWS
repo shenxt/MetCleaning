@@ -37,4 +37,16 @@ Version 0.99.5
 --------------
 o Fixed a bug in DataIntegration.
 
+Version 0.99.6
+--------------
+o Change read.csv to readr::read_csv.
+o Add checkData before analysis.
+o The functions for same thing are combined in one R script.
+
+Version 0.99.7
+--------------
+o Change S3 functions to S4 functions.
+
+
+
 

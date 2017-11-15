@@ -121,7 +121,7 @@ MetStat <- function(MetFlowData,
                     uni.test = TRUE,
                     path = ".") {
   options(warn = -1)
-  # browser()
+  #
   if (path != ".") {
     dir.create(path)
   }
@@ -183,7 +183,7 @@ MetStat <- function(MetFlowData,
     load(file.path(path, "13PLS analysis", "vip"))
     vip <- apply(vip, 2, mean)
   }
-# browser()
+#
   ##VIP
   load(file.path(path, "13PLS analysis", "vip"))
   vip <- apply(vip, 2, mean)
@@ -197,7 +197,7 @@ MetStat <- function(MetFlowData,
 
   cat("------------------------------------------------------------------\n")
   cat("Heat map...\n")
-  # browser()
+  #
   HeatMap(
     MetFlowData = met.data,
     log.scale = log.scale,
