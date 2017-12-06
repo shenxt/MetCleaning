@@ -1861,7 +1861,7 @@ peakplot5 <-
     # Sys.sleep(1)
 
     for (i in index) {
-      tiff(file.path(path, sprintf('Peak %s plot.tiff', tags["name", i])),
+      jpeg(file.path(path, sprintf('Peak %s plot.jpg', tags["name", i])),
            width =
              1600,
            height = 800)
@@ -1963,7 +1963,7 @@ peakplot6 <-
     # Sys.sleep(1)
     par(mar = c(5, 5, 4, 2))
     for (i in 1:ncol(sample)) {
-      tiff(file.path(path, sprintf('Peak %s plot.tiff', tags["name", i])),
+      jpeg(file.path(path, sprintf('Peak %s plot.jpg', tags["name", i])),
            width =
              1600,
            height = 800)
