@@ -114,8 +114,10 @@
 # integration = TRUE
 
 
-# MetCleaning()
+# MetCleaning(polarity = "positive")
 
+
+# MetCleaning(polarity = "negative")
 
 setGeneric(name = "MetCleaning",
            def = function(#ImportData para
@@ -631,3 +633,24 @@ RSDoverview <- function(MetFlowData.before = MetFlowData1,
   dev.off()
   layout(1)
 }
+
+
+
+.onAttach <- function(libname, pkgname){
+packageStartupMessage("MetCleaning version 0.99.71.
+Authors: Xiaotao Shen and Dr. Zhengjiang Zhu
+Maintainer: Xiaotao Shen.\n2018-01-05
+Version 0.99.71
+--------------
+o Fixed a small bug.")
+}
+
+packageStartupMessage("MetCleaning version 0.99.71.
+Authors: Xiaotao Shen and Dr. Zhengjiang Zhu
+Maintainer: Xiaotao Shen.\n2018-01-05
+Version 0.99.71
+--------------
+o Fixed a small bug.")
+
+
+

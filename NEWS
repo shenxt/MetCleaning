@@ -47,6 +47,10 @@ Version 0.99.7
 --------------
 o Change S3 functions to S4 functions.
 
+Version 0.99.71
+--------------
+o Fixed a small bug.
+
 
 
 

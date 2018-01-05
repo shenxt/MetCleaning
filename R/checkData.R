@@ -1,9 +1,14 @@
+# checkData(data = "data.csv",
+#          sample.info = "sample.information.csv",
+#          path = ".")
+
+
 setGeneric(name = "checkData",
            def = function(data = "data.csv",
                           sample.info = "sample.information.csv",
                           path = "."){
 
-
+# browser()
              data.record <- NULL
              sample.info.record <- NULL
 
@@ -60,24 +65,24 @@ setGeneric(name = "checkData",
              #   data.record <- c(data.record, "OK")
              # }
 
-             if(data.col.name[1] != "name"){
-               cat("Error: The first column of data is not name.\n")
+             if(all(data.col.name != "name")){
+               cat("Error: No name in data.\n")
                data.record <- c(data.record, "Error")
              }else{
                # cat("OK: The first column of data is name.\n")
                data.record <- c(data.record, "OK")
              }
 
-             if(data.col.name[2] != "mz"){
-               cat("Error: The second column of data is not mz.\n")
+             if(all(data.col.name != "mz")){
+               cat("Error: No mz in data.\n")
                data.record <- c(data.record, "Error")
              }else{
                # cat("OK: The second column of data is mz.\n")
                data.record <- c(data.record, "OK")
              }
 
-             if(data.col.name[3] != "rt"){
-               cat("Error: The third column of data is not rt.\n")
+             if(all(data.col.name != "rt")){
+               cat("Error: No rt in data.\n")
                data.record <- c(data.record, "Error")
              }else{
                # cat("OK: The third column of data is not rt.\n")
@@ -97,10 +102,10 @@ setGeneric(name = "checkData",
 
              cat("--------------------------------------------------------------\n")
              ##check sample.info
-             if(ncol(sample.info) > 5){
-               cat("Error: The smple.info has more than two columns. Please check it.\n")
-               sample.info.record <- c(sample.info.record, "Error")
-             }
+             # if(ncol(sample.info) > 5){
+             #   cat("Error: The smple.info has more than two columns. Please check it.\n")
+             #   sample.info.record <- c(sample.info.record, "Error")
+             # }
 
              if(sum(is.na(sample.info)) > 0){
                cat("Error: There are", sum(is.na(sample.info)), "NAs in you sample.info.\n")
@@ -119,13 +124,13 @@ setGeneric(name = "checkData",
              }
 
 
-             group <-  table(as.character(sample.info[,5]))
-             group1 <- matrix(group, nrow = 1)
-             colnames(group1) <- names(group)
-             rownames(group1) <- "Number"
-
-             cat("Group information:\n")
-             print(group1)
+             # group <-  table(as.character(sample.info[,5]))
+             # group1 <- matrix(group, nrow = 1)
+             # colnames(group1) <- names(group)
+             # rownames(group1) <- "Number"
+             #
+             # cat("Group information:\n")
+             # print(group1)
 
 
              class <-  unique(as.character(sample.info[,3]))
