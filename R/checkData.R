@@ -124,6 +124,49 @@ setGeneric(name = "checkData",
              }
 
 
+             if(colnames(sample.info)[1] != "sample.name"){
+               cat("Error: The column 1 of sample information must be sample.name")
+               sample.info.record <- c(sample.info.record, "Error")
+             }else{
+               # cat("OK: There are no spaces in you sample.info.\n")
+               sample.info.record <- c(sample.info.record, "OK")
+             }
+
+             if(colnames(sample.info)[2] != "injection.order"){
+               cat("Error: The column 1 of sample information must be injection.order")
+               sample.info.record <- c(sample.info.record, "Error")
+             }else{
+               # cat("OK: There are no spaces in you sample.info.\n")
+               sample.info.record <- c(sample.info.record, "OK")
+             }
+
+
+             if(colnames(sample.info)[3] != "class"){
+               cat("Error: The column 1 of sample information must be class")
+               sample.info.record <- c(sample.info.record, "Error")
+             }else{
+               # cat("OK: There are no spaces in you sample.info.\n")
+               sample.info.record <- c(sample.info.record, "OK")
+             }
+
+
+             if(colnames(sample.info)[4] != "batch"){
+               cat("Error: The column 1 of sample information must be batch")
+               sample.info.record <- c(sample.info.record, "Error")
+             }else{
+               # cat("OK: There are no spaces in you sample.info.\n")
+               sample.info.record <- c(sample.info.record, "OK")
+             }
+
+             if(colnames(sample.info)[5] != "group"){
+               cat("Error: The column 1 of sample information must be group")
+               sample.info.record <- c(sample.info.record, "Error")
+             }else{
+               # cat("OK: There are no spaces in you sample.info.\n")
+               sample.info.record <- c(sample.info.record, "OK")
+             }
+
+
              # group <-  table(as.character(sample.info[,5]))
              # group1 <- matrix(group, nrow = 1)
              # colnames(group1) <- names(group)
